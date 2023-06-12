@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " B ",
+    "S S",
+    " S "
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:wheat"
+    },
+    "B": {
+      "item": "minecraft:water_bucket"
+    }
+  },
+  "result": {
+    "item": "bakery:dough",
+    "count": 4
+  }
+}

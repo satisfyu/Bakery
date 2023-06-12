@@ -1,0 +1,17 @@
+{
+  "type": "bakery:pot_cooking",
+  "ingredients": [
+    {
+      "item": "minecraft:apple"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "container": {
+    "item": "minecraft:bowl"
+  },
+  "result": {
+    "item": "bakery:applesauce"
+  }
+}

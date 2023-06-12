@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "BWB",
+        " B "
+    ],
+    "key": {
+        "#": {
+            "tag": "c:glass_panes"
+        },
+        "B": {
+            "item": "minecraft:brick"
+        },
+        "W": {
+            "item": "minecraft:white_dye"
+        }
+    },
+    "result": {
+        "item": "bakery:cake_stand",
+        "count": 2
+    }
+}

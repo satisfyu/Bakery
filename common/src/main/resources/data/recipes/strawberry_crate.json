@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "grape_crate",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "bakery:strawberry"
+    }
+  },
+  "result": {
+    "item": "bakery:strawberry_crate"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "bakery:wood_fired_oven_cooking",
+  "ingredients": [
+    {
+      "tag": "c:eggs"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "bakery:butter"
+    }
+  ],
+  "item": "bakery:bundt_cake",
+  "count": 1,
+  "experience": 0.32
+}

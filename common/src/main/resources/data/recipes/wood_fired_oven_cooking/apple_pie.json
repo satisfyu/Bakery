@@ -1,0 +1,17 @@
+{
+  "type": "bakery:wood_fired_oven_cooking",
+  "ingredients": [
+    {
+      "item": "bakery:apple_mash"
+    },
+    {
+      "tag": "c:dough"
+    },
+    {
+      "tag": "c:milk"
+    }
+  ],
+  "item": "bakery:apple_pie",
+  "count": 1,
+  "experience": 0.35
+}

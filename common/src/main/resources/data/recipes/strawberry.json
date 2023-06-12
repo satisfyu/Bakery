@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#"
+    ],
+    "key": {
+        "#": {
+            "item": "bakery:strawberry_crate"
+        }
+    },
+    "result": {
+        "item": "bakery:strawberry",
+        "count": 9
+    }
+}

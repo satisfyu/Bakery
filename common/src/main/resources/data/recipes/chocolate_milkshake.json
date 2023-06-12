@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#",
+        "I"
+    ],
+    "key": {
+        "#": {
+   	     "item": "bakery:chocolate_icecream"
+        },
+        "I": {
+            "tag": "c:milk"
+        }
+    },
+    "result": {
+        "item": "bakery:chocolate_milkshake",
+        "count": 1
+    }
+}

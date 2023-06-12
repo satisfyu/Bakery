@@ -1,0 +1,17 @@
+{
+  "type": "bakery:wood_fired_oven_cooking",
+  "ingredients": [
+    {
+      "tag": "c:dough"
+    },
+    {
+      "item": "bakery:butter"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "item": "bakery:croissant",
+  "count": 8,
+  "experience": 0.15
+}

@@ -1,0 +1,17 @@
+{
+  "type": "bakery:wood_fired_oven_cooking",
+  "ingredients": [
+    {
+      "tag": "c:dough"
+    },
+    {
+      "tag": "c:dough"
+    },
+    {
+      "item": "minecraft:water_bucket"
+    }
+  ],
+  "item": "bakery:crusty_bread",
+  "count": 3,
+  "experience": 0.35
+}

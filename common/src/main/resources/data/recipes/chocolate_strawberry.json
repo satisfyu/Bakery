@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "   ",
+        " #W",
+        "   "
+    ],
+    "key": {
+        "#": {
+            "item": "bakery:strawberry"
+        },
+        "W": {
+            "item": "bakery:chocolate"
+        }
+    },
+    "result": {
+        "item": "bakery:strawberry_chocolate",
+        "count": 1
+    }
+}

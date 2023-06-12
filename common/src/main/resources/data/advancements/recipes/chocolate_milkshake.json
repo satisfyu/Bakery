@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "bakery:chocolate_milkshake"
+    ]
+  },
+  "criteria": {
+    "has_chocolate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bakery:chocolate"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "bakery:chocolate_milkshake"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_chocolate",
+      "has_the_recipe"
+    ]
+  ]
+}

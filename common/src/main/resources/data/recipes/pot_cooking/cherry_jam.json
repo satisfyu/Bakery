@@ -1,0 +1,17 @@
+{
+  "type": "bakery:pot_cooking",
+  "ingredients": [
+    {
+      "item": "bakery:cherry"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "container": {
+    "item": "bakery:cherry_jar"
+  },
+  "result": {
+    "item": "bakery:cherry_jam"
+  }
+}

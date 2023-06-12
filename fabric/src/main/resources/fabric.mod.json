@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "bakery",
+  "version": "${version}",
+  "name": "Bakery",
+  "description": "A Mod all about crafting Bread, Cakes and Pastry",
+  "authors": [
+    "satisfy"
+  ],
+  "contact": {
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/candlelight-lets-do-a-candlelight-dinner",
+    "sources": "https://guthib.com"
+  },
+  "license": "Insert License Here",
+  "icon": "assets/bakery/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "satisfy.bakery.fabric.BakeryFabric"
+    ]
+  },
+  "mixins": [
+    "bakery.mixins.json",
+    "bakery-common.mixins.json"
+  ],
+  "depends": {
+    "fabric": "*",
+    "minecraft": ">=1.19.2",
+    "architectury": ">=6.5.77"
+  }
+}

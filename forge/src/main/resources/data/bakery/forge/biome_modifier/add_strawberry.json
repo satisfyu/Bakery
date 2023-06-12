@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#bakery:spawns_broccoli",
+  "features": "bakery:broccoli_patch_chance",
+  "step": "vegetal_decoration"
+}
