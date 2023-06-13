@@ -9,6 +9,7 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.food.Foods;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
@@ -95,12 +96,11 @@ public class ObjectRegistry {
 
     //Crops
     public static final RegistrySupplier<Block> STRAWBERRY_CROP = registerWithoutItem("strawberry_crop", () -> new StrawberryCropBlock(getBushSettings()));
-    //public static final RegistrySupplier<Item> STRAWBERRY_SEEDS = registerItem("strawberry_seeds", () -> new Item(STRAWBERRY_CROP.get(), getSettings()));
+    public static final RegistrySupplier<Item> STRAWBERRY_SEEDS = registerItem("tomato_seeds", () -> new BlockItem(STRAWBERRY_CROP.get(), getSettings()));
     public static final RegistrySupplier<Item> STRAWBERRY = registerItem("strawberry", () -> new TooltipItem(getSettings().food(Foods.BEETROOT)));
     public static final RegistrySupplier<Block> STRAWBERRY_WILD_TAIGA = registerWithoutItem("strawberry_wild_taiga", () -> new WildBush(getBushSettings()));
     public static final RegistrySupplier<Block> STRAWBERRY_WILD_JUNGLE = registerWithoutItem("strawberry_wild_jungle", () -> new WildBushJungle(getBushSettings()));
 //todo oat crop
-
     //Blocks
     public static final RegistrySupplier<Block> STRAWBERRY_CRATE = registerWithItem("strawberry_crate", () -> new Block(BlockBehaviour.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final RegistrySupplier<Block> OAT_BLOCK = registerWithItem("oat_block", () -> new Block(BlockBehaviour.Properties.of(Material.GRASS).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
@@ -114,11 +114,6 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Item> BAKERS_HAT = registerItem("bakers_hat", () -> new BakersHatItem(getSettings().rarity(Rarity.COMMON)));
 //todo bakers apron
 
-
-
-    private static BlockBehaviour.Properties getLogBlockSettings() {
-        return BlockBehaviour.Properties.of(Material.WOOD).strength(2.0F).sound(SoundType.WOOD);
-    }
 
     private static Item.Properties getSettings(Consumer<Item.Properties> consumer) {
         Item.Properties settings = new Item.Properties().tab(Bakery.BAKERY_TAB);
