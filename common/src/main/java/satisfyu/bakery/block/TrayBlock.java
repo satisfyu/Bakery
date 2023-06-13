@@ -7,6 +7,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -61,29 +62,12 @@ public class TrayBlock extends CakeStandBlock {
 
     @Override
     public int getSection(Float f, Float y) {
-        return 0;
-
         int nSection;
-        float oneS = (float) 1 / 6;
+        float oneS = 1.0f / 9;
 
-        if (f < oneS) {
-            nSection = 0;
-        }
-        else if(f < oneS*2){
-            nSection = 1;
-        }
-        else if(f < oneS*3){
-            nSection = 2;
-        }
-        else if(f < oneS*4){
-            nSection = 3;
-        }
-        else if(f < oneS*5){
-            nSection = 4;
-        }
-        else nSection = 5;
+        nSection = (int) (f / oneS);
 
-        return 5 - nSection;
+        return 8 - nSection;
 
     }
 }

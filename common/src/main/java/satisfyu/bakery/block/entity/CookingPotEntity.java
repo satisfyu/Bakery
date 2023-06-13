@@ -113,7 +113,7 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
                 if (this.getItem(OUTPUT_SLOT).isEmpty()) {
                     return true;
                 }
-                final ItemStack recipeOutput = this.generateOutputItem(recipe);
+                final ItemStack recipeOutput = recipe.getResultItem();
                 final ItemStack outputSlotStack = this.getItem(OUTPUT_SLOT);
                 final int outputSlotCount = outputSlotStack.getCount();
                 if (this.getItem(OUTPUT_SLOT).isEmpty()) {
@@ -135,7 +135,7 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
         if (!canCraft(recipe)) {
             return;
         }
-        final ItemStack recipeOutput = generateOutputItem(recipe);
+        final ItemStack recipeOutput = recipe.getResultItem();
         final ItemStack outputSlotStack = this.getItem(OUTPUT_SLOT);
         if (outputSlotStack.isEmpty()) {
             setItem(OUTPUT_SLOT, recipeOutput.copy());
@@ -161,25 +161,6 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
             }
         }
         this.getItem(BOTTLE_INPUT_SLOT).shrink(1);
-    }
-
-    private ItemStack generateOutputItem(Recipe<?> recipe) {
-        ItemStack outputStack = recipe.getResultItem();
-
-        if (!(outputStack.getItem() instanceof EffectFood)) {
-            return outputStack;
-        }
-
-        for (Ingredient ingredient : recipe.getIngredients()) {
-            for (int j = 0; j < 6; j++) {
-                ItemStack stack = this.getItem(j);
-                if (ingredient.test(stack)) {
-                    EffectFoodHelper.getEffects(stack).forEach(effect -> EffectFoodHelper.addEffect(outputStack, effect));
-                    break;
-                }
-            }
-        }
-        return outputStack;
     }
 
 

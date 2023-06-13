@@ -10,7 +10,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import de.cristelknight.doapi.block.entity.StorageBlockEntity;
 import de.cristelknight.doapi.client.render.block.storage.StorageTypeRenderer;
-import satisfyu.candlelight.client.ClientUtil;
+import satisfyu.bakery.client.ClientUtil;
 
 @Environment(EnvType.CLIENT)
 public class TrayRenderer implements StorageTypeRenderer {

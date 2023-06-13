@@ -68,12 +68,15 @@ public class BreadBlock extends FacingBlock {
         if (!stack.is(TagsRegistry.JAMS)) {
             return InteractionResult.PASS;
         }
+        //TODO
+        /*
         if(stack.is(TagsRegistry.JAMS)){
             BreadBlock.popResourceFromFace((Level) world, pos, Direction.UP, new ItemStack(ObjectRegistry.BREAD_SLICE.get()));
             stack.shrink(1);
             player.addItem(new ItemStack(ObjectRegistry.CHERRY_JAR.get()));
         }
-        else{
+         */
+        else {
             player.getFoodData().eat(6, 0.6f);
             player.awardStat(Stats.EAT_CAKE_SLICE);
         }
