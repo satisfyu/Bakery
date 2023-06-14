@@ -3,18 +3,14 @@ package satisfyu.bakery.client.gui.handler;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.level.Level;
 import satisfyu.bakery.client.gui.handler.slot.ExtendedSlot;
-import satisfyu.bakery.client.recipebook.AbstractPrivateRecipeScreenHandler;
 import satisfyu.bakery.client.recipebook.IRecipeBookGroup;
 import satisfyu.bakery.client.recipebook.custom.CookingPotRecipeBookGroup;
 import satisfyu.bakery.entity.CookingPotEntity;
@@ -23,27 +19,21 @@ import satisfyu.bakery.registry.ScreenHandlerTypeRegistry;
 
 import java.util.List;
 
-public class CookingPotGuiHandler extends AbstractPrivateRecipeScreenHandler {
-    private final Container inventory;
+public class CookingPotGuiHandler extends AbstractRecipeBookGUIScreenHandler {
     private final ContainerData propertyDelegate;
-    protected final Level world;
-    private final int inputSlots;
+    private static final int INPUTS = 7;
 
     public CookingPotGuiHandler(int syncId, Inventory playerInventory) {
         this(syncId, playerInventory, new SimpleContainer(8), new SimpleContainerData(2));
     }
 
     public CookingPotGuiHandler(int syncId, Inventory playerInventory, Container inventory, ContainerData propertyDelegate) {
-        super(ScreenHandlerTypeRegistry.COOKING_POT_SCREEN_HANDLER.get(), syncId);
-        checkContainerSize(inventory, 8);
-        this.inventory = inventory;
-        this.propertyDelegate = propertyDelegate;
-        this.world = playerInventory.player.level;
-        this.inputSlots = 7;
+        super(ScreenHandlerTypeRegistry.COOKING_POT_SCREEN_HANDLER.get(), syncId, INPUTS, playerInventory, inventory, propertyDelegate);
 
         buildBlockEntityContainer(inventory);
         buildPlayerContainer(playerInventory);
 
+        this.propertyDelegate = propertyDelegate;
         this.addDataSlots(propertyDelegate);
     }
 
@@ -119,50 +109,7 @@ public class CookingPotGuiHandler extends AbstractPrivateRecipeScreenHandler {
     }
 
     @Override
-    public ItemStack quickMoveStack(Player player, int invSlot) {
-        final int entityInputStart = 0;
-        int entityOutputSlot = this.inputSlots;
-        final int inventoryStart = entityOutputSlot + 1;
-        final int hotbarStart = inventoryStart + 9 * 3;
-        final int hotbarEnd = hotbarStart + 9;
-
-        ItemStack itemStack = ItemStack.EMPTY;
-        Slot slot = this.slots.get(invSlot);
-        if (slot.hasItem()) {
-            ItemStack itemStack2 = slot.getItem();
-            Item item = itemStack2.getItem();
-            itemStack = itemStack2.copy();
-            if (invSlot == entityOutputSlot) {
-                item.onCraftedBy(itemStack2, player.level, player);
-                if (!this.moveItemStackTo(itemStack2, inventoryStart, hotbarEnd, true)) {
-                    return ItemStack.EMPTY;
-                }
-                slot.onQuickCraft(itemStack2, itemStack);
-            } else if (invSlot >= entityInputStart && invSlot < entityOutputSlot ? !this.moveItemStackTo(itemStack2, inventoryStart, hotbarEnd, false) :
-                    !this.moveItemStackTo(itemStack2, entityInputStart, entityOutputSlot, false) && (invSlot >= inventoryStart && invSlot < hotbarStart ? !this.moveItemStackTo(itemStack2, hotbarStart, hotbarEnd, false) :
-                            invSlot >= hotbarStart && invSlot < hotbarEnd && !this.moveItemStackTo(itemStack2, inventoryStart, hotbarStart, false))) {
-                return ItemStack.EMPTY;
-            }
-            if (itemStack2.isEmpty()) {
-                slot.set(ItemStack.EMPTY);
-            }
-            slot.setChanged();
-            if (itemStack2.getCount() == itemStack.getCount()) {
-                return ItemStack.EMPTY;
-            }
-            slot.onTake(player, itemStack2);
-            this.broadcastChanges();
-        }
-        return itemStack;
-    }
-
-    @Override
-    public boolean stillValid(Player player) {
-        return this.inventory.stillValid(player);
-    }
-
-    @Override
     public int getCraftingSlotCount() {
-        return 7;
+        return INPUTS;
     }
 }

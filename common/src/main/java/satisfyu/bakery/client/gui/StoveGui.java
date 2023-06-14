@@ -3,18 +3,20 @@ package satisfyu.bakery.client.gui;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
-import org.apache.logging.log4j.core.config.builder.api.Component;
 import satisfyu.bakery.BakeryIdentifier;
-import satisfyu.bakery.client.gui.recipebook.StoveRecipeBook;
 import satisfyu.bakery.client.gui.handler.StoveGuiHandler;
+import satisfyu.bakery.client.gui.recipebook.AbstractRecipeBookGUIScreen;
+import satisfyu.bakery.client.gui.recipebook.StoveRecipeBook;
 
 @Environment(EnvType.CLIENT)
-public class StoveGui extends AbstractContainerScreen<StoveGuiHandler> {
+public class StoveGui extends AbstractRecipeBookGUIScreen<StoveGuiHandler> {
+    private static final ResourceLocation BG = new BakeryIdentifier("textures/gui/stove_gui.png");
 
     public StoveGui(StoveGuiHandler handler, Inventory inventory, Component title) {
-        super(handler, inventory, title, new StoveRecipeBook(),  new BakeryIdentifier("textures/gui/stove_gui.png"));
+        super(handler, inventory, title, new StoveRecipeBook(), BG);
     }
 
     @Override

@@ -173,7 +173,7 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
             if (this.getItem(OUTPUT_SLOT).isEmpty()) {
                 return true;
             }
-            final ItemStack recipeOutput = this.generateOutputItem(recipe);
+            final ItemStack recipeOutput = recipe.getResultItem();
             final ItemStack outputSlotStack = this.getItem(OUTPUT_SLOT);
             final int outputSlotCount = outputSlotStack.getCount();
             if (this.getItem(OUTPUT_SLOT).isEmpty()) {
@@ -192,7 +192,7 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
         if (recipe == null || !canCraft(recipe)) {
             return;
         }
-        final ItemStack recipeOutput = generateOutputItem(recipe);
+        final ItemStack recipeOutput = recipe.getResultItem();
         final ItemStack outputSlotStack = this.getItem(OUTPUT_SLOT);
         if (outputSlotStack.isEmpty()) {
             setItem(OUTPUT_SLOT, recipeOutput);
@@ -229,23 +229,6 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
                 }
             }
         }
-    }
-
-    private ItemStack generateOutputItem(Recipe<?> recipe) {
-        ItemStack outputStack = recipe.getResultItem();
-
-        for (Ingredient ingredient : recipe.getIngredients()) {
-            for (int j = 0; j < 3; j++) {
-                ItemStack stack = this.getItem(j);
-                if (ingredient.test(stack)) {
-                    if (outputStack.getItem() instanceof ItemFood && outputStack.hasTag()) {
-                        outputStack.getTag().remove("CustomPotionEffects");
-                    }
-                    break;
-                }
-            }
-        }
-        return outputStack;
     }
 
 
