@@ -36,11 +36,10 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
-import satisfyu.bakery.block.entity.CookingPotEntity;
+import satisfyu.bakery.entity.CookingPotEntity;
 import satisfyu.bakery.registry.BlockEntityRegistry;
 import satisfyu.bakery.registry.SoundEventsRegistry;
 import satisfyu.bakery.util.GeneralUtil;
-
 
 import java.util.HashMap;
 import java.util.List;

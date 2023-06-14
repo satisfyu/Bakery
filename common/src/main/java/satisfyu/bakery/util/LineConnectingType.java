@@ -10,7 +10,7 @@ public enum LineConnectingType implements StringRepresentable {
 
     private final String name;
 
-    private LineConnectingType(String type) {
+    LineConnectingType(String type) {
         this.name = type;
     }
 

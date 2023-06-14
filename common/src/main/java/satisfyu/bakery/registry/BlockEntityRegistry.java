@@ -5,8 +5,8 @@ import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.core.Registry;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import satisfyu.bakery.Bakery;
-import satisfyu.bakery.block.entity.CookingPotEntity;
-import satisfyu.bakery.block.entity.StoveBlockEntity;
+import satisfyu.bakery.entity.CookingPotEntity;
+import satisfyu.bakery.entity.StoveBlockEntity;
 
 import java.util.function.Supplier;
 
@@ -25,7 +25,7 @@ public class BlockEntityRegistry {
         return BLOCK_ENTITY_TYPES.register(path, type);
     }
 
-    public static void init(){
+    public static void init() {
         Bakery.LOGGER.debug("Registering Mod BlockEntities for " + Bakery.MOD_ID);
         BLOCK_ENTITY_TYPES.register();
     }

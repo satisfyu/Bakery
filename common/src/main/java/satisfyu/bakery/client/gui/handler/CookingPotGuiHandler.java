@@ -13,14 +13,13 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.Level;
-import satisfyu.bakery.block.entity.CookingPotEntity;
 import satisfyu.bakery.client.gui.handler.slot.ExtendedSlot;
 import satisfyu.bakery.client.recipebook.AbstractPrivateRecipeScreenHandler;
 import satisfyu.bakery.client.recipebook.IRecipeBookGroup;
 import satisfyu.bakery.client.recipebook.custom.CookingPotRecipeBookGroup;
+import satisfyu.bakery.entity.CookingPotEntity;
 import satisfyu.bakery.recipe.CookingPotRecipe;
 import satisfyu.bakery.registry.ScreenHandlerTypeRegistry;
-
 
 import java.util.List;
 
@@ -49,7 +48,7 @@ public class CookingPotGuiHandler extends AbstractPrivateRecipeScreenHandler {
     }
 
     private void buildBlockEntityContainer(Container inventory) {
-        this.addSlot(new ExtendedSlot(inventory, 6,95, 55, stack -> stack.is(Items.BOWL)));
+        this.addSlot(new ExtendedSlot(inventory, 6, 95, 55, stack -> stack.is(Items.BOWL)));
 
         for (int row = 0; row < 2; row++) {
             for (int slot = 0; slot < 3; slot++) {

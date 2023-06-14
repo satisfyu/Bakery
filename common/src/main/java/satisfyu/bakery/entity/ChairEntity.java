@@ -1,4 +1,4 @@
-package satisfyu.bakery.block.entity;
+package satisfyu.bakery.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -25,9 +25,9 @@ public class ChairEntity extends Entity {
 
     @Override
     public Vec3 getDismountLocationForPassenger(LivingEntity passenger) {
-        if(passenger instanceof Player p) {
+        if (passenger instanceof Player p) {
             BlockPos pos = ChairUtil.getPreviousPlayerPosition(p, this);
-            if(pos != null) {
+            if (pos != null) {
                 discard();
                 return new Vec3(pos.getX() + 0.5D, pos.getY(), pos.getZ() + 0.5D);
             }

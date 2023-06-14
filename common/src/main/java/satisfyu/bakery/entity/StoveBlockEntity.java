@@ -1,4 +1,4 @@
-package satisfyu.bakery.block.entity;
+package satisfyu.bakery.entity;
 
 
 import net.minecraft.core.BlockPos;
@@ -78,6 +78,7 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
             return 4;
         }
     };
+
     public StoveBlockEntity(BlockPos pos, BlockState state) {
         super(BlockEntityRegistry.STOVE_BLOCK_ENTITY.get(), pos, state);
         this.inventory = NonNullList.withSize(5, ItemStack.EMPTY);
@@ -102,9 +103,9 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
     @Override
     protected void saveAdditional(CompoundTag nbt) {
         super.saveAdditional(nbt);
-        nbt.putShort("BurnTime", (short)this.burnTime);
-        nbt.putShort("CookTime", (short)this.cookTime);
-        nbt.putShort("CookTimeTotal", (short)this.cookTimeTotal);
+        nbt.putShort("BurnTime", (short) this.burnTime);
+        nbt.putShort("CookTime", (short) this.cookTime);
+        nbt.putShort("CookTimeTotal", (short) this.cookTimeTotal);
         nbt.putFloat("Experience", this.experience);
         ContainerHelper.saveAllItems(nbt, this.inventory);
     }
@@ -177,8 +178,7 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
             final int outputSlotCount = outputSlotStack.getCount();
             if (this.getItem(OUTPUT_SLOT).isEmpty()) {
                 return true;
-            }
-            else if (!isSameItemSameTags(outputSlotStack, recipeOutput)) {
+            } else if (!isSameItemSameTags(outputSlotStack, recipeOutput)) {
                 return false;
             } else if (outputSlotCount < this.getMaxStackSize() && outputSlotCount < outputSlotStack.getMaxStackSize()) {
                 return true;
@@ -257,6 +257,7 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
             return AbstractFurnaceBlockEntity.getFuel().getOrDefault(item, 0);
         }
     }
+
     private ItemStack getRemainderItem(ItemStack stack) {
         if (stack.getItem().hasCraftingRemainingItem()) {
             return new ItemStack(stack.getItem().getCraftingRemainingItem());
@@ -318,7 +319,7 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
         if (this.level.getBlockEntity(this.worldPosition) != this) {
             return false;
         } else {
-            return player.distanceToSqr((double)this.worldPosition.getX() + 0.5, (double)this.worldPosition.getY() + 0.5, (double)this.worldPosition.getZ() + 0.5) <= 64.0;
+            return player.distanceToSqr((double) this.worldPosition.getX() + 0.5, (double) this.worldPosition.getY() + 0.5, (double) this.worldPosition.getZ() + 0.5) <= 64.0;
         }
     }
 

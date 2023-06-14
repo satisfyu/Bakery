@@ -1,4 +1,4 @@
-package satisfyu.bakery.block.entity;
+package satisfyu.bakery.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
@@ -104,7 +104,7 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
         if (recipe == null || recipe.getResultItem().isEmpty()) {
             return false;
         }
-        if(recipe instanceof CookingPotRecipe cookingRecipe){
+        if (recipe instanceof CookingPotRecipe cookingRecipe) {
             if (!this.getItem(BOTTLE_INPUT_SLOT).is(cookingRecipe.getContainer().getItem())) {
                 return false;
             } else if (this.getItem(OUTPUT_SLOT).isEmpty()) {
@@ -118,8 +118,7 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
                 final int outputSlotCount = outputSlotStack.getCount();
                 if (this.getItem(OUTPUT_SLOT).isEmpty()) {
                     return true;
-                }
-                else if (!isSameItemSameTags(outputSlotStack, recipeOutput)) {
+                } else if (!isSameItemSameTags(outputSlotStack, recipeOutput)) {
                     return false;
                 } else if (outputSlotCount < this.getMaxStackSize() && outputSlotCount < outputSlotStack.getMaxStackSize()) {
                     return true;
@@ -189,8 +188,8 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
             return;
         }
         boolean isBeingBurned = isBeingBurned();
-        if (!isBeingBurned){
-            if(state.getValue(CookingPotBlock.LIT)) {
+        if (!isBeingBurned) {
+            if (state.getValue(CookingPotBlock.LIT)) {
                 world.setBlock(pos, state.setValue(CookingPotBlock.LIT, false), Block.UPDATE_ALL);
             }
             return;
@@ -212,12 +211,10 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
             world.setBlock(pos, this.getBlockState().getBlock().defaultBlockState().setValue(CookingPotBlock.COOKING, true).setValue(CookingPotBlock.LIT, true), Block.UPDATE_ALL);
         } else if (state.getValue(CookingPotBlock.COOKING)) {
             world.setBlock(pos, this.getBlockState().getBlock().defaultBlockState().setValue(CookingPotBlock.COOKING, false).setValue(CookingPotBlock.LIT, true), Block.UPDATE_ALL);
-        }
-        else if(state.getValue(CookingPotBlock.LIT) != isBeingBurned){
+        } else if (state.getValue(CookingPotBlock.LIT) != isBeingBurned) {
             world.setBlock(pos, state.setValue(CookingPotBlock.LIT, isBeingBurned), Block.UPDATE_ALL);
         }
     }
-
 
 
     @Override

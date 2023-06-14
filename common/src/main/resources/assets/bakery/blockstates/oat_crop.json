@@ -1,13 +1,59 @@
 {
   "variants": {
-        "age=0":   { "model": "bakery:block/oat_stage0" },
-        "age=1":   { "model": "bakery:block/oat_stage1" },
-        "age=2": [ { "model": "bakery:block/oat_stage2_1", "weight": 1 },
-		 {   "model": "bakery:block/oat_stage2_2", "weight": 1 } ],
-        "age=3": [ { "model": "bakery:block/oat_stage3_1", "weight": 1 },
-		 {   "model": "bakery:block/oat_stage3_2", "weight": 1 },
-		 {   "model": "bakery:block/oat_stage3_3", "weight": 1 },
-		 {   "model": "bakery:block/oat_stage3_4", "weight": 1 },
-		 {   "model": "bakery:block/oat_stage3_5", "weight": 1 } ]
+    "age=0": {
+      "model": "bakery:block/oat_stage0"
+    },
+    "age=1": [
+      {
+        "model": "bakery:block/oat_stage1_1",
+        "weight": 1
+      },
+      {
+        "model": "bakery:block/oat_stage1_2",
+        "weight": 1
+      }
+    ],
+    "age=2": [
+      {
+        "model": "bakery:block/oat_stage2_1",
+        "weight": 1
+      },
+      {
+        "model": "bakery:block/oat_stage2_2",
+        "weight": 1
+      }
+    ],
+    "age=3": [
+      {
+        "model": "bakery:block/oat_stage3_1",
+        "weight": 1
+      },
+      {
+        "model": "bakery:block/oat_stage3_2",
+        "weight": 1
+      }
+    ],
+    "age=4": [
+      {
+        "model": "bakery:block/oat_stage4_1",
+        "weight": 1
+      },
+      {
+        "model": "bakery:block/oat_stage4_2",
+        "weight": 1
+      },
+      {
+        "model": "bakery:block/oat_stage4_3",
+        "weight": 1
+      },
+      {
+        "model": "bakery:block/oat_stage4_4",
+        "weight": 1
+      },
+      {
+        "model": "bakery:block/oat_stage4_5",
+        "weight": 1
+      }
+    ]
   }
 }

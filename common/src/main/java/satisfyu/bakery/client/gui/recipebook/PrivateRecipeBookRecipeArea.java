@@ -88,7 +88,7 @@ public class PrivateRecipeBookRecipeArea {
     public void draw(PoseStack matrices, int x, int y, int mouseX, int mouseY, float delta) {
         if (this.pageCount > 1) {
             int var10000 = this.currentPage + 1;
-            String string = "" + var10000 + "/" + this.pageCount;
+            String string = var10000 + "/" + this.pageCount;
             int i = this.client.font.width(string);
             this.client.font.draw(matrices, string, (float)(x - i / 2 + 73), (float)(y + 141), -1);
         }

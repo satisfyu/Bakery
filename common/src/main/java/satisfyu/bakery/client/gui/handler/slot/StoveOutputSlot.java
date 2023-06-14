@@ -6,7 +6,7 @@ import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import satisfyu.bakery.block.entity.StoveBlockEntity;
+import satisfyu.bakery.entity.StoveBlockEntity;
 
 public class StoveOutputSlot extends Slot {
 
@@ -47,6 +47,6 @@ public class StoveOutputSlot extends Slot {
     protected void checkTakeAchievements(ItemStack stack) {
         stack.onCraftedBy(this.player.level, this.player, this.amount);
         if (this.player instanceof ServerPlayer && this.container instanceof StoveBlockEntity && player.level instanceof ServerLevel)
-        this.amount = 0;
+            this.amount = 0;
     }
 }

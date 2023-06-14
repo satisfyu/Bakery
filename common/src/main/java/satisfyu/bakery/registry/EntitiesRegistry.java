@@ -7,8 +7,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import satisfyu.bakery.Bakery;
 import satisfyu.bakery.BakeryIdentifier;
-import satisfyu.bakery.block.entity.ChairEntity;
-
+import satisfyu.bakery.entity.ChairEntity;
 
 import java.util.function.Supplier;
 

@@ -32,7 +32,7 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
-import satisfyu.bakery.block.entity.StoveBlockEntity;
+import satisfyu.bakery.entity.StoveBlockEntity;
 
 public class StoveBlock extends Block implements EntityBlock {
 
@@ -54,7 +54,6 @@ public class StoveBlock extends Block implements EntityBlock {
             return InteractionResult.PASS;
         }
     }
-
 
 
     @Override
@@ -105,18 +104,18 @@ public class StoveBlock extends Block implements EntityBlock {
         if (!state.getValue(LIT))
             return;
 
-        double d = (double)pos.getX() + 0.5;
+        double d = (double) pos.getX() + 0.5;
         double e = pos.getY() + 0.24;
-        double f = (double)pos.getZ() + 0.5;
+        double f = (double) pos.getZ() + 0.5;
         if (random.nextDouble() < 0.1)
             world.playLocalSound(d, e, f, SoundEvents.FURNACE_FIRE_CRACKLE, SoundSource.BLOCKS, 1.0f, 1.0f, false);
 
         Direction direction = state.getValue(FACING);
         Direction.Axis axis = direction.getAxis();
         double h = random.nextDouble() * 0.6 - 0.3;
-        double i = axis == Direction.Axis.X ? (double)direction.getStepX() * 0.52 : h;
+        double i = axis == Direction.Axis.X ? (double) direction.getStepX() * 0.52 : h;
         double j = random.nextDouble() * 6.0 / 16.0;
-        double k = axis == Direction.Axis.Z ? (double)direction.getStepZ() * 0.52 : h;
+        double k = axis == Direction.Axis.Z ? (double) direction.getStepZ() * 0.52 : h;
         world.addParticle(ParticleTypes.SMOKE, d + i, e + j, f + k, 0.0, 0.0, 0.0);
         world.addParticle(ParticleTypes.FLAME, d + i, e + j, f + k, 0.0, 0.0, 0.0);
     }
