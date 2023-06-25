@@ -33,7 +33,7 @@ public class CakeStandBlock extends StorageBlock {
 
     public static VoxelShape SHAPE = makeShape();
 
-    public static VoxelShape makeShape(){
+    public static VoxelShape makeShape() {
         VoxelShape shape = Shapes.empty();
         shape = Shapes.or(shape, Shapes.box(0.125, 0.5000625, 0.125, 0.125, 1.0000625, 0.875));
         shape = Shapes.or(shape, Shapes.box(0.125, 0.5000625, 0.125, 0.875, 1.0000625, 0.125));
@@ -62,16 +62,16 @@ public class CakeStandBlock extends StorageBlock {
         return SHAPE;
     }
 
-    public int findFirstEmpty(NonNullList<ItemStack> inv){
-        for(int i = 0; i < size(); i++){
+    public int findFirstEmpty(NonNullList<ItemStack> inv) {
+        for (int i = 0; i < size(); i++) {
             ItemStack stack = inv.get(i);
             if (stack.isEmpty()) return i;
         }
         return Integer.MIN_VALUE;
     }
 
-    public int findFirstFull(NonNullList<ItemStack> inv){
-        for(int i = 0; i < size(); i++){
+    public int findFirstFull(NonNullList<ItemStack> inv) {
+        for (int i = 0; i < size(); i++) {
             ItemStack stack = inv.get(i);
             if (!stack.isEmpty()) return i;
         }
@@ -106,14 +106,14 @@ public class CakeStandBlock extends StorageBlock {
                 }
             } else {
                 ItemStack stack = player.getItemInHand(hand);
-                if(!stack.isEmpty() && canInsertStack(stack)) {
+                if (!stack.isEmpty() && canInsertStack(stack)) {
                     if (stack.getItem() instanceof BlockItem) {
                         if (items.isEmpty()) {
                             add(world, pos, player, shelfBlockEntity, stack, 0);
                             return InteractionResult.sidedSuccess(world.isClientSide());
                         }
                     } else {
-                        if(!(shelfBlockEntity.getInventory().get(0).getItem() instanceof BlockItem)){
+                        if (!(shelfBlockEntity.getInventory().get(0).getItem() instanceof BlockItem)) {
                             int i = findFirstEmpty(shelfBlockEntity.getInventory());
                             if (i != Integer.MIN_VALUE) {
                                 add(world, pos, player, shelfBlockEntity, stack, i);
@@ -154,8 +154,8 @@ public class CakeStandBlock extends StorageBlock {
 
     @Override
     public void appendHoverText(ItemStack itemStack, BlockGetter world, List<Component> tooltip, TooltipFlag tooltipContext) {
-        tooltip.add(Component.translatable("block.candlelight.canbeplaced.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
-        tooltip.add(Component.translatable("block.candlelight.cakestand.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.WHITE));
-        tooltip.add(Component.translatable("block.candlelight.cakestand2.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.WHITE));
+        tooltip.add(Component.translatable("block.bakery.canbeplaced.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
+        tooltip.add(Component.translatable("block.bakery.cakestand_1.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.WHITE));
+        tooltip.add(Component.translatable("block.bakery.cakestand_2.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.WHITE));
     }
 }

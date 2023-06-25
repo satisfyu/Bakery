@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "bakery:block/oat_block_top",
+    "top": "bakery:block/oat_block_top",
+    "side": "bakery:block/oat_block_side"
+  }
+}

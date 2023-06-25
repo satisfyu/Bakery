@@ -3,7 +3,6 @@ package satisfyu.bakery.block;
 
 import de.cristelknight.doapi.block.FacingBlock;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -29,7 +28,6 @@ import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import satisfyu.bakery.registry.ObjectRegistry;
 import satisfyu.bakery.registry.TagsRegistry;
 
 import java.util.List;
@@ -67,16 +65,7 @@ public class BreadBlock extends FacingBlock {
     private static InteractionResult tryEat(LevelAccessor world, BlockPos pos, BlockState state, Player player, ItemStack stack, InteractionHand hand) {
         if (!stack.is(TagsRegistry.JAMS)) {
             return InteractionResult.PASS;
-        }
-        //TODO
-        /*
-        if(stack.is(TagsRegistry.JAMS)){
-            BreadBlock.popResourceFromFace((Level) world, pos, Direction.UP, new ItemStack(ObjectRegistry.BREAD_SLICE.get()));
-            stack.shrink(1);
-            player.addItem(new ItemStack(ObjectRegistry.CHERRY_JAR.get()));
-        }
-         */
-        else {
+        } else {
             player.getFoodData().eat(6, 0.6f);
             player.awardStat(Stats.EAT_CAKE_SLICE);
         }
@@ -131,14 +120,8 @@ public class BreadBlock extends FacingBlock {
 
     @Override
     public void appendHoverText(ItemStack itemStack, BlockGetter world, List<Component> tooltip, TooltipFlag tooltipContext) {
-        tooltip.add(Component.translatable("block.bakery.breadblock.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
+        tooltip.add(Component.translatable("block.bakery.canbeplaced.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
 
-        if (Screen.hasShiftDown()) {
-            tooltip.add(Component.translatable("block.bakery.breadblock.tooltip.shift_1"));
-            tooltip.add(Component.translatable("block.bakery.breadblock.tooltip.shift_2"));
-        } else {
-            tooltip.add(Component.translatable("block.bakery.breadblock.tooltip.tooltip_shift"));
-        }
     }
 }
 

@@ -8,7 +8,7 @@
     "satisfy"
   ],
   "contact": {
-    "homepage": "https://www.curseforge.com/minecraft/mc-mods/candlelight-lets-do-a-candlelight-dinner",
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/bakery-lets-do-a-bakery-dinner",
     "sources": "https://guthib.com"
   },
   "license": "Insert License Here",
@@ -17,11 +17,13 @@
   "entrypoints": {
     "main": [
       "satisfy.bakery.fabric.BakeryFabric"
+    ],
+    "client": [
+      "satisfy.bakery.fabric.client.BakeryClientFabric"
     ]
   },
   "mixins": [
-    "bakery.mixins.json",
-    "bakery-common.mixins.json"
+    "bakery.mixins.json"
   ],
   "depends": {
     "fabric": "*",

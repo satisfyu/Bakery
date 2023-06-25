@@ -5,17 +5,14 @@ import dev.architectury.registry.client.rendering.RenderTypeRegistry;
 import dev.architectury.registry.menu.MenuRegistry;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.world.entity.player.Player;
 import satisfyu.bakery.client.gui.CookingPotGui;
 import satisfyu.bakery.client.gui.StoveGui;
 import satisfyu.bakery.client.render.block.ChairRenderer;
-import satisfyu.bakery.registry.ArmorRegistry;
 import satisfyu.bakery.registry.EntitiesRegistry;
 import satisfyu.bakery.registry.ScreenHandlerTypeRegistry;
 
-import static satisfyu.bakery.registry.ObjectRegistry.CAKE_STAND;
+import static satisfyu.bakery.registry.ObjectRegistry.*;
 
 @Environment(EnvType.CLIENT)
 public class BakeryClient {
@@ -25,7 +22,7 @@ public class BakeryClient {
 
     public static void initClient() {
         RenderTypeRegistry.register(RenderType.cutout(),
-                CAKE_STAND.get()
+                CAKE_STAND.get(), IRON_TABLE.get(), IRON_CHAIR.get()
         );
 
         ClientStorageTypes.init();
@@ -40,10 +37,9 @@ public class BakeryClient {
     }
 
     public static void registerEntityRenderers() {
-       EntityRendererRegistry.register(EntitiesRegistry.CHAIR, ChairRenderer::new);
+        EntityRendererRegistry.register(EntitiesRegistry.CHAIR, ChairRenderer::new);
     }
 
     public static void registerEntityModelLayer() {
-        ArmorRegistry.registerArmorModelLayers();
     }
 }

@@ -3,7 +3,6 @@ package satisfyu.bakery.block;
 import de.cristelknight.doapi.block.FacingBlock;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -99,17 +98,10 @@ public class PieBlock extends FacingBlock {
     public boolean canSurvive(BlockState blockState, LevelReader levelReader, BlockPos blockPos) {
         return GeneralUtil.isFullAndSolid(levelReader, blockPos);
     }
+
     @Override
     public void appendHoverText(ItemStack itemStack, BlockGetter world, List<Component> tooltip, TooltipFlag tooltipContext) {
-        tooltip.add(Component.translatable("block.vinery.breadblock.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
-
-        if (Screen.hasShiftDown()) {
-            tooltip.add(Component.translatable("block.vinery.pie.tooltip1.shift_1"));
-            tooltip.add(Component.translatable("block.vinery.pie.tooltip2.shift_2"));
-            tooltip.add(Component.translatable("block.vinery.pie.tooltip3.shift_3"));
-
-        } else {
-            tooltip.add(Component.translatable(  "item.vinery.ingredient.tooltip"));
-        }
+        tooltip.add(Component.translatable("block.bakery.canbeplaced.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
     }
 }
+

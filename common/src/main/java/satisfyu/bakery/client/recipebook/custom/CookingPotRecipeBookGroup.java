@@ -9,15 +9,13 @@ import net.minecraft.world.item.crafting.Recipe;
 import satisfyu.bakery.client.recipebook.IRecipeBookGroup;
 import satisfyu.bakery.registry.ObjectRegistry;
 
-
-import java.util.Arrays;
 import java.util.List;
 
 @Environment(EnvType.CLIENT)
 public enum CookingPotRecipeBookGroup implements IRecipeBookGroup {
     SEARCH(new ItemStack(Items.COMPASS)),
     JAM(new ItemStack(ObjectRegistry.CHERRY_JAM.get())),
-    CHOCOLATE(new ItemStack(ObjectRegistry.CHOCOLATE.get()));
+    CHOCOLATE(new ItemStack(ObjectRegistry.CHOCOLATE_TRUFFLE.get()));
 
     public static final List<IRecipeBookGroup> POT_GROUPS = ImmutableList.of(SEARCH, JAM, CHOCOLATE);
 

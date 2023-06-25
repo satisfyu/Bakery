@@ -38,7 +38,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 import satisfyu.bakery.entity.CookingPotEntity;
 import satisfyu.bakery.registry.BlockEntityRegistry;
-import satisfyu.bakery.registry.SoundEventsRegistry;
+import satisfyu.bakery.registry.SoundEventRegistry;
 import satisfyu.bakery.util.GeneralUtil;
 
 import java.util.HashMap;
@@ -50,21 +50,12 @@ public class CookingPotBlock extends BaseEntityBlock {
     private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
         VoxelShape shape = Shapes.empty();
         shape = Shapes.joinUnoptimized(shape, Shapes.box(0.25, 0, 0.25, 0.75, 0.0625, 0.75), BooleanOp.OR);
-        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.1875, 0.625, 0.1875, 0.8125, 0.75, 0.25), BooleanOp.OR);
-        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.1875, 0.625, 0.75, 0.8125, 0.75, 0.8125), BooleanOp.OR);
-        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.1875, 0, 0.1875, 0.8125, 0.625, 0.25), BooleanOp.OR);
-        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.1875, 0, 0.75, 0.8125, 0.625, 0.8125), BooleanOp.OR);
-        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.1875, 0, 0.25, 0.25, 0.625, 0.75), BooleanOp.OR);
-        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.75, 0, 0.25, 0.8125, 0.625, 0.75), BooleanOp.OR);
-        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.1875, 0.625, 0.25, 0.25, 0.75, 0.75), BooleanOp.OR);
-        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.75, 0.625, 0.25, 0.8125, 0.75, 0.75), BooleanOp.OR);
-        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.1875, 0.625, 0.25, 0.25, 0.75, 0.75), BooleanOp.OR);
-        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.0625, 0.5625, 0.6875, 0.1875, 0.6875, 0.75), BooleanOp.OR);
-        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.8125, 0.5625, 0.25, 0.9375, 0.6875, 0.3125), BooleanOp.OR);
-        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.0625, 0.5625, 0.25, 0.1875, 0.6875, 0.3125), BooleanOp.OR);
-        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.8125, 0.5625, 0.6875, 0.9375, 0.6875, 0.75), BooleanOp.OR);
-        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.0625, 0.5625, 0.3125, 0.125, 0.6875, 0.6875), BooleanOp.OR);
-        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.875, 0.5625, 0.3125, 0.9375, 0.6875, 0.6875), BooleanOp.OR);
+        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.25, 0.0625, 0.6875, 0.75, 0.3125, 0.75), BooleanOp.OR);
+        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.25, 0.0625, 0.25, 0.75, 0.3125, 0.3125), BooleanOp.OR);
+        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.25, 0.0625, 0.3125, 0.3125, 0.3125, 0.6875), BooleanOp.OR);
+        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.6875, 0.0625, 0.3125, 0.75, 0.3125, 0.6875), BooleanOp.OR);
+        shape = Shapes.joinUnoptimized(shape, Shapes.box(-0.0625, 0.1875, 0.4375, 0.25, 0.25, 0.5625), BooleanOp.OR);
+
 
         return shape;
     };
@@ -129,7 +120,7 @@ public class CookingPotBlock extends BaseEntityBlock {
             double e = pos.getY() + 0.7;
             double f = (double) pos.getZ() + 0.5;
             if (random.nextDouble() < 0.3) {
-                world.playLocalSound(d, e, f, SoundEventsRegistry.BLOCK_COOKING_POT_JUICE_BOILING.get(), SoundSource.BLOCKS, 1.0F, 1.0F, false);
+                world.playLocalSound(d, e, f, SoundEventRegistry.BLOCK_COOKING_POT_JUICE_BOILING.get(), SoundSource.BLOCKS, 1.0F, 1.0F, false);
             }
             Direction direction = state.getValue(FACING);
             Direction.Axis axis = direction.getAxis();
@@ -169,6 +160,6 @@ public class CookingPotBlock extends BaseEntityBlock {
 
     @Override
     public void appendHoverText(ItemStack itemStack, BlockGetter world, List<Component> tooltip, TooltipFlag tooltipContext) {
-        tooltip.add(Component.translatable("block.candlelight.canbeplaced.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
+        tooltip.add(Component.translatable("block.bakery.canbeplaced.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
     }
 }

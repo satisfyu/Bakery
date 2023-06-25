@@ -22,7 +22,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.List;
 
-public class StackableBlock extends Block{
+public class StackableBlock extends Block {
     private final VoxelShape SHAPE = Shapes.box(0.1875, 0, 0.1875, 0.8125, 0.875, 0.8125);
     public static final IntegerProperty STACK = IntegerProperty.create("stack", 1, 3);
 
@@ -55,7 +55,6 @@ public class StackableBlock extends Block{
     }
 
 
-    
     public boolean skipRendering(BlockState state, BlockState stateFrom, Direction direction) {
         return stateFrom.is(this) || super.skipRendering(state, stateFrom, direction);
     }
@@ -72,7 +71,7 @@ public class StackableBlock extends Block{
 
     @Override
     public void appendHoverText(ItemStack itemStack, BlockGetter world, List<Component> tooltip, TooltipFlag tooltipContext) {
-        tooltip.add(Component.translatable("item.vinery.juice.tooltip." + this.getDescriptionId()).withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
+        tooltip.add(Component.translatable("item.bakery.juice.tooltip." + this.getDescriptionId()).withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
     }
 
 }

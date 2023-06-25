@@ -17,7 +17,6 @@ import satisfyu.bakery.client.recipebook.PrivateRecipeBookWidget;
 import satisfyu.bakery.recipe.CookingPotRecipe;
 import satisfyu.bakery.registry.RecipeTypeRegistry;
 
-
 import java.util.List;
 
 @Environment(EnvType.CLIENT)
@@ -36,7 +35,7 @@ public class CookingPotRecipeBook extends PrivateRecipeBookWidget {
         int j = 1;
         for (Ingredient ingredient : recipe.getIngredients()) {
             ItemStack[] inputStacks = ingredient.getItems();
-            if(inputStacks.length == 0) continue;
+            if (inputStacks.length == 0) continue;
             ItemStack inputStack = inputStacks[RandomSource.create().nextInt(0, inputStacks.length)];
             this.ghostSlots.addSlot(inputStack, slots.get(j).x, slots.get(j++).y);
         }
@@ -97,6 +96,6 @@ public class CookingPotRecipeBook extends PrivateRecipeBookWidget {
     }
 
     static {
-        TOGGLE_COOKABLE_TEXT = Component.translatable("gui.candlelight.recipebook.toggleRecipes.cookable");
+        TOGGLE_COOKABLE_TEXT = Component.translatable("gui.bakery.recipebook.toggleRecipes.cookable");
     }
 }

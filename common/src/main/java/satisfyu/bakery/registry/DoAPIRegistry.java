@@ -10,7 +10,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import satisfyu.bakery.BakeryIdentifier;
 
-
 import java.util.Map;
 import java.util.Set;
 
@@ -29,7 +28,6 @@ public class DoAPIRegistry implements DoApiAPI {
 
     @Override
     public <T extends LivingEntity> void registerArmor(Map<Item, EntityModel<T>> models, EntityModelSet modelLoader) {
-        ArmorRegistry.registerArmorModels(models, modelLoader);
 
     }
 }

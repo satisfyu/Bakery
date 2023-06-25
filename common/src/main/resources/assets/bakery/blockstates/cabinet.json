@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=east,open=false": {
+      "model": "bakery:block/cabinet_closed",
+      "y": 90
+    },
+    "facing=north,open=false": {
+      "model": "bakery:block/cabinet_closed"
+    },
+    "facing=south,open=false": {
+      "model": "bakery:block/cabinet_closed",
+      "y": 180
+    },
+    "facing=west,open=false": {
+      "model": "bakery:block/cabinet_closed",
+      "y": 270
+    },
+    "facing=east,open=true": {
+      "model": "bakery:block/cabinet_open",
+      "y": 90
+    },
+    "facing=north,open=true": {
+      "model": "bakery:block/cabinet_open"
+    },
+    "facing=south,open=true": {
+      "model": "bakery:block/cabinet_open",
+      "y": 180
+    },
+    "facing=west,open=true": {
+      "model": "bakery:block/cabinet_open",
+      "y": 270
+    }
+  }
+}
