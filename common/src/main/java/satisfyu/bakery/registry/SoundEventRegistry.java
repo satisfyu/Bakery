@@ -7,7 +7,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import satisfyu.bakery.Bakery;
-import satisfyu.bakery.BakeryIdentifier;
+import satisfyu.bakery.util.BakeryIdentifier;
 
 public class SoundEventRegistry {
 

@@ -1,8 +1,8 @@
 package satisfyu.bakery.block;
 
 
-import de.cristelknight.doapi.block.StorageBlock;
-import de.cristelknight.doapi.block.entity.StorageBlockEntity;
+import de.cristelknight.doapi.common.block.StorageBlock;
+import de.cristelknight.doapi.common.block.entity.StorageBlockEntity;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

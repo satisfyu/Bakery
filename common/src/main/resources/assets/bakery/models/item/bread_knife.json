@@ -1,6 +1,19 @@
 {
-  "parent": "minecraft:item/handheld",
-  "textures": {
-    "layer0": "bakery:item/bread_knife"
-  }
+	"credit": "Made by Satisfy",
+	"parent": "minecraft:item/handheld",
+	"textures": {
+		"layer0": "bakery:item/bread_knife"
+	},
+	"display": {
+		"firstperson_righthand": {
+			"rotation": [-80, -100, -5],
+			"translation": [2, 4.75, -0.25],
+			"scale": [0.68, 0.68, 0.68]
+		},
+		"firstperson_lefthand": {
+			"rotation": [-80, -100, -5],
+			"translation": [2, 4.75, -0.25],
+			"scale": [-0.68, 0.68, 0.68]
+		}
+	}
 }

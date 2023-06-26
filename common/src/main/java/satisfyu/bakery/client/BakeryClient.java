@@ -9,7 +9,7 @@ import net.minecraft.client.renderer.RenderType;
 import satisfyu.bakery.client.gui.CookingPotGui;
 import satisfyu.bakery.client.gui.StoveGui;
 import satisfyu.bakery.client.render.block.ChairRenderer;
-import satisfyu.bakery.registry.EntitiesRegistry;
+import satisfyu.bakery.registry.EntityRegistry;
 import satisfyu.bakery.registry.ScreenHandlerTypeRegistry;
 
 import static satisfyu.bakery.registry.ObjectRegistry.*;
@@ -26,6 +26,9 @@ public class BakeryClient {
         );
 
         ClientStorageTypes.init();
+        RenderTypeRegistry.register(RenderType.translucent(), TRAY.get());
+        RenderTypeRegistry.register(RenderType.translucent(), SHELF.get());
+        RenderTypeRegistry.register(RenderType.translucent(), CAKE_STAND.get());
 
         MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.STOVE_SCREEN_HANDLER.get(), StoveGui::new);
         MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.COOKING_POT_SCREEN_HANDLER.get(), CookingPotGui::new);
@@ -37,7 +40,7 @@ public class BakeryClient {
     }
 
     public static void registerEntityRenderers() {
-        EntityRendererRegistry.register(EntitiesRegistry.CHAIR, ChairRenderer::new);
+        EntityRendererRegistry.register(EntityRegistry.CHAIR, ChairRenderer::new);
     }
 
     public static void registerEntityModelLayer() {

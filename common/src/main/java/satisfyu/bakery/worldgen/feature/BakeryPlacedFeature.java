@@ -3,7 +3,7 @@ package satisfyu.bakery.worldgen.feature;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import satisfyu.bakery.BakeryIdentifier;
+import satisfyu.bakery.util.BakeryIdentifier;
 
 
 public class BakeryPlacedFeature {

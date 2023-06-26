@@ -13,13 +13,14 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import org.jetbrains.annotations.Nullable;
 import satisfyu.bakery.Bakery;
-import satisfyu.bakery.BakeryIdentifier;
 import satisfyu.bakery.block.CakeBlock;
 import satisfyu.bakery.block.*;
 import satisfyu.bakery.block.crops.OatCropBlock;
 import satisfyu.bakery.block.crops.StrawberryCropBlock;
 import satisfyu.bakery.block.crops.WildBush;
+import satisfyu.bakery.item.SweetsItem;
 import satisfyu.bakery.item.TooltipItem;
+import satisfyu.bakery.util.BakeryIdentifier;
 
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -29,6 +30,7 @@ public class ObjectRegistry {
     public static final Registrar<Item> ITEM_REGISTRAR = ITEMS.getRegistrar();
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(Bakery.MOD_ID, Registry.BLOCK_REGISTRY);
     public static final Registrar<Block> BLOCK_REGISTRAR = BLOCKS.getRegistrar();
+
 
     //crops
     public static final RegistrySupplier<Block> STRAWBERRY_WILD_TAIGA = registerWithoutItem("strawberry_wild_taiga", () -> new WildBush(getBushSettings()));
@@ -44,7 +46,6 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Block> OAT_BLOCK = registerWithItem("oat_block", () -> new Block(BlockBehaviour.Properties.of(Material.GRASS).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final RegistrySupplier<Block> OAT_STAIRS = registerWithItem("oat_stairs", () -> new StairBlock(Blocks.OAK_PLANKS.defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.GRASS)));
     public static final RegistrySupplier<Block> OAT_SLAB = registerWithItem("oat_slab", () -> new SlabBlock(getSlabSettings().sound(SoundType.GRASS)));
-
     public static final RegistrySupplier<Block> BRICK_STOVE = registerWithItem("brick_stove", () -> new StoveBlock(BlockBehaviour.Properties.copy(Blocks.BRICKS).lightLevel(state -> state.getValue(StoveBlock.LIT) ? 13 : 0)));
     public static final RegistrySupplier<Block> BRICK_OVEN = registerWithItem("brick_oven", () -> new OvenBlock(BlockBehaviour.Properties.copy(Blocks.BRICKS).lightLevel(state -> state.getValue(StoveBlock.LIT) ? 13 : 0)));
     public static final RegistrySupplier<Block> BAKER_STATION = registerWithItem("baker_station", () -> new BakerStationBlock(BlockBehaviour.Properties.copy(Blocks.BRICKS)));
@@ -55,6 +56,10 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Block> IRON_CHAIR = registerWithItem("iron_chair", () -> new ChairBlock(BlockBehaviour.Properties.of(Material.METAL).strength(2.0f, 3.0f).sound(SoundType.METAL)));
     public static final RegistrySupplier<Block> IRON_TABLE = registerWithItem("iron_table", () -> new TableBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
 
+    public static final RegistrySupplier<Block> SHELF = registerWithItem("shelf", () -> new ShelfBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD).noOcclusion()));
+    public static final RegistrySupplier<Block> STREET_SIGN = registerWithItem("street_sign", () -> new BoardBlock(BlockBehaviour.Properties.of(Material.DECORATION), true));
+    public static final RegistrySupplier<Block> CAKE_STAND = registerWithItem("cake_stand", () -> new CakeStandBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
+    public static final RegistrySupplier<Block> TRAY = registerWithItem("tray", () -> new TrayBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
     public static final RegistrySupplier<Item> ROLLING_PIN = registerItem("rolling_pin", () -> new SwordItem(Tiers.WOOD, 1, -0.5f, getSettings().rarity(Rarity.COMMON)));
     public static final RegistrySupplier<Item> BREAD_KNIFE = registerItem("bread_knife", () -> new SwordItem(Tiers.IRON, 1, -0.5f, getSettings().rarity(Rarity.COMMON)));
     public static final RegistrySupplier<Block> SMALL_COOKING_POT = registerWithItem("small_cooking_pot", () -> new CookingPotBlock(BlockBehaviour.Properties.of(Material.METAL).noOcclusion()));
@@ -71,25 +76,12 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Item> BUTTER = registerItem("butter", () -> new TooltipItem(getSettings()));
     public static final RegistrySupplier<Item> CHOCOLATE_TRUFFLE = registerItem("chocolate_truffle", () -> new Item(new Item.Properties().food(new FoodProperties.Builder().nutrition(2).saturationMod(0.6F).fast().build()).tab(Bakery.BAKERY_TAB)));
     //bread
-    public static final RegistrySupplier<Block> CRUSTY_BREAD = registerWithItem("crusty_bread", () -> new BreadBlock(BlockBehaviour.Properties.copy(Blocks.CAKE).noOcclusion()));
+    public static final RegistrySupplier<Item> CRUSTY_BREAD = registerItem("crusty_bread", () -> new Item(getSettings().food(Foods.BREAD)));
     public static final RegistrySupplier<Item> BREAD = registerItem("bread", () -> new Item(getSettings().food(Foods.BREAD)));
     public static final RegistrySupplier<Item> MILK_BREAD = registerItem("milk_bread", () -> new Item(getSettings().food(Foods.COOKIE)));
     public static final RegistrySupplier<Item> BRAIDED_BREAD = registerItem("braided_bread", () -> new Item(getSettings().food(Foods.COOKIE)));
     public static final RegistrySupplier<Item> BUN = registerItem("bun", () -> new Item(getSettings().food(Foods.COOKIE)));
     public static final RegistrySupplier<Item> TOAST = registerItem("toast", () -> new Item(getSettings().food(Foods.BEETROOT_SOUP)));
-
-    //placeable food
-    public static final RegistrySupplier<Block> SWEETBERRY_CAKE = registerWithItem("sweetberry_cake", () -> new CakeBlock((BlockBehaviour.Properties.copy(Blocks.CAKE)), ObjectRegistry.SWEETBERRY_CAKE_SLICE));
-    public static final RegistrySupplier<Block> STRAWBERRY_CAKE = registerWithItem("strawberry_cake", () -> new CakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), ObjectRegistry.STRAWBERRY_CAKE_SLICE));
-    public static final RegistrySupplier<Block> CHOCOLATE_CAKE = registerWithItem("chocolate_cake", () -> new CakeBlock((BlockBehaviour.Properties.copy(Blocks.CAKE)), ObjectRegistry.CHOCOLATE_CAKE_SLICE));
-    public static final RegistrySupplier<Block> APPLE_PIE = registerWithItem("apple_pie", () -> new CakeBlock((BlockBehaviour.Properties.copy(Blocks.CAKE)), ObjectRegistry.APPLE_PIE_SLICE));
-    //TODO Models, Change Chocolate Box Item Texture / Model Texture
-    public static final RegistrySupplier<Block> LINZER_TART = registerWithItem("linzer_tart", () -> new CakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), ObjectRegistry.STRAWBERRY_CAKE_SLICE));
-    public static final RegistrySupplier<Block> BUNDT_CAKE = registerWithItem("bundt_cake", () -> new CakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), ObjectRegistry.STRAWBERRY_CAKE_SLICE));
-    public static final RegistrySupplier<Block> PUDDING = registerWithItem("pudding", () -> new CakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), ObjectRegistry.STRAWBERRY_CAKE_SLICE));
-    public static final RegistrySupplier<Block> QUICHE = registerWithItem("quiche", () -> new CakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), ObjectRegistry.STRAWBERRY_CAKE_SLICE));
-    public static final RegistrySupplier<Item> DONUT = registerItem("donut", () -> new Item(getSettings().food(Foods.CARROT)));
-
     //Cake Slices
     public static final RegistrySupplier<Item> STRAWBERRY_CAKE_SLICE = registerItem("strawberry_cake_slice", () -> new Item(getSettings().food(Foods.BREAD)));
     public static final RegistrySupplier<Item> SWEETBERRY_CAKE_SLICE = registerItem("sweetberry_cake_slice", () -> new Item(getSettings().food(Foods.BREAD)));
@@ -99,6 +91,18 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Item> BUNDT_CAKE_SLICE = registerItem("bundt_cake_slice", () -> new Item(getSettings().food(Foods.BREAD)));
     public static final RegistrySupplier<Item> PUDDING_SLICE = registerItem("pudding_slice", () -> new Item(getSettings().food(Foods.BREAD)));
     public static final RegistrySupplier<Item> QUICHE_SLICE = registerItem("quiche_slice", () -> new Item(getSettings().food(Foods.BREAD)));
+    //cakes
+    public static final RegistrySupplier<Block> SWEETBERRY_CAKE = registerWithItem("sweetberry_cake", () -> new CakeBlock((BlockBehaviour.Properties.copy(Blocks.CAKE)), ObjectRegistry.SWEETBERRY_CAKE_SLICE));
+
+    public static final RegistrySupplier<Block> STRAWBERRY_CAKE = registerWithItem("strawberry_cake", () -> new CakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), ObjectRegistry.STRAWBERRY_CAKE_SLICE));
+    public static final RegistrySupplier<Block> CHOCOLATE_CAKE = registerWithItem("chocolate_cake", () -> new CakeBlock((BlockBehaviour.Properties.copy(Blocks.CAKE)), ObjectRegistry.CHOCOLATE_CAKE_SLICE));
+    public static final RegistrySupplier<Block> APPLE_PIE = registerWithItem("apple_pie", () -> new CakeBlock((BlockBehaviour.Properties.copy(Blocks.CAKE)), ObjectRegistry.APPLE_PIE_SLICE));
+    public static final RegistrySupplier<Block> LINZER_TART = registerWithItem("linzer_tart", () -> new CakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), ObjectRegistry.STRAWBERRY_CAKE_SLICE));
+    public static final RegistrySupplier<Block> BUNDT_CAKE = registerWithItem("bundt_cake", () -> new CakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), ObjectRegistry.STRAWBERRY_CAKE_SLICE));
+    public static final RegistrySupplier<Block> PUDDING = registerWithItem("pudding", () -> new CakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), ObjectRegistry.PUDDING_SLICE));
+    public static final RegistrySupplier<Block> QUICHE = registerWithItem("quiche", () -> new CakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), QUICHE_SLICE));
+    public static final RegistrySupplier<Item> DONUT = registerItem("donut", () -> new SweetsItem(getSettings().food(Foods.CARROT), EffectRegistry.SWEETS.get()));
+
 
     //Pastry
     public static final RegistrySupplier<Item> APPLE_CUPCAKE = registerItem("apple_cupcake", () -> new Item(getSettings().food(Foods.GOLDEN_CARROT)));
@@ -114,15 +118,6 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Item> STRAWBERRY_CHOCOLATE = registerItem("strawberry_chocolate", () -> new Item(getSettings().food(Foods.BREAD)));
 
 
-    //Blocks
-
-    public static final RegistrySupplier<Block> CAKE_STAND = registerWithItem("cake_stand", () -> new CakeStandBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
-    public static final RegistrySupplier<Block> TRAY = registerWithItem("tray", () -> new TrayBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
-    public static final RegistrySupplier<Block> STREET_SIGN = registerWithItem("street_sign", () -> new BoardBlock(BlockBehaviour.Properties.of(Material.DECORATION), true));
-
-    //Armor
-    //todo bakers apron
-
     //stove
     public static final RegistrySupplier<Block> COBBLESTONE_STOVE = registerWithItem("cobblestone_stove", () -> new StoveBlock(BlockBehaviour.Properties.copy(Blocks.BRICKS).lightLevel(state -> state.getValue(StoveBlock.LIT) ? 13 : 0)));
     public static final RegistrySupplier<Block> SANDSTONE_STOVE = registerWithItem("sandstone_stove", () -> new StoveBlock(BlockBehaviour.Properties.copy(Blocks.BRICKS).lightLevel(state -> state.getValue(StoveBlock.LIT) ? 13 : 0)));
@@ -135,8 +130,27 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Block> RED_NETHER_BRICKS_STOVE = registerWithItem("red_nether_bricks_stove", () -> new StoveBlock(BlockBehaviour.Properties.copy(Blocks.BRICKS).lightLevel(state -> state.getValue(StoveBlock.LIT) ? 13 : 0)));
 
 
+    //TODO Models, Change Chocolate Box Item Texture / Model Texture
+    //TODO All Items made out of Bread should get the saturated Effect
+    //TODO All Sweets should get a "Sweets"-Effects: 10 times stackable, each stack increases Speed, Strength and Health by 3.5% ->
+    //TODO -> Theres a 25% Chance of throwing up from stage 5 up - Player will throw up (green particles + nausea) and can't eat any more Sweets for 10 Minutes
+    //TODO All Sweets should get the .fast foor property
+    //TODO All Breads do need a 3D Model
+    //TODO StorageBlocks not present?
+
+    public static void init() {
+        ITEMS.register();
+        BLOCKS.register();
+    }
+
     private static Item.Properties getSettings(Consumer<Item.Properties> consumer) {
         Item.Properties settings = new Item.Properties().tab(Bakery.BAKERY_TAB);
+        consumer.accept(settings);
+        return settings;
+    }
+
+    private static Item.Properties getSettingsWithoutTab(Consumer<Item.Properties> consumer) {
+        Item.Properties settings = new Item.Properties();
         consumer.accept(settings);
         return settings;
     }
@@ -146,12 +160,11 @@ public class ObjectRegistry {
         });
     }
 
-
-    public static void init() {
-        Bakery.LOGGER.debug("Registering Mod Block and Items for " + Bakery.MOD_ID);
-        ITEMS.register();
-        BLOCKS.register();
+    private static Item.Properties getSettingsWithoutTab() {
+        return getSettingsWithoutTab(settings -> {
+        });
     }
+
 
     public static <T extends Block> RegistrySupplier<T> registerWithItem(String name, Supplier<T> block) {
         return registerWithItem(name, block, Bakery.BAKERY_TAB);
@@ -172,6 +185,7 @@ public class ObjectRegistry {
     private static BlockBehaviour.Properties getBushSettings() {
         return BlockBehaviour.Properties.copy(Blocks.SWEET_BERRY_BUSH);
     }
+
 
     private static BlockBehaviour.Properties getLogBlockSettings() {
         return BlockBehaviour.Properties.of(Material.WOOD).strength(2.0F).sound(SoundType.WOOD);

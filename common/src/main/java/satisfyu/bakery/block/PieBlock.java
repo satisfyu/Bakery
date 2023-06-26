@@ -1,6 +1,6 @@
 package satisfyu.bakery.block;
 
-import de.cristelknight.doapi.block.FacingBlock;
+import de.cristelknight.doapi.common.block.FacingBlock;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;

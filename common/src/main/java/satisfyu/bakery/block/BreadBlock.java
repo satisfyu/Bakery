@@ -1,7 +1,7 @@
 package satisfyu.bakery.block;
 
 
-import de.cristelknight.doapi.block.FacingBlock;
+import de.cristelknight.doapi.common.block.FacingBlock;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

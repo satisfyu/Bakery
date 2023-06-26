@@ -10,9 +10,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.ClickType;
 import net.minecraft.world.inventory.Slot;
-import satisfyu.bakery.BakeryIdentifier;
 import satisfyu.bakery.client.recipebook.AbstractPrivateRecipeScreenHandler;
 import satisfyu.bakery.client.recipebook.PrivateRecipeBookWidget;
+import satisfyu.bakery.util.BakeryIdentifier;
 
 public abstract class AbstractRecipeBookGUIScreen<T extends AbstractPrivateRecipeScreenHandler> extends AbstractContainerScreen<T> {
     private final ResourceLocation BACKGROUND;

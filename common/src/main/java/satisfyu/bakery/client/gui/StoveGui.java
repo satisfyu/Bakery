@@ -6,10 +6,10 @@ import net.fabricmc.api.Environment;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
-import satisfyu.bakery.BakeryIdentifier;
 import satisfyu.bakery.client.gui.handler.StoveGuiHandler;
 import satisfyu.bakery.client.gui.recipebook.AbstractRecipeBookGUIScreen;
 import satisfyu.bakery.client.gui.recipebook.StoveRecipeBook;
+import satisfyu.bakery.util.BakeryIdentifier;
 
 @Environment(EnvType.CLIENT)
 public class StoveGui extends AbstractRecipeBookGUIScreen<StoveGuiHandler> {

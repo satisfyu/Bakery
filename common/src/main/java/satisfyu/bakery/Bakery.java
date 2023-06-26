@@ -18,7 +18,7 @@ public class Bakery {
         ObjectRegistry.init();
         BlockEntityRegistry.init();
         EffectRegistry.init();
-        EntitiesRegistry.init();
+        EntityRegistry.init();
         RecipeTypeRegistry.init();
         SoundEventRegistry.init();
         ScreenHandlerTypeRegistry.init();
