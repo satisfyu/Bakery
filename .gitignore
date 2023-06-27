@@ -16,4 +16,4 @@ classes/
 .metadata
 .vscode
 .settings
-*.launch
+*.launch.DS_Store
