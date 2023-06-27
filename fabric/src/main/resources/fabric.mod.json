@@ -12,7 +12,7 @@
     "sources": "https://guthib.com"
   },
   "license": "Insert License Here",
-  "icon": "assets/bakery/icon.png",
+  "icon": "pack.png",
   "environment": "*",
   "entrypoints": {
     "main": [
@@ -28,6 +28,7 @@
   "depends": {
     "fabric": "*",
     "minecraft": ">=1.19.2",
-    "architectury": ">=6.5.77"
+    "architectury": ">=6.5.77",
+    "doapi": ">=1.1.0"
   }
 }

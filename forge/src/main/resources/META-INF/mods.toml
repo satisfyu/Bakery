@@ -10,7 +10,7 @@ displayName = "Bakery"
 authors = "Satisfy"
 description = '''
 A Mod all about crafting Bread, Cakes and Pastry'''
-#logoFile = ""
+logoFile = "pack.png"
 
 [[dependencies.bakery]]
 modId = "forge"
@@ -23,6 +23,13 @@ side = "BOTH"
 modId = "minecraft"
 mandatory = true
 versionRange = "[1.19.2,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.bakery]]
+modId = "doapi"
+mandatory = true
+versionRange = "[1.1.0,)"
 ordering = "NONE"
 side = "BOTH"
 
