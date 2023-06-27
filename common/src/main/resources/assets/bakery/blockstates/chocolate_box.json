@@ -1,93 +1,93 @@
 {
   "variants": {
     "cuts=5,facing=north": {
-      "model": "candlelight:block/chocolate_box_1"
+      "model": "bakery:block/chocolate_box_1"
     },
     "cuts=4,facing=north": {
-      "model": "candlelight:block/chocolate_box_2"
+      "model": "bakery:block/chocolate_box_2"
     },
     "cuts=3,facing=north": {
-      "model": "candlelight:block/chocolate_box_3"
+      "model": "bakery:block/chocolate_box_3"
     },
     "cuts=2,facing=north": {
-      "model": "candlelight:block/chocolate_box_4"
+      "model": "bakery:block/chocolate_box_4"
     },
     "cuts=1,facing=north": {
-      "model": "candlelight:block/chocolate_box_5"
+      "model": "bakery:block/chocolate_box_5"
     },
     "cuts=0,facing=north": {
-      "model": "candlelight:block/chocolate_box_6"
+      "model": "bakery:block/chocolate_box_6"
     },
     "cuts=5,facing=east": {
-      "model": "candlelight:block/chocolate_box_1",
+      "model": "bakery:block/chocolate_box_1",
       "y": 90
     },
     "cuts=4,facing=east": {
-      "model": "candlelight:block/chocolate_box_2",
+      "model": "bakery:block/chocolate_box_2",
       "y": 90
     },
     "cuts=3,facing=east": {
-      "model": "candlelight:block/chocolate_box_3",
+      "model": "bakery:block/chocolate_box_3",
       "y": 90
     },
     "cuts=2,facing=east": {
-      "model": "candlelight:block/chocolate_box_4",
+      "model": "bakery:block/chocolate_box_4",
       "y": 90
     },
     "cuts=1,facing=east": {
-      "model": "candlelight:block/chocolate_box_5",
+      "model": "bakery:block/chocolate_box_5",
       "y": 90
     },
     "cuts=0,facing=east": {
-      "model": "candlelight:block/chocolate_box_6",
+      "model": "bakery:block/chocolate_box_6",
       "y": 90
     },
     "cuts=5,facing=south": {
-      "model": "candlelight:block/chocolate_box_1",
+      "model": "bakery:block/chocolate_box_1",
       "y": 180
     },
     "cuts=4,facing=south": {
-      "model": "candlelight:block/chocolate_box_2",
+      "model": "bakery:block/chocolate_box_2",
       "y": 180
     },
     "cuts=3,facing=south": {
-      "model": "candlelight:block/chocolate_box_3",
+      "model": "bakery:block/chocolate_box_3",
       "y": 180
     },
     "cuts=2,facing=south": {
-      "model": "candlelight:block/chocolate_box_4",
+      "model": "bakery:block/chocolate_box_4",
       "y": 180
     },
     "cuts=1,facing=south": {
-      "model": "candlelight:block/chocolate_box_5",
+      "model": "bakery:block/chocolate_box_5",
       "y": 180
     },
     "cuts=0,facing=south": {
-      "model": "candlelight:block/chocolate_box_6",
+      "model": "bakery:block/chocolate_box_6",
       "y": 180
     },
     "cuts=5,facing=west": {
-      "model": "candlelight:block/chocolate_box_1",
+      "model": "bakery:block/chocolate_box_1",
       "y": 270
     },
     "cuts=4,facing=west": {
-      "model": "candlelight:block/chocolate_box_2",
+      "model": "bakery:block/chocolate_box_2",
       "y": 270
     },
     "cuts=3,facing=west": {
-      "model": "candlelight:block/chocolate_box_3",
+      "model": "bakery:block/chocolate_box_3",
       "y": 270
     },
     "cuts=2,facing=west": {
-      "model": "candlelight:block/chocolate_box_4",
+      "model": "bakery:block/chocolate_box_4",
       "y": 270
     },
     "cuts=1,facing=west": {
-      "model": "candlelight:block/chocolate_box_5",
+      "model": "bakery:block/chocolate_box_5",
       "y": 270
     },
     "cuts=0,facing=west": {
-      "model": "candlelight:block/chocolate_box_6",
+      "model": "bakery:block/chocolate_box_6",
       "y": 270
     }
   }

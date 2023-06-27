@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "bakery:item/apple_jam"
+    "layer0": "bakery:item/baguette"
   }
 }
