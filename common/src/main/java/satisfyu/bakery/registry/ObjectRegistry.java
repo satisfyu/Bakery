@@ -1,6 +1,7 @@
 package satisfyu.bakery.registry;
 
 import de.cristelknight.doapi.Util;
+import de.cristelknight.doapi.common.block.ChairBlock;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.Registrar;
 import dev.architectury.registry.registries.RegistrySupplier;

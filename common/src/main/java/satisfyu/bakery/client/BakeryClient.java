@@ -8,7 +8,6 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.renderer.RenderType;
 import satisfyu.bakery.client.gui.CookingPotGui;
 import satisfyu.bakery.client.gui.StoveGui;
-import satisfyu.bakery.client.render.block.ChairRenderer;
 import satisfyu.bakery.registry.EntityRegistry;
 import satisfyu.bakery.registry.ScreenHandlerTypeRegistry;
 
@@ -40,7 +39,6 @@ public class BakeryClient {
     }
 
     public static void registerEntityRenderers() {
-        EntityRendererRegistry.register(EntityRegistry.CHAIR, ChairRenderer::new);
     }
 
     public static void registerEntityModelLayer() {

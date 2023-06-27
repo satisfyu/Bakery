@@ -1,12 +1,12 @@
-package satisfyu.bakery.client.recipebook.custom;
+package satisfyu.bakery.client.recipebook.group;
 
 import com.google.common.collect.ImmutableList;
+import de.cristelknight.doapi.client.recipebook.IRecipeBookGroup;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Recipe;
-import satisfyu.bakery.client.recipebook.IRecipeBookGroup;
 import satisfyu.bakery.registry.ObjectRegistry;
 
 import java.util.List;

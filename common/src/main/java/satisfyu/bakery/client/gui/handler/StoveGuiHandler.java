@@ -1,6 +1,8 @@
 package satisfyu.bakery.client.gui.handler;
 
 
+import de.cristelknight.doapi.client.recipebook.IRecipeBookGroup;
+import de.cristelknight.doapi.client.recipebook.handler.AbstractRecipeBookGUIScreenHandler;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -13,8 +15,7 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
 import satisfyu.bakery.client.gui.handler.slot.ExtendedSlot;
 import satisfyu.bakery.client.gui.handler.slot.StoveOutputSlot;
-import satisfyu.bakery.client.recipebook.IRecipeBookGroup;
-import satisfyu.bakery.client.recipebook.custom.StoveRecipeBookGroup;
+import satisfyu.bakery.client.recipebook.group.StoveRecipeBookGroup;
 import satisfyu.bakery.recipe.StoveRecipe;
 import satisfyu.bakery.registry.RecipeTypeRegistry;
 import satisfyu.bakery.registry.ScreenHandlerTypeRegistry;

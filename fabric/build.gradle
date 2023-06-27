@@ -29,12 +29,12 @@ repositories {
 
 dependencies {
     modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
-    modImplementation "com.terraformersmc.terraform-api:terraform-wood-api-v1:${project.terraform_wood_api_version}"
     modApi( "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}") { exclude group: 'net.fabricmc', module: 'fabric-loader' }
     modApi( "dev.architectury:architectury-fabric:${rootProject.architectury_version}") { exclude group: 'net.fabricmc', module: 'fabric-loader' }
-    modApi "de:doapi:${project.doapi_version}"
-    modRuntimeOnly( "me.shedaniel:RoughlyEnoughItems-fabric:$rei_version") { exclude group: 'net.fabricmc', module: 'fabric-loader' }
+    modImplementation("me.shedaniel:RoughlyEnoughItems-fabric:$rei_version") { exclude group: 'net.fabricmc', module: 'fabric-loader' }
 
+    modImplementation "maven.modrinth:do-api:${project.doapi_version}-fabric"
+    modImplementation "com.terraformersmc.terraform-api:terraform-wood-api-v1:${project.terraform_wood_api_version}"
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }

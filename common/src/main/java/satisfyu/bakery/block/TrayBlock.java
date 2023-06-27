@@ -11,7 +11,8 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import satisfyu.bakery.registry.DoAPIRegistry;
+import satisfyu.bakery.registry.StorageTypeRegistry;
+import satisfyu.bakery.util.DoApiImpl;
 import satisfyu.bakery.util.GeneralUtil;
 
 import java.util.HashMap;
@@ -52,7 +53,7 @@ public class TrayBlock extends CakeStandBlock {
 
     @Override
     public ResourceLocation type() {
-        return DoAPIRegistry.TRAY;
+        return StorageTypeRegistry.TRAY;
     }
 
     @Override
