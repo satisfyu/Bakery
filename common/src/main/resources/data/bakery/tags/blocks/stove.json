@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "bakery:cobblestone_stove",
+    "bakery:brick_stove",
     "bakery:end_stove",
     "bakery:granite_stove",
     "bakery:stone_bricks_stove",
@@ -9,5 +10,6 @@
     "bakery:deepslate_stove",
     "bakery:sandstone_stove",
     "bakery:red_nether_bricks_stove",
-    "bakery:quartz_stove"  ]
+    "bakery:quartz_stove"
+  ]
 }

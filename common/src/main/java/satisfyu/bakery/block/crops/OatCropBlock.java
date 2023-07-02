@@ -9,7 +9,7 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import satisfyu.bakery.registry.ObjectRegistry;
 
 public class OatCropBlock extends CropBlock {
-    public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 4);
+    public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 5);
 
     public OatCropBlock(Properties properties) {
         super(properties);
@@ -27,7 +27,7 @@ public class OatCropBlock extends CropBlock {
 
     @Override
     public int getMaxAge() {
-        return 4;
+        return 5;
     }
 
     @Override

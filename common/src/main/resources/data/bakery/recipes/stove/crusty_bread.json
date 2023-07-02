@@ -1,0 +1,17 @@
+{
+  "type": "bakery:stove",
+  "ingredients": [
+    {
+      "tag": "bakery:dough"
+    },
+    {
+      "tag": "bakery:dough"
+    },
+    {
+      "item": "minecraft:water_bucket"
+    }
+  ],
+  "item": "bakery:crusty_bread",
+  "count": 3,
+  "experience": 0.35
+}

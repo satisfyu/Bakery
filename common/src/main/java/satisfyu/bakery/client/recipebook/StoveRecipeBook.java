@@ -18,6 +18,7 @@ import satisfyu.bakery.recipe.StoveRecipe;
 import satisfyu.bakery.registry.RecipeTypeRegistry;
 
 import java.util.List;
+
 @Environment(EnvType.CLIENT)
 public class StoveRecipeBook extends PrivateRecipeBookWidget {
     private static final Component TOGGLE_COOKABLE_TEXT;
@@ -28,13 +29,13 @@ public class StoveRecipeBook extends PrivateRecipeBookWidget {
     @Override
     public void showGhostRecipe(Recipe<?> recipe, List<Slot> slots) {
         this.ghostSlots.addSlot(recipe.getResultItem(), slots.get(7).x, slots.get(7).y);
-        if (recipe instanceof StoveRecipe cookingPanRecipe) {
-            this.ghostSlots.addSlot(cookingPanRecipe.getContainer(), slots.get(0).x, slots.get(0).y);
+        if (recipe instanceof StoveRecipe stoveRecipe) {
+            this.ghostSlots.addSlot(stoveRecipe.getResultItem(), slots.get(0).x, slots.get(0).y);
         }
         int j = 1;
         for (Ingredient ingredient : recipe.getIngredients()) {
             ItemStack[] inputStacks = ingredient.getItems();
-            if(inputStacks.length == 0) continue;
+            if (inputStacks.length == 0) continue;
             ItemStack inputStack = inputStacks[RandomSource.create().nextInt(0, inputStacks.length)];
             this.ghostSlots.addSlot(inputStack, slots.get(j).x, slots.get(j++).y);
         }
@@ -42,10 +43,10 @@ public class StoveRecipeBook extends PrivateRecipeBookWidget {
 
     @Override
     public void insertRecipe(Recipe<?> recipe, List<Slot> slots) {
-        if (recipe instanceof StoveRecipe cookingPanRecipe) {
+        if (recipe instanceof StoveRecipe stoveRecipe) {
             int slotIndex = 0;
             for (Slot slot : slots) {
-                if (cookingPanRecipe.getContainer().getItem() == slot.getItem().getItem()) {
+                if (stoveRecipe.getResultItem().getItem() == slot.getItem().getItem()) {
                     Minecraft.getInstance().gameMode.handleInventoryMouseClick(screenHandler.containerId, slotIndex, 0, ClickType.PICKUP, Minecraft.getInstance().player);
                     Minecraft.getInstance().gameMode.handleInventoryMouseClick(screenHandler.containerId, 0, 0, ClickType.PICKUP, Minecraft.getInstance().player);
                     break;

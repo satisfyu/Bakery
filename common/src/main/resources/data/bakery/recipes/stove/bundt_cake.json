@@ -1,0 +1,17 @@
+{
+  "type": "bakery:stove",
+  "ingredients": [
+    {
+      "tag": "bakery:eggs"
+    },
+    {
+      "item": "bakery:sweet_dough"
+    },
+    {
+      "tag": "bakery:butter"
+    }
+  ],
+  "item": "bakery:bundt_cake",
+  "count": 1,
+  "experience": 0.32
+}

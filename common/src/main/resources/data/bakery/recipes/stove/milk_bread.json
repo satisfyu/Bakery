@@ -1,0 +1,17 @@
+{
+  "type": "bakery:stove",
+  "ingredients": [
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "tag": "bakery:dough"
+    },
+    {
+      "tag": "bakery:milk"
+    }
+  ],
+  "item": "bakery:milk_bread",
+  "count": 3,
+  "experience": 0.35
+}

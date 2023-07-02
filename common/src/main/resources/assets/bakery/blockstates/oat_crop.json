@@ -3,16 +3,9 @@
     "age=0": {
       "model": "bakery:block/oat_stage0"
     },
-    "age=1": [
-      {
-        "model": "bakery:block/oat_stage1_1",
-        "weight": 1
-      },
-      {
-        "model": "bakery:block/oat_stage1_2",
-        "weight": 1
-      }
-    ],
+    "age=1": {
+      "model": "bakery:block/oat_stage1"
+    },
     "age=2": [
       {
         "model": "bakery:block/oat_stage2_1",
@@ -41,17 +34,27 @@
       {
         "model": "bakery:block/oat_stage4_2",
         "weight": 1
-      },
+      }
+    ],
+    "age=5": [
       {
-        "model": "bakery:block/oat_stage4_3",
+        "model": "bakery:block/oat_stage5_1",
         "weight": 1
       },
       {
-        "model": "bakery:block/oat_stage4_4",
+        "model": "bakery:block/oat_stage5_2",
         "weight": 1
       },
       {
-        "model": "bakery:block/oat_stage4_5",
+        "model": "bakery:block/oat_stage5_3",
+        "weight": 1
+      },
+      {
+        "model": "bakery:block/oat_stage5_4",
+        "weight": 1
+      },
+      {
+        "model": "bakery:block/oat_stage5_5",
         "weight": 1
       }
     ]

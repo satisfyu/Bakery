@@ -5,11 +5,14 @@
       "item": "minecraft:sweet_berries"
     },
     {
+      "item": "minecraft:sweet_berries"
+    },
+    {
       "item": "minecraft:sugar"
     }
   ],
   "container": {
-    "item": "bakery:cherry_jar"
+    "item": "bakery:jar"
   },
   "result": {
     "item": "bakery:sweetberry_jam"

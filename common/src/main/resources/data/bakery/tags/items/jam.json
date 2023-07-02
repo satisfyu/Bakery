@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "bakery:chocolate_jam",
+    "bakery:strawberry_jam",
+    "bakery:sweetberry_jam",
+    "bakery:glowberry_jam",
+    "bakery:apple_jam"
+  ]
+}

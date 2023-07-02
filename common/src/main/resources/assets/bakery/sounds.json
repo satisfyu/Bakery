@@ -1,0 +1,32 @@
+{
+  "juice_boiling": {
+    "subtitle": "bakery.sound.juice_boiling",
+    "sounds": [
+      "bakery:block/cooking_pot/juice_boiling"
+    ]
+  },
+  "drawer_open": {
+    "subtitle": "bakery.sound.drawer_open",
+    "sounds": [
+      "bakery:block/wine_rack/drawer_open"
+    ]
+  },
+  "drawer_close": {
+    "subtitle": "bakery.sound.drawer_close",
+    "sounds": [
+      "bakery:block/wine_rack/drawer_close"
+    ]
+  },
+  "cabinet_open": {
+    "subtitle": "bakery.sound.cabinet_open",
+    "sounds": [
+      "bakery:block/wine_rack/cabinet_open"
+    ]
+  },
+  "cabinet_close": {
+    "subtitle": "bakery.sound.cabinet_close",
+    "sounds": [
+      "bakery:block/wine_rack/cabinet_close"
+    ]
+  }
+}

@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "minecraft:milk_bucket"
+    "#c:milk",
+    "#forge:milk"
   ]
 }

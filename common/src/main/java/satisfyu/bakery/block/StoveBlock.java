@@ -48,7 +48,7 @@ public class StoveBlock extends Block implements EntityBlock {
 
     public StoveBlock(Properties settings) {
         super(settings);
-        this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(LIT, false));
+        this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(LIT, true));
     }
 
     @Override
@@ -79,11 +79,12 @@ public class StoveBlock extends Block implements EntityBlock {
         super.onRemove(state, world, pos, newState, moved);
     }
 
-    @Nullable
     @Override
+    @Nullable
     public BlockState getStateForPlacement(BlockPlaceContext ctx) {
-        return this.defaultBlockState().setValue(FACING, ctx.getHorizontalDirection().getOpposite());
+        return this.defaultBlockState().setValue(FACING, ctx.getHorizontalDirection().getOpposite()).setValue(LIT, true);
     }
+
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {

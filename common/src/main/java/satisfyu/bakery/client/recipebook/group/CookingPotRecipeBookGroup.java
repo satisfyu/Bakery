@@ -14,7 +14,7 @@ import java.util.List;
 @Environment(EnvType.CLIENT)
 public enum CookingPotRecipeBookGroup implements IRecipeBookGroup {
     SEARCH(new ItemStack(Items.COMPASS)),
-    JAM(new ItemStack(ObjectRegistry.CHERRY_JAM.get())),
+    JAM(new ItemStack(ObjectRegistry.SWEETBERRY_JAM.get())),
     CHOCOLATE(new ItemStack(ObjectRegistry.CHOCOLATE_TRUFFLE.get()));
 
     public static final List<IRecipeBookGroup> POT_GROUPS = ImmutableList.of(SEARCH, JAM, CHOCOLATE);
@@ -29,9 +29,9 @@ public enum CookingPotRecipeBookGroup implements IRecipeBookGroup {
         return switch (this) {
             case SEARCH -> true;
             case JAM ->
-                    recipe.getIngredients().stream().anyMatch((ingredient) -> ingredient.test(Items.POTION.getDefaultInstance()));
+                    recipe.getIngredients().stream().anyMatch((ingredient) -> ingredient.test(ObjectRegistry.JAR.get().asItem().getDefaultInstance()));
             case CHOCOLATE ->
-                    recipe.getIngredients().stream().anyMatch((ingredient) -> ingredient.test(Items.POTION.getDefaultInstance()));
+                    recipe.getIngredients().stream().anyMatch((ingredient) -> ingredient.test(Items.MILK_BUCKET.getDefaultInstance()));
         };
     }
 

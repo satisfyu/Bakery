@@ -8,10 +8,10 @@
       "item": "minecraft:sugar"
     },
     "C": {
-      "tag": "c:dough"
+      "tag": "bakery:dough"
     },
     "E": {
-      "tag": "c:eggs"
+      "tag": "bakery:eggs"
     }
   },
   "pattern": [

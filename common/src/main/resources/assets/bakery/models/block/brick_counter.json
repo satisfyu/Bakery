@@ -2,22 +2,22 @@
 	"credit": "Made by Satisfy",
 	"texture_size": [64, 64],
 	"textures": {
-		"0": "bakery:block/baker_station_side_2",
-		"1": "bakery:block/baker_station_top",
-		"2": "bakery:block/baker_station_side_1",
 		"3": "bakery:block/brick_counter_bottom",
-		"particle": "bakery:block/baker_station_side_2"
+		"4": "bakery:block/brick_baker_station_side_1",
+		"5": "bakery:block/brick_baker_station_side_2",
+		"6": "bakery:block/brick_baker_station_top",
+		"particle": "bakery:block/brick_baker_station_side_2"
 	},
 	"elements": [
 		{
 			"from": [0, 0, 0],
 			"to": [16, 16, 16],
 			"faces": {
-				"north": {"uv": [0, 0, 16, 16], "texture": "#2"},
-				"east": {"uv": [0, 0, 16, 16], "texture": "#0"},
-				"south": {"uv": [0, 0, 16, 16], "texture": "#2"},
-				"west": {"uv": [0, 0, 16, 16], "texture": "#0"},
-				"up": {"uv": [0, 0, 16, 16], "texture": "#1"},
+				"north": {"uv": [0, 0, 16, 16], "texture": "#4"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#5"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#4"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#5"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#6"},
 				"down": {"uv": [0, 0, 16, 16], "texture": "#3"}
 			}
 		}

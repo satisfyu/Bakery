@@ -14,10 +14,10 @@ import java.util.List;
 @Environment(EnvType.CLIENT)
 public enum StoveRecipeBookGroup implements IRecipeBookGroup {
     SEARCH(new ItemStack(Items.COMPASS)),
-    PASTRY(new ItemStack(ObjectRegistry.DOUGH.get())),
+    BREAD(new ItemStack(Items.BREAD)),
     CAKE(new ItemStack(ObjectRegistry.BUNDT_CAKE.get()));
 
-    public static final List<IRecipeBookGroup> STOVE_GROUPS = ImmutableList.of(SEARCH, PASTRY, CAKE);
+    public static final List<IRecipeBookGroup> STOVE_GROUPS = ImmutableList.of(SEARCH, BREAD, CAKE);
 
     private final List<ItemStack> icons;
 
@@ -28,10 +28,10 @@ public enum StoveRecipeBookGroup implements IRecipeBookGroup {
     public boolean fitRecipe(Recipe<?> recipe) {
         return switch (this) {
             case SEARCH -> true;
-            case PASTRY ->
-                    recipe.getIngredients().stream().anyMatch((ingredient) -> ingredient.test(Items.POTION.getDefaultInstance()));
+            case BREAD ->
+                    recipe.getIngredients().stream().anyMatch((ingredient) -> ingredient.test(ObjectRegistry.DOUGH.get().getDefaultInstance()));
             case CAKE ->
-                    recipe.getIngredients().stream().anyMatch((ingredient) -> ingredient.test(Items.POTION.getDefaultInstance()));
+                    recipe.getIngredients().stream().anyMatch((ingredient) -> ingredient.test(ObjectRegistry.SWEET_DOUGH.get().getDefaultInstance()));
         };
     }
 

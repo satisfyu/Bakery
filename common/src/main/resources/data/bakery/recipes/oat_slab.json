@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "bakery:oat_slab"
+    }
+  },
+  "result": {
+    "item": "bakery:oat_slab",
+    "count": 6
+  }
+}

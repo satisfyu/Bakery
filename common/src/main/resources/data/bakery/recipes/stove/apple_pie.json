@@ -1,0 +1,17 @@
+{
+  "type": "bakery:stove",
+  "ingredients": [
+    {
+      "item": "bakery:apple_jam"
+    },
+    {
+      "tag": "bakery:dough"
+    },
+    {
+      "tag": "bakery:milk"
+    }
+  ],
+  "item": "bakery:apple_pie",
+  "count": 1,
+  "experience": 0.35
+}

@@ -17,7 +17,6 @@ import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
@@ -205,7 +204,6 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
         boolean[] slotUsed = new boolean[3];
         for (int i = 0; i < recipe.getIngredients().size(); i++) {
             Ingredient ingredient = ingredients.get(i);
-            // Looks for the best slot to take it from
             ItemStack bestSlot = getItem(i);
             if (ingredient.test(bestSlot) && !slotUsed[i]) {
                 slotUsed[i] = true;
@@ -215,7 +213,6 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
                     setItem(i, remainderStack);
                 }
             } else {
-                // check all slots in search of the ingredient
                 for (int j = 0; j < 3; j++) {
                     ItemStack stack = getItem(j);
                     if (ingredient.test(stack) && !slotUsed[j]) {

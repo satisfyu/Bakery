@@ -117,7 +117,7 @@ public class CookingPotBlock extends BaseEntityBlock {
     public void animateTick(BlockState state, Level world, BlockPos pos, RandomSource random) {
         if (state.getValue(COOKING) || state.getValue(LIT)) {
             double d = (double) pos.getX() + 0.5;
-            double e = pos.getY() + 0.7;
+            double e = pos.getY() + 0.5;
             double f = (double) pos.getZ() + 0.5;
             if (random.nextDouble() < 0.3) {
                 world.playLocalSound(d, e, f, SoundEventRegistry.BLOCK_COOKING_POT_JUICE_BOILING.get(), SoundSource.BLOCKS, 1.0F, 1.0F, false);

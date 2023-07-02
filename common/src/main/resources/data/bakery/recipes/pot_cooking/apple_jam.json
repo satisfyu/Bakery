@@ -2,14 +2,17 @@
   "type": "bakery:pot_cooking",
   "ingredients": [
     {
-      "item": "bakery:apple_mash"
+      "item": "minecraft:apple"
+    },
+    {
+      "item": "minecraft:apple"
     },
     {
       "item": "minecraft:sugar"
     }
   ],
   "container": {
-    "item": "bakery:cherry_jar"
+    "item": "bakery:jar"
   },
   "result": {
     "item": "bakery:apple_jam"

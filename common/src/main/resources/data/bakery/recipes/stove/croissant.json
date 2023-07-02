@@ -1,0 +1,17 @@
+{
+  "type": "bakery:stove",
+  "ingredients": [
+    {
+      "item": "bakery:sweet_dough"
+    },
+    {
+      "tag": "bakery:butter"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "item": "bakery:croissant",
+  "count": 8,
+  "experience": 0.15
+}
