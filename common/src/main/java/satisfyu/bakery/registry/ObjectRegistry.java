@@ -113,7 +113,7 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Item> STRAWBERRY_CUPCAKE = registerItem("strawberry_cupcake", () -> new Item(getSettings().food(Foods.GOLDEN_CARROT)));
     public static final RegistrySupplier<Item> SWEETBERRY_CUPCAKE = registerItem("sweetberry_cupcake", () -> new Item(getSettings().food(Foods.GOLDEN_CARROT)));
     public static final RegistrySupplier<Item> APPLE_CUPCAKE = registerItem("apple_cupcake", () -> new Item(getSettings().food(Foods.GOLDEN_CARROT)));
-    public static final RegistrySupplier<Item> DONUT = registerItem("donut", () -> new SweetsItem(getSettings().food(Foods.CARROT), EffectRegistry.SWEETS.get()));
+    public static final RegistrySupplier<Item> DONUT = registerItem("donut", () -> new SweetsItem(getSettings().food(Foods.CARROT)));
     public static final RegistrySupplier<Item> WAFFLE = registerItem("waffle", () -> new Item(getSettings().food(Foods.BAKED_POTATO)));
     public static final RegistrySupplier<Item> JAM_ROLL = registerItem("jam_roll", () -> new Item(getSettings().food(Foods.BAKED_POTATO)));
     public static final RegistrySupplier<Item> CHOCOLATE_TRUFFLE = registerItem("chocolate_truffle", () -> new Item(new Item.Properties().food(new FoodProperties.Builder().nutrition(2).saturationMod(0.6F).fast().build()).tab(Bakery.BAKERY_TAB)));

@@ -57,8 +57,8 @@ public class CabinetBlock extends BaseEntityBlock {
     public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean moved) {
         if (!state.is(newState.getBlock())) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof Container) {
-                Containers.dropContents(world, pos, (Container) blockEntity);
+            if (blockEntity instanceof Container container) {
+                Containers.dropContents(world, pos, container);
                 world.updateNeighbourForOutputSignal(pos, this);
             }
 
