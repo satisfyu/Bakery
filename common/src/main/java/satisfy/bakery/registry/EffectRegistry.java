@@ -9,10 +9,10 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import satisfyu.bakery.Bakery;
-import satisfyu.bakery.effect.BakeryEffect;
-import satisfyu.bakery.effect.SaturatedEffect;
-import satisfyu.bakery.util.BakeryIdentifier;
+import satisfy.bakery.Bakery;
+import satisfy.bakery.effect.BakeryEffect;
+import satisfy.bakery.effect.SaturatedEffect;
+import satisfy.bakery.util.BakeryIdentifier;
 
 import java.util.function.Supplier;
 
