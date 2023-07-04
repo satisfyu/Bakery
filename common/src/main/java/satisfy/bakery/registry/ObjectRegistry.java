@@ -29,6 +29,7 @@ import satisfy.bakery.util.BakeryIdentifier;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
+@SuppressWarnings("unused")
 public class ObjectRegistry {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(Bakery.MOD_ID, Registry.ITEM_REGISTRY);
     public static final Registrar<Item> ITEM_REGISTRAR = ITEMS.getRegistrar();
@@ -82,7 +83,7 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Item> SWEET_DOUGH = registerItem("sweet_dough", () -> new TooltipItem(getSettings()));
     //bread
     public static final RegistrySupplier<Item> CROISSANT = registerItem("croissant", () -> new Item(getSettings().food(Foods.BREAD)));
-    public static final RegistrySupplier<Item> CRUSTY_BREAD = registerItem("crusty_bread", () -> new SaturatedItem(getFoodItemSettings(EffectRegistry.SATURATED.get(), 2400).food(Foods.BREAD)));
+    public static final RegistrySupplier<Item> CRUSTY_BREAD = registerItem("crusty_bread", () -> new Item(getFoodItemSettings(EffectRegistry.SATURATED.get(), 60 * 20).food(Foods.BREAD)));
     public static final RegistrySupplier<Item> BREAD = registerItem("bread", () -> new Item(getSettings().food(Foods.BREAD)));
     public static final RegistrySupplier<Item> BAGUETTE = registerItem("baguette", () -> new Item(getSettings().food(Foods.BREAD)));
     public static final RegistrySupplier<Item> TOAST = registerItem("toast", () -> new Item(getSettings().food(Foods.COOKIE)));

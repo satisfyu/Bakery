@@ -13,6 +13,7 @@ public class SaturatedEffect extends MobEffect {
         super(MobEffectCategory.BENEFICIAL, 0);
     }
 
+    @Override
     public void applyEffectTick(LivingEntity entity, int amplifier) {
         if (!entity.getCommandSenderWorld().isClientSide && entity instanceof Player player) {
             FoodData foodData = player.getFoodData();
