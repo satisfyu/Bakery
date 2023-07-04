@@ -14,8 +14,11 @@ import net.minecraft.world.level.Level;
 import satisfy.bakery.registry.EffectRegistry;
 
 public class SweetsItem extends Item {
-    public SweetsItem(Properties properties) {
+    private final int duration;
+
+    public SweetsItem(Properties properties, int duration) {
         super(properties);
+        this.duration = duration;
     }
 
     @Override
@@ -33,7 +36,7 @@ public class SweetsItem extends Item {
                 entity.addEffect(new MobEffectInstance(MobEffects.HUNGER, 10 * 20));
                 entity.addEffect(new MobEffectInstance(MobEffects.POISON, 10 * 20));
             } else {
-                entity.addEffect(new MobEffectInstance(EffectRegistry.SWEETS.get(), 15 * 20, Math.min(level, 10)));
+                entity.addEffect(new MobEffectInstance(EffectRegistry.SWEETS.get(), duration, Math.min(level, 10)));
                 world.playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.PLAYER_BURP, SoundSource.PLAYERS, 0.5F, world.random.nextFloat() * 0.1F + 0.9F);
             }
         }
