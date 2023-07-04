@@ -1,17 +1,17 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        "###",
-        "###",
-        "###"
-    ],
-    "key": {
-        "#": {
-            "item": "bakery:oat"
-        }
-    },
-    "result": {
-        "item": "bakery:oat_ball",
-        "count": 1
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "bakery:oat"
     }
+  },
+  "result": {
+    "item": "bakery:oat_block",
+    "count": 1
+  }
 }

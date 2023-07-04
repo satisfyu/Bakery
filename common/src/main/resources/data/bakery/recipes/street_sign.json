@@ -1,20 +1,20 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        "#O ",
-        "#O ",
-        "O O"
-    ],
-    "key": {
-        "#": {
-            "item": "minecraft:paper"
-        },
-        "O": {
-            "tag": "minecraft:planks"
-        }
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#O ",
+    "#O ",
+    "O O"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:paper"
     },
-    "result": {
-        "item": "bakery:street_sign",
-        "count": 1
+    "O": {
+      "tag": "minecraft:planks"
     }
+  },
+  "result": {
+    "item": "bakery:street_sign",
+    "count": 2
+  }
 }

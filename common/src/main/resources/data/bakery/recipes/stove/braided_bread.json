@@ -1,0 +1,17 @@
+{
+  "type": "bakery:stove",
+  "ingredients": [
+    {
+      "tag": "bakery:dough"
+    },
+    {
+      "tag": "bakery:dough"
+    },
+    {
+      "tag": "bakery:butter"
+    }
+  ],
+  "item": "bakery:braided_bread",
+  "count": 4,
+  "experience": 0.15
+}

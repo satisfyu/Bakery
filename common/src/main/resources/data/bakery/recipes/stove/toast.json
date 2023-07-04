@@ -2,10 +2,13 @@
   "type": "bakery:stove",
   "ingredients": [
     {
+      "item": "minecraft:sugar"
+    },
+    {
       "tag": "bakery:dough"
     },
     {
-      "item": "minecraft:sugar"
+      "tag": "bakery:milk"
     }
   ],
   "item": "bakery:toast",

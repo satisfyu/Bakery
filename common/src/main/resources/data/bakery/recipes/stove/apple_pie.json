@@ -2,10 +2,10 @@
   "type": "bakery:stove",
   "ingredients": [
     {
-      "item": "bakery:apple_jam"
+      "item": "minecraft:apple"
     },
     {
-      "tag": "bakery:dough"
+      "item": "bakery:sweet_dough"
     },
     {
       "tag": "bakery:milk"

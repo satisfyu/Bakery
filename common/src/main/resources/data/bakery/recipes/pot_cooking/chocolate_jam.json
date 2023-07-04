@@ -2,10 +2,10 @@
   "type": "bakery:pot_cooking",
   "ingredients": [
     {
-      "item": "minecraft:cocoa_beans"
+      "tag": "bakery:milk"
     },
     {
-      "item": "minecraft:cocoa_beans"
+      "tag": "bakery:chocolate"
     },
     {
       "item": "minecraft:sugar"

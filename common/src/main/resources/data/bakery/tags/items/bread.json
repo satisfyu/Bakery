@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "bakery:crusty_bread",
+    "bakery:baguette",
+    "bakery:braided_bread",
+    "bakery:bun",
+    "bakery:toast",
+    "minecraft:bread"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "WWW",
+    "W#W",
+    "WWW"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:barrel"
+    },
+    "W": {
+      "tag": "bakery:chocolate"
+    }
+  },
+  "result": {
+    "item": "bakery:chocolate_box",
+    "count": 1
+  }
+}

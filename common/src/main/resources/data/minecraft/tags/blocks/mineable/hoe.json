@@ -1,5 +1,12 @@
 {
   "replace": false,
   "values": [
+    "bakery:oat_crate",
+    "bakery:oat_block",
+    "bakery:oat_stairs",
+    "bakery:oat_slab",
+    "bakery:strawberry_crate",
+    "bakery:oat_crop",
+    "bakery:strawberry_crop"
   ]
 }

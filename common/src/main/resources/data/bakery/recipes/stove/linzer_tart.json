@@ -1,0 +1,17 @@
+{
+  "type": "bakery:stove",
+  "ingredients": [
+    {
+      "item": "bakery:strawberry"
+    },
+    {
+      "item": "bakery:strawberry"
+    },
+    {
+      "item": "bakery:sweet_dough"
+    }
+  ],
+  "item": "bakery:linzer_tart",
+  "count": 1,
+  "experience": 0.35
+}

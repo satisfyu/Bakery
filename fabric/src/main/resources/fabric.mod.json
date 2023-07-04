@@ -18,8 +18,14 @@
     "main": [
       "satisfy.bakery.fabric.BakeryFabric"
     ],
+    "doapi": [
+      "satisfy.bakery.util.DoApiImpl"
+    ],
     "client": [
       "satisfy.bakery.fabric.client.BakeryClientFabric"
+    ],
+    "rei_client": [
+      "satisfy.bakery.fabric.rei.VineryReiClientPluginFabric"
     ]
   },
   "mixins": [
