@@ -4,7 +4,7 @@
 		"1": "bakery:block/brick_sink_side",
 		"2": "bakery:block/brick_baker_station_side_1",
 		"3": "bakery:block/brick_sink_bottom",
-		"4": "block/water_still",
+		"4": "bakery:block/water_still",
 		"5": "bakery:block/sink_top",
 		"particle": "bakery:block/brick_sink_side"
 	},
@@ -18,7 +18,7 @@
 				"south": {"uv": [0, 4, 16, 16], "texture": "#1", "cullface": "south"},
 				"west": {"uv": [0, 4, 16, 16], "texture": "#1", "cullface": "west"},
 				"up": {"uv": [0, 1, 16, 15], "texture": "#3"},
-				"down": {"uv": [0, 1, 16, 15], "texture": "#2", "cullface": "down"}
+				"down": {"uv": [0, 2, 16, 16], "texture": "#2", "cullface": "down"}
 			}
 		},
 		{

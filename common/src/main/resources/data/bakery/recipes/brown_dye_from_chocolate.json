@@ -1,12 +1,12 @@
 {
-    "type": "minecraft:crafting_shapeless",
-    "ingredients": [
-        {
-            "item": "bakery:chocolate"
-        }
-    ],
-    "result": {
-        "item": "minecraft:brown_dye",
-        "count": 4
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "bakery:chocolate_truffle"
     }
+  ],
+  "result": {
+    "item": "minecraft:brown_dye",
+    "count": 4
+  }
 }

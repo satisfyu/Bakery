@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "bakery:oat_crate"
+    ]
+  },
+  "criteria": {
+    "has_oat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bakery:oat"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "bakery:oat_crate"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_oat",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "#bakery:stove",
-    "#farmersdelight:heat_sources"
+    "#farmersdelight:heat_sources",
+    "#forge:allows_cooking",
+    "#c:allows_cooking"
   ]
 }

@@ -5,11 +5,11 @@
   ],
   "key": {
     "#": {
-      "item": "bakery:oat_ball"
+      "item": "bakery:oat_crate"
     }
   },
   "result": {
     "item": "bakery:oat",
-    "count": 9
+    "count": 6
   }
 }

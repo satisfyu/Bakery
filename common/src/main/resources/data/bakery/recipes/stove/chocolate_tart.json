@@ -1,0 +1,17 @@
+{
+  "type": "bakery:stove",
+  "ingredients": [
+    {
+      "tag": "bakery:chocolate"
+    },
+    {
+      "tag": "bakery:chocolate"
+    },
+    {
+      "item": "bakery:sweet_dough"
+    }
+  ],
+  "item": "bakery:chocolate_tart",
+  "count": 1,
+  "experience": 0.35
+}

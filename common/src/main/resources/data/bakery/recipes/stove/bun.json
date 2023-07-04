@@ -1,0 +1,11 @@
+{
+  "type": "bakery:stove",
+  "ingredients": [
+    {
+      "item": "bakery:dough"
+    }
+  ],
+  "item": "bakery:bun",
+  "count": 5,
+  "experience": 0.15
+}

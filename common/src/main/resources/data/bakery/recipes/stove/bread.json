@@ -1,0 +1,17 @@
+{
+  "type": "bakery:stove",
+  "ingredients": [
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:wheat"
+    }
+  ],
+  "item": "minecraft:bread",
+  "count": 3,
+  "experience": 0.15
+}

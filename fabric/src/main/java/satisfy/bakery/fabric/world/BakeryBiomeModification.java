@@ -4,8 +4,8 @@ import net.fabricmc.fabric.api.biome.v1.*;
 import net.minecraft.core.Registry;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.levelgen.GenerationStep;
-import satisfyu.bakery.util.BakeryIdentifier;
-import satisfyu.bakery.worldgen.feature.BakeryPlacedFeature;
+import satisfy.bakery.util.BakeryIdentifier;
+import satisfy.bakery.worldgen.feature.BakeryPlacedFeature;
 
 import java.util.function.Predicate;
 
