@@ -20,13 +20,12 @@ import java.util.function.Supplier;
  * I have no clue about Voxelshapes - so if you do have a better solution please help! <3
  **/
 
-
-public class BundtCakeBlock extends PieBlock {
-    public BundtCakeBlock(Properties settings, Supplier<Item> slice) {
+public class ChocolateTart extends PieBlock {
+    public ChocolateTart(Properties settings, Supplier<Item> slice) {
         super(settings, slice);
     }
 
-    private static final Supplier<VoxelShape> fullShapeSupplier = () -> Shapes.box(0.25, 0, 0.25, 0.75, 0.5, 0.75);
+    private static final Supplier<VoxelShape> fullShapeSupplier = () -> Shapes.box(0.1875, 0, 0.1875, 0.8125, 0.25, 0.8125);
     public static final Map<Direction, VoxelShape> FULL_SHAPE = Util.make(new HashMap<>(), map -> {
         for (Direction direction : Direction.Plane.HORIZONTAL) {
             map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, fullShapeSupplier.get()));
@@ -35,9 +34,8 @@ public class BundtCakeBlock extends PieBlock {
 
     private static final Supplier<VoxelShape> threeShapeSupplier = () -> {
         VoxelShape shape = Shapes.empty();
-        shape = Shapes.or(shape, Shapes.box(0.25, 0, 0.25, 0.5, 0.5, 0.5));
-        shape = Shapes.or(shape, Shapes.box(0.25, 0, 0.5, 0.5, 0.5, 0.75));
-        shape = Shapes.or(shape, Shapes.box(0.5, 0, 0.5, 0.75, 0.5, 0.75));
+        shape = Shapes.or(shape, Shapes.box(0.1875, 0, 0.5, 0.8125, 0.25, 0.8125));
+        shape = Shapes.or(shape, Shapes.box(0.1875, 0, 0.1875, 0.5, 0.25, 0.5));
         return shape;
     };
     public static final Map<Direction, VoxelShape> THREE_SHAPE = Util.make(new HashMap<>(), map -> {
@@ -46,19 +44,14 @@ public class BundtCakeBlock extends PieBlock {
         }
     });
 
-    private static final Supplier<VoxelShape> halfShapeSupplier = () -> {
-        VoxelShape shape = Shapes.empty();
-        shape = Shapes.or(shape, Shapes.box(0.25, 0, 0.5, 0.5, 0.5, 0.75));
-        shape = Shapes.or(shape, Shapes.box(0.5, 0, 0.5, 0.75, 0.5, 0.75));
-        return shape;
-    };
+    private static final Supplier<VoxelShape> halfShapeSupplier = () -> Shapes.box(0.1875, 0, 0.5, 0.8125, 0.25, 0.8125);
     public static final Map<Direction, VoxelShape> HALF_SHAPE = Util.make(new HashMap<>(), map -> {
         for (Direction direction : Direction.Plane.HORIZONTAL) {
             map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, halfShapeSupplier.get()));
         }
     });
 
-    private static final Supplier<VoxelShape> quarterShapeSupplier = () -> Shapes.box(0.25, 0, 0.5, 0.5, 0.5, 0.75);
+    private static final Supplier<VoxelShape> quarterShapeSupplier = () -> Shapes.box(0.1875, 0, 0.5, 0.5, 0.25, 0.8125);
     public static final Map<Direction, VoxelShape> QUARTER_SHAPE = Util.make(new HashMap<>(), map -> {
         for (Direction direction : Direction.Plane.HORIZONTAL) {
             map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, quarterShapeSupplier.get()));

@@ -7,10 +7,10 @@
   ],
   "key": {
     "#": {
-      "item": "minecraft:barrel"
+      "item": "minecraft:chest"
     },
     "W": {
-      "tag": "bakery:chocolate"
+      "item": "bakery:chocolate_truffle"
     }
   },
   "result": {
