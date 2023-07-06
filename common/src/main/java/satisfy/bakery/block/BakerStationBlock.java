@@ -107,7 +107,7 @@ public class BakerStationBlock extends BaseEntityBlock implements EntityBlock {
 
     @Override
     public void appendHoverText(ItemStack itemStack, BlockGetter world, List<Component> tooltip, TooltipFlag tooltipContext) {
-        tooltip.add(Component.translatable("tooltip.bakery.baker_station").withStyle(ChatFormatting.WHITE));
+        tooltip.add(Component.translatable("tooltip.bakery.baker_station").withStyle(ChatFormatting.WHITE, ChatFormatting.ITALIC));
     }
 }
 

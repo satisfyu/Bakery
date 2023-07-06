@@ -1,5 +1,7 @@
 package satisfy.bakery.item;
 
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
@@ -8,10 +10,13 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.UseAnim;
-import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import satisfy.bakery.registry.EffectRegistry;
+
+import java.util.List;
 
 public class SweetsItem extends Item {
     private final int duration;
@@ -45,5 +50,11 @@ public class SweetsItem extends Item {
 
     private boolean isOvereaten(LivingEntity entity) {
         return entity.hasEffect(MobEffects.CONFUSION) || entity.hasEffect(MobEffects.HUNGER) || entity.hasEffect(MobEffects.POISON);
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, @Nullable Level world, @NotNull List<Component> tooltip, TooltipFlag context) {
+        tooltip.add(Component.translatable("item.bakery.sweeteffect.duration." + this.getDescriptionId()).withStyle(ChatFormatting.BLUE));
+        tooltip.add(Component.translatable("item.bakery.sweeteffect").withStyle(ChatFormatting.WHITE));
     }
 }

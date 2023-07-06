@@ -36,7 +36,7 @@ import java.util.function.Supplier;
 
 public class BreadCrateBox extends FacingBlock {
 
-    public static final IntegerProperty CUTS = IntegerProperty.create("cuts", 0, 3);
+    public static final IntegerProperty CUTS = IntegerProperty.create("cuts", 0, 4);
 
     public BreadCrateBox(Properties settings) {
         super(settings);
@@ -62,7 +62,7 @@ public class BreadCrateBox extends FacingBlock {
         player.getFoodData().eat(6, 0.8f);
         int cuts = state.getValue(CUTS);
         world.gameEvent(player, GameEvent.EAT, pos);
-        if (cuts < 3) {
+        if (cuts < 4) {
             world.setBlock(pos, state.setValue(CUTS, cuts + 1), Block.UPDATE_ALL);
         } else {
             world.destroyBlock(pos, false);
@@ -104,7 +104,8 @@ public class BreadCrateBox extends FacingBlock {
     @Override
     public void appendHoverText(ItemStack itemStack, BlockGetter world, List<Component> tooltip, TooltipFlag tooltipContext) {
         tooltip.add(Component.translatable("block.bakery.canbeplaced.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
+        tooltip.add(Component.translatable("block.bakery.breadcrate.tooltip").withStyle(ChatFormatting.WHITE, ChatFormatting.ITALIC));
     }
-
-
 }
+
+

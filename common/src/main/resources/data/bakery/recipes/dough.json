@@ -7,7 +7,7 @@
   ],
   "key": {
     "S": {
-      "item": "minecraft:wheat"
+      "tag": "bakery:wheat"
     },
     "B": {
       "item": "minecraft:water_bucket"

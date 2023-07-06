@@ -29,7 +29,7 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import satisfy.bakery.registry.ObjectRegistry;
+import satisfy.bakery.registry.TagsRegistry;
 import satisfy.bakery.util.GeneralUtil;
 
 import java.util.HashMap;
@@ -82,7 +82,7 @@ public class PieBlock extends FacingBlock {
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         ItemStack heldStack = player.getItemInHand(hand);
         if (level.isClientSide) {
-            if (heldStack.is(ObjectRegistry.BREAD_KNIFE.get())) {
+            if (heldStack.is(TagsRegistry.KNIVES)) {
                 return cutSlice(level, pos, state, player);
             }
 
@@ -95,7 +95,7 @@ public class PieBlock extends FacingBlock {
             }
         }
 
-        if (heldStack.is(ObjectRegistry.BREAD_KNIFE.get())) {
+        if (heldStack.is(TagsRegistry.KNIVES)) {
             return cutSlice(level, pos, state, player);
         }
         return this.consumeBite(level, pos, state, player);
@@ -121,7 +121,7 @@ public class PieBlock extends FacingBlock {
             if (cuts < getMaxCuts() - 1) {
                 level.setBlock(pos, state.setValue(CUTS, cuts + 1), 3);
             } else {
-                level.removeBlock(pos, false);
+                level.destroyBlock(pos, false);
             }
             level.playSound(null, pos, SoundEvents.GENERIC_EAT, SoundSource.PLAYERS, 0.8F, 0.8F);
             return InteractionResult.SUCCESS;
@@ -164,6 +164,8 @@ public class PieBlock extends FacingBlock {
     @Override
     public void appendHoverText(ItemStack itemStack, BlockGetter world, List<Component> tooltip, TooltipFlag tooltipContext) {
         tooltip.add(Component.translatable("block.bakery.canbeplaced.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
+        tooltip.add(Component.translatable("block.bakery.cake.tooltip").withStyle(ChatFormatting.WHITE));
+
     }
 }
 

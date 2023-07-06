@@ -1,0 +1,14 @@
+{
+  "type": "bakery:stove",
+  "ingredients": [
+    {
+      "item": "bakery:sweet_dough"
+    },
+    {
+      "tag": "bakery:dough"
+    }
+  ],
+  "item": "bakery:baguette",
+  "count": 3,
+  "experience": 0.15
+}

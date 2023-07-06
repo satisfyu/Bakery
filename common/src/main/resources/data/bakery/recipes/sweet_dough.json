@@ -7,7 +7,7 @@
   ],
   "key": {
     "S": {
-      "item": "minecraft:wheat"
+      "tag": "bakery:wheat"
     },
     "W": {
       "item": "minecraft:sugar"

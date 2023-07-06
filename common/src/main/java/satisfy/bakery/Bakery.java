@@ -6,6 +6,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import satisfy.bakery.event.CommonEvents;
 import satisfy.bakery.registry.*;
 
 public class Bakery {
@@ -22,6 +23,8 @@ public class Bakery {
         RecipeTypeRegistry.init();
         SoundEventRegistry.init();
         ScreenHandlerTypeRegistry.init();
+        CompostableItemsRegistry.init();
+        CommonEvents.init();
     }
 
     public static void commonInit() {

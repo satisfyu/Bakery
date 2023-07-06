@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:jigsaw",
+  "start_pool": "bakery:bakery/start_pool",
+  "size": 2,
+  "max_distance_from_center": 80,
+  "biomes": "#bakery:has_structure/bakery",
+  "step": "surface_structures",
+  "terrain_adaptation": "beard_thin",
+  "start_height": {
+    "absolute": 0
+  },
+  "project_start_to_heightmap": "WORLD_SURFACE_WG",
+  "use_expansion_hack": false,
+  "spawn_overrides": {
+    "creature": {
+      "bounding_box": "piece",
+      "spawns": [
+        {
+          "type": "minecraft:villager",
+          "weight": 1,
+          "minCount": 1,
+          "maxCount": 4
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+	"credit": "Made by Satisfy",
+	"textures": {
+		"0": "bakery:block/crusty_bread",
+		"particle": "bakery:block/crusty_bread"
+	},
+	"elements": [
+		{
+			"from": [4, 0, 4],
+			"to": [12, 5, 12],
+			"rotation": {"angle": 0, "axis": "y", "origin": [4, 0, 0]},
+			"faces": {
+				"north": {"uv": [8, 0, 16, 5], "texture": "#0"},
+				"east": {"uv": [8, 0, 16, 5], "texture": "#0"},
+				"south": {"uv": [16, 5, 8, 10], "texture": "#0"},
+				"west": {"uv": [8, 10, 16, 15], "texture": "#0"},
+				"up": {"uv": [0, 8, 8, 16], "texture": "#0"},
+				"down": {"uv": [0, 0, 8, 8], "texture": "#0"}
+			}
+		}
+	]
+}

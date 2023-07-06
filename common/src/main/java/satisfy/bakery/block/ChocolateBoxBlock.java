@@ -125,6 +125,6 @@ public class ChocolateBoxBlock extends FacingBlock {
     @Override
     public void appendHoverText(ItemStack itemStack, BlockGetter world, List<Component> tooltip, TooltipFlag tooltipContext) {
         tooltip.add(Component.translatable("block.bakery.canbeplaced.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
-        tooltip.add(Component.translatable("block.bakery.chocolate_box.tooltip").withStyle(ChatFormatting.WHITE));
+        tooltip.add(Component.translatable("block.bakery.chocolate_box.tooltip").withStyle(ChatFormatting.WHITE, ChatFormatting.ITALIC));
     }
 }

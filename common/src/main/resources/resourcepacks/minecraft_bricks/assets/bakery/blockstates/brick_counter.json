@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "": {
+      "model": "bakery:block/brick_counter"
+    }
+  }
+}
+

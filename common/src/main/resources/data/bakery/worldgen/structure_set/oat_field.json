@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "bakery:oat_field",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 678912,
+    "spacing": 136,
+    "separation": 60,
+    "type": "minecraft:random_spread"
+  }
+}

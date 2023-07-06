@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "facing=east": [
+      {
+        "model": "bakery:block/breadbox",
+        "y": 90
+      }
+    ],
+    "facing=north": [
+      {
+        "model": "bakery:block/breadbox",
+        "weight": 1
+      }
+    ],
+    "facing=south": [
+      {
+        "model": "bakery:block/breadbox",
+        "y": 180
+      }
+    ],
+    "facing=west": [
+      {
+        "model": "bakery:block/breadbox",
+        "y": 270
+      }
+    ]
+  }
+}

@@ -1,6 +1,53 @@
 {
-  "parent": "minecraft:block/cross",
-  "textures": {
-    "cross": "bakery:block/strawberries_wild_taiga_stage2"
-  }
+	"credit": "Made by Satisfy",
+	"ambientocclusion": false,
+	"textures": {
+		"1": "bakery:block/strawberries_wild_taiga_layer_stage2",
+		"particle": "bakery:block/strawberries_wild_taiga_stage2",
+		"cross": "bakery:block/strawberries_wild_taiga_stage2"
+	},
+	"elements": [
+		{
+			"from": [0.8, 0, 8],
+			"to": [15.2, 16, 8],
+			"shade": false,
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 8, 8], "rescale": true},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#cross", "tintindex": 0},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#cross", "tintindex": 0}
+			}
+		},
+		{
+			"from": [8, 0, 0.8],
+			"to": [8, 16, 15.2],
+			"shade": false,
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 8, 8], "rescale": true},
+			"faces": {
+				"east": {"uv": [0, 0, 16, 16], "texture": "#cross", "tintindex": 0},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#cross", "tintindex": 0}
+			}
+		},
+		{
+			"name": "notint",
+			"from": [7.9, -0.2, 0.5],
+			"to": [8.1, 16.2, 15.3],
+			"shade": false,
+			"rotation": {"angle": 45, "axis": "y", "origin": [8.1, 8, 7.9], "rescale": true},
+			"faces": {
+				"east": {"uv": [0, 0, 16, 16], "texture": "#1"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#1"}
+			}
+		},
+		{
+			"name": "notint",
+			"from": [0.7, -0.2, 7.9],
+			"to": [15.5, 16.2, 8.1],
+			"shade": false,
+			"rotation": {"angle": 45, "axis": "y", "origin": [8.1, 8, 8.1], "rescale": true},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#1"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#1"}
+			}
+		}
+	]
 }

@@ -1,60 +1,13 @@
 {
   "variants": {
-    "bites=0,facing=east": {
-      "y": 90,
-      "model": "bakery:block/bread_0"
+    "stack=1": {
+      "model": "bakery:block/crusty_bread_1"
     },
-    "bites=0,facing=south": {
-      "y": 180,
-      "model": "bakery:block/bread_0"
+    "stack=2": {
+      "model": "bakery:block/crusty_bread_2"
     },
-    "bites=0,facing=north": {
-      "model": "bakery:block/bread_0"
-    },
-    "bites=0,facing=west": {
-      "model": "bakery:block/bread_0"
-    },
-    "bites=1,facing=east": {
-      "y": 90,
-      "model": "bakery:block/bread_1"
-    },
-    "bites=1,facing=south": {
-      "y": 180,
-      "model": "bakery:block/bread_1"
-    },
-    "bites=1,facing=north": {
-      "model": "bakery:block/bread_1"
-    },
-    "bites=1,facing=west": {
-      "model": "bakery:block/bread_1"
-    },
-    "bites=2,facing=east": {
-      "y": 90,
-      "model": "bakery:block/bread_2"
-    },
-    "bites=2,facing=south": {
-      "y": 180,
-      "model": "bakery:block/bread_2"
-    },
-    "bites=2,facing=north": {
-      "model": "bakery:block/bread_2"
-    },
-    "bites=2,facing=west": {
-      "model": "bakery:block/bread_2"
-    },
-    "bites=3,facing=east": {
-      "y": 90,
-      "model": "bakery:block/bread_3"
-    },
-    "bites=3,facing=south": {
-      "y": 180,
-      "model": "bakery:block/bread_3"
-    },
-    "bites=3,facing=north": {
-      "model": "bakery:block/bread_3"
-    },
-    "bites=3,facing=west": {
-      "model": "bakery:block/bread_3"
+    "stack=3": {
+      "model": "bakery:block/crusty_bread_3"
     }
   }
 }

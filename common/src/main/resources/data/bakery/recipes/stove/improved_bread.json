@@ -1,0 +1,17 @@
+{
+  "type": "bakery:stove",
+  "ingredients": [
+    {
+      "tag": "bakery:wheat"
+    },
+    {
+      "tag": "bakery:wheat"
+    },
+    {
+      "tag": "bakery:wheat"
+    }
+  ],
+  "item": "bakery:bread",
+  "count": 3,
+  "experience": 0.15
+}

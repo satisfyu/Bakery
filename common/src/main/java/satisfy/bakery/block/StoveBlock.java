@@ -141,6 +141,6 @@ public class StoveBlock extends Block implements EntityBlock {
 
     @Override
     public void appendHoverText(ItemStack itemStack, BlockGetter world, List<Component> tooltip, TooltipFlag tooltipContext) {
-        tooltip.add(Component.translatable("block.bakery.stove.tooltip").withStyle(ChatFormatting.WHITE));
+        tooltip.add(Component.translatable("block.bakery.stove.tooltip").withStyle(ChatFormatting.WHITE, ChatFormatting.ITALIC));
     }
 }

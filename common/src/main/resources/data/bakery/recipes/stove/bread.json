@@ -2,13 +2,10 @@
   "type": "bakery:stove",
   "ingredients": [
     {
-      "item": "minecraft:wheat"
+      "tag": "bakery:dough"
     },
     {
-      "item": "minecraft:wheat"
-    },
-    {
-      "item": "minecraft:wheat"
+      "tag": "bakery:dough"
     }
   ],
   "item": "minecraft:bread",

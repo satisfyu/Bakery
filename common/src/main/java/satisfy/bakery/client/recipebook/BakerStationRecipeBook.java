@@ -76,6 +76,6 @@ public class BakerStationRecipeBook extends PrivateRecipeBookWidget {
     }
 
     static {
-        TOGGLE_COOKABLE_TEXT = Component.translatable("gui.beachparty.recipebook.toggleRecipes.refridgable");
+        TOGGLE_COOKABLE_TEXT = Component.translatable("gui.bakery.recipebook.toggleRecipes.refridgable");
     }
 }

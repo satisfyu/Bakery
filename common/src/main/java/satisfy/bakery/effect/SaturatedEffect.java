@@ -35,4 +35,5 @@ public class SaturatedEffect extends MobEffect {
     public boolean isDurationEffectTick(int duration, int amplifier) {
         return true;
     }
+
 }

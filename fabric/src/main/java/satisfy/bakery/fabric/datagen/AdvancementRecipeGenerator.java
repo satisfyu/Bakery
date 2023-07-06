@@ -15,47 +15,7 @@ public class AdvancementRecipeGenerator {
         List<String> putRecipesHere = List.of(
 
                 "minecraft:cauldron/kitchen_sink",
-                "minecraft:brick/kitchen_sink",
-                "minecraft:brick/brick_stove",
-                "minecraft:brick/baking_station",
-                "minecraft:brick/brick_counter",
-                "minecraft:brick/cake_stand",
-                "minecraft:oak_planks/brick_counter",
-                "minecraft:oak_planks/cabinet",
-                "minecraft:oak_planks/wall_cabinet",
-                "minecraft:oak_planks/drawer",
-                "minecraft:oak_planks/street_sign",
-                "minecraft:oak_planks/chocolate_box",
-                "minecraft:oak_planks/tray",
-                "minecraft:oak_planks/rolling_pin",
-                "minecraft:oak_planks/jar",
-                "minecraft:oak_planks/small_cooking_pot",
-                "minecraft:iron_ingot/bread_knife",
-                "minecraft:iron_ingot/iron_table",
-                "minecraft:iron_ingot/iron_chair",
-                "minecraft:iron_ingot/kitchen_sink",
-                "minecraft:iron_ingot/brick_stove",
-                "minecraft:iron_ingot/small_cooking_pot",
-                "minecraft:iron_ingot/faucet",
-                "minecraft:wheat/sweet_dough",
-                "minecraft:wheat/dough",
-                "minecraft:milk_bucket/sweet_dough",
-                "minecraft:milk_bucket/dough",
-                "minecraft:milk_bucket/butter",
-                "minecraft:water_bucket/dough",
-                "minecraft:water_bucket/butter",
-                "minecraft:water_bucket/sweet_dough",
-                "minecraft:sugar/sweet_dough",
-                "minecraft:sugar/dough",
-                "minecraft:bread/sandwich",
-                "minecraft:glass_pane/jar",
-                "strawberry/strawberry_crate",
-                "strawberry/strawberry_chocolate",
-                "oat/oat_crate",
-                "oat/oat_block",
-                "oat_block/oat_stairs",
-                "oat_block/oat_slab"
-
+                "minecraft:brick/kitchen_sink"
 
         );
 
