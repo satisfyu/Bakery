@@ -29,10 +29,6 @@ public class SaturatedItem extends Item {
 
     }
 
-    public InteractionResult useOn(UseOnContext context) {
-        return InteractionResult.SUCCESS;
-    }
-
     @Override
     public ItemStack finishUsingItem(ItemStack stack, net.minecraft.world.level.Level world, net.minecraft.world.entity.LivingEntity entity) {
         if (!world.isClientSide) {
@@ -40,16 +36,6 @@ public class SaturatedItem extends Item {
             world.playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.PLAYER_BURP, SoundSource.PLAYERS, 0.5F, world.random.nextFloat() * 0.1F + 0.9F);
         }
         return super.finishUsingItem(stack, world, entity);
-    }
-
-    @Override
-    public UseAnim getUseAnimation(ItemStack itemStack) {
-        return UseAnim.EAT;
-    }
-
-    @Override
-    public SoundEvent getEatingSound() {
-        return SoundEvents.GENERIC_EAT;
     }
 
     @Override
