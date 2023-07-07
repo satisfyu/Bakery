@@ -21,7 +21,7 @@ public class EffectRegistry {
     private static final DeferredRegister<MobEffect> MOB_EFFECTS = DeferredRegister.create(Bakery.MOD_ID, Registry.MOB_EFFECT_REGISTRY);
     private static final Registrar<MobEffect> MOB_EFFECTS_REGISTRAR = MOB_EFFECTS.getRegistrar();
 
-    public static final RegistrySupplier<MobEffect> SATURATED;
+    public static final RegistrySupplier<MobEffect> STUFFED;
     public static final RegistrySupplier<MobEffect> SWEETS;
 
 
@@ -38,7 +38,7 @@ public class EffectRegistry {
     }
 
     static {
-        SATURATED = registerEffect("saturated", SaturatedEffect::new);
+        STUFFED = registerEffect("stuffed", SaturatedEffect::new);
         SWEETS = registerEffect("sweets", () -> new BakeryEffect(MobEffectCategory.BENEFICIAL, 0x00FF00)
                 .addAttributeModifier(Attributes.MOVEMENT_SPEED, "812EA0BC-B71A-AF17-836C-1E5F68070C46", 0.2, AttributeModifier.Operation.MULTIPLY_TOTAL)
                 .addAttributeModifier(Attributes.ATTACK_SPEED, "1238C173-3FC1-6C89-408D-5F62AB9DCF03", 0.1, AttributeModifier.Operation.MULTIPLY_TOTAL)

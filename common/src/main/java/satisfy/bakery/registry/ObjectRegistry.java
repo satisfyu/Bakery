@@ -76,31 +76,31 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Item> BUTTER = registerItem("butter", () -> new IndulgentDelightItem(getSettings().food(Foods.ROTTEN_FLESH), 100));
     public static final RegistrySupplier<Item> DOUGH = registerItem("dough", () -> new IndulgentDelightItem(getSettings().food(Foods.ROTTEN_FLESH), 100));
     public static final RegistrySupplier<Item> SWEET_DOUGH = registerItem("sweet_dough", () -> new IndulgentDelightItem(getSettings().food(Foods.ROTTEN_FLESH), 100));
-    public static final RegistrySupplier<Item> CROISSANT = registerItem("croissant", () -> new SweetsItem(getFoodItemSettings(EffectRegistry.SATURATED.get(), 60 * 15), 400));
+    public static final RegistrySupplier<Item> CROISSANT = registerItem("croissant", () -> new SweetsItem(getFoodItemSettings(5, 0.6f, EffectRegistry.STUFFED.get(), 60 * 15), 400));
 
 
     /**
      * Placable Food
      **/
     public static final RegistrySupplier<Block> CRUSTY_BREAD_BLOCK = registerWithoutItem("crusty_bread_block", () -> new StackableBlock(BlockBehaviour.Properties.copy(Blocks.CAKE)));
-    public static final RegistrySupplier<Item> CRUSTY_BREAD = registerItem("crusty_bread", () -> new BlockItem(CRUSTY_BREAD_BLOCK.get(), getFoodItemSettings(EffectRegistry.SATURATED.get(), 4800).food(Foods.BEEF)));
+    public static final RegistrySupplier<Item> CRUSTY_BREAD = registerItem("crusty_bread", () -> new BlockItem(CRUSTY_BREAD_BLOCK.get(), getFoodItemSettings(5, 0.6f, EffectRegistry.STUFFED.get(), 4800)));
 
 
-    public static final RegistrySupplier<Item> BREAD = registerItem("bread", () -> new Item(getFoodItemSettings(EffectRegistry.SATURATED.get(), 4200).food(Foods.BAKED_POTATO)));
-    public static final RegistrySupplier<Item> BAGUETTE = registerItem("baguette", () -> new Item(getFoodItemSettings(EffectRegistry.SATURATED.get(), 4200).food(Foods.BAKED_POTATO)));
-    public static final RegistrySupplier<Item> TOAST = registerItem("toast", () -> new Item(getFoodItemSettings(EffectRegistry.SATURATED.get(), 5400).food(Foods.BEEF)));
-    public static final RegistrySupplier<Item> BRAIDED_BREAD = registerItem("braided_bread", () -> new Item(getFoodItemSettings(EffectRegistry.SATURATED.get(), 4200).food(Foods.BAKED_POTATO)));
-    public static final RegistrySupplier<Item> BUN = registerItem("bun", () -> new Item(getFoodItemSettings(EffectRegistry.SATURATED.get(), 2800).food(Foods.BREAD)));
-    public static final RegistrySupplier<Item> VEGETABLE_SANDWICH = registerItem("vegetable_sandwich", () -> new Item(getFoodItemSettings(EffectRegistry.SATURATED.get(), 4800).food(Foods.BEEF)));
-    public static final RegistrySupplier<Item> SANDWICH = registerItem("sandwich", () -> new Item(getFoodItemSettings(EffectRegistry.SATURATED.get(), 6000).food(Foods.GOLDEN_CARROT)));
+    public static final RegistrySupplier<Item> BREAD = registerItem("bread", () -> new Item(getFoodItemSettings(5, 0.6f, EffectRegistry.STUFFED.get(), 4200)));
+    public static final RegistrySupplier<Item> BAGUETTE = registerItem("baguette", () -> new Item(getFoodItemSettings(5, 0.6f, EffectRegistry.STUFFED.get(), 4200)));
+    public static final RegistrySupplier<Item> TOAST = registerItem("toast", () -> new Item(getFoodItemSettings(3, 0.3f, EffectRegistry.STUFFED.get(), 5400)));
+    public static final RegistrySupplier<Item> BRAIDED_BREAD = registerItem("braided_bread", () -> new Item(getFoodItemSettings(5, 0.6f, EffectRegistry.STUFFED.get(), 4200)));
+    public static final RegistrySupplier<Item> BUN = registerItem("bun", () -> new Item(getFoodItemSettings(5, 0.6f, EffectRegistry.STUFFED.get(), 2800)));
+    public static final RegistrySupplier<Item> VEGETABLE_SANDWICH = registerItem("vegetable_sandwich", () -> new Item(getFoodItemSettings(3, 0.3f, EffectRegistry.STUFFED.get(), 4800)));
+    public static final RegistrySupplier<Item> SANDWICH = registerItem("sandwich", () -> new Item(getFoodItemSettings(6, 1.2f, EffectRegistry.STUFFED.get(), 6000)));
     public static final RegistrySupplier<Item> STRAWBERRY_CAKE_SLICE = registerItem("strawberry_cake_slice", () -> new SweetsItem(getSettings().food(Foods.BREAD), 700));
     public static final RegistrySupplier<Item> SWEETBERRY_CAKE_SLICE = registerItem("sweetberry_cake_slice", () -> new SweetsItem(getSettings().food(Foods.BREAD), 700));
     public static final RegistrySupplier<Item> CHOCOLATE_CAKE_SLICE = registerItem("chocolate_cake_slice", () -> new SweetsItem(getSettings().food(Foods.BREAD), 700));
     public static final RegistrySupplier<Item> PUDDING_SLICE = registerItem("pudding_slice", () -> new SweetsItem(getSettings().food(Foods.BREAD), 700));
-    public static final RegistrySupplier<Item> BUNDT_CAKE_SLICE = registerItem("bundt_cake_slice", () -> new SweetlySatiatedItem(getFoodItemSettings(EffectRegistry.SATURATED.get(), 60 * 15).food(Foods.BREAD), 800));
-    public static final RegistrySupplier<Item> LINZER_TART_SLICE = registerItem("linzer_tart_slice", () -> new SweetlySatiatedItem(getFoodItemSettings(EffectRegistry.SATURATED.get(), 60 * 15).food(Foods.BREAD), 800));
-    public static final RegistrySupplier<Item> APPLE_PIE_SLICE = registerItem("apple_pie_slice", () -> new SweetlySatiatedItem(getFoodItemSettings(EffectRegistry.SATURATED.get(), 60 * 15).food(Foods.BREAD), 800));
-    public static final RegistrySupplier<Item> GLOWBERRY_PIE_SLICE = registerItem("glowberry_pie_slice", () -> new SweetlySatiatedItem(getFoodItemSettings(EffectRegistry.SATURATED.get(), 60 * 15).food(Foods.BREAD), 800));
+    public static final RegistrySupplier<Item> BUNDT_CAKE_SLICE = registerItem("bundt_cake_slice", () -> new SweetlySatiatedItem(getFoodItemSettings(5, 0.6f, EffectRegistry.STUFFED.get(), 60 * 15), 800));
+    public static final RegistrySupplier<Item> LINZER_TART_SLICE = registerItem("linzer_tart_slice", () -> new SweetlySatiatedItem(getFoodItemSettings(5, 0.6f, EffectRegistry.STUFFED.get(), 60 * 15), 800));
+    public static final RegistrySupplier<Item> APPLE_PIE_SLICE = registerItem("apple_pie_slice", () -> new SweetlySatiatedItem(getFoodItemSettings(5, 0.6f, EffectRegistry.STUFFED.get(), 60 * 15), 800));
+    public static final RegistrySupplier<Item> GLOWBERRY_PIE_SLICE = registerItem("glowberry_pie_slice", () -> new SweetlySatiatedItem(getFoodItemSettings(5, 0.6f, EffectRegistry.STUFFED.get(), 60 * 15), 800));
     public static final RegistrySupplier<Item> CHOCOLATE_TART_SLICE = registerItem("chocolate_tart_slice", () -> new SweetsItem(getSettings().food(Foods.BREAD), 700));
     public static final RegistrySupplier<Block> STRAWBERRY_CAKE = registerWithItem("strawberry_cake", () -> new CakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), ObjectRegistry.STRAWBERRY_CAKE_SLICE));
     public static final RegistrySupplier<Block> SWEETBERRY_CAKE = registerWithItem("sweetberry_cake", () -> new CakeBlock((BlockBehaviour.Properties.copy(Blocks.CAKE)), ObjectRegistry.SWEETBERRY_CAKE_SLICE));
@@ -117,8 +117,8 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Item> STRAWBERRY_CUPCAKE = registerItem("strawberry_cupcake", () -> new SweetsItem(getSettings().food(Foods.COOKED_COD), 500));
     public static final RegistrySupplier<Item> SWEETBERRY_CUPCAKE = registerItem("sweetberry_cupcake", () -> new SweetsItem(getSettings().food(Foods.COOKED_COD), 500));
     public static final RegistrySupplier<Item> APPLE_CUPCAKE = registerItem("apple_cupcake", () -> new SweetsItem(getSettings().food(Foods.COOKED_COD), 500));
-    public static final RegistrySupplier<Item> JAM_ROLL = registerItem("jam_roll", () -> new SweetlySatiatedItem(getFoodItemSettings(EffectRegistry.SATURATED.get(), 60 * 15).food(Foods.BEEF), 800));
-    public static final RegistrySupplier<Item> WAFFLE = registerItem("waffle", () -> new Item(getFoodItemSettings(EffectRegistry.SATURATED.get(), 2800).food(Foods.BAKED_POTATO)));
+    public static final RegistrySupplier<Item> JAM_ROLL = registerItem("jam_roll", () -> new SweetlySatiatedItem(getFoodItemSettings(3, 0.3f, EffectRegistry.STUFFED.get(), 60 * 15), 800));
+    public static final RegistrySupplier<Item> WAFFLE = registerItem("waffle", () -> new Item(getFoodItemSettings(5, 0.6f, EffectRegistry.STUFFED.get(), 2800).food(Foods.BAKED_POTATO)));
     public static final RegistrySupplier<Item> CHOCOLATE_TRUFFLE = registerItem("chocolate_truffle", () -> new SweetsItem(getSettings().food(new FoodProperties.Builder().nutrition(2).saturationMod(0.4F).fast().build()), 200));
     public static final RegistrySupplier<Block> COBBLESTONE_STOVE = registerWithItem("cobblestone_stove", () -> new StoveBlock(BlockBehaviour.Properties.copy(Blocks.BRICKS).lightLevel(state -> state.getValue(StoveBlock.LIT) ? 13 : 0)));
     public static final RegistrySupplier<Block> SANDSTONE_STOVE = registerWithItem("sandstone_stove", () -> new StoveBlock(BlockBehaviour.Properties.copy(Blocks.BRICKS).lightLevel(state -> state.getValue(StoveBlock.LIT) ? 13 : 0)));
@@ -179,15 +179,20 @@ public class ObjectRegistry {
         return BlockBehaviour.Properties.copy(Blocks.SWEET_BERRY_BUSH);
     }
 
-    private static Item.Properties getFoodItemSettings(MobEffect effect, int duration) {
-        return getSettings().food(FoodComponent(effect, duration));
+    private static Item.Properties getFoodItemSettings(int nutrition, float saturationMod, MobEffect effect, int duration) {
+        return getFoodItemSettings(nutrition, saturationMod, effect, duration, false, false);
     }
 
+    private static Item.Properties getFoodItemSettings(int nutrition, float saturationMod, MobEffect effect, int duration, boolean alwaysEat, boolean fast) {
+        return getSettings().food(createFood(nutrition, saturationMod, effect, duration, alwaysEat, fast));
+    }
 
-    private static FoodProperties FoodComponent(MobEffect effect, int duration) {
-        FoodProperties.Builder component = new FoodProperties.Builder().nutrition(1);
-        if (effect != null) component.effect(new MobEffectInstance(effect, duration), 1.0f);
-        return component.build();
+    private static FoodProperties createFood(int nutrition, float saturationMod, MobEffect effect, int duration, boolean alwaysEat, boolean fast) {
+        FoodProperties.Builder food = new FoodProperties.Builder().nutrition(nutrition).saturationMod(saturationMod);
+        if (alwaysEat) food.alwaysEat();
+        if (fast) food.fast();
+        if (effect != null) food.effect(new MobEffectInstance(effect, duration), 1.0f);
+        return food.build();
     }
 
     private static BlockBehaviour.Properties getLogBlockSettings() {

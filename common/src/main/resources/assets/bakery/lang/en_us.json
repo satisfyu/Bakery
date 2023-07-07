@@ -61,7 +61,7 @@
   "block.bakery.tray": "Tray",
   "block.bakery.tray.tooltip": "Offers space for one cake or six food items",
   "block.bakery.wall_cabinet": "Wall Cabinet",
-  "effect.bakery.saturated": "Stuffed",
+  "effect.bakery.stuffed": "Stuffed",
   "effect.bakery.sweets": "Sugar Rush",
   "item.bakery.apple_cupcake": "Apple Cupcake",
   "item.bakery.apple_pie_slice": "Slice of Apple Pie",
