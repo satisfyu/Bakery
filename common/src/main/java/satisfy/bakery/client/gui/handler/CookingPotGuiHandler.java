@@ -39,7 +39,7 @@ public class CookingPotGuiHandler extends AbstractRecipeBookGUIScreenHandler {
     }
 
     private void buildBlockEntityContainer(Container inventory) {
-        this.addSlot(new ExtendedSlot(inventory, 6, 95, 55, stack -> stack.is(Items.BOWL)));
+        this.addSlot(new ExtendedSlot(inventory, 0, 124, 28, stack -> false));
 
         for (int row = 0; row < 2; row++) {
             for (int slot = 0; slot < 3; slot++) {
@@ -47,12 +47,7 @@ public class CookingPotGuiHandler extends AbstractRecipeBookGUIScreenHandler {
             }
         }
 
-        this.addSlot(new Slot(inventory, 7, 124, 28) {
-            @Override
-            public boolean mayPlace(ItemStack stack) {
-                return false;
-            }
-        });
+        this.addSlot(new ExtendedSlot(inventory, 7, 95, 55, stack -> stack.is(Items.BOWL)));
     }
 
     private void buildPlayerContainer(Inventory playerInventory) {

@@ -28,27 +28,13 @@ public enum BakerStationRecipeBookGroup implements IRecipeBookGroup {
     }
 
     public boolean fitRecipe(Recipe<?> recipe) {
-        if (recipe instanceof BakerStationRecipe bakerStationRecipe) {
-            switch (this) {
-                case SEARCH -> {
-                    return true;
-                }
-                case CAKE -> {
-                    if (bakerStationRecipe.getIngredients().stream().anyMatch((ingredient) -> ingredient.test(ObjectRegistry.BLANK_CAKE.get().getDefaultInstance()))) {
-                        return true;
-                    }
-                }
-                case CUPCAKE -> {
-                    if (bakerStationRecipe.getIngredients().stream().noneMatch((ingredient) -> ingredient.test(ObjectRegistry.SWEET_DOUGH.get().getDefaultInstance()))) {
-                        return true;
-                    }
-                }
-                default -> {
-                    return false;
-                }
-            }
-        }
-        return false;
+        return switch (this) {
+            case SEARCH -> true;
+            case CAKE ->
+                    recipe.getIngredients().stream().anyMatch((ingredient) -> ingredient.test(ObjectRegistry.BLANK_CAKE.get().getDefaultInstance()));
+            case CUPCAKE ->
+                    recipe.getIngredients().stream().noneMatch((ingredient) -> ingredient.test(ObjectRegistry.SWEET_DOUGH.get().getDefaultInstance()));
+        };
     }
 
     @Override

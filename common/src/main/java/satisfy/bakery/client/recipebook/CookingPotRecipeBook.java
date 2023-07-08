@@ -28,10 +28,7 @@ public class CookingPotRecipeBook extends PrivateRecipeBookWidget {
 
     @Override
     public void showGhostRecipe(Recipe<?> recipe, List<Slot> slots) {
-        this.ghostSlots.addSlot(recipe.getResultItem(), slots.get(7).x, slots.get(7).y);
-        if (recipe instanceof CookingPotRecipe cookingPotRecipe) {
-            this.ghostSlots.addSlot(cookingPotRecipe.getContainer(), slots.get(0).x, slots.get(0).y);
-        }
+        this.ghostSlots.addSlot(recipe.getResultItem(), slots.get(0).x, slots.get(0).y);
         int j = 1;
         for (Ingredient ingredient : recipe.getIngredients()) {
             ItemStack[] inputStacks = ingredient.getItems();
@@ -43,17 +40,6 @@ public class CookingPotRecipeBook extends PrivateRecipeBookWidget {
 
     @Override
     public void insertRecipe(Recipe<?> recipe, List<Slot> slots) {
-        if (recipe instanceof CookingPotRecipe cookingPotRecipe) {
-            int slotIndex = 0;
-            for (Slot slot : slots) {
-                if (cookingPotRecipe.getContainer().getItem() == slot.getItem().getItem()) {
-                    Minecraft.getInstance().gameMode.handleInventoryMouseClick(screenHandler.containerId, slotIndex, 0, ClickType.PICKUP, Minecraft.getInstance().player);
-                    Minecraft.getInstance().gameMode.handleInventoryMouseClick(screenHandler.containerId, 0, 0, ClickType.PICKUP, Minecraft.getInstance().player);
-                    break;
-                }
-                ++slotIndex;
-            }
-        }
         int usedInputSlots = 1;
         for (Ingredient ingredient : recipe.getIngredients()) {
             int slotIndex = 0;

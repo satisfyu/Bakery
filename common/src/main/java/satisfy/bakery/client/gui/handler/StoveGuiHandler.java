@@ -24,8 +24,8 @@ import java.util.List;
 
 public class StoveGuiHandler extends AbstractRecipeBookGUIScreenHandler {
     public static final int INPUTS = 4;
-    public static final int FUEL_SLOT = 3;
-    public static final int OUTPUT_SLOT = 4;
+    public static final int FUEL_SLOT = 4;
+    public static final int OUTPUT_SLOT = 0;
 
     public StoveGuiHandler(int syncId, Inventory playerInventory) {
         this(syncId, playerInventory, new SimpleContainer(5), new SimpleContainerData(4));
@@ -38,12 +38,12 @@ public class StoveGuiHandler extends AbstractRecipeBookGUIScreenHandler {
     }
 
     private void buildBlockEntityContainer(Inventory playerInventory, Container inventory) {
-        this.addSlot(new ExtendedSlot(inventory, 0, 29, 18, this::isIngredient));
-        this.addSlot(new ExtendedSlot(inventory, 1, 47, 18, this::isIngredient));
-        this.addSlot(new ExtendedSlot(inventory, 2, 65, 18, this::isIngredient));
-        this.addSlot(new ExtendedSlot(inventory, 3, 42, 48, StoveGuiHandler::isFuel));
+        this.addSlot(new StoveOutputSlot(playerInventory.player, inventory, 0, 126, 42));
+        this.addSlot(new ExtendedSlot(inventory, 1, 29, 18, this::isIngredient));
+        this.addSlot(new ExtendedSlot(inventory, 2, 47, 18, this::isIngredient));
+        this.addSlot(new ExtendedSlot(inventory, 3, 65, 18, this::isIngredient));
+        this.addSlot(new ExtendedSlot(inventory, 4, 42, 48, StoveGuiHandler::isFuel));
 
-        this.addSlot(new StoveOutputSlot(playerInventory.player, inventory, 4, 126, 42));
     }
 
     private void buildPlayerContainer(Inventory playerInventory) {
