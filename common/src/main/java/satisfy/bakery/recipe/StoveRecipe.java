@@ -87,9 +87,9 @@ public class StoveRecipe implements Recipe<Container> {
         public StoveRecipe fromJson(ResourceLocation id, JsonObject json) {
             final var ingredients = GeneralUtil.deserializeIngredients(GsonHelper.getAsJsonArray(json, "ingredients"));
             if (ingredients.isEmpty()) {
-                throw new JsonParseException("No ingredients for StoveCooking Recipe");
+                throw new JsonParseException("No ingredients for Stove Recipe");
             } else if (ingredients.size() > 3) {
-                throw new JsonParseException("Too many ingredients for StoveCooking Recipe");
+                throw new JsonParseException("Too many ingredients for Stove Recipe");
             } else {
                 final ItemStack outputStack = ShapedRecipe.itemStackFromJson(json);
                 float xp = GsonHelper.getAsFloat(json, "experience", 0.0F);

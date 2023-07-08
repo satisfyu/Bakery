@@ -12,7 +12,7 @@
     }
   ],
   "container": {
-    "item": "bakery:tray"
+    "item": "minecraft:bowl"
   },
   "result": {
     "item": "bakery:pudding"

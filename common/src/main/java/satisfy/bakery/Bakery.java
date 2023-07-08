@@ -13,7 +13,7 @@ public class Bakery {
     public static final String MOD_ID = "bakery";
     public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
     public static final CreativeModeTab BAKERY_TAB = CreativeTabRegistry.create(new ResourceLocation(MOD_ID, "bakery_tab"), () ->
-            new ItemStack(ObjectRegistry.CROISSANT.get()));
+            new ItemStack(ObjectRegistry.BREAD_CRATE.get()));
 
     public static void init() {
         ObjectRegistry.init();
