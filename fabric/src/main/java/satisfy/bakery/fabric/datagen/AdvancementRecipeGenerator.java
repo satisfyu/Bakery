@@ -14,8 +14,7 @@ public class AdvancementRecipeGenerator {
     public static void main(String[] args) {
         List<String> putRecipesHere = List.of(
 
-                "minecraft:cauldron/kitchen_sink",
-                "minecraft:brick/kitchen_sink"
+                "minecraft:tray/bread_crate"
 
         );
 

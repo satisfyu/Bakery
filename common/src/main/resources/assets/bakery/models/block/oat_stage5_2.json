@@ -1,6 +1,6 @@
 {
   "credit": "Made by Satisfy",
-  "ambientocclusion": true,
+  "ambientocclusion": false,
   "textures": {
     "1": "bakery:block/oat_stage5_top_2",
     "5": "bakery:block/oat_stage5_bottom_1",

@@ -165,6 +165,7 @@
   "block.bakery.baguette_block": "Baguette",
   "block.bakery.bun_block": "Bun",
   "block.bakery.bread_block": "Bread",
+  "item.bakery.blank_cake": "Blank Cake",
   "block.bakery.braided_bread_block": "Braided Bread",
   "block.bakery.toast_block": "Toast",
   "item.bakery.juice.tooltip.block.bakery.baguette_block": "Stuffed (3:30)",
