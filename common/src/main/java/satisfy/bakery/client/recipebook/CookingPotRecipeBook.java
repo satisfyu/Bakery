@@ -29,6 +29,9 @@ public class CookingPotRecipeBook extends PrivateRecipeBookWidget {
     @Override
     public void showGhostRecipe(Recipe<?> recipe, List<Slot> slots) {
         this.ghostSlots.addSlot(recipe.getResultItem(), slots.get(0).x, slots.get(0).y);
+        if (recipe instanceof CookingPotRecipe cookingPotRecipe) {
+            this.ghostSlots.addSlot(cookingPotRecipe.getContainer(), slots.get(7).x, slots.get(7).y);
+        }
         int j = 1;
         for (Ingredient ingredient : recipe.getIngredients()) {
             ItemStack[] inputStacks = ingredient.getItems();
@@ -55,7 +58,6 @@ public class CookingPotRecipeBook extends PrivateRecipeBookWidget {
                 ++slotIndex;
             }
         }
-
     }
 
     @Override

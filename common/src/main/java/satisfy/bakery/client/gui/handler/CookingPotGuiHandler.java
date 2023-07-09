@@ -16,6 +16,7 @@ import satisfy.bakery.client.gui.handler.slot.ExtendedSlot;
 import satisfy.bakery.client.recipebook.group.CookingPotRecipeBookGroup;
 import satisfy.bakery.entity.CookingPotEntity;
 import satisfy.bakery.recipe.CookingPotRecipe;
+import satisfy.bakery.registry.ObjectRegistry;
 import satisfy.bakery.registry.ScreenHandlerTypeRegistry;
 
 import java.util.List;
@@ -43,11 +44,11 @@ public class CookingPotGuiHandler extends AbstractRecipeBookGUIScreenHandler {
 
         for (int row = 0; row < 2; row++) {
             for (int slot = 0; slot < 3; slot++) {
-                this.addSlot(new Slot(inventory, slot + row + (row * 2), 30 + (slot * 18), 17 + (row * 18)));
+                this.addSlot(new Slot(inventory, 1 + slot + row + (row * 2), 30 + (slot * 18), 17 + (row * 18)));
             }
         }
 
-        this.addSlot(new ExtendedSlot(inventory, 7, 95, 55, stack -> stack.is(Items.BOWL)));
+        this.addSlot(new ExtendedSlot(inventory, 7, 95, 55, stack -> stack.is(Items.BOWL) || stack.is(ObjectRegistry.JAR.get().asItem())));
     }
 
     private void buildPlayerContainer(Inventory playerInventory) {
