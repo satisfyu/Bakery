@@ -124,7 +124,7 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
             --this.burnTime;
         }
 
-        final StoveRecipe recipe = world.getRecipeManager().getRecipeFor(RecipeTypeRegistry.STOVE_RECIPE_TYPE.get(), this, world).orElse(null);
+        final StoveRecipe recipe = world.getRecipeManager().getRecipeFor(RecipeTypeRegistry.STOVE_RECIPE_TYPE.get(), blockEntity, world).orElse(null);
         if (!initialBurningState && canCraft(recipe)) {
             this.burnTime = this.burnTimeTotal = this.getTotalBurnTime(this.getItem(FUEL_SLOT));
             if (burnTime > 0) {

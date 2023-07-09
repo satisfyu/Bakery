@@ -22,11 +22,13 @@ public class CookingPotGui extends AbstractRecipeBookGUIScreen<CookingPotGuiHand
         super(handler, playerInventory, title, new CookingPotRecipeBook(), BACKGROUND);
     }
 
+    @Override
     public void renderProgressArrow(PoseStack matrices) {
         int progress = this.menu.getScaledProgress(18);
         this.blit(matrices, leftPos + 95, topPos + 14, 178, 15, progress, 30); //Position Arrow
     }
 
+    @Override
     public void renderBurnIcon(PoseStack matrices, int posX, int posY) {
         if (menu.isBeingBurned()) {
             this.blit(matrices, posX + 124, posY + 56, 176, 0, 17, 15); //fire

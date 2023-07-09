@@ -37,7 +37,7 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
     public static final int MAX_COOKING_TIME = 600; // Time in ticks (30s)
     private int cookingTime;
     public static final int BOTTLE_INPUT_SLOT = 6;
-    public static final int OUTPUT_SLOT = 7;
+    public static final int OUTPUT_SLOT = 0;
     private static final int INGREDIENTS_AREA = 2 * 3;
 
     private boolean isBeingBurned;
@@ -170,12 +170,14 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
         }
         boolean isBeingBurned = isBeingBurned();
         if (!isBeingBurned) {
+            delegate.set(1, 0);
             if (state.getValue(CookingPotBlock.LIT)) {
                 world.setBlock(pos, state.setValue(CookingPotBlock.LIT, false), Block.UPDATE_ALL);
             }
             return;
         }
-        Recipe<?> recipe = world.getRecipeManager().getRecipeFor(RecipeTypeRegistry.COOKING_POT_RECIPE_TYPE.get(), this, world).orElse(null);
+        delegate.set(1, 1);
+        Recipe<?> recipe = world.getRecipeManager().getRecipeFor(RecipeTypeRegistry.COOKING_POT_RECIPE_TYPE.get(), blockEntity, world).orElse(null);
 
 
         boolean canCraft = canCraft(recipe);
