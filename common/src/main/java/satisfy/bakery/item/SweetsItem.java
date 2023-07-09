@@ -55,6 +55,8 @@ public class SweetsItem extends Item {
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level world, @NotNull List<Component> tooltip, TooltipFlag context) {
         tooltip.add(Component.translatable("item.bakery.sweeteffect.duration." + this.getDescriptionId()).withStyle(ChatFormatting.BLUE));
-        tooltip.add(Component.translatable("item.bakery.sweeteffect").withStyle(ChatFormatting.WHITE));
+        tooltip.add(Component.translatable("item.bakery.sweeteffect_1").withStyle(ChatFormatting.WHITE));
+        tooltip.add(Component.translatable("item.bakery.sweeteffect_2").withStyle(ChatFormatting.WHITE));
+
     }
 }
