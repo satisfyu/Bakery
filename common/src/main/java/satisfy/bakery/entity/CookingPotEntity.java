@@ -36,7 +36,7 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
     private static final int MAX_CAPACITY = 8;
     public static final int MAX_COOKING_TIME = 600; // Time in ticks (30s)
     private int cookingTime;
-    public static final int BOTTLE_INPUT_SLOT = 6;
+    public static final int BOTTLE_INPUT_SLOT = 7;
     public static final int OUTPUT_SLOT = 0;
     private static final int INGREDIENTS_AREA = 2 * 3;
 
