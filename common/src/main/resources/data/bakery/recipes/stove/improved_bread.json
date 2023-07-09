@@ -3,15 +3,9 @@
   "ingredients": [
     {
       "tag": "bakery:wheat"
-    },
-    {
-      "tag": "bakery:wheat"
-    },
-    {
-      "tag": "bakery:wheat"
     }
   ],
-  "item": "bakery:bread",
-  "count": 3,
+  "item": "minecraft:bread",
+  "count": 1,
   "experience": 0.15
 }

@@ -1,5 +1,7 @@
 package satisfy.bakery.block;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
@@ -114,13 +116,14 @@ public class CookingPotBlock extends BaseEntityBlock {
     }
 
     @Override
+    @Environment(EnvType.CLIENT)
     public void animateTick(BlockState state, Level world, BlockPos pos, RandomSource random) {
         if (state.getValue(COOKING) || state.getValue(LIT)) {
-            double d = (double) pos.getX() + 0.5;
+            double d = (double) pos.getX() + 0.5D;
             double e = pos.getY() + 0.5;
-            double f = (double) pos.getZ() + 0.5;
+            double f = (double) pos.getZ() + 0.5D;
             if (random.nextDouble() < 0.3) {
-                world.playLocalSound(d, e, f, SoundEventRegistry.BLOCK_COOKING_POT_JUICE_BOILING.get(), SoundSource.BLOCKS, 0.4F, 1.0F, false);
+                world.playLocalSound(d, e, f, SoundEventRegistry.BLOCK_COOKING_POT_JUICE_BOILING.get(), SoundSource.BLOCKS, 0.4F, 0.4F, false);
             }
             Direction direction = state.getValue(FACING);
             Direction.Axis axis = direction.getAxis();

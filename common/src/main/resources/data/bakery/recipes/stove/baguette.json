@@ -6,6 +6,9 @@
     },
     {
       "tag": "bakery:dough"
+    },
+    {
+      "tag": "bakery:butter"
     }
   ],
   "item": "bakery:baguette",

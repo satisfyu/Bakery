@@ -3,6 +3,9 @@
   "ingredients": [
     {
       "item": "bakery:dough"
+    },
+    {
+      "tag": "bakery:butter"
     }
   ],
   "item": "bakery:bun",

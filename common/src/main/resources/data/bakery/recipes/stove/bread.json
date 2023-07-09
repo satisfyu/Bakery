@@ -8,7 +8,7 @@
       "tag": "bakery:dough"
     }
   ],
-  "item": "minecraft:bread",
+  "item": "bakery:bread",
   "count": 3,
   "experience": 0.15
 }

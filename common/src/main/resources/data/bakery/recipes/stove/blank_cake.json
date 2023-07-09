@@ -5,10 +5,10 @@
       "item": "bakery:sweet_dough"
     },
     {
-      "item": "bakery:sweet_dough"
+      "item": "minecraft:sugar"
     },
     {
-      "item": "bakery:sweet_dough"
+      "tag": "bakery:milk"
     }
   ],
   "item": "bakery:blank_cake",

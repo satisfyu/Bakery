@@ -5,10 +5,10 @@
       "tag": "bakery:dough"
     },
     {
-      "tag": "bakery:dough"
+      "item": "bakery:sweet_dough"
     },
     {
-      "tag": "bakery:butter"
+      "item": "minecraft:sugar"
     }
   ],
   "item": "bakery:braided_bread",
