@@ -9,7 +9,6 @@ import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import satisfy.bakery.client.gui.handler.slot.ExtendedSlot;
@@ -17,6 +16,7 @@ import satisfy.bakery.client.recipebook.group.CookingPotRecipeBookGroup;
 import satisfy.bakery.entity.CookingPotEntity;
 import satisfy.bakery.recipe.CookingPotRecipe;
 import satisfy.bakery.registry.ScreenHandlerTypeRegistry;
+import satisfy.bakery.registry.TagsRegistry;
 
 import java.util.List;
 
@@ -47,7 +47,7 @@ public class CookingPotGuiHandler extends AbstractRecipeBookGUIScreenHandler {
             }
         }
 
-        this.addSlot(new ExtendedSlot(inventory, 7, 95, 55, stack -> stack.is(Items.BOWL)));
+        this.addSlot(new ExtendedSlot(inventory, 7, 95, 55, stack -> stack.is(TagsRegistry.CONTAINER)));
     }
 
     private void buildPlayerContainer(Inventory playerInventory) {

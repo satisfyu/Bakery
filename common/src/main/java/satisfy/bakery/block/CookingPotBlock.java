@@ -120,7 +120,7 @@ public class CookingPotBlock extends BaseEntityBlock {
             double e = pos.getY() + 0.5;
             double f = (double) pos.getZ() + 0.5;
             if (random.nextDouble() < 0.3) {
-                world.playLocalSound(d, e, f, SoundEventRegistry.BLOCK_COOKING_POT_JUICE_BOILING.get(), SoundSource.BLOCKS, 1.0F, 1.0F, false);
+                world.playLocalSound(d, e, f, SoundEventRegistry.BLOCK_COOKING_POT_JUICE_BOILING.get(), SoundSource.BLOCKS, 0.4F, 1.0F, false);
             }
             Direction direction = state.getValue(FACING);
             Direction.Axis axis = direction.getAxis();
