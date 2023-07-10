@@ -5,7 +5,7 @@
       "tag": "bakery:dough"
     },
     {
-      "tag": "bakery:dough"
+      "item": "minecraft:sugar"
     }
   ],
   "item": "bakery:bread",

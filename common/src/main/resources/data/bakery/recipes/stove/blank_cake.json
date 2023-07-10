@@ -8,7 +8,7 @@
       "item": "minecraft:sugar"
     },
     {
-      "tag": "bakery:milk"
+      "item": "minecraft:milk_bucket"
     }
   ],
   "item": "bakery:blank_cake",

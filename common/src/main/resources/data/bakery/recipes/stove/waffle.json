@@ -2,13 +2,10 @@
   "type": "bakery:stove",
   "ingredients": [
     {
-      "tag": "bakery:dough"
+      "tag": "bakery:sweet_dough"
     },
     {
       "item": "minecraft:sugar"
-    },
-    {
-      "item": "minecraft:honey_bottle"
     }
   ],
   "item": "bakery:waffle",

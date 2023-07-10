@@ -2,13 +2,13 @@
   "type": "bakery:pot_cooking",
   "ingredients": [
     {
-      "tag": "bakery:egg"
+      "item": "minecraft:egg"
     },
     {
       "tag": "bakery:jam"
     },
     {
-      "tag": "bakery:milk"
+      "item": "minecraft:milk_bucket"
     }
   ],
   "container": {

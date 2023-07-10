@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "#c:eggs",
-    "#forge:eggs"
+    "#forge:eggs",
+    "minecraft:egg"
   ]
 }
