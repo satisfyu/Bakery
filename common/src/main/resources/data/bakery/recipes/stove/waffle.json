@@ -2,7 +2,7 @@
   "type": "bakery:stove",
   "ingredients": [
     {
-      "tag": "bakery:sweet_dough"
+      "item": "bakery:sweet_dough"
     },
     {
       "item": "minecraft:sugar"

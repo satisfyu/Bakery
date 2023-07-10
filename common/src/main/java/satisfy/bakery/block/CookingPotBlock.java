@@ -15,10 +15,14 @@ import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
@@ -122,8 +126,8 @@ public class CookingPotBlock extends BaseEntityBlock {
             double d = (double) pos.getX() + 0.5D;
             double e = pos.getY() + 0.5;
             double f = (double) pos.getZ() + 0.5D;
-            if (random.nextDouble() < 0.3) {
-                world.playLocalSound(d, e, f, SoundEventRegistry.BLOCK_COOKING_POT_JUICE_BOILING.get(), SoundSource.BLOCKS, 0.4F, 0.4F, false);
+            if (random.nextDouble() < 0.1) {
+                world.playLocalSound(d, e, f, SoundEventRegistry.BLOCK_COOKING_POT_JUICE_BOILING.get(), SoundSource.BLOCKS, 0.2F, 0.2F, false);
             }
             Direction direction = state.getValue(FACING);
             Direction.Axis axis = direction.getAxis();
@@ -136,6 +140,17 @@ public class CookingPotBlock extends BaseEntityBlock {
             world.addParticle(ParticleTypes.BUBBLE, d + i, e + j, f + k, 0.0, 0.0, 0.0);
             world.addParticle(ParticleTypes.BUBBLE_POP, d + i, e + j, f + k, 0.0, 0.0, 0.0);
         }
+    }
+
+    @Override
+    public void stepOn(Level world, BlockPos pos, BlockState state, Entity entity) {
+        boolean isLit = state.getValue(LIT);
+        if (isLit && !entity.fireImmune() && entity instanceof LivingEntity livingEntity &&
+                !EnchantmentHelper.hasFrostWalker(livingEntity)) {
+            entity.hurt(DamageSource.IN_FIRE, 1.f);
+        }
+
+        super.stepOn(world, pos, state, entity);
     }
 
 

@@ -23,12 +23,10 @@ public class Bakery {
         RecipeTypeRegistry.init();
         SoundEventRegistry.init();
         ScreenHandlerTypeRegistry.init();
-        CompostableItemsRegistry.init();
         CommonEvents.init();
     }
 
     public static void commonInit() {
-        CompostableItemsRegistry.init();
     }
 }
 

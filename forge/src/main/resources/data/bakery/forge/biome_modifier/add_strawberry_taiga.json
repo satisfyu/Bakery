@@ -1,6 +1,6 @@
 {
   "type": "forge:add_features",
   "biomes": "#bakery:spawns_strawberry_taiga",
-  "features": "bakery:strawberry_taiga_patch_chance",
+  "features": "bakery:strawberry_taiga_chance",
   "step": "vegetal_decoration"
 }
