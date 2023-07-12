@@ -54,7 +54,7 @@ public class TrayBlock extends CakeStandBlock {
 
     @Override
     public int size() {
-        return 6;
+        return 5;
     }
 
     @Override

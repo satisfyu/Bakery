@@ -6,6 +6,9 @@
     },
     {
       "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:egg"
     }
   ],
   "item": "bakery:waffle",

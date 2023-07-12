@@ -1,6 +1,6 @@
 modLoader = "javafml"
 loaderVersion = "[43,)"
-#issueTrackerURL = ""
+#issueTrackerURL = "https://discord.gg/Vqu6wYZwdZ"
 license = "ARR"
 
 [[mods]]

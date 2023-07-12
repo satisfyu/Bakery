@@ -18,9 +18,6 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import satisfy.bakery.registry.ObjectRegistry;
 
-import java.util.List;
-import java.util.Random;
-
 public class StrawberryCropBlock extends CropBlock {
     public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 4);
 
@@ -63,25 +60,6 @@ public class StrawberryCropBlock extends CropBlock {
         } else {
             return super.use(state, world, pos, player, hand, hit);
         }
-    }
-
-    @Override
-    public List<ItemStack> getDrops(BlockState state, net.minecraft.world.level.storage.loot.LootContext.Builder builder) {
-        List<ItemStack> drops = super.getDrops(state, builder);
-
-        if (state.getValue(AGE) == getMaxAge()) {
-            Random random = new Random();
-            int appleCount = random.nextInt(2) + 2;
-            int seedCount = random.nextInt(2) + 1;
-
-            drops.add(new ItemStack(ObjectRegistry.STRAWBERRY.get(), appleCount));
-            for (int i = 0; i < seedCount; i++) {
-                drops.add(new ItemStack(ObjectRegistry.STRAWBERRY_SEEDS.get()));
-            }
-        } else {
-            drops.add(new ItemStack(ObjectRegistry.STRAWBERRY_SEEDS.get()));
-        }
-        return drops;
     }
 }
 
