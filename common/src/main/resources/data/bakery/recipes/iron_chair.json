@@ -1,12 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
+    "BWB",
     "BBB",
     "B B"
   ],
   "key": {
     "B": {
       "item": "minecraft:iron_ingot"
+    },
+    "W": {
+      "item": "minecraft:iron_nugget"
     }
   },
   "result": {
