@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[43,)"
+loaderVersion = "[46,)"
 #issueTrackerURL = "https://discord.gg/Vqu6wYZwdZ"
 license = "ARR"
 
@@ -15,27 +15,27 @@ logoFile = "pack.png"
 [[dependencies.bakery]]
 modId = "forge"
 mandatory = true
-versionRange = "[43,)"
+versionRange = "[46,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.bakery]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.19.2,)"
+versionRange = "[1.20,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.bakery]]
 modId = "doapi"
 mandatory = true
-versionRange = "[1.1.0,)"
+versionRange = "[1.2.3,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.bakery]]
 modId = "architectury"
 mandatory = true
-versionRange = "[6.5.77,)"
+versionRange = "[9.0.8,)"
 ordering = "AFTER"
 side = "BOTH"
