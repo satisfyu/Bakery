@@ -3,6 +3,7 @@ package satisfy.bakery.registry;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import satisfy.bakery.Bakery;
 import satisfy.bakery.entity.BakerStationBlockEntity;
@@ -14,7 +15,7 @@ import java.util.function.Supplier;
 
 public class BlockEntityRegistry {
 
-    private static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES = DeferredRegister.create(Bakery.MOD_ID, Registry.BLOCK_ENTITY_TYPE_REGISTRY);
+    private static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES = DeferredRegister.create(Bakery.MOD_ID, Registries.BLOCK_ENTITY_TYPE);
 
     public static final RegistrySupplier<BlockEntityType<CabinetBlockEntity>> CABINET_BLOCK_ENTITY = create("cabinet", () -> BlockEntityType.Builder.of(CabinetBlockEntity::new, ObjectRegistry.CABINET.get(), ObjectRegistry.DRAWER.get(), ObjectRegistry.WALL_CABINET.get()).build(null));
     public static final RegistrySupplier<BlockEntityType<StoveBlockEntity>> STOVE_BLOCK_ENTITY

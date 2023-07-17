@@ -1,7 +1,7 @@
 package satisfy.bakery.client.render.block;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 import de.cristelknight.doapi.client.render.block.storage.StorageTypeRenderer;
 import de.cristelknight.doapi.common.block.entity.StorageBlockEntity;
 import net.fabricmc.api.EnvType;
@@ -30,7 +30,7 @@ public class CakeStandRenderer implements StorageTypeRenderer {
                     if (i == 0) matrices.translate(-0.4f, 1.3f, 0.4f);
                     else if (i == 1) matrices.translate(-0.2f, 1.3f, -0.4f);
                     else matrices.translate(0.4f, 1.3f, 0.2f);
-                    matrices.mulPose(Vector3f.XP.rotationDegrees(90f));
+                    matrices.mulPose(Axis.XP.rotationDegrees(90f));
                     ClientUtil.renderItem(stack, matrices, vertexConsumers, entity);
                 }
                 matrices.popPose();

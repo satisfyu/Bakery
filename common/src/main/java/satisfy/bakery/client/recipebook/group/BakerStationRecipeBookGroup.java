@@ -4,6 +4,9 @@ import com.google.common.collect.ImmutableList;
 import de.cristelknight.doapi.client.recipebook.IRecipeBookGroup;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.event.client.player.ClientPickBlockCallback;
+import net.minecraft.core.RegistryAccess;
+import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Recipe;
@@ -27,7 +30,7 @@ public enum BakerStationRecipeBookGroup implements IRecipeBookGroup {
         this.icons = ImmutableList.copyOf(entries);
     }
 
-    public boolean fitRecipe(Recipe<?> recipe) {
+    public boolean fitRecipe(Recipe<? extends Container> recipe, RegistryAccess registryAccess) {
         return switch (this) {
             case SEARCH -> true;
             case CAKE ->

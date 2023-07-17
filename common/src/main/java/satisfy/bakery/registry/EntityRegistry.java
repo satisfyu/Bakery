@@ -4,6 +4,7 @@ import dev.architectury.registry.level.entity.EntityAttributeRegistry;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import satisfy.bakery.Bakery;
@@ -13,7 +14,7 @@ import satisfy.bakery.util.BakeryIdentifier;
 import java.util.function.Supplier;
 
 public class EntityRegistry {
-    private static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(Bakery.MOD_ID, Registry.ENTITY_TYPE_REGISTRY);
+    private static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(Bakery.MOD_ID, Registries.ENTITY_TYPE);
 
 
     public static final RegistrySupplier<EntityType<WanderingBakerEntity>> WANDERING_BAKER = create("wandering_baker",

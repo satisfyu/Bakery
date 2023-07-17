@@ -13,23 +13,23 @@ public class SaturatedEffect extends MobEffect {
         super(MobEffectCategory.BENEFICIAL, 0);
     }
 
-    @Override
     public void applyEffectTick(LivingEntity entity, int amplifier) {
         if (!entity.getCommandSenderWorld().isClientSide && entity instanceof Player player) {
             FoodData foodData = player.getFoodData();
             boolean isPlayerHealingWithHunger =
-                    player.level.getGameRules().getBoolean(GameRules.RULE_NATURAL_REGENERATION)
+                    player.level().getGameRules().getBoolean(GameRules.RULE_NATURAL_REGENERATION)
                             && player.isHurt()
                             && foodData.getFoodLevel() >= 18;
             if (!isPlayerHealingWithHunger) {
                 float exhaustion = foodData.getExhaustionLevel();
-                float reduction = Math.min(exhaustion, 4.0F) * 0.75F;
+                float reduction = Math.min(exhaustion, 4.0F);
                 if (exhaustion > 0.0F) {
                     player.causeFoodExhaustion(-reduction);
                 }
             }
         }
     }
+
 
     @Override
     public boolean isDurationEffectTick(int duration, int amplifier) {

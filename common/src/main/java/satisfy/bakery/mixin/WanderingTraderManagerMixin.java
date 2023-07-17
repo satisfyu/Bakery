@@ -52,7 +52,7 @@ public abstract class WanderingTraderManagerMixin implements CustomSpawner {
                     return;
                 }
 
-                WanderingTrader wanderingTraderEntity = EntityRegistry.WANDERING_BAKER.get().spawn(world, null, null, null, blockPos3, MobSpawnType.EVENT, false, false);
+                WanderingTrader wanderingTraderEntity = EntityRegistry.WANDERING_BAKER.get().spawn(world,  blockPos3, MobSpawnType.EVENT);
                 if (wanderingTraderEntity != null) {
                     for (int j = 0; j < 2; ++j) {
                         BlockPos blockPos4 = this.findSpawnPositionNear(world, wanderingTraderEntity.blockPosition(), 4);

@@ -279,7 +279,6 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
         if (stack.getCount() > this.getMaxStackSize()) {
             stack.setCount(this.getMaxStackSize());
         }
-        // Check if there's a change in the ingredients and reset cooking process if necessary
         boolean hasIngredientChange = false;
         for (int ingredientSlot : INGREDIENT_SLOTS) {
             if (!ItemStack.isSameItemSameTags(this.getItem(ingredientSlot), stackInSlot)) {

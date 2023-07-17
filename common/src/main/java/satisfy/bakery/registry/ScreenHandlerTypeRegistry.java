@@ -3,6 +3,8 @@ package satisfy.bakery.registry;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.MenuType;
 import satisfy.bakery.Bakery;
 import satisfy.bakery.client.gui.handler.BakerStationGuiHandler;
@@ -14,11 +16,11 @@ import java.util.function.Supplier;
 
 public class ScreenHandlerTypeRegistry {
 
-    public static final DeferredRegister<MenuType<?>> MENU_TYPES = DeferredRegister.create(Bakery.MOD_ID, Registry.MENU_REGISTRY);
+    public static final DeferredRegister<MenuType<?>> MENU_TYPES = DeferredRegister.create(Bakery.MOD_ID, Registries.MENU);
 
-    public static final RegistrySupplier<MenuType<StoveGuiHandler>> STOVE_SCREEN_HANDLER = create("stove_gui_handler", () -> new MenuType<>(StoveGuiHandler::new));
-    public static final RegistrySupplier<MenuType<CookingPotGuiHandler>> COOKING_POT_SCREEN_HANDLER = create("cooking_pot_gui_handler", () -> new MenuType<>(CookingPotGuiHandler::new));
-    public static final RegistrySupplier<MenuType<BakerStationGuiHandler>> BAKER_STATION_SCREEN_HANDLER = create("baker_station_gui_handler", () -> new MenuType<>(BakerStationGuiHandler::new));
+    public static final RegistrySupplier<MenuType<StoveGuiHandler>> STOVE_SCREEN_HANDLER = create("stove_gui_handler", () -> new MenuType<>(StoveGuiHandler::new, FeatureFlags.VANILLA_SET));
+    public static final RegistrySupplier<MenuType<CookingPotGuiHandler>> COOKING_POT_SCREEN_HANDLER = create("cooking_pot_gui_handler", () -> new MenuType<>(CookingPotGuiHandler::new, FeatureFlags.VANILLA_SET));
+    public static final RegistrySupplier<MenuType<BakerStationGuiHandler>> BAKER_STATION_SCREEN_HANDLER = create("baker_station_gui_handler", () -> new MenuType<>(BakerStationGuiHandler::new, FeatureFlags.VANILLA_SET));
 
 
     public static void init() {

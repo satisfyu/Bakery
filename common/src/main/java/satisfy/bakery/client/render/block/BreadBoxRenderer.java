@@ -1,7 +1,7 @@
 package satisfy.bakery.client.render.block;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 import de.cristelknight.doapi.client.render.block.storage.StorageTypeRenderer;
 import de.cristelknight.doapi.common.block.entity.StorageBlockEntity;
 import net.fabricmc.api.EnvType;
@@ -35,22 +35,22 @@ public class BreadBoxRenderer implements StorageTypeRenderer {
                     } else if (blockItem.getBlock() == ObjectRegistry.BREAD_BLOCK.get()) {
                         matrices.translate(-0.5f, -0.5f, 0.93f);
                         matrices.scale(2f, 2f, 2f);
-                        matrices.mulPose(Vector3f.YP.rotationDegrees(90.0f));
+                        matrices.mulPose(Axis.YP.rotationDegrees(90.0f));
                         ClientUtil.renderBlockFromItem(blockItem, matrices, vertexConsumers, entity);
                     } else if (blockItem.getBlock() == ObjectRegistry.BRAIDED_BREAD_BLOCK.get()) {
                         matrices.translate(-0.5f, -0.5f, 0.93f);
                         matrices.scale(2f, 2f, 2f);
-                        matrices.mulPose(Vector3f.YP.rotationDegrees(90.0f));
+                        matrices.mulPose(Axis.YP.rotationDegrees(90.0f));
                         ClientUtil.renderBlockFromItem(blockItem, matrices, vertexConsumers, entity);
                     } else if (blockItem.getBlock() == ObjectRegistry.TOAST_BLOCK.get()) {
                         matrices.translate(-0.5f, -0.5f, 0.93f);
                         matrices.scale(2f, 2f, 2f);
-                        matrices.mulPose(Vector3f.YP.rotationDegrees(90.0f));
+                        matrices.mulPose(Axis.YP.rotationDegrees(90.0f));
                         ClientUtil.renderBlockFromItem(blockItem, matrices, vertexConsumers, entity);
                     } else if (blockItem.getBlock() == ObjectRegistry.BAGUETTE_BLOCK.get()) {
                         matrices.translate(-0.28f, -0.48f, 0.6f);
                         matrices.scale(1.5f, 1.5f, 1.5f);
-                        matrices.mulPose(Vector3f.YP.rotationDegrees(90.0f));
+                        matrices.mulPose(Axis.YP.rotationDegrees(90.0f));
                         ClientUtil.renderBlockFromItem(blockItem, matrices, vertexConsumers, entity);
                     } else {
                         matrices.translate(0.2, -0.5f, -0.3f);
@@ -59,7 +59,7 @@ public class BreadBoxRenderer implements StorageTypeRenderer {
                     }
                 } else {
                     matrices.translate(0.3f * i, 0, 0);
-                    matrices.mulPose(Vector3f.YN.rotationDegrees(45.0f));
+                    matrices.mulPose(Axis.YN.rotationDegrees(45.0f));
                     ClientUtil.renderItem(stack, matrices, vertexConsumers, entity);
                 }
 

@@ -3,6 +3,7 @@ package satisfy.bakery.recipe;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
@@ -32,10 +33,9 @@ public class StoveRecipe implements Recipe<Container> {
     public boolean matches(Container inventory, Level world) {
         return GeneralUtil.matchesRecipe(inventory, inputs, 1, 3);
     }
-
     @Override
-    public ItemStack assemble(Container container) {
-        return output.copy();
+    public ItemStack assemble(Container container, RegistryAccess registryAccess) {
+        return ItemStack.EMPTY;
     }
 
 
@@ -45,10 +45,9 @@ public class StoveRecipe implements Recipe<Container> {
     }
 
     @Override
-    public ItemStack getResultItem() {
+    public ItemStack getResultItem(RegistryAccess registryAccess) {
         return this.output.copy();
     }
-
 
     @Override
     public NonNullList<Ingredient> getIngredients() {
