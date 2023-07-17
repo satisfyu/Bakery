@@ -15,7 +15,7 @@ import satisfy.bakery.util.BakeryIdentifier;
 public class WanderingBakerModel<T extends WanderingTrader> extends VillagerModel<T> {
 
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new BakeryIdentifier("wandering_baker"), "main");
-    
+
     public WanderingBakerModel(ModelPart root) {
         super(root);
     }
