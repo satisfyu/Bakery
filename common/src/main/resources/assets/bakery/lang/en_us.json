@@ -167,15 +167,19 @@
   "gui.bakery.recipebook.toggleRecipes.refridgable": "Showing Craftable",
   "block.bakery.crusty_bread_block": "Crusty Bread",
   "block.bakery.baguette_block": "Baguette",
+  "block.bakery.waffle_block": "Waffle",
   "block.bakery.bun_block": "Bun",
   "block.bakery.bread_block": "Bread",
   "item.bakery.blank_cake": "Blank Cake",
   "block.bakery.braided_bread_block": "Braided Bread",
   "block.bakery.toast_block": "Toast",
   "item.bakery.juice.tooltip.block.bakery.baguette_block": "Stuffed (3:30)",
+  "item.bakery.juice.tooltip.block.bakery.waffle_block": "Stuffed (2:30)",
   "item.bakery.juice.tooltip.block.bakery.braided_bread_block": "Stuffed (3:30)",
   "item.bakery.juice.tooltip.block.bakery.bread_block": "Stuffed (3:30)",
   "item.bakery.juice.tooltip.block.bakery.bun_block": "Stuffed (2:30)",
   "item.bakery.juice.tooltip.block.bakery.crusty_bread_block": "Stuffed (4:00)",
-  "item.bakery.juice.tooltip.block.bakery.toast_block": "Stuffed (2:30)"
+  "item.bakery.juice.tooltip.block.bakery.toast_block": "Stuffed (2:30)",
+  "item.bakery.wandering_baker_spawn_egg": "Wandering Baker Spawn Egg",
+  "entity.bakery.wandering_baker": "Wandering Baker"
 }

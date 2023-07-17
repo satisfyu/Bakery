@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "stack=1": {
+      "model": "bakery:block/waffles_1"
+    },
+    "stack=2": {
+      "model": "bakery:block/waffles_2"
+    },
+    "stack=3": {
+      "model": "bakery:block/waffles_3"
+    },
+    "stack=4": {
+      "model": "bakery:block/waffles_4"
+    }
+  }
+}

@@ -92,6 +92,7 @@
   "item.bakery.juice.tooltip.block.bakery.jar": "Behälter für Marmelade",
   "item.bakery.juice.tooltip.block.bakery.strawberry_jam": "Zutat",
   "item.bakery.juice.tooltip.block.bakery.sweetberry_jam": "Zutat",
+  "item.bakery.juice.tooltip.block.bakery.waffle_block": "Voll! (2:30)",
   "item.bakery.linzer_tart_slice": "Stück Linzertorte",
   "item.bakery.oat": "Hafer",
   "item.bakery.pudding_slice": "Stück Pudding",
@@ -145,6 +146,7 @@
   "item.bakery.sweetly.duration.item.bakery.linzer_tart_slice": "Angenehm gesättigt (0:40)",
   "item.bakery.sweetly.duration.item.bakery.sweet_dough": "Angenehm gesättigt (0:05)",
   "item.bakery.toast": "Toast",
+  "block.bakery.waffle_block": "Waffel",
   "item.bakery.tooltipitem.tooltip.block.bakery.oat": "Zutat",
   "item.bakery.tooltipitem.tooltip.item.bakery.butter": "Zutat",
   "item.bakery.tooltipitem.tooltip.item.bakery.dough": "Zutat",
@@ -162,5 +164,7 @@
   "tooltip.bakery.pot": "Verwendet zum Kochen von Marmelade, Schokolade und anderen Leckereien",
   "tooltip.bakery.sink": "Bietet eine zuverlässige Wasserquelle für all deine kulinarischen Bedürfnisse!",
   "gui.bakery.recipebook.toggleRecipes.cookable": "Zeige herstellbare Rezepte",
-  "gui.bakery.recipebook.toggleRecipes.refridgable": "Zeige herstellbare Rezepte"
+  "gui.bakery.recipebook.toggleRecipes.refridgable": "Zeige herstellbare Rezepte",
+  "item.bakery.wandering_baker_spawn_egg": "Wandernder Bäcker Spawn Ei",
+  "entity.bakery.wandering_baker": "Wandernder Bäcker"
 }

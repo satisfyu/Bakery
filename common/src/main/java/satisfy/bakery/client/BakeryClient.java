@@ -1,5 +1,7 @@
 package satisfy.bakery.client;
 
+import dev.architectury.registry.client.level.entity.EntityModelLayerRegistry;
+import dev.architectury.registry.client.level.entity.EntityRendererRegistry;
 import dev.architectury.registry.client.rendering.ColorHandlerRegistry;
 import dev.architectury.registry.client.rendering.RenderTypeRegistry;
 import dev.architectury.registry.menu.MenuRegistry;
@@ -10,6 +12,9 @@ import net.minecraft.client.renderer.RenderType;
 import satisfy.bakery.client.gui.BakerStationGui;
 import satisfy.bakery.client.gui.CookingPotGui;
 import satisfy.bakery.client.gui.StoveGui;
+import satisfy.bakery.client.model.WanderingBakerModel;
+import satisfy.bakery.client.render.entity.WanderingBakerRenderer;
+import satisfy.bakery.registry.EntityRegistry;
 import satisfy.bakery.registry.ScreenHandlerTypeRegistry;
 
 import static satisfy.bakery.registry.ObjectRegistry.*;
@@ -41,11 +46,15 @@ public class BakeryClient {
     public static void preInitClient() {
         registerEntityRenderers();
         registerEntityModelLayer();
+
     }
 
     public static void registerEntityRenderers() {
+        EntityRendererRegistry.register(EntityRegistry.WANDERING_BAKER, WanderingBakerRenderer::new);
     }
 
     public static void registerEntityModelLayer() {
+        EntityModelLayerRegistry.register(WanderingBakerModel.LAYER_LOCATION, WanderingBakerModel::getTexturedModelData);
+
     }
 }
