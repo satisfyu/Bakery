@@ -27,9 +27,9 @@ public class BakerStationGui extends AbstractRecipeBookGUIScreen<BakerStationGui
 
     protected void renderProgressArrow(GuiGraphics guiGraphics) {
         final int progressX = this.menu.getShakeXProgress();
-        guiGraphics.fill(leftPos + 94, topPos + 45, 177, 26, progressX, 10);
+        guiGraphics.blit(BG, leftPos + 94, topPos + 45, 177, 26, progressX, 10);
         final int progressY = this.menu.getShakeYProgress();
-        guiGraphics.fill( leftPos + 96, topPos + 22 + 20 - progressY, 179, 2 + 20 - progressY, 15, progressY);
+        guiGraphics.blit(BG, leftPos + 96, topPos + 22 + 20 - progressY, 179, 2 + 20 - progressY, 15, progressY);
     }
 }
 

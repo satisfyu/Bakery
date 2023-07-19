@@ -37,8 +37,7 @@ public abstract class WanderingTraderManagerMixin implements CustomSpawner {
     @Final
     private ServerLevelData serverLevelData;
 
-    @Inject(method = "spawn", at = @At(value = "INVOKE", shift = At.Shift.BEFORE, target = "Lnet/minecraft/world/entity/EntityType;spawn(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/network/chat/Component;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/MobSpawnType;ZZ)Lnet/minecraft/world/entity/Entity;"), cancellable = true)
-    private void trySpawn(ServerLevel world, CallbackInfoReturnable<Boolean> cir) {
+    @Inject(method = "spawn", at = @At(value = "INVOKE", shift = At.Shift.BEFORE, target = "Lnet/minecraft/world/entity/EntityType;spawn(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/MobSpawnType;)Lnet/minecraft/world/entity/Entity;"), cancellable = true)    private void trySpawn(ServerLevel world, CallbackInfoReturnable<Boolean> cir) {
         if (world.random.nextBoolean()) {
             ServerPlayer playerEntity = world.getRandomPlayer();
             BlockPos blockPos = playerEntity.blockPosition();

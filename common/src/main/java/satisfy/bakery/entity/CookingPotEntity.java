@@ -114,7 +114,7 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
                 if (this.getItem(OUTPUT_SLOT).isEmpty()) {
                     return true;
                 }
-                final ItemStack recipeOutput = this.generateOutputItem(recipe, access);
+                final ItemStack recipeOutput = recipe.getResultItem(access);
                 final ItemStack outputSlotStack = this.getItem(OUTPUT_SLOT);
                 final int outputSlotCount = outputSlotStack.getCount();
                 if (this.getItem(OUTPUT_SLOT).isEmpty()) {
@@ -131,11 +131,12 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
         return false;
     }
 
+
     private void craft(Recipe<?> recipe, RegistryAccess access) {
         if (!canCraft(recipe, access)) {
             return;
         }
-        final ItemStack recipeOutput = this.generateOutputItem(recipe, access);
+        final ItemStack recipeOutput = recipe.getResultItem(access);
         final ItemStack outputSlotStack = this.getItem(OUTPUT_SLOT);
         if (outputSlotStack.isEmpty()) {
             setItem(OUTPUT_SLOT, recipeOutput.copy());

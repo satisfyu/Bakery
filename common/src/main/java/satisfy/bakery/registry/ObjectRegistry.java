@@ -14,7 +14,6 @@ import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import org.jetbrains.annotations.Nullable;
 import satisfy.bakery.Bakery;
 import satisfy.bakery.block.*;
 import satisfy.bakery.block.cakes.CakeBlock;
@@ -147,7 +146,7 @@ public class ObjectRegistry {
         return settings;
     }
 
-    private static Item.Properties getSettings() {
+    static Item.Properties getSettings() {
         return getSettings(settings -> {
         });
     }
@@ -157,14 +156,10 @@ public class ObjectRegistry {
         });
     }
 
-
     public static <T extends Block> RegistrySupplier<T> registerWithItem(String name, Supplier<T> block) {
-        return registerWithItem(name, block, Bakery.BAKERY_TAB);
-    }
-
-    public static <T extends Block> RegistrySupplier<T> registerWithItem(String name, Supplier<T> block, @Nullable CreativeModeTab tab) {
         return Util.registerWithItem(BLOCKS, BLOCK_REGISTRAR, ITEMS, ITEM_REGISTRAR, new BakeryIdentifier(name), block);
     }
+
 
     public static <T extends Block> RegistrySupplier<T> registerWithoutItem(String path, Supplier<T> block) {
         return Util.registerWithoutItem(BLOCKS, BLOCK_REGISTRAR, new BakeryIdentifier(path), block);

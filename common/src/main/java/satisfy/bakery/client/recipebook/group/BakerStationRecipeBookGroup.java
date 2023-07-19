@@ -4,14 +4,12 @@ import com.google.common.collect.ImmutableList;
 import de.cristelknight.doapi.client.recipebook.IRecipeBookGroup;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.event.client.player.ClientPickBlockCallback;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.block.Blocks;
-import satisfy.bakery.recipe.BakerStationRecipe;
 import satisfy.bakery.registry.ObjectRegistry;
 
 import java.util.List;

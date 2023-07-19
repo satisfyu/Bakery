@@ -24,7 +24,7 @@ public class StoveDisplay extends BasicDisplay implements SimpleGridMenuDisplay 
     private final float xp;
 
     public StoveDisplay(StoveRecipe recipe) {
-        this(EntryIngredients.ofIngredients(recipe.getIngredients()), Collections.singletonList(EntryIngredients.of(recipe.getResultItem())), recipe, recipe.getExperience());
+        this(EntryIngredients.ofIngredients(recipe.getIngredients()), Collections.singletonList(EntryIngredients.of(recipe.getResultItem(BasicDisplay.registryAccess()))), recipe, recipe.getExperience());
     }
 
     public StoveDisplay(List<EntryIngredient> input, List<EntryIngredient> output, CompoundTag tag) {

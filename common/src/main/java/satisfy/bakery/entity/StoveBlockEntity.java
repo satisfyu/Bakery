@@ -3,6 +3,7 @@ package satisfy.bakery.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -125,7 +126,8 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
         }
 
         final StoveRecipe recipe = world.getRecipeManager().getRecipeFor(RecipeTypeRegistry.STOVE_RECIPE_TYPE.get(), blockEntity, world).orElse(null);
-        if (!initialBurningState && canCraft(recipe)) {
+        RegistryAccess access = level.registryAccess();
+        if (!initialBurningState && canCraft(recipe, access)) {
             this.burnTime = this.burnTimeTotal = this.getTotalBurnTime(this.getItem(FUEL_SLOT));
             if (burnTime > 0) {
                 dirty = true;
@@ -139,14 +141,14 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
                 }
             }
         }
-        if (isBurning() && canCraft(recipe)) {
+        if (isBurning() && canCraft(recipe, access)) {
             ++this.cookTime;
             if (this.cookTime == cookTimeTotal) {
                 this.cookTime = 0;
-                craft(recipe);
+                craft(recipe, access);
                 dirty = true;
             }
-        } else if (!canCraft(recipe)) {
+        } else if (!canCraft(recipe, access)) {
             this.cookTime = 0;
         }
         if (initialBurningState != isBurning()) {
@@ -161,8 +163,8 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
 
     }
 
-    protected boolean canCraft(StoveRecipe recipe) {
-        if (recipe == null || recipe.getResultItem().isEmpty()) {
+    protected boolean canCraft(StoveRecipe recipe, RegistryAccess access) {
+        if (recipe == null || recipe.getResultItem(access).isEmpty()) {
             return false;
         } else if (this.getItem(FUEL_SLOT).isEmpty()) {
             return false;
@@ -172,7 +174,7 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
             if (this.getItem(OUTPUT_SLOT).isEmpty()) {
                 return true;
             }
-            final ItemStack recipeOutput = recipe.getResultItem();
+            final ItemStack recipeOutput = recipe.getResultItem(access);
             final ItemStack outputSlotStack = this.getItem(OUTPUT_SLOT);
             final int outputSlotCount = outputSlotStack.getCount();
             if (this.getItem(OUTPUT_SLOT).isEmpty()) {
@@ -187,11 +189,11 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
         }
     }
 
-    protected void craft(StoveRecipe recipe) {
-        if (recipe == null || !canCraft(recipe)) {
+    protected void craft(StoveRecipe recipe, RegistryAccess access) {
+        if (recipe == null || !canCraft(recipe, access)) {
             return;
         }
-        final ItemStack recipeOutput = recipe.getResultItem();
+        final ItemStack recipeOutput = recipe.getResultItem(access);
         final ItemStack outputSlotStack = this.getItem(OUTPUT_SLOT);
         if (outputSlotStack.isEmpty()) {
             setItem(OUTPUT_SLOT, recipeOutput);
@@ -274,7 +276,7 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
     @Override
     public void setItem(int slot, ItemStack stack) {
         final ItemStack stackInSlot = this.inventory.get(slot);
-        boolean dirty = !stack.isEmpty() && stack.sameItem(stackInSlot) && ItemStack.tagMatches(stack, stackInSlot);
+        boolean dirty = !stack.isEmpty() && ItemStack.isSameItem(stack, stackInSlot) && ItemStack.matches(stack, stackInSlot);
         this.inventory.set(slot, stack);
         if (stack.getCount() > this.getMaxStackSize()) {
             stack.setCount(this.getMaxStackSize());

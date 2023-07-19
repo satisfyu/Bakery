@@ -2,6 +2,7 @@ package satisfy.bakery.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -99,12 +100,12 @@ public class BakerStationBlockEntity extends BlockEntity implements Container, B
         final var recipeType = world.getRecipeManager()
                 .getRecipeFor(RecipeTypeRegistry.BAKER_STATION_RECIPE_TYPE.get(), blockEntity, world)
                 .orElse(null);
-        if (canCraft(recipeType)) {
+        RegistryAccess access = level.registryAccess();
+        if (canCraft(recipeType, access)) {
             this.fermentationTime++;
-
             if (this.fermentationTime == this.totalFermentationTime) {
                 this.fermentationTime = 0;
-                craft(recipeType);
+                craft(recipeType, access);
                 dirty = true;
             }
         } else {
@@ -116,14 +117,14 @@ public class BakerStationBlockEntity extends BlockEntity implements Container, B
 
     }
 
-    private boolean canCraft(BakerStationRecipe recipe) {
-        if (recipe == null || recipe.getResultItem().isEmpty()) {
+    private boolean canCraft(BakerStationRecipe recipe, RegistryAccess access) {
+        if (recipe == null || recipe.getResultItem(access).isEmpty()) {
             return false;
         } else if (areInputsEmpty()) {
             return false;
         }
         ItemStack itemStack = this.getItem(OUTPUT_SLOT);
-        return itemStack.isEmpty() || itemStack == recipe.getResultItem();
+        return itemStack.isEmpty() || itemStack == recipe.getResultItem(access);
     }
 
 
@@ -135,11 +136,11 @@ public class BakerStationBlockEntity extends BlockEntity implements Container, B
         return emptyStacks == 2;
     }
 
-    private void craft(BakerStationRecipe recipe) {
-        if (!canCraft(recipe)) {
+    private void craft(BakerStationRecipe recipe, RegistryAccess access) {
+        if (!canCraft(recipe, access)) {
             return;
         }
-        final ItemStack recipeOutput = recipe.getResultItem();
+        final ItemStack recipeOutput = recipe.getResultItem(access);
         final ItemStack outputSlotStack = this.getItem(OUTPUT_SLOT);
         if (outputSlotStack.isEmpty()) {
             ItemStack output = recipeOutput.copy();
@@ -154,6 +155,7 @@ public class BakerStationBlockEntity extends BlockEntity implements Container, B
             }
         }
     }
+
 
 
     @Override

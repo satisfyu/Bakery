@@ -26,9 +26,6 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import satisfy.bakery.registry.ObjectRegistry;
 
-import java.util.List;
-import java.util.Random;
-
 public class WildBush extends BushBlock implements BonemealableBlock {
 
     public static final IntegerProperty AGE;
@@ -101,38 +98,20 @@ public class WildBush extends BushBlock implements BonemealableBlock {
 
     @Override
     protected boolean mayPlaceOn(BlockState floor, BlockGetter world, BlockPos pos) {
-        return floor.canOcclude();
+        return floor.isSolidRender(world, pos);
     }
 
     @Override
-    public boolean isValidBonemealTarget(BlockGetter world, BlockPos pos, BlockState state, boolean isClient) {
-        return state.getValue(AGE) < 3;
+    public boolean isValidBonemealTarget(LevelReader levelReader, BlockPos blockPos, BlockState blockState, boolean bl) {
+        return blockState.getValue(AGE) < 3;
     }
+
 
     @Override
     public void performBonemeal(ServerLevel world, RandomSource random, BlockPos pos, BlockState state) {
         int i = Math.min(3, state.getValue(AGE) + 1);
         world.setBlock(pos, state.setValue(AGE, i), 2);
     }
-
-    @Override
-    public List<ItemStack> getDrops(BlockState state, net.minecraft.world.level.storage.loot.LootContext.Builder builder) {
-        List<ItemStack> drops = super.getDrops(state, builder);
-
-        if (state.getValue(AGE) >= 3) {
-            Random random = new Random();
-            int strawberryCount = random.nextInt(2);
-
-            for (int i = 0; i < strawberryCount; i++) {
-                drops.add(new ItemStack(ObjectRegistry.STRAWBERRY.get()));
-            }
-        } else {
-            drops.add(new ItemStack(ObjectRegistry.STRAWBERRY_SEEDS.get()));
-        }
-
-        return drops;
-    }
-
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
@@ -143,4 +122,6 @@ public class WildBush extends BushBlock implements BonemealableBlock {
         AGE = BlockStateProperties.AGE_3;
         SHAPE = Block.box(0.0, 0.0, 0.0, 16.0, 16.0, 16.0);
     }
+
+
 }

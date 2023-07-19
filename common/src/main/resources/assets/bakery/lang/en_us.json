@@ -156,7 +156,7 @@
   "item.bakery.tooltipitem.tooltip.item.bakery.sweet_dough": "Crafting Ingredient",
   "item.bakery.vegetable_sandwich": "Vegetable Sandwich",
   "item.bakery.waffle": "Waffle",
-  "itemGroup.bakery.bakery_tab": "Bakery",
+  "creativetab.bakery.tab": "Bakery",
   "rei.bakery.baking_category": "Bakery Station",
   "rei.bakery.cooking_pot_category": "Small Cooking Pot",
   "rei.bakery.stove_category": "Oven",

@@ -9,6 +9,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
+import satisfy.bakery.Bakery;
 import satisfy.bakery.client.gui.handler.CookingPotGuiHandler;
 import satisfy.bakery.client.recipebook.CookingPotRecipeBook;
 import satisfy.bakery.util.BakeryIdentifier;
@@ -26,13 +27,13 @@ public class CookingPotGui extends AbstractRecipeBookGUIScreen<CookingPotGuiHand
     @Override
     public void renderProgressArrow(GuiGraphics guiGraphics) {
         int progress = this.menu.getScaledProgress(18);
-        guiGraphics.fill( leftPos + 95, topPos + 14, 178, 15, progress, 30); //Position Arrow
+        guiGraphics.blit(BACKGROUND, this.leftPos + 95, this.topPos + 14, 178, 15, progress, 30);
     }
 
     @Override
     public void renderBurnIcon(GuiGraphics guiGraphics, int posX, int posY) {
         if (menu.isBeingBurned()) {
-            guiGraphics.fill(posX + 124, posY + 56, 176, 0, 17, 15); //fire
+            guiGraphics.blit(BACKGROUND, posX + 124, posY + 56, 176, 0, 17, 15);
         }
     }
 
