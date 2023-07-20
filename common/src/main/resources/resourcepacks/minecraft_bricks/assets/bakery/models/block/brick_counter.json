@@ -2,11 +2,11 @@
 	"credit": "Made by Satisfy",
 	"texture_size": [64, 64],
 	"textures": {
-		"3": "bakery:brick_counter_bottom",
-		"4": "bakery:baker_station_side_1",
-		"5": "bakery:baker_station_side_2",
-		"6": "bakery:brick_baker_station_top",
-		"particle": "bakery:baker_station_side_2"
+		"3": "bakery:block/old_brick_counter_bottom",
+		"4": "bakery:block/old_baker_station_side_1",
+		"5": "bakery:block/old_baker_station_side_2",
+		"6": "bakery:block/brick_baker_station_top",
+		"particle": "bakery:block/old_baker_station_side_2"
 	},
 	"elements": [
 		{

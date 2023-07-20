@@ -1,12 +1,12 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"1": "bakery:sink_side",
-		"2": "bakery:sink_bottom",
+		"1": "bakery:block/old_sink_side",
+		"2": "bakery:block/old_sink_bottom",
 		"4": "block/water_still",
-		"5": "bakery:sink_top",
-		"6": "bakery:faucet_deepslate",
-		"particle": "bakery:sink_side"
+		"5": "bakery:block/old_sink_top",
+		"6": "bakery:block/old_faucet_deepslate",
+		"particle": "bakery:block/old_sink_side"
 	},
 	"elements": [
 		{
