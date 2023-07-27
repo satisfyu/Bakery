@@ -1,4 +1,4 @@
-package satisfy.bakery.combat.rei.stove;
+package satisfy.bakery.compat.rei.stove;
 
 import com.google.common.collect.Lists;
 import me.shedaniel.math.Point;

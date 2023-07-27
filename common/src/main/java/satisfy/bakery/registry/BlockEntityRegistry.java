@@ -2,13 +2,12 @@ package satisfy.bakery.registry;
 
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import satisfy.bakery.Bakery;
 import satisfy.bakery.entity.BakerStationBlockEntity;
 import satisfy.bakery.entity.CabinetBlockEntity;
-import satisfy.bakery.entity.CookingPotEntity;
+import satisfy.bakery.entity.CookingPotBlockEntity;
 import satisfy.bakery.entity.StoveBlockEntity;
 
 import java.util.function.Supplier;
@@ -23,7 +22,7 @@ public class BlockEntityRegistry {
             ObjectRegistry.BRICK_STOVE.get(), ObjectRegistry.COBBLESTONE_STOVE.get(), ObjectRegistry.MUD_STOVE.get(), ObjectRegistry.GRANITE_STOVE.get(),
             ObjectRegistry.SANDSTONE_STOVE.get(), ObjectRegistry.STONE_BRICKS_STOVE.get(), ObjectRegistry.RED_NETHER_BRICKS_STOVE.get(),
             ObjectRegistry.DEEPSLATE_STOVE.get(), ObjectRegistry.QUARTZ_STOVE.get(), ObjectRegistry.END_STOVE.get()).build(null));
-    public static final RegistrySupplier<BlockEntityType<CookingPotEntity>> COOKING_POT_BLOCK_ENTITY = create("cooking_pot", () -> BlockEntityType.Builder.of(CookingPotEntity::new, ObjectRegistry.SMALL_COOKING_POT.get()).build(null));
+    public static final RegistrySupplier<BlockEntityType<CookingPotBlockEntity>> COOKING_POT_BLOCK_ENTITY = create("cooking_pot", () -> BlockEntityType.Builder.of(CookingPotBlockEntity::new, ObjectRegistry.SMALL_COOKING_POT.get()).build(null));
     public static final RegistrySupplier<BlockEntityType<BakerStationBlockEntity>> BAKER_STATION_BLOCK_ENTITY = create("baker_station", () -> BlockEntityType.Builder.of(BakerStationBlockEntity::new, ObjectRegistry.BAKER_STATION.get()).build(null));
 
 

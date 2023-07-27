@@ -44,14 +44,6 @@ public class BakerStationGuiHandler extends AbstractRecipeBookGUIScreenHandler {
         return progress * 22 / totalProgress + 1;
     }
 
-    public int getShakeYProgress() {
-        final int progress = this.propertyDelegate.get(0);
-        final int totalProgress = this.propertyDelegate.get(1);
-        if (totalProgress == 0 || progress == 0) {
-            return 0;
-        }
-        return progress * 19 / totalProgress + 1;
-    }
 
     private void buildBlockEntityContainer(Inventory playerInventory, Container inventory) {
         // Output

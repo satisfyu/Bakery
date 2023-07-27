@@ -1,4 +1,4 @@
-package satisfy.bakery.combat.rei;
+package satisfy.bakery.compat.rei;
 
 import me.shedaniel.rei.api.client.registry.category.CategoryRegistry;
 import me.shedaniel.rei.api.client.registry.display.DisplayRegistry;
@@ -7,12 +7,12 @@ import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
-import satisfy.bakery.combat.rei.baking.BakingCategory;
-import satisfy.bakery.combat.rei.baking.BakingDisplay;
-import satisfy.bakery.combat.rei.cooking.CookingPotCategory;
-import satisfy.bakery.combat.rei.cooking.CookingPotDisplay;
-import satisfy.bakery.combat.rei.stove.StoveCategory;
-import satisfy.bakery.combat.rei.stove.StoveDisplay;
+import satisfy.bakery.compat.rei.baking.BakingCategory;
+import satisfy.bakery.compat.rei.baking.BakingDisplay;
+import satisfy.bakery.compat.rei.cooking.CookingPotCategory;
+import satisfy.bakery.compat.rei.cooking.CookingPotDisplay;
+import satisfy.bakery.compat.rei.stove.StoveCategory;
+import satisfy.bakery.compat.rei.stove.StoveDisplay;
 import satisfy.bakery.recipe.BakerStationRecipe;
 import satisfy.bakery.recipe.CookingPotRecipe;
 import satisfy.bakery.recipe.StoveRecipe;
@@ -30,7 +30,13 @@ public class BakeryREIClientPlugin {
 
         registry.addWorkstations(BakingCategory.BAKING_DISPLAY, EntryStacks.of(ObjectRegistry.BAKER_STATION.get()));
         registry.addWorkstations(CookingPotDisplay.COOKING_POT_DISPLAY, EntryStacks.of(ObjectRegistry.SMALL_COOKING_POT.get()));
-        registry.addWorkstations(StoveDisplay.STOVE_DISPLAY, EntryStacks.of(ObjectRegistry.BRICK_STOVE.get()));
+
+        registry.addWorkstations(StoveDisplay.STOVE_DISPLAY,
+                EntryStacks.of(ObjectRegistry.BRICK_STOVE.get()), EntryStacks.of(ObjectRegistry.STONE_BRICKS_STOVE.get()), EntryStacks.of(ObjectRegistry.COBBLESTONE_STOVE.get()),
+                EntryStacks.of(ObjectRegistry.DEEPSLATE_STOVE.get()), EntryStacks.of(ObjectRegistry.GRANITE_STOVE.get()), EntryStacks.of(ObjectRegistry.MUD_STOVE.get()),
+                EntryStacks.of(ObjectRegistry.SANDSTONE_STOVE.get()), EntryStacks.of(ObjectRegistry.END_STOVE.get()), EntryStacks.of(ObjectRegistry.RED_NETHER_BRICKS_STOVE.get()),
+                EntryStacks.of(ObjectRegistry.QUARTZ_STOVE.get())
+        );
     }
 
     public static void registerDisplays(DisplayRegistry registry) {

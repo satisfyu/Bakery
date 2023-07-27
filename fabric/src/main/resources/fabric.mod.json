@@ -25,7 +25,10 @@
       "satisfy.bakery.fabric.client.BakeryClientFabric"
     ],
     "rei_client": [
-      "satisfy.bakery.fabric.rei.VineryReiClientPluginFabric"
+      "satisfy.bakery.fabric.rei.BakeryReiClientPluginFabric"
+    ],
+    "jei_mod_plugin": [
+      "satisfy.bakery.compat.jei.BakeryJEIPlugin"
     ]
   },
   "mixins": [

@@ -1,4 +1,4 @@
-package satisfy.bakery.combat.rei.cooking;
+package satisfy.bakery.compat.rei.cooking;
 
 import com.google.common.collect.Lists;
 import me.shedaniel.math.Point;
@@ -10,7 +10,7 @@ import me.shedaniel.rei.api.client.registry.display.DisplayCategory;
 import me.shedaniel.rei.api.common.category.CategoryIdentifier;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import net.minecraft.network.chat.Component;
-import satisfy.bakery.entity.CookingPotEntity;
+import satisfy.bakery.entity.CookingPotBlockEntity;
 import satisfy.bakery.registry.ObjectRegistry;
 
 import java.util.List;
@@ -37,7 +37,7 @@ public class CookingPotCategory implements DisplayCategory<CookingPotDisplay> {
         Point startPoint = new Point(bounds.getCenterX() - 55, bounds.getCenterY() - 13);
         List<Widget> widgets = Lists.newArrayList();
         widgets.add(Widgets.createRecipeBase(bounds));
-        widgets.add(Widgets.createArrow(new Point(startPoint.x + 54, startPoint.y - 1)).animationDurationTicks(CookingPotEntity.MAX_COOKING_TIME));
+        widgets.add(Widgets.createArrow(new Point(startPoint.x + 54, startPoint.y - 1)).animationDurationTicks(CookingPotBlockEntity.MAX_COOKING_TIME));
         widgets.add(Widgets.createResultSlotBackground(new Point(startPoint.x + 90, startPoint.y)));
         widgets.add(Widgets.createSlot(new Point(startPoint.x + 90, startPoint.y)).entries(display.getOutputEntries().get(0)).disableBackground().markOutput());
         for (int i = 0; i < 6; i++) {

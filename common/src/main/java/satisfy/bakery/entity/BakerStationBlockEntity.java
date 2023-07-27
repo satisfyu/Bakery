@@ -32,7 +32,6 @@ public class BakerStationBlockEntity extends BlockEntity implements Container, B
 
     private NonNullList<ItemStack> inventory;
     public static final int CAPACITY = 3;
-    public static final int COOKING_TIME_IN_TICKS = 1800; // 90s or 3 minutes
     private static final int OUTPUT_SLOT = 0;
     private int fermentationTime = 0;
     private int totalFermentationTime;

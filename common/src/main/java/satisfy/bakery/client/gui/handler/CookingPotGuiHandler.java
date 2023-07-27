@@ -13,7 +13,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import satisfy.bakery.client.gui.handler.slot.ExtendedSlot;
 import satisfy.bakery.client.recipebook.group.CookingPotRecipeBookGroup;
-import satisfy.bakery.entity.CookingPotEntity;
+import satisfy.bakery.entity.CookingPotBlockEntity;
 import satisfy.bakery.recipe.CookingPotRecipe;
 import satisfy.bakery.registry.ScreenHandlerTypeRegistry;
 import satisfy.bakery.registry.TagsRegistry;
@@ -68,7 +68,7 @@ public class CookingPotGuiHandler extends AbstractRecipeBookGUIScreenHandler {
 
     public int getScaledProgress(int arrowWidth) {
         final int progress = this.propertyDelegate.get(0);
-        final int totalProgress = CookingPotEntity.MAX_COOKING_TIME;
+        final int totalProgress = CookingPotBlockEntity.MAX_COOKING_TIME;
         if (progress == 0) {
             return 0;
         }

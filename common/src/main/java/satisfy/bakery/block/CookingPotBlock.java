@@ -15,7 +15,6 @@ import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -42,7 +41,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
-import satisfy.bakery.entity.CookingPotEntity;
+import satisfy.bakery.entity.CookingPotBlockEntity;
 import satisfy.bakery.registry.BlockEntityRegistry;
 import satisfy.bakery.registry.SoundEventRegistry;
 import satisfy.bakery.util.GeneralUtil;
@@ -109,7 +108,7 @@ public class CookingPotBlock extends BaseEntityBlock {
     public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean moved) {
         if (!state.is(newState.getBlock())) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof CookingPotEntity pot) {
+            if (blockEntity instanceof CookingPotBlockEntity pot) {
                 if (world instanceof ServerLevel) {
                     Containers.dropContents(world, pos, pot);
                 }
@@ -172,7 +171,7 @@ public class CookingPotBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new CookingPotEntity(pos, state);
+        return new CookingPotBlockEntity(pos, state);
     }
 
     @Override

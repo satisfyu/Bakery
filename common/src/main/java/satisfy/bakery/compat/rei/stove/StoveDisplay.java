@@ -1,4 +1,4 @@
-package satisfy.bakery.combat.rei.stove;
+package satisfy.bakery.compat.rei.stove;
 
 
 import me.shedaniel.rei.api.common.category.CategoryIdentifier;

@@ -39,9 +39,11 @@ public class StoveGuiHandler extends AbstractRecipeBookGUIScreenHandler {
 
     private void buildBlockEntityContainer(Inventory playerInventory, Container inventory) {
         this.addSlot(new StoveOutputSlot(playerInventory.player, inventory, 0, 126, 42));
+
         this.addSlot(new ExtendedSlot(inventory, 1, 29, 18, this::isIngredient));
         this.addSlot(new ExtendedSlot(inventory, 2, 47, 18, this::isIngredient));
         this.addSlot(new ExtendedSlot(inventory, 3, 65, 18, this::isIngredient));
+
         this.addSlot(new ExtendedSlot(inventory, 4, 42, 48, StoveGuiHandler::isFuel));
 
     }

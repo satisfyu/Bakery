@@ -43,17 +43,31 @@ public class CookingPotRecipeBook extends PrivateRecipeBookWidget {
     }
 
     @Override
-    public void insertRecipe(Recipe<?> recipe) {
-        int usedInputSlots = 1;
-        for (Ingredient ingredient : recipe.getIngredients()) {
+    public void insertRecipe(Recipe<?> r) {
+        if(r instanceof CookingPotRecipe recipe){
+            int usedInputSlots = 1;
+            for (Ingredient ingredient : recipe.getIngredients()) {
+                int slotIndex = 0;
+                for (Slot slot : screenHandler.slots) {
+                    ItemStack itemStack = slot.getItem();
+
+                    if (ingredient.test(itemStack) && usedInputSlots < 7) {
+                        Minecraft.getInstance().gameMode.handleInventoryMouseClick(screenHandler.containerId, slotIndex, 0, ClickType.PICKUP, Minecraft.getInstance().player);
+                        Minecraft.getInstance().gameMode.handleInventoryMouseClick(screenHandler.containerId, usedInputSlots, 0, ClickType.PICKUP, Minecraft.getInstance().player);
+                        ++usedInputSlots;
+                        break;
+                    }
+                    ++slotIndex;
+                }
+            }
+
             int slotIndex = 0;
-            for (Slot slot : this.screenHandler.slots) {
+            for (Slot slot : screenHandler.slots) {
                 ItemStack itemStack = slot.getItem();
 
-                if (ingredient.test(itemStack) && usedInputSlots < 7) {
+                if (ItemStack.isSameItem(recipe.getContainer(), itemStack)) {
                     Minecraft.getInstance().gameMode.handleInventoryMouseClick(screenHandler.containerId, slotIndex, 0, ClickType.PICKUP, Minecraft.getInstance().player);
-                    Minecraft.getInstance().gameMode.handleInventoryMouseClick(screenHandler.containerId, usedInputSlots, 0, ClickType.PICKUP, Minecraft.getInstance().player);
-                    ++usedInputSlots;
+                    Minecraft.getInstance().gameMode.handleInventoryMouseClick(screenHandler.containerId, 7, 0, ClickType.PICKUP, Minecraft.getInstance().player);
                     break;
                 }
                 ++slotIndex;

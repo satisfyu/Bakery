@@ -14,8 +14,10 @@ import satisfy.bakery.util.BakeryIdentifier;
 
 @Environment(EnvType.CLIENT)
 public class StoveGui extends AbstractRecipeBookGUIScreen<StoveGuiHandler> {
-    private static final ResourceLocation BG = new BakeryIdentifier("textures/gui/stove_gui.png");
+    public static final ResourceLocation BG = new BakeryIdentifier("textures/gui/stove_gui.png");
 
+    public static final int ARROW_X = 93;
+    public static final int ARROW_Y = 32;
     public StoveGui(StoveGuiHandler handler, Inventory inventory, Component title) {
         super(handler, inventory, title, new StoveRecipeBook(), BG);
     }

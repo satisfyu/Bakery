@@ -1,9 +1,5 @@
 package satisfy.bakery;
 
-import dev.architectury.registry.CreativeTabRegistry;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.ItemStack;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import satisfy.bakery.event.CommonEvents;

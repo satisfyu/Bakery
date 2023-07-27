@@ -31,7 +31,7 @@ import satisfy.bakery.registry.TagsRegistry;
 
 import static net.minecraft.world.item.ItemStack.isSameItemSameTags;
 
-public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<CookingPotEntity>, Container, MenuProvider {
+public class CookingPotBlockEntity extends BlockEntity implements BlockEntityTicker<CookingPotBlockEntity>, Container, MenuProvider {
 
     private final NonNullList<ItemStack> inventory = NonNullList.withSize(MAX_CAPACITY, ItemStack.EMPTY);
     private static final int MAX_CAPACITY = 8;
@@ -45,14 +45,14 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
 
     private final ContainerData delegate;
 
-    public CookingPotEntity(BlockPos pos, BlockState state) {
+    public CookingPotBlockEntity(BlockPos pos, BlockState state) {
         super(BlockEntityRegistry.COOKING_POT_BLOCK_ENTITY.get(), pos, state);
         this.delegate = new ContainerData() {
             @Override
             public int get(int index) {
                 return switch (index) {
-                    case 0 -> CookingPotEntity.this.cookingTime;
-                    case 1 -> CookingPotEntity.this.isBeingBurned ? 1 : 0;
+                    case 0 -> CookingPotBlockEntity.this.cookingTime;
+                    case 1 -> CookingPotBlockEntity.this.isBeingBurned ? 1 : 0;
                     default -> 0;
                 };
             }
@@ -60,8 +60,8 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
             @Override
             public void set(int index, int value) {
                 switch (index) {
-                    case 0 -> CookingPotEntity.this.cookingTime = value;
-                    case 1 -> CookingPotEntity.this.isBeingBurned = value != 0;
+                    case 0 -> CookingPotBlockEntity.this.cookingTime = value;
+                    case 1 -> CookingPotBlockEntity.this.isBeingBurned = value != 0;
                 }
             }
 
@@ -166,7 +166,7 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
 
 
     @Override
-    public void tick(Level world, BlockPos pos, BlockState state, CookingPotEntity blockEntity) {
+    public void tick(Level world, BlockPos pos, BlockState state, CookingPotBlockEntity blockEntity) {
         if (world.isClientSide()) {
             return;
         }

@@ -1,4 +1,4 @@
-package satisfy.bakery.combat.rei.cooking;
+package satisfy.bakery.compat.rei.cooking;
 
 
 import me.shedaniel.rei.api.common.category.CategoryIdentifier;
@@ -10,7 +10,7 @@ import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
 import satisfy.bakery.Bakery;
-import satisfy.bakery.combat.rei.BakeryREIClientPlugin;
+import satisfy.bakery.compat.rei.BakeryREIClientPlugin;
 import satisfy.bakery.recipe.CookingPotRecipe;
 
 import java.util.Collections;
