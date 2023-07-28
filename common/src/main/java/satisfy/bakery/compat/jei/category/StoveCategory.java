@@ -11,6 +11,7 @@ import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
@@ -61,6 +62,19 @@ public class StoveCategory implements IRecipeCategory<StoveRecipe> {
     public void draw(StoveRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
         arrow.draw(guiGraphics, StoveGui.ARROW_X - WIDTH_OF, StoveGui.ARROW_Y - HEIGHT_OF);
         burnIcon.draw(guiGraphics, 62 - WIDTH_OF, 49 - HEIGHT_OF);
+
+        drawExperience(recipe, guiGraphics);
+    }
+
+    protected void drawExperience(StoveRecipe recipe, GuiGraphics guiGraphics) {
+        float experience = recipe.getExperience();
+        if (experience > 0) {
+            Component experienceString = Component.translatable("gui.jei.category.smelting.experience", experience);
+            Minecraft minecraft = Minecraft.getInstance();
+            Font fontRenderer = minecraft.font;
+            int stringWidth = fontRenderer.width(experienceString);
+            guiGraphics.drawString(fontRenderer, experienceString, getWidth() - stringWidth, 0, 0xFF808080, false);
+        }
     }
 
     @Override
