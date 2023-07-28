@@ -27,6 +27,7 @@ public class Bakery {
     }
 
     public static void commonInit() {
+        CompostableRegistry.init();
     }
 }
 

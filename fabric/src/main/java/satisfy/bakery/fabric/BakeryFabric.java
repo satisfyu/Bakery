@@ -13,6 +13,7 @@ public class BakeryFabric implements ModInitializer {
     public void onInitialize() {
         Bakery.init();
         BakeryBiomeModification.init();
+        CompostableFabricRegistry.init();
 
 
         FabricLoader.getInstance().getModContainer(Bakery.MOD_ID).ifPresent(container -> {
