@@ -2,7 +2,7 @@
   "type": "bakery:stove",
   "ingredients": [
     {
-      "tag": "bakery:dough"
+      "item": "bakery:dough"
     },
     {
       "tag": "bakery:butter"

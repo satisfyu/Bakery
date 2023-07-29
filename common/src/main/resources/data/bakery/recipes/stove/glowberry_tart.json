@@ -6,6 +6,9 @@
     },
     {
       "item": "bakery:sweet_dough"
+    },
+    {
+      "item": "minecraft:sugar"
     }
   ],
   "item": "bakery:glowberry_tart",

@@ -6,6 +6,9 @@
     },
     {
       "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:water_bucket"
     }
   ],
   "item": "bakery:bread",
