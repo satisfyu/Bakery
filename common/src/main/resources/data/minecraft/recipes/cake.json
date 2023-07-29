@@ -11,7 +11,7 @@
       "tag": "bakery:wheat"
     },
     "E": {
-      "item": "minecraft:egg"
+      "tag": "bakery:egg"
     }
   },
   "pattern": [

@@ -8,7 +8,7 @@
       "tag": "bakery:jam"
     },
     {
-      "item": "minecraft:milk_bucket"
+      "tag": "bakery:milk"
     }
   ],
   "container": {

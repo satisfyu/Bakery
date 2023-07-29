@@ -6,6 +6,9 @@
     },
     {
       "item": "minecraft:sugar"
+    },
+    {
+      "tag": "bakery:butter"
     }
   ],
   "item": "bakery:blank_cake",

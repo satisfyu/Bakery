@@ -8,7 +8,7 @@
       "item": "bakery:sweet_dough"
     },
     {
-      "item": "bakery:butter"
+      "tag": "bakery:butter"
     }
   ],
   "item": "bakery:chocolate_tart",
