@@ -2,6 +2,7 @@ package satisfy.bakery.entity;
 
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;
@@ -34,7 +35,7 @@ import satisfy.bakery.registry.RecipeTypeRegistry;
 
 import static net.minecraft.world.item.ItemStack.isSameItemSameTags;
 
-public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<StoveBlockEntity>, Container, MenuProvider {
+public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<StoveBlockEntity>, ImplementedInventory, MenuProvider {
 
     private NonNullList<ItemStack> inventory;
 
@@ -86,6 +87,15 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
 
     public void dropExperience(ServerLevel world, Vec3 pos) {
         ExperienceOrb.award(world, pos, (int) experience);
+    }
+
+    @Override
+    public int[] getSlotsForFace(Direction side) {
+        if(side.equals(Direction.UP)){
+            return INGREDIENT_SLOTS;
+        } else if (side.equals(Direction.DOWN)){
+            return new int[]{OUTPUT_SLOT};
+        } else return new int[]{FUEL_SLOT};
     }
 
     @Override
@@ -249,29 +259,10 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
 
 
     @Override
-    public int getContainerSize() {
-        return inventory.size();
+    public NonNullList<ItemStack> getItems() {
+        return inventory;
     }
 
-    @Override
-    public boolean isEmpty() {
-        return inventory.stream().allMatch(ItemStack::isEmpty);
-    }
-
-    @Override
-    public ItemStack getItem(int slot) {
-        return this.inventory.get(slot);
-    }
-
-    @Override
-    public ItemStack removeItem(int slot, int amount) {
-        return ContainerHelper.removeItem(this.inventory, slot, amount);
-    }
-
-    @Override
-    public ItemStack removeItemNoUpdate(int slot) {
-        return ContainerHelper.takeItem(this.inventory, slot);
-    }
 
     @Override
     public void setItem(int slot, ItemStack stack) {
@@ -302,11 +293,6 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
         } else {
             return player.distanceToSqr((double) this.worldPosition.getX() + 0.5, (double) this.worldPosition.getY() + 0.5, (double) this.worldPosition.getZ() + 0.5) <= 64.0;
         }
-    }
-
-    @Override
-    public void clearContent() {
-        inventory.clear();
     }
 
     @Override
