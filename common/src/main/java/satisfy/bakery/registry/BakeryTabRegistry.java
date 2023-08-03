@@ -48,7 +48,7 @@ public class BakeryTabRegistry {
                 out.accept(ObjectRegistry.GLOWBERRY_JAM.get());
                 out.accept(ObjectRegistry.APPLE_JAM.get());
                 out.accept(ObjectRegistry.CHOCOLATE_JAM.get());
-                out.accept(ObjectRegistry.BUTTER.get());
+                out.accept(ObjectRegistry.YEAST.get());
                 out.accept(ObjectRegistry.SWEET_DOUGH.get());
                 out.accept(ObjectRegistry.DOUGH.get());
                 out.accept(ObjectRegistry.CROISSANT.get());
