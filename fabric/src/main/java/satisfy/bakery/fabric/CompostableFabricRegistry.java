@@ -14,7 +14,7 @@ public class CompostableFabricRegistry {
 
         CompostingChanceRegistry.INSTANCE.add(ObjectRegistry.DOUGH.get(), .3f);
         CompostingChanceRegistry.INSTANCE.add(ObjectRegistry.SWEET_DOUGH.get(), .3f);
-        CompostingChanceRegistry.INSTANCE.add(ObjectRegistry.BUTTER.get(), .3f);
+        CompostingChanceRegistry.INSTANCE.add(ObjectRegistry.YEAST.get(), .3f);
 
         CompostingChanceRegistry.INSTANCE.add(ObjectRegistry.STRAWBERRY_CAKE_SLICE.get(), .3f);
         CompostingChanceRegistry.INSTANCE.add(ObjectRegistry.CHOCOLATE_CAKE_SLICE.get(), .3f);

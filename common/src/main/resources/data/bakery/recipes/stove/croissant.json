@@ -5,10 +5,7 @@
       "item": "bakery:sweet_dough"
     },
     {
-      "tag": "bakery:butter"
-    },
-    {
-      "item": "minecraft:sugar"
+      "item": "bakery:yeast"
     }
   ],
   "item": "bakery:croissant",

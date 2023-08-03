@@ -1,7 +1,5 @@
 package satisfy.bakery.entity;
 
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.npc.WanderingTrader;
@@ -10,10 +8,14 @@ import net.minecraft.world.level.Level;
 import satisfy.bakery.registry.ObjectRegistry;
 import satisfy.bakery.util.VillagerUtil;
 
-import java.util.Map;
+import java.util.HashMap;
 
 public class WanderingBakerEntity extends WanderingTrader {
-    public static final Int2ObjectMap<VillagerTrades.ItemListing[]> TRADES = new Int2ObjectOpenHashMap<>(Map.of(1, new VillagerTrades.ItemListing[]{
+    public static final HashMap<Integer, VillagerTrades.ItemListing[]> TRADES = createTrades();
+
+private static  HashMap<Integer, VillagerTrades.ItemListing[]> createTrades() {
+    HashMap<Integer, VillagerTrades.ItemListing[]> trades = new HashMap<>();
+    trades.put(1, new VillagerTrades.ItemListing[]{
             new VillagerUtil.SellItemFactory(ObjectRegistry.DOUGH.get(), 2, 4, 8, 15),
             new VillagerUtil.SellItemFactory(ObjectRegistry.SWEET_DOUGH.get(), 2, 4, 8, 15),
             new VillagerUtil.SellItemFactory(ObjectRegistry.JAR.get(), 4, 2, 8, 1),
@@ -35,7 +37,9 @@ public class WanderingBakerEntity extends WanderingTrader {
             new VillagerUtil.SellItemFactory(ObjectRegistry.APPLE_PIE_SLICE.get(), 3, 2, 8, 5),
             new VillagerUtil.SellItemFactory(ObjectRegistry.CHOCOLATE_TRUFFLE.get(), 1, 1, 8, 2),
 
-    }));
+    });
+    return trades;
+}
 
     public WanderingBakerEntity(EntityType<? extends WanderingBakerEntity> entityType, Level world) {
         super(entityType, world);
@@ -46,7 +50,24 @@ public class WanderingBakerEntity extends WanderingTrader {
         if (this.offers == null) {
             this.offers = new MerchantOffers();
         }
-        this.addOffersFromItemListings(this.offers, TRADES.get(1), 8);
-    }
 
+        int key = 1;
+        if (TRADES.containsKey(key)) {
+            this.addOffersFromItemListings(this.offers, TRADES.get(key), 8);
+        } else {
+            VillagerTrades.ItemListing[] defaultTrades = new VillagerTrades.ItemListing[] {
+                    new VillagerUtil.SellItemFactory(ObjectRegistry.DOUGH.get(), 1, 4, 8, 10),
+                    new VillagerUtil.SellItemFactory(ObjectRegistry.BREADBOX.get(), 10, 1, 8, 20),
+                    new VillagerUtil.SellItemFactory(ObjectRegistry.CRUSTY_BREAD_BLOCK.get(), 4, 2, 8, 5),
+                    new VillagerUtil.SellItemFactory(ObjectRegistry.BRAIDED_BREAD_BLOCK.get(), 4, 1, 8, 5),
+                    new VillagerUtil.SellItemFactory(ObjectRegistry.SANDWICH.get(), 6, 2, 8, 10),
+                    new VillagerUtil.SellItemFactory(ObjectRegistry.APPLE_CUPCAKE.get(), 2, 1, 8, 5),
+                    new VillagerUtil.SellItemFactory(ObjectRegistry.APPLE_PIE.get(), 6, 1, 8, 5),
+                    new VillagerUtil.SellItemFactory(ObjectRegistry.APPLE_PIE_SLICE.get(), 3, 2, 8, 5),
+                    new VillagerUtil.SellItemFactory(ObjectRegistry.CHOCOLATE_TRUFFLE.get(), 1, 1, 8, 2),
+            };
+
+            this.addOffersFromItemListings(this.offers, defaultTrades, 8);
+        }
+    }
 }

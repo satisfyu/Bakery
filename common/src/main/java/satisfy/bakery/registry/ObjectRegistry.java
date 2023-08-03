@@ -73,7 +73,7 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Block> SWEETBERRY_JAM = registerWithItem("sweetberry_jam", () -> new StackableBlock(BlockBehaviour.Properties.of(Material.GLASS).instabreak().noOcclusion().sound(SoundType.GLASS)));
     public static final RegistrySupplier<Block> CHOCOLATE_JAM = registerWithItem("chocolate_jam", () -> new StackableBlock(BlockBehaviour.Properties.of(Material.GLASS).instabreak().noOcclusion().sound(SoundType.GLASS)));
     public static final RegistrySupplier<Block> APPLE_JAM = registerWithItem("apple_jam", () -> new StackableBlock(BlockBehaviour.Properties.of(Material.GLASS).instabreak().sound(SoundType.GLASS).noOcclusion()));
-    public static final RegistrySupplier<Item> BUTTER = registerItem("butter", () -> new IndulgentDelightItem(getSettings().food(Foods.ROTTEN_FLESH), 100));
+    public static final RegistrySupplier<Item> YEAST = registerItem("yeast", () -> new IndulgentDelightItem(getSettings().food(Foods.ROTTEN_FLESH), 100));
     public static final RegistrySupplier<Item> DOUGH = registerItem("dough", () -> new IndulgentDelightItem(getSettings().food(Foods.ROTTEN_FLESH), 100));
     public static final RegistrySupplier<Item> SWEET_DOUGH = registerItem("sweet_dough", () -> new IndulgentDelightItem(getSettings().food(Foods.ROTTEN_FLESH), 100));
     public static final RegistrySupplier<Item> CROISSANT = registerItem("croissant", () -> new SweetsItem(getFoodItemSettings(5, 0.6f, EffectRegistry.STUFFED.get(), 60 * 15), 400));

@@ -13,7 +13,7 @@ public class CompostableRegistry {
 
         ComposterBlock.COMPOSTABLES.put(ObjectRegistry.DOUGH.get(), .3f);
         ComposterBlock.COMPOSTABLES.put(ObjectRegistry.SWEET_DOUGH.get(), .3f);
-        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.BUTTER.get(), .3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.YEAST.get(), .3f);
 
         ComposterBlock.COMPOSTABLES.put(ObjectRegistry.STRAWBERRY_CAKE_SLICE.get(), .3f);
         ComposterBlock.COMPOSTABLES.put(ObjectRegistry.CHOCOLATE_CAKE_SLICE.get(), .3f);
