@@ -6,6 +6,9 @@
     },
     {
       "item": "bakery:yeast"
+    },
+    {
+      "item":"minecraft:sugar"
     }
   ],
   "item": "bakery:croissant",
