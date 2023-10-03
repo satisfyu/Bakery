@@ -5,10 +5,13 @@
       "tag": "bakery:dough"
     },
     {
+      "item": "bakery:yeast"
+    },
+    {
       "item": "minecraft:water_bucket"
     }
   ],
   "item": "bakery:crusty_bread",
-  "count": 3,
+  "count": 4,
   "experience": 0.35
 }
