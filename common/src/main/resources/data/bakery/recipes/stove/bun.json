@@ -6,6 +6,9 @@
     },
     {
       "item": "bakery:yeast"
+    },
+    {
+      "tag": "bakery:eggs"
     }
   ],
   "item": "bakery:bun",
