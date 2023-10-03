@@ -5,6 +5,9 @@
       "tag": "bakery:dough"
     },
     {
+      "item": "minecraft:wheat"
+    },
+    {
       "item": "minecraft:water_bucket"
     }
   ],

@@ -45,7 +45,7 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
     protected float experience;
 
     protected static final int FUEL_SLOT = StoveGuiHandler.FUEL_SLOT;
-    protected static final int[] INGREDIENT_SLOTS = {0, 1, 2};
+    protected static final int[] INGREDIENT_SLOTS = {1, 2, 3};
     protected static final int OUTPUT_SLOT = StoveGuiHandler.OUTPUT_SLOT;
 
     public static final int TOTAL_COOKING_TIME = 240;

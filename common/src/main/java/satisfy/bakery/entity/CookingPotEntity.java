@@ -170,7 +170,6 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
         getItem(BOTTLE_INPUT_SLOT).shrink(1);
     }
 
-
     private ItemStack getRemainderItem(ItemStack stack) {
         if (stack.getItem().hasCraftingRemainingItem()) {
             return new ItemStack(stack.getItem().getCraftingRemainingItem());
