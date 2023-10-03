@@ -19,6 +19,7 @@ public class Bakery {
         SoundEventRegistry.init();
         ScreenHandlerTypeRegistry.init();
         CommonEvents.init();
+        CompostableRegistry.init();
         BakeryTabRegistry.init();
     }
 
