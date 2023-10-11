@@ -1,12 +1,10 @@
 package satisfy.bakery.recipe;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+import com.mojang.serialization.*;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.GsonHelper;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
@@ -14,22 +12,18 @@ import net.minecraft.world.level.Level;
 import satisfy.bakery.registry.RecipeTypeRegistry;
 import satisfy.bakery.util.GeneralUtil;
 
-
 public class BakerStationRecipe implements Recipe<Container> {
+    private final NonNullList<Ingredient> ingredients;
+    private final ItemStack result;
 
-    final ResourceLocation id;
-    private final NonNullList<Ingredient> inputs;
-    private final ItemStack output;
-
-    public BakerStationRecipe(ResourceLocation id, NonNullList<Ingredient> inputs, ItemStack output) {
-        this.id = id;
-        this.inputs = inputs;
-        this.output = output;
+    public BakerStationRecipe(ItemStack result, NonNullList<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+        this.result = result;
     }
 
     @Override
     public boolean matches(Container inventory, Level world) {
-        return GeneralUtil.matchesRecipe(inventory, inputs, 1, 2);
+        return GeneralUtil.matchesRecipe(inventory, ingredients, 1, 2);
     }
 
     @Override
@@ -43,12 +37,7 @@ public class BakerStationRecipe implements Recipe<Container> {
     }
 
     public ItemStack getResultItem(RegistryAccess registryAccess) {
-        return this.output.copy();
-    }
-
-    @Override
-    public ResourceLocation getId() {
-        return id;
+        return this.result.copy();
     }
 
     @Override
@@ -63,7 +52,7 @@ public class BakerStationRecipe implements Recipe<Container> {
 
     @Override
     public NonNullList<Ingredient> getIngredients() {
-        return this.inputs;
+        return this.ingredients;
     }
 
     @Override
@@ -72,31 +61,33 @@ public class BakerStationRecipe implements Recipe<Container> {
     }
 
     public static class Serializer implements RecipeSerializer<BakerStationRecipe> {
-
+        private static final Codec<BakerStationRecipe> CODEC = RecordCodecBuilder.create(
+                (instance) -> instance.group(CraftingRecipeCodecs.ITEMSTACK_OBJECT_CODEC.fieldOf("result").forGetter((shapelessRecipe) -> shapelessRecipe.result),
+                        Ingredient.CODEC_NONEMPTY.listOf().fieldOf("ingredients").flatXmap((list) -> {
+                            Ingredient[] ingredients = list.stream().filter((ingredient) -> !ingredient.isEmpty()).toArray(Ingredient[]::new);
+                            if (ingredients.length == 0) {
+                                return DataResult.error(() -> "No ingredients for bakery:baker recipe");
+                            } else {
+                                return ingredients.length > 3 ? DataResult.error(() -> "Too many ingredients for bakery:baker recipe") : DataResult.success(NonNullList.of(Ingredient.EMPTY, ingredients));
+                            }
+                        }, DataResult::success).forGetter((shapelessRecipe) -> shapelessRecipe.ingredients)
+                ).apply(instance, BakerStationRecipe::new));
         @Override
-        public BakerStationRecipe fromJson(ResourceLocation id, JsonObject json) {
-            final var ingredients = GeneralUtil.deserializeIngredients(GsonHelper.getAsJsonArray(json, "ingredients"));
-            if (ingredients.isEmpty()) {
-                throw new JsonParseException("No ingredients for Baker Station Recipe");
-            } else if (ingredients.size() > 2) {
-                throw new JsonParseException("Too many ingredients for Baker Station Recipe");
-            } else {
-                return new BakerStationRecipe(id, ingredients, ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "result")));
-            }
+        public Codec<BakerStationRecipe> codec() {
+            return CODEC;
         }
-
         @Override
-        public BakerStationRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
+        public BakerStationRecipe fromNetwork(FriendlyByteBuf buf) {
             final var ingredients = NonNullList.withSize(buf.readVarInt(), Ingredient.EMPTY);
             ingredients.replaceAll(ignored -> Ingredient.fromNetwork(buf));
-            return new BakerStationRecipe(id, ingredients, buf.readItem());
+            return new BakerStationRecipe(buf.readItem(), ingredients);
         }
 
         @Override
         public void toNetwork(FriendlyByteBuf buf, BakerStationRecipe recipe) {
-            buf.writeVarInt(recipe.inputs.size());
-            recipe.inputs.forEach(entry -> entry.toNetwork(buf));
-            buf.writeItem(recipe.output);
+            buf.writeVarInt(recipe.ingredients.size());
+            recipe.ingredients.forEach(entry -> entry.toNetwork(buf));
+            buf.writeItem(recipe.result);
         }
     }
 

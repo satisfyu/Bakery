@@ -16,6 +16,7 @@ import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -206,16 +207,17 @@ public class CookingPotBlockEntity extends BlockEntity implements BlockEntityTic
             return;
         }
         delegate.set(1, 1);
-        Recipe<?> recipe = world.getRecipeManager().getRecipeFor(RecipeTypeRegistry.COOKING_POT_RECIPE_TYPE.get(), blockEntity, world).orElse(null);
+        RecipeHolder<?> recipe = world.getRecipeManager().getRecipeFor(RecipeTypeRegistry.COOKING_POT_RECIPE_TYPE.get(), blockEntity, world).orElse(null);
         RegistryAccess access = level.registryAccess();
-        boolean canCraft = canCraft(recipe, access);
+        if (recipe == null) return;
+        boolean canCraft = canCraft(recipe.value(), access);
         if (canCraft) {
             this.cookingTime++;
             if (this.cookingTime >= MAX_COOKING_TIME) {
                 this.cookingTime = 0;
-                craft(recipe, access);
+                craft(recipe.value(), access);
             }
-        } else if (!canCraft(recipe, access)) {
+        } else if (!canCraft(recipe.value(), access)) {
             this.cookingTime = 0;
         }
         if (canCraft) {

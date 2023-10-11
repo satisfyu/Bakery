@@ -23,7 +23,7 @@ public class CookingPotDisplay extends BasicDisplay {
 
 
     public CookingPotDisplay(Recipe<Container> recipe) {
-        this(EntryIngredients.ofIngredients(BakeryREIClientPlugin.ingredients(recipe, getContainer(recipe))), Collections.singletonList(EntryIngredients.of(recipe.getResultItem(BasicDisplay.registryAccess()))), Optional.ofNullable(recipe.getId()));
+        this(EntryIngredients.ofIngredients(BakeryREIClientPlugin.ingredients(recipe, getContainer(recipe))), Collections.singletonList(EntryIngredients.of(recipe.getResultItem(BasicDisplay.registryAccess()))), Optional.ofNullable(null));//TODO
     }
 
     public CookingPotDisplay(List<EntryIngredient> inputs, List<EntryIngredient> outputs, Optional<ResourceLocation> location) {

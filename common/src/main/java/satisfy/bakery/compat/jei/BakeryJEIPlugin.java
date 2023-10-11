@@ -13,6 +13,7 @@ import mezz.jei.api.registration.IRecipeTransferRegistration;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.block.Block;
 import satisfy.bakery.client.gui.handler.BakerStationGuiHandler;
@@ -49,13 +50,13 @@ public class BakeryJEIPlugin implements IModPlugin {
     public void registerRecipes(IRecipeRegistration registration) {
         RecipeManager rm = Objects.requireNonNull(Minecraft.getInstance().level).getRecipeManager();
 
-        List<CookingPotRecipe> fridgeRecipes = rm.getAllRecipesFor(RecipeTypeRegistry.COOKING_POT_RECIPE_TYPE.get());
+        List<CookingPotRecipe> fridgeRecipes = rm.getAllRecipesFor(RecipeTypeRegistry.COOKING_POT_RECIPE_TYPE.get()).stream().map(RecipeHolder::value).toList();
         registration.addRecipes(CookingPotCategory.COOKING_POT, fridgeRecipes);
 
-        List<StoveRecipe> stoveRecipes = rm.getAllRecipesFor(RecipeTypeRegistry.STOVE_RECIPE_TYPE.get());
+        List<StoveRecipe> stoveRecipes = rm.getAllRecipesFor(RecipeTypeRegistry.STOVE_RECIPE_TYPE.get()).stream().map(RecipeHolder::value).toList();
         registration.addRecipes(StoveCategory.STOVE, stoveRecipes);
 
-        List<BakerStationRecipe> bakerStationRecipes = rm.getAllRecipesFor(RecipeTypeRegistry.BAKER_STATION_RECIPE_TYPE.get());
+        List<BakerStationRecipe> bakerStationRecipes = rm.getAllRecipesFor(RecipeTypeRegistry.BAKER_STATION_RECIPE_TYPE.get()).stream().map(RecipeHolder::value).toList();
         registration.addRecipes(BakerStationCategory.BAKER_STATION, bakerStationRecipes);
     }
 

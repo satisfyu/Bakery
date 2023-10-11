@@ -135,9 +135,10 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
             --this.burnTime;
         }
 
-        final StoveRecipe recipe = world.getRecipeManager().getRecipeFor(RecipeTypeRegistry.STOVE_RECIPE_TYPE.get(), blockEntity, world).orElse(null);
+        final var recipe = world.getRecipeManager().getRecipeFor(RecipeTypeRegistry.STOVE_RECIPE_TYPE.get(), blockEntity, world).orElse(null);
         RegistryAccess access = level.registryAccess();
-        if (!initialBurningState && canCraft(recipe, access)) {
+        if (recipe == null) return;
+        if (!initialBurningState && canCraft(recipe.value(), access)) {
             this.burnTime = this.burnTimeTotal = this.getTotalBurnTime(this.getItem(FUEL_SLOT));
             if (burnTime > 0) {
                 dirty = true;
@@ -151,14 +152,14 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
                 }
             }
         }
-        if (isBurning() && canCraft(recipe, access)) {
+        if (isBurning() && canCraft(recipe.value(), access)) {
             ++this.cookTime;
             if (this.cookTime == cookTimeTotal) {
                 this.cookTime = 0;
-                craft(recipe, access);
+                craft(recipe.value(), access);
                 dirty = true;
             }
-        } else if (!canCraft(recipe, access)) {
+        } else if (!canCraft(recipe.value(), access)) {
             this.cookTime = 0;
         }
         if (initialBurningState != isBurning()) {

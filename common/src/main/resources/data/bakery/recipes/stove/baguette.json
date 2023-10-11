@@ -11,7 +11,9 @@
       "item": "bakery:yeast"
     }
   ],
-  "item": "bakery:baguette",
-  "count": 3,
+  "result": {
+    "count": 3,
+    "item": "bakery:baguette"
+  },
   "experience": 0.15
 }

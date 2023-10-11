@@ -1,12 +1,11 @@
 package satisfy.bakery.recipe;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.GsonHelper;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
@@ -16,22 +15,19 @@ import satisfy.bakery.util.GeneralUtil;
 
 
 public class StoveRecipe implements Recipe<Container> {
-
-    protected final ResourceLocation id;
-    protected final NonNullList<Ingredient> inputs;
-    protected final ItemStack output;
+    protected final NonNullList<Ingredient> ingredients;
+    protected final ItemStack result;
     protected final float experience;
 
-    public StoveRecipe(ResourceLocation id, NonNullList<Ingredient> inputs, ItemStack output, float experience) {
-        this.id = id;
-        this.inputs = inputs;
-        this.output = output;
+    public StoveRecipe(ItemStack result, NonNullList<Ingredient> ingredients, float experience) {
+        this.ingredients = ingredients;
+        this.result = result;
         this.experience = experience;
     }
 
     @Override
     public boolean matches(Container inventory, Level world) {
-        return GeneralUtil.matchesRecipe(inventory, inputs, 1, 3);
+        return GeneralUtil.matchesRecipe(inventory, ingredients, 1, 3);
     }
     @Override
     public ItemStack assemble(Container container, RegistryAccess registryAccess) {
@@ -46,20 +42,13 @@ public class StoveRecipe implements Recipe<Container> {
 
     @Override
     public ItemStack getResultItem(RegistryAccess registryAccess) {
-        return this.output.copy();
+        return this.result.copy();
     }
 
     @Override
     public NonNullList<Ingredient> getIngredients() {
-        return this.inputs;
+        return this.ingredients;
     }
-
-
-    @Override
-    public ResourceLocation getId() {
-        return this.id;
-    }
-
 
     public float getExperience() {
         return experience;
@@ -81,38 +70,37 @@ public class StoveRecipe implements Recipe<Container> {
     }
 
     public static class Serializer implements RecipeSerializer<StoveRecipe> {
-
+        private static final Codec<StoveRecipe> CODEC = RecordCodecBuilder.create(
+                (instance) -> instance.group(CraftingRecipeCodecs.ITEMSTACK_OBJECT_CODEC.fieldOf("result").forGetter((shapelessRecipe) -> shapelessRecipe.result),
+                        Ingredient.CODEC_NONEMPTY.listOf().fieldOf("ingredients").flatXmap((list) -> {
+                            Ingredient[] ingredients = list.stream().filter((ingredient) -> !ingredient.isEmpty()).toArray(Ingredient[]::new);
+                            if (ingredients.length == 0) {
+                                return DataResult.error(() -> "No ingredients for bakery:stove recipe");
+                            } else {
+                                return ingredients.length > 6 ? DataResult.error(() -> "Too many ingredients for bakery:stove recipe") : DataResult.success(NonNullList.of(Ingredient.EMPTY, ingredients));
+                            }
+                        }, DataResult::success).forGetter((shapelessRecipe) -> shapelessRecipe.ingredients),
+                        Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter((abstractCookingRecipe) -> abstractCookingRecipe.experience)
+                ).apply(instance, StoveRecipe::new));
         @Override
-        public StoveRecipe fromJson(ResourceLocation id, JsonObject json) {
-            final var ingredients = GeneralUtil.deserializeIngredients(GsonHelper.getAsJsonArray(json, "ingredients"));
-            if (ingredients.isEmpty()) {
-                throw new JsonParseException("No ingredients for Stove Recipe");
-            } else if (ingredients.size() > 3) {
-                throw new JsonParseException("Too many ingredients for Stove Recipe");
-            } else {
-                final ItemStack outputStack = ShapedRecipe.itemStackFromJson(json);
-                float xp = GsonHelper.getAsFloat(json, "experience", 0.0F);
-                return new StoveRecipe(id, ingredients, outputStack, xp);
-
-            }
-
+        public Codec<StoveRecipe> codec() {
+            return CODEC;
         }
 
-
         @Override
-        public StoveRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
+        public StoveRecipe fromNetwork(FriendlyByteBuf buf) {
             final var ingredients = NonNullList.withSize(buf.readVarInt(), Ingredient.EMPTY);
             ingredients.replaceAll(ignored -> Ingredient.fromNetwork(buf));
             final ItemStack output = buf.readItem();
             final float xp = buf.readFloat();
-            return new StoveRecipe(id, ingredients, output, xp);
+            return new StoveRecipe(output, ingredients, xp);
         }
 
         @Override
         public void toNetwork(FriendlyByteBuf packet, StoveRecipe recipe) {
-            packet.writeVarInt(recipe.inputs.size());
-            recipe.inputs.forEach(entry -> entry.toNetwork(packet));
-            packet.writeItem(recipe.output);
+            packet.writeVarInt(recipe.ingredients.size());
+            recipe.ingredients.forEach(entry -> entry.toNetwork(packet));
+            packet.writeItem(recipe.result);
             packet.writeFloat(recipe.experience);
         }
     }

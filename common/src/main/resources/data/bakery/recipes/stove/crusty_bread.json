@@ -11,7 +11,9 @@
       "item": "minecraft:water_bucket"
     }
   ],
-  "item": "bakery:crusty_bread",
-  "count": 4,
+  "result": {
+    "count": 4,
+    "item": "bakery:crusty_bread"
+  },
   "experience": 0.35
 }

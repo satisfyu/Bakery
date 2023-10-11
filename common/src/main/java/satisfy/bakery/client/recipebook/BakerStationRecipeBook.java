@@ -2,8 +2,10 @@ package satisfy.bakery.client.recipebook;
 
 import de.cristelknight.doapi.client.recipebook.screen.widgets.PrivateRecipeBookWidget;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.components.WidgetSprites;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Container;
 import net.minecraft.world.inventory.ClickType;
@@ -11,6 +13,7 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeType;
 import org.jetbrains.annotations.Nullable;
 import satisfy.bakery.registry.RecipeTypeRegistry;
@@ -54,11 +57,6 @@ public class BakerStationRecipeBook extends PrivateRecipeBookWidget {
     }
 
     @Override
-    protected void setCraftableButtonTexture() {
-        this.toggleCraftableButton.initTextureValues(152, 41, 28, 18, TEXTURE);
-    }
-
-    @Override
     public void slotClicked(@Nullable Slot slot) {
         super.slotClicked(slot);
         if (slot != null && slot.index < this.screenHandler.getCraftingSlotCount()) {
@@ -89,5 +87,10 @@ public class BakerStationRecipeBook extends PrivateRecipeBookWidget {
     @Override
     public boolean isFocused() {
         return false;
+    }
+
+    @Override
+    public void recipesShown(List<RecipeHolder<?>> list) {
+        //TODO
     }
 }

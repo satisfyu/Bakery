@@ -11,7 +11,9 @@
       "item": "bakery:yeast"
     }
   ],
-  "item": "bakery:bundt_cake",
-  "count": 1,
+  "result": {
+    "count": 1,
+    "item": "bakery:bundt_cake"
+  },
   "experience": 0.32
 }

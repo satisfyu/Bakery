@@ -112,11 +112,12 @@ public class BakerStationBlockEntity extends BlockEntity implements ImplementedI
                 .getRecipeFor(RecipeTypeRegistry.BAKER_STATION_RECIPE_TYPE.get(), blockEntity, world)
                 .orElse(null);
         RegistryAccess access = level.registryAccess();
-        if (canCraft(recipeType, access)) {
+        if (recipeType == null) return;
+        if (canCraft(recipeType.value(), access)) {
             this.fermentationTime++;
             if (this.fermentationTime == this.totalFermentationTime) {
                 this.fermentationTime = 0;
-                craft(recipeType, access);
+                craft(recipeType.value(), access);
                 dirty = true;
             }
         } else {

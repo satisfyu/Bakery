@@ -11,7 +11,9 @@
       "item": "bakery:yeast"
     }
   ],
-  "item": "bakery:blank_cake",
-  "count": 3,
+  "result": {
+    "count": 3,
+    "item": "bakery:blank_cake"
+  },
   "experience": 0.35
 }

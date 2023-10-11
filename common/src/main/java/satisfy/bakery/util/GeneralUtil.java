@@ -81,17 +81,6 @@ public class GeneralUtil {
         return true;
     }
 
-    public static NonNullList<Ingredient> deserializeIngredients(JsonArray json) {
-        NonNullList<Ingredient> ingredients = NonNullList.create();
-        for (int i = 0; i < json.size(); i++) {
-            Ingredient ingredient = Ingredient.fromJson(json.get(i));
-            if (!ingredient.isEmpty()) {
-                ingredients.add(ingredient);
-            }
-        }
-        return ingredients;
-    }
-
     public static VoxelShape rotateShape(Direction from, Direction to, VoxelShape shape) {
         VoxelShape[] buffer = new VoxelShape[]{shape, Shapes.empty()};
 

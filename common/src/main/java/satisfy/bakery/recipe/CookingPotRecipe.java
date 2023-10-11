@@ -1,12 +1,11 @@
 package satisfy.bakery.recipe;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.GsonHelper;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
@@ -15,22 +14,19 @@ import satisfy.bakery.registry.RecipeTypeRegistry;
 import satisfy.bakery.util.GeneralUtil;
 
 public class CookingPotRecipe implements Recipe<Container> {
-
-    final ResourceLocation id;
-    private final NonNullList<Ingredient> inputs;
+    private final NonNullList<Ingredient> ingredients;
     private final ItemStack container;
-    private final ItemStack output;
+    private final ItemStack result;
 
-    public CookingPotRecipe(ResourceLocation id, NonNullList<Ingredient> inputs, ItemStack container, ItemStack output) {
-        this.id = id;
-        this.inputs = inputs;
+    public CookingPotRecipe(ItemStack result, NonNullList<Ingredient> ingredients, ItemStack container) {
+        this.ingredients = ingredients;
         this.container = container;
-        this.output = output;
+        this.result = result;
     }
 
     @Override
     public boolean matches(Container inventory, Level world) {
-        return GeneralUtil.matchesRecipe(inventory, inputs, 1, 7);
+        return GeneralUtil.matchesRecipe(inventory, ingredients, 1, 7);
     }
 
     @Override
@@ -45,14 +41,8 @@ public class CookingPotRecipe implements Recipe<Container> {
     }
 
     public ItemStack getResultItem(RegistryAccess registryAccess) {
-        return this.output.copy();
+        return this.result.copy();
     }
-
-    @Override
-    public ResourceLocation getId() {
-        return id;
-    }
-
     @Override
     public RecipeSerializer<?> getSerializer() {
         return RecipeTypeRegistry.COOKING_POT_RECIPE_SERIALIZER.get();
@@ -65,7 +55,7 @@ public class CookingPotRecipe implements Recipe<Container> {
 
     @Override
     public NonNullList<Ingredient> getIngredients() {
-        return this.inputs;
+        return this.ingredients;
     }
 
     public ItemStack getContainer() {
@@ -78,32 +68,37 @@ public class CookingPotRecipe implements Recipe<Container> {
     }
 
     public static class Serializer implements RecipeSerializer<CookingPotRecipe> {
+        private static final Codec<CookingPotRecipe> CODEC = RecordCodecBuilder.create(
+                (instance) -> instance.group(CraftingRecipeCodecs.ITEMSTACK_OBJECT_CODEC.fieldOf("result").forGetter((shapelessRecipe) -> shapelessRecipe.result)
+                        , Ingredient.CODEC_NONEMPTY.listOf().fieldOf("ingredients").flatXmap((list) -> {
+                            Ingredient[] ingredients = list.stream().filter((ingredient) -> !ingredient.isEmpty()).toArray(Ingredient[]::new);
+                            if (ingredients.length == 0) {
+                                return DataResult.error(() -> "No ingredients for bakery:pot_cooking recipe");
+                            } else {
+                                return ingredients.length > 6 ? DataResult.error(() -> "Too many ingredients for bakery:pot_cooking recipe") : DataResult.success(NonNullList.of(Ingredient.EMPTY, ingredients));
+                            }
+                        }, DataResult::success).forGetter((shapelessRecipe) -> shapelessRecipe.ingredients),
+                        CraftingRecipeCodecs.ITEMSTACK_OBJECT_CODEC.fieldOf("container").forGetter((shapelessRecipe) -> shapelessRecipe.container)
+                ).apply(instance, CookingPotRecipe::new));
 
         @Override
-        public CookingPotRecipe fromJson(ResourceLocation id, JsonObject json) {
-            final var ingredients = GeneralUtil.deserializeIngredients(GsonHelper.getAsJsonArray(json, "ingredients"));
-            if (ingredients.isEmpty()) {
-                throw new JsonParseException("No ingredients for CookingPot Recipe");
-            } else if (ingredients.size() > 6) {
-                throw new JsonParseException("Too many ingredients for CookingPot Recipe");
-            } else {
-                return new CookingPotRecipe(id, ingredients, ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "container")), ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "result")));
-            }
+        public Codec<CookingPotRecipe> codec() {
+            return CODEC;
         }
 
         @Override
-        public CookingPotRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
+        public CookingPotRecipe fromNetwork(FriendlyByteBuf buf) {
             final var ingredients = NonNullList.withSize(buf.readVarInt(), Ingredient.EMPTY);
             ingredients.replaceAll(ignored -> Ingredient.fromNetwork(buf));
-            return new CookingPotRecipe(id, ingredients, buf.readItem(), buf.readItem());
+            return new CookingPotRecipe(buf.readItem(), ingredients, buf.readItem());
         }
 
         @Override
         public void toNetwork(FriendlyByteBuf buf, CookingPotRecipe recipe) {
-            buf.writeVarInt(recipe.inputs.size());
-            recipe.inputs.forEach(entry -> entry.toNetwork(buf));
+            buf.writeItem(recipe.result);
+            buf.writeVarInt(recipe.ingredients.size());
+            recipe.ingredients.forEach(entry -> entry.toNetwork(buf));
             buf.writeItem(recipe.getContainer());
-            buf.writeItem(recipe.output);
         }
     }
 

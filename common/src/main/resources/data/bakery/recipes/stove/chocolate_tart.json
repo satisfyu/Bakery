@@ -11,7 +11,9 @@
       "item": "bakery:yeast"
     }
   ],
-  "item": "bakery:chocolate_tart",
-  "count": 1,
+  "result": {
+    "count": 1,
+    "item": "bakery:chocolate_tart"
+  },
   "experience": 0.35
 }

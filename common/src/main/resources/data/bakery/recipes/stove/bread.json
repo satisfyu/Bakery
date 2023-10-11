@@ -11,7 +11,9 @@
       "item": "minecraft:water_bucket"
     }
   ],
-  "item": "bakery:bread",
-  "count": 3,
+  "result": {
+    "count": 3,
+    "item": "bakery:bread"
+  },
   "experience": 0.15
 }
