@@ -1,0 +1,68 @@
+{
+  "variants": {
+
+    "facing=north,type=none": {
+      "model": "minecraft:block/air"
+    },
+    "facing=east,type=none": {
+      "model": "minecraft:block/air",
+      "y": 90
+    },
+    "facing=south,type=none": {
+      "model": "minecraft:block/air",
+      "y": 180
+    },
+    "facing=west,type=none": {
+      "model": "minecraft:block/air",
+      "y": 270
+    },
+
+    "facing=north,type=middle": {
+      "model": "minecraft:block/air"
+    },
+    "facing=east,type=middle": {
+      "model": "minecraft:block/air",
+      "y": 90
+    },
+    "facing=south,type=middle": {
+      "model": "minecraft:block/air",
+      "y": 180
+    },
+    "facing=west,type=middle": {
+      "model": "minecraft:block/air",
+      "y": 270
+    },
+
+    "facing=north,type=left": {
+      "model": "minecraft:block/air"
+    },
+    "facing=east,type=left": {
+      "model": "minecraft:block/air",
+      "y": 90
+    },
+    "facing=south,type=left": {
+      "model": "minecraft:block/air",
+      "y": 180
+    },
+    "facing=west,type=left": {
+      "model": "minecraft:block/air",
+      "y": 270
+    },
+
+    "facing=north,type=right": {
+      "model": "minecraft:block/air",
+      "y": 180
+    },
+    "facing=east,type=right": {
+      "model": "minecraft:block/air",
+      "y": 270
+    },
+    "facing=south,type=right": {
+      "model": "minecraft:block/air"
+    },
+    "facing=west,type=right": {
+      "model": "minecraft:block/air",
+      "y": 90
+    }
+  }
+}

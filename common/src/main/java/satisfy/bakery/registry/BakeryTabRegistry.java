@@ -35,6 +35,8 @@ public class BakeryTabRegistry {
                 out.accept(ObjectRegistry.IRON_CHAIR.get());
                 out.accept(ObjectRegistry.STREET_SIGN.get());
                 out.accept(ObjectRegistry.CAKE_STAND.get());
+                out.accept(ObjectRegistry.CAKE_DISPLAY.get());
+                out.accept(ObjectRegistry.CUPCAKE_DISPLAY.get());
                 out.accept(ObjectRegistry.BREADBOX.get());
                 out.accept(ObjectRegistry.TRAY.get());
                 out.accept(ObjectRegistry.BREAD_CRATE.get());
