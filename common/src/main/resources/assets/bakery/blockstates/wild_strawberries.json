@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "bakery:block/wild_strawberries_1",
+        "weight": 1
+      },
+      {
+        "model": "bakery:block/wild_strawberries_2",
+        "weight": 1
+      },
+      {
+        "model": "bakery:block/wild_strawberries_3",
+        "weight": 1
+      }
+    ]
+  }
+}

@@ -11,6 +11,14 @@
     "minecraft:birch_forest",
     "minecraft:meadow",
     "minecraft:sunflower_plains",
-    "minecraft:river"
+    "minecraft:river",
+    "minecraft:jungle",
+    "minecraft:sparse_jungle",
+    "minecraft:bamboo_jungle",
+    "minecraft:wooded_badlands",
+    "minecraft:savanna",
+    "minecraft:savanna_plateau",
+    "minecraft:windswept_savanna",
+    "minecraft:wooded_badlands"
   ]
 }

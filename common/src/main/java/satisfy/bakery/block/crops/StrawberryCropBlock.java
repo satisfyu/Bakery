@@ -19,7 +19,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import satisfy.bakery.registry.ObjectRegistry;
 
 public class StrawberryCropBlock extends CropBlock {
-    public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 4);
+    public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 5);
 
     public StrawberryCropBlock(Properties settings) {
         super(settings);
@@ -32,7 +32,7 @@ public class StrawberryCropBlock extends CropBlock {
 
     @Override
     public int getMaxAge() {
-        return 4;
+        return 5;
     }
 
     @Override
@@ -48,7 +48,7 @@ public class StrawberryCropBlock extends CropBlock {
     @Override
     public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         int i = state.getValue(AGE);
-        boolean bl = i == 4;
+        boolean bl = i == 5;
         if (!bl && player.getItemInHand(hand).is(Items.BONE_MEAL)) {
             return InteractionResult.PASS;
         } else if (i > 1) {

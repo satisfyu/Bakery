@@ -19,11 +19,11 @@ public class Bakery {
         SoundEventRegistry.init();
         ScreenHandlerTypeRegistry.init();
         CommonEvents.init();
-        CompostableRegistry.init();
         BakeryTabRegistry.init();
     }
 
     public static void commonInit() {
+        ObjectRegistry.registerCompostable();
     }
 }
 

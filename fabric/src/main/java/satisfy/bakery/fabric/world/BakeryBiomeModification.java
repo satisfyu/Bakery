@@ -15,11 +15,9 @@ public class BakeryBiomeModification {
 
     public static void init() {
         BiomeModification world = BiomeModifications.create(new BakeryIdentifier("world_features"));
-        Predicate<BiomeSelectionContext> strawberryJungleBiomes = getBakerySelector("spawns_strawberry_jungle");
-        Predicate<BiomeSelectionContext> strawberryTaigaBiomes = getBakerySelector("spawns_strawberry_taiga");
+        Predicate<BiomeSelectionContext> strawberryBiomes = getBakerySelector("spawns_strawberries");
 
-        world.add(ModificationPhase.ADDITIONS, strawberryJungleBiomes, ctx -> ctx.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, BakeryPlacedFeature.STRAWBERRY_JUNGLE_PATCH_CHANCE_KEY));
-        world.add(ModificationPhase.ADDITIONS, strawberryTaigaBiomes, ctx -> ctx.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, BakeryPlacedFeature.STRAWBERRY_TAIGA_PATCH_CHANCE_KEY));
+        world.add(ModificationPhase.ADDITIONS, strawberryBiomes, ctx -> ctx.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, BakeryPlacedFeature.STRAWBERRY_PATCH_CHANCE_KEY));
     }
 
     private static Predicate<BiomeSelectionContext> getBakerySelector(String path) {

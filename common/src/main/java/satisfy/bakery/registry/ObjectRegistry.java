@@ -9,6 +9,7 @@ import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.*;
@@ -20,7 +21,6 @@ import satisfy.bakery.block.cakes.CakeBlock;
 import satisfy.bakery.block.cakes.*;
 import satisfy.bakery.block.crops.OatCropBlock;
 import satisfy.bakery.block.crops.StrawberryCropBlock;
-import satisfy.bakery.block.crops.WildBush;
 import satisfy.bakery.item.*;
 import satisfy.bakery.util.BakeryIdentifier;
 
@@ -34,8 +34,7 @@ public class ObjectRegistry {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(Bakery.MOD_ID, Registries.BLOCK);
     public static final Registrar<Block> BLOCK_REGISTRAR = BLOCKS.getRegistrar();
 
-    public static final RegistrySupplier<Block> STRAWBERRY_TAIGA = registerWithoutItem("strawberry_taiga", () -> new WildBush(getBushSettings()));
-    public static final RegistrySupplier<Block> STRAWBERRY_JUNGLE = registerWithoutItem("strawberry_jungle", () -> new WildBush(getBushSettings()));
+    public static final RegistrySupplier<Block> WILD_STRAWBERRIES = registerWithoutItem("wild_strawberries", () -> new FlowerBlock(MobEffects.HEAL, 1, BlockBehaviour.Properties.copy(Blocks.DANDELION)));
     public static final RegistrySupplier<Block> STRAWBERRY_CROP = registerWithoutItem("strawberry_crop", () -> new StrawberryCropBlock(getBushSettings()));
     public static final RegistrySupplier<Item> STRAWBERRY_SEEDS = registerItem("strawberry_seeds", () -> new BlockItem(STRAWBERRY_CROP.get(), getSettings()));
     public static final RegistrySupplier<Item> STRAWBERRY = registerItem("strawberry", () -> new TooltipItem(getSettings().food(Foods.BEETROOT)));
@@ -134,6 +133,42 @@ public class ObjectRegistry {
     public static void init() {
         ITEMS.register();
         BLOCKS.register();
+    }
+
+    public static void registerCompostable() {
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.OAT.get(), .3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.OAT_SEEDS.get(), .3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.STRAWBERRY.get(), .3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.STRAWBERRY_SEEDS.get(), .3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.YEAST.get(), .3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.DOUGH.get(), .3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.SWEET_DOUGH.get(), .3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.CRUSTY_BREAD.get(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.BREAD.get(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.BAGUETTE.get(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.TOAST.get(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.BRAIDED_BREAD.get(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.BUN.get(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.VEGETABLE_SANDWICH.get(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.SANDWICH.get(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.STRAWBERRY_CAKE_SLICE.get(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.SWEETBERRY_CAKE_SLICE.get(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.CHOCOLATE_CAKE_SLICE.get(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.PUDDING_SLICE.get(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.BUNDT_CAKE_SLICE.get(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.LINZER_TART_SLICE.get(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.APPLE_PIE_SLICE.get(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.GLOWBERRY_PIE_SLICE.get(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.CHOCOLATE_TART_SLICE.get(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.STRAWBERRY_GLAZED_COOKIE.get(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.SWEETBERRY_GLAZED_COOKIE.get(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.CHOCOLATE_GLAZED_COOKIE.get(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.STRAWBERRY_CUPCAKE.get(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.SWEETBERRY_CUPCAKE.get(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.APPLE_CUPCAKE.get(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.JAM_ROLL.get(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.WAFFLE.get(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.CHOCOLATE_TRUFFLE.get(), 0.3f);
     }
 
     private static Item.Properties getSettings(Consumer<Item.Properties> consumer) {

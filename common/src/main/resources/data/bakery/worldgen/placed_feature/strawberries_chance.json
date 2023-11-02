@@ -1,9 +1,9 @@
 {
-  "feature": "bakery:strawberry_jungle",
+  "feature": "bakery:strawberries",
   "placement": [
     {
       "type": "minecraft:rarity_filter",
-      "chance": 92
+      "chance": 44
     },
     {
       "type": "minecraft:in_square"

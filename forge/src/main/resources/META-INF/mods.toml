@@ -29,7 +29,7 @@ side = "BOTH"
 [[dependencies.bakery]]
 modId = "doapi"
 mandatory = true
-versionRange = "[1.2.3,)"
+versionRange = "[1.2.8,)"
 ordering = "NONE"
 side = "BOTH"
 

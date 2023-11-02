@@ -19,7 +19,7 @@
                   "block": "bakery:strawberry_crop",
                   "condition": "minecraft:block_state_property",
                   "properties": {
-                    "age": "4"
+                    "age": "5"
                   }
                 }
               ],
@@ -41,7 +41,7 @@
           "block": "bakery:strawberry_crop",
           "condition": "minecraft:block_state_property",
           "properties": {
-            "age": "4"
+            "age": "5"
           }
         }
       ],

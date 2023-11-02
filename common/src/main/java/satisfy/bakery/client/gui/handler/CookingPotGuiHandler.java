@@ -1,5 +1,6 @@
 package satisfy.bakery.client.gui.handler;
 
+
 import de.cristelknight.doapi.client.recipebook.IRecipeBookGroup;
 import de.cristelknight.doapi.client.recipebook.handler.AbstractRecipeBookGUIScreenHandler;
 import net.minecraft.world.Container;

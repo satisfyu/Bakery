@@ -25,11 +25,10 @@ public class BakeryClient {
     public static void initClient() {
         RenderTypeRegistry.register(RenderType.cutout(),
                 CAKE_STAND.get(), IRON_TABLE.get(), IRON_CHAIR.get(), JAR.get(), SWEETBERRY_JAM.get(), CHOCOLATE_JAM.get(),
-                STRAWBERRY_JAM.get(), GLOWBERRY_JAM.get(), APPLE_JAM.get(), OAT_CROP.get(), STRAWBERRY_CROP.get(), STRAWBERRY_JUNGLE.get(),
-                STRAWBERRY_TAIGA.get(), CAKE_DISPLAY.get()
+                STRAWBERRY_JAM.get(), GLOWBERRY_JAM.get(), APPLE_JAM.get(), OAT_CROP.get(), STRAWBERRY_CROP.get(), WILD_STRAWBERRIES.get(),
+                CAKE_DISPLAY.get()
         );
 
-        ColorHandlerRegistry.registerBlockColors((state, world, pos, tintIndex) -> BiomeColors.getAverageGrassColor(world, pos), STRAWBERRY_TAIGA);
 
 
         ClientStorageTypes.init();
