@@ -18,6 +18,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -65,18 +66,17 @@ public class CakeDisplayBlock extends StorageBlock {
 
     @Override
     public int getSection(Float x, Float y) {
+        int i = y >= 0.5F ? 0 : 1;
+        int j = getXSection(x);
+        return j + i * 3;
+    }
 
-        float l = (float) 1/2;
-
-        int nSection;
-        if (x < 0.375F) {
-            nSection = 0;
+    private static int getXSection(float f) {
+        if (f < 0.375F) {
+            return 2;
         } else {
-            nSection = x < 0.6875F ? 1 : 2;
+            return f < 0.6875F ? 1 : 0;
         }
-
-        int i = y >= l*2 ? 0 : y >= l ? 1 : 2;
-        return nSection + i * 2;
     }
 
 
@@ -140,7 +140,8 @@ public class CakeDisplayBlock extends StorageBlock {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, TYPE);
+        super.createBlockStateDefinition(builder);
+        builder.add(TYPE);
     }
 
     private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {

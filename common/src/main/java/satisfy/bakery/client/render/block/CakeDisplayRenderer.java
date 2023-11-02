@@ -16,17 +16,21 @@ import satisfy.bakery.client.ClientUtil;
 public class CakeDisplayRenderer implements StorageTypeRenderer {
     @Override
     public void render(StorageBlockEntity entity, PoseStack matrices, MultiBufferSource vertexConsumers, NonNullList<ItemStack> itemStacks) {
-        matrices.translate(-0.13, 0.335, 0.125);
-        matrices.scale(0.9f, 0.9f, 0.9f);
-        for (int i = 6; i < 9; i++) {
-            ItemStack stack = itemStacks.get(i);
-            if (stack.getItem() instanceof BlockItem blockItem) {
-                matrices.pushPose();
-                int line = i >= 6 ? 3 : 2;
-                float x = -0.35f * (i - 6);
-                float y = -0.33f;
+        int invSize = 6;
 
-                matrices.translate(x, y, 0f);
+        for (int i = 0; i < invSize; i++) {
+            ItemStack stack = itemStacks.get(i);
+            if (!stack.isEmpty() && !(stack.getItem() instanceof BlockItem)) {
+                matrices.pushPose();
+                matrices.scale(0.4f, 0.4f, 0.4f);
+
+                boolean firstColumn = i < invSize / 2;
+                int xNeedsToBeChanged = i + 1;
+
+                matrices.translate(xNeedsToBeChanged, firstColumn ? 1.15f : 0.25f, -0.45f);
+
+
+                matrices.mulPose(Axis.XP.rotationDegrees(90f));
                 ClientUtil.renderItem(stack, matrices, vertexConsumers, entity);
                 matrices.popPose();
             }
