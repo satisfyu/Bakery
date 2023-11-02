@@ -1,12 +1,14 @@
 package satisfy.bakery.block;
 
 import de.cristelknight.doapi.common.block.StorageBlock;
+import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Mirror;
@@ -16,10 +18,19 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.phys.shapes.BooleanOp;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 import satisfy.bakery.registry.StorageTypeRegistry;
 import satisfy.bakery.util.BakeryProperties;
+import satisfy.bakery.util.GeneralUtil;
 import satisfy.bakery.util.LineConnectingType;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Supplier;
 
 
 public class CakeDisplayBlock extends StorageBlock {
@@ -39,7 +50,7 @@ public class CakeDisplayBlock extends StorageBlock {
 
     @Override
     public boolean canInsertStack(ItemStack stack) {
-        return stack.isEdible() || stack.getItem() instanceof BlockItem;
+        return !(stack.getItem() instanceof BlockItem);
     }
 
     @Override
@@ -54,7 +65,8 @@ public class CakeDisplayBlock extends StorageBlock {
 
     @Override
     public int getSection(Float x, Float y) {
-        float l = (float) 1/3;
+
+        float l = (float) 1/2;
 
         int nSection;
         if (x < 0.375F) {
@@ -63,8 +75,8 @@ public class CakeDisplayBlock extends StorageBlock {
             nSection = x < 0.6875F ? 1 : 2;
         }
 
-        int i = y >= l ? 1 : 2;
-        return nSection + i * 3;
+        int i = y >= l*2 ? 0 : y >= l ? 1 : 2;
+        return nSection + i * 2;
     }
 
 
@@ -131,7 +143,23 @@ public class CakeDisplayBlock extends StorageBlock {
         builder.add(FACING, TYPE);
     }
 
+    private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
+        VoxelShape shape = Shapes.empty();
+        shape = Shapes.or(shape, Shapes.box(0, 0, 0.0625, 1, 0.0625, 0.8125));
+        shape = Shapes.or(shape, Shapes.box(0, 0.0625, 0.0625, 1, 0.875, 0.625));
+        return shape;
+    };
 
+    public static final Map<Direction, VoxelShape> SHAPE = Util.make(new HashMap<>(), map -> {
+        for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
+            map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
+        }
+    });
+
+    @Override
+    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+        return SHAPE.get(state.getValue(FACING));
+    }
     @Override
     public BlockState rotate(BlockState state, Rotation rotation) {
         return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));

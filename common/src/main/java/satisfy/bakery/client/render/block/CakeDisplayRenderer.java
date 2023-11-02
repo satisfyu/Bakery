@@ -18,20 +18,18 @@ public class CakeDisplayRenderer implements StorageTypeRenderer {
     public void render(StorageBlockEntity entity, PoseStack matrices, MultiBufferSource vertexConsumers, NonNullList<ItemStack> itemStacks) {
         matrices.translate(-0.13, 0.335, 0.125);
         matrices.scale(0.9f, 0.9f, 0.9f);
-        for (int i = 0; i < itemStacks.size(); i++) {
-            if (i >= 6) {
-                continue;
-            }
+        for (int i = 6; i < 9; i++) {
             ItemStack stack = itemStacks.get(i);
+            if (stack.getItem() instanceof BlockItem blockItem) {
                 matrices.pushPose();
-                int line = i >= 3 ? 2 : 1;
-                float x = -0.35f * (i % 3);
-                float y = -0.33f * line;
+                int line = i >= 6 ? 3 : 2;
+                float x = -0.35f * (i - 6);
+                float y = -0.33f;
 
                 matrices.translate(x, y, 0f);
-                matrices.mulPose(Axis.XN.rotationDegrees(90));
                 ClientUtil.renderItem(stack, matrices, vertexConsumers, entity);
                 matrices.popPose();
+            }
         }
     }
 }
