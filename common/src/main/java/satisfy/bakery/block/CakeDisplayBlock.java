@@ -51,8 +51,9 @@ public class CakeDisplayBlock extends StorageBlock {
 
     @Override
     public boolean canInsertStack(ItemStack stack) {
-        return !(stack.getItem() instanceof BlockItem);
+        return stack.isEdible() || stack.getItem() instanceof BlockItem;
     }
+
 
     @Override
     public ResourceLocation type() {
@@ -146,8 +147,8 @@ public class CakeDisplayBlock extends StorageBlock {
 
     private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
         VoxelShape shape = Shapes.empty();
-        shape = Shapes.or(shape, Shapes.box(0, 0, 0.0625, 1, 0.0625, 0.8125));
-        shape = Shapes.or(shape, Shapes.box(0, 0.0625, 0.0625, 1, 0.875, 0.625));
+        shape = Shapes.or(shape, Shapes.box(0, 0, 0.1875, 1, 0.0625, 0.9375));
+        shape = Shapes.or(shape, Shapes.box(0, 0.0625, 0.375, 1, 0.875, 0.9375));
         return shape;
     };
 

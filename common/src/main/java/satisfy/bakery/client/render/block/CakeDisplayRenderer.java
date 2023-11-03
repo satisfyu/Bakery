@@ -22,15 +22,31 @@ public class CakeDisplayRenderer implements StorageTypeRenderer {
             ItemStack stack = itemStacks.get(i);
             if (!stack.isEmpty() && !(stack.getItem() instanceof BlockItem)) {
                 matrices.pushPose();
-                matrices.scale(0.4f, 0.4f, 0.4f);
+                matrices.scale(0.35f, 0.4f, 0.35f);
 
                 boolean firstColumn = i < invSize / 2;
-                int xNeedsToBeChanged = i + 1;
+                boolean secondColumn = !firstColumn;
+                int x = i - 1;
 
-                matrices.translate(xNeedsToBeChanged, firstColumn ? 1.15f : 0.25f, -0.45f);
+                float firstColumnOffset = x * 2.1f;
+                float secondColumnOffset = x * 2.1f;
+                float yOffset = firstColumn ? 1.15f : 0.25f;
+                float zOffset = -0.45f;
 
+                if (secondColumn) {
+                    secondColumnOffset -= 1.5f;
+                }
+
+                if (firstColumn) {
+                    firstColumnOffset -= -1.2f;
+                }
+
+                float xOffset = firstColumn ? firstColumnOffset : secondColumnOffset;
+
+                matrices.translate(xOffset, yOffset, zOffset);
 
                 matrices.mulPose(Axis.XP.rotationDegrees(90f));
+                matrices.translate(-1.2f * i, 1, 0);
                 ClientUtil.renderItem(stack, matrices, vertexConsumers, entity);
                 matrices.popPose();
             }
