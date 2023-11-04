@@ -1,6 +1,9 @@
 package satisfy.bakery.block;
 
 import de.cristelknight.doapi.common.block.StorageBlock;
+import net.minecraft.ChatFormatting;
+import net.minecraft.Util;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -8,28 +11,36 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import satisfy.bakery.registry.StorageTypeRegistry;
+import satisfy.bakery.util.GeneralUtil;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Supplier;
 
 public class CupcakeDisplayBlock extends StorageBlock {
-
-
     public CupcakeDisplayBlock(Properties settings) {
         super(settings);
     }
+
     @Override
     public int size(){
-        return 9;
+        return 6;
     }
 
     @Override
     public boolean canInsertStack(ItemStack stack) {
-        return stack.isEdible() || stack.getItem() instanceof BlockItem;
+        return !(stack.getItem() instanceof BlockItem);
     }
+
     @Override
     public ResourceLocation type() {
-        return StorageTypeRegistry.CAKE_DISPLAY;
+        return StorageTypeRegistry.CUPCAKE_DISPLAY;
     }
 
     @Override
@@ -39,22 +50,45 @@ public class CupcakeDisplayBlock extends StorageBlock {
 
     @Override
     public int getSection(Float x, Float y) {
+        int i = y >= 0.5F ? 0 : 1;
+        int j = getXSection(x);
+        return j + i * 3;
+    }
 
-        float l = (float) 1/3;
-
-        int nSection;
-        if (x < 0.375F) {
-            nSection = 0;
+    private static int getXSection(float f) {
+        if (f < 0.375F) {
+            return 2;
         } else {
-            nSection = x < 0.6875F ? 1 : 2;
+            return f < 0.6875F ? 1 : 0;
         }
+    }
 
-        int i = y >= l*2 ? 0 : y >= l ? 1 : 2;
-        return nSection + i * 3;
+    private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
+        VoxelShape shape = Shapes.empty();
+        shape = Shapes.or(shape, Shapes.box(0.9375, 0, 0.4375, 1, 0.875, 0.5625));
+        shape = Shapes.or(shape, Shapes.box(0, 0, 0.4375, 0.0625, 0.875, 0.5625));
+        shape = Shapes.or(shape, Shapes.box(0.0625, 0.0625, 0.3125, 0.9375, 0.375, 0.6875));
+        shape = Shapes.or(shape, Shapes.box(0.0625, 0.4375, 0.3125, 0.9375, 0.75, 0.6875));
+        shape = Shapes.or(shape, Shapes.box(0.0625, 0.8125, 0.4375, 0.9375, 0.875, 0.5625));
+
+        return shape;
+    };
+
+    public static final Map<Direction, VoxelShape> SHAPE = Util.make(new HashMap<>(), map -> {
+        for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
+            map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
+        }
+    });
+
+    @Override
+    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+        return SHAPE.get(state.getValue(FACING));
     }
 
     @Override
     public void appendHoverText(ItemStack itemStack, BlockGetter world, List<Component> tooltip, TooltipFlag tooltipContext) {
-        tooltip.add(Component.translatable("block.vinery.winebox_small.tooltip.shift_1"));
+        tooltip.add(Component.translatable("block.bakery.canbeplaced.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
+        tooltip.add(Component.translatable("block.bakery.cakedisplay_1.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.WHITE));
+        tooltip.add(Component.translatable("block.bakery.cakedisplay_2.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.WHITE));
     }
 }

@@ -3,76 +3,62 @@
   "pools": [
     {
       "bonus_rolls": 0.0,
-      "conditions": [
-        {
-          "condition": "minecraft:survives_explosion"
-        }
-      ],
       "entries": [
         {
           "type": "minecraft:alternatives",
           "children": [
             {
               "type": "minecraft:item",
-              "name": "bakery:strawberry",
-              "functions": [
+              "conditions": [
                 {
-                  "function": "minecraft:set_count",
-                  "count": {
-                    "min": 1,
-                    "max": 1
+                  "condition": "minecraft:match_tool",
+                  "predicate": {
+                    "items": [
+                      "minecraft:shears"
+                    ]
                   }
                 }
-              ]
+              ],
+              "name": "bakery:wild_strawberries"
             },
             {
               "type": "minecraft:item",
-              "name": "bakery:strawberry_seeds",
+              "conditions": [
+                {
+                  "chance": 0.125,
+                  "condition": "minecraft:random_chance"
+                }
+              ],
               "functions": [
                 {
-                  "function": "minecraft:set_count",
-                  "count": {
-                    "min": 0,
-                    "max": 1
+                  "enchantment": "minecraft:fortune",
+                  "formula": "minecraft:uniform_bonus_count",
+                  "function": "minecraft:apply_bonus",
+                  "parameters": {
+                    "bonusMultiplier": 2
                   }
+                },
+                {
+                  "function": "minecraft:explosion_decay"
                 }
-              ]
-            }
-          ]
-        }
-      ],
-      "rolls": 1.0
-    },
-    {
-      "bonus_rolls": 0.0,
-      "conditions": [
-        {
-          "condition": "minecraft:survives_explosion",
-          "inverted": true
-        },
-        {
-          "condition": "minecraft:match_tool",
-          "predicate": {
-            "item": "minecraft:silk_touch"
-          }
-        }
-      ],
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "name": "bakery:wild_strawberries",
-          "functions": [
+              ],
+              "name": "bakery:strawberry_seeds"
+            },
             {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 1,
-                "max": 1
-              }
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "chance": 1.0,
+                  "condition": "minecraft:random_chance"
+                }
+              ],
+              "name": "bakery:strawberry"
             }
           ]
         }
       ],
       "rolls": 1.0
     }
-  ]
+  ],
+  "random_sequence": "minecraft:blocks/grass"
 }

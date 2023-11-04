@@ -35,6 +35,8 @@ public class BakeryClient {
         RenderTypeRegistry.register(RenderType.translucent(), TRAY.get());
         RenderTypeRegistry.register(RenderType.translucent(), CAKE_STAND.get());
         RenderTypeRegistry.register(RenderType.translucent(), CAKE_DISPLAY.get());
+        RenderTypeRegistry.register(RenderType.translucent(), CUPCAKE_DISPLAY.get());
+        RenderTypeRegistry.register(RenderType.translucent(), WALL_DISPLAY.get());
 
         MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.STOVE_SCREEN_HANDLER.get(), StoveGui::new);
         MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.COOKING_POT_SCREEN_HANDLER.get(), CookingPotGui::new);
@@ -46,7 +48,6 @@ public class BakeryClient {
     public static void preInitClient() {
         registerEntityRenderers();
         registerEntityModelLayer();
-
     }
 
     public static void registerEntityRenderers() {

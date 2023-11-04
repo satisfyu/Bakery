@@ -1,12 +1,15 @@
 package satisfy.bakery.block;
 
 import de.cristelknight.doapi.common.block.StorageBlock;
+import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -30,6 +33,7 @@ import satisfy.bakery.util.GeneralUtil;
 import satisfy.bakery.util.LineConnectingType;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
@@ -51,8 +55,9 @@ public class CakeDisplayBlock extends StorageBlock {
 
     @Override
     public boolean canInsertStack(ItemStack stack) {
-        return stack.isEdible() || stack.getItem() instanceof BlockItem;
+        return !(stack.getItem() instanceof BlockItem);
     }
+
 
 
     @Override
@@ -175,5 +180,12 @@ public class CakeDisplayBlock extends StorageBlock {
     static {
         FACING = BlockStateProperties.HORIZONTAL_FACING;
         TYPE = BakeryProperties.LINE_CONNECTING_TYPE;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack itemStack, BlockGetter world, List<Component> tooltip, TooltipFlag tooltipContext) {
+        tooltip.add(Component.translatable("block.bakery.canbeplaced.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
+        tooltip.add(Component.translatable("block.bakery.cakedisplay_1.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.WHITE));
+        tooltip.add(Component.translatable("block.bakery.cakedisplay_2.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.WHITE));
     }
 }

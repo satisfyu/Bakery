@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "bakery:oat_seeds"
+    ]
+  },
+  "criteria": {
+    "has_wheat_seeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:wheat_seeds"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "bakery:oat_seeds"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_wheat_seeds",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -22,6 +22,5 @@ public class IndulgentDelightItem extends SweetsItem {
         tooltip.add(Component.translatable("item.bakery.tooltipitem.tooltip." + this.getDescriptionId()).withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
         tooltip.add(Component.translatable("item.bakery.sweetly.duration." + this.getDescriptionId()).withStyle(ChatFormatting.BLUE));
         tooltip.add(Component.translatable("item.bakery.indulgent_delight").withStyle(ChatFormatting.WHITE));
-        tooltip.add(Component.translatable("item.bakery.tooltipitem.tooltip." + this.getDescriptionId()).withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
     }
 }

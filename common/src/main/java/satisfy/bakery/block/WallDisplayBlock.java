@@ -1,0 +1,193 @@
+package satisfy.bakery.block;
+
+import de.cristelknight.doapi.common.block.StorageBlock;
+import net.minecraft.ChatFormatting;
+import net.minecraft.Util;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Mirror;
+import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.Nullable;
+import satisfy.bakery.registry.StorageTypeRegistry;
+import satisfy.bakery.registry.TagsRegistry;
+import satisfy.bakery.util.BakeryProperties;
+import satisfy.bakery.util.GeneralUtil;
+import satisfy.bakery.util.LineConnectingType;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Supplier;
+
+
+public class WallDisplayBlock extends StorageBlock {
+
+    public static final DirectionProperty FACING;
+    public static final EnumProperty<LineConnectingType> TYPE;
+
+    public WallDisplayBlock(Properties settings) {
+        super(settings);
+        this.registerDefaultState(((this.stateDefinition.any().setValue(FACING, Direction.NORTH)).setValue(TYPE, LineConnectingType.NONE)));
+    }
+
+    @Override
+    public int size(){
+        return 6;
+    }
+
+    @Override
+    public boolean canInsertStack(ItemStack stack) {
+        return stack.is(TagsRegistry.BREAD);
+    }
+
+    @Override
+    public ResourceLocation type() {
+        return StorageTypeRegistry.WALL_DISPLAY;
+    }
+
+    @Override
+    public Direction[] unAllowedDirections() {
+        return new Direction[]{Direction.DOWN, Direction.UP};
+    }
+
+    @Override
+    public int getSection(Float x, Float y) {
+        int i = y >= 0.5F ? 0 : 1;
+        int j = getXSection(x);
+        return j + i * 2;
+    }
+
+    private static int getXSection(float f) {
+        if (f < 0.5F) {
+            return 1;
+        } else {
+            return f < 0.75F ? 0 : 1;
+        }
+    }
+
+
+    @Nullable
+    @Override
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        Direction facing = context.getHorizontalDirection().getOpposite();
+        BlockState blockState = this.defaultBlockState().setValue(FACING, facing);
+
+        Level world = context.getLevel();
+        BlockPos clickedPos = context.getClickedPos();
+
+        return switch (facing) {
+            case EAST ->
+                    blockState.setValue(TYPE, getType(blockState, world.getBlockState(clickedPos.south()), world.getBlockState(clickedPos.north())));
+            case SOUTH ->
+                    blockState.setValue(TYPE, getType(blockState, world.getBlockState(clickedPos.west()), world.getBlockState(clickedPos.east())));
+            case WEST ->
+                    blockState.setValue(TYPE, getType(blockState, world.getBlockState(clickedPos.north()), world.getBlockState(clickedPos.south())));
+            default ->
+                    blockState.setValue(TYPE, getType(blockState, world.getBlockState(clickedPos.east()), world.getBlockState(clickedPos.west())));
+        };
+    }
+
+    @Override
+    public void neighborChanged(BlockState state, Level world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
+        if (world.isClientSide) return;
+
+        Direction facing = state.getValue(FACING);
+
+        LineConnectingType type;
+        switch (facing) {
+            case EAST ->
+                    type = getType(state, world.getBlockState(pos.south()), world.getBlockState(pos.north()));
+            case SOUTH ->
+                    type =  getType(state, world.getBlockState(pos.west()), world.getBlockState(pos.east()));
+            case WEST ->
+                    type =  getType(state, world.getBlockState(pos.north()), world.getBlockState(pos.south()));
+            default ->
+                    type =  getType(state, world.getBlockState(pos.east()), world.getBlockState(pos.west()));
+        }
+        if (state.getValue(TYPE) != type) {
+            state = state.setValue(TYPE, type);
+        }
+        world.setBlock(pos, state, 3);
+    }
+
+    public LineConnectingType getType(BlockState state, BlockState left, BlockState right) {
+        boolean shape_left_same = left.getBlock() == state.getBlock() && left.getValue(FACING) == state.getValue(FACING);
+        boolean shape_right_same = right.getBlock() == state.getBlock() && right.getValue(FACING) == state.getValue(FACING);
+
+        if (shape_left_same && shape_right_same) {
+            return LineConnectingType.MIDDLE;
+        } else if (shape_left_same) {
+            return LineConnectingType.LEFT;
+        } else if (shape_right_same) {
+            return LineConnectingType.RIGHT;
+        }
+        return LineConnectingType.NONE;
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        super.createBlockStateDefinition(builder);
+        builder.add(TYPE);
+    }
+
+    private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
+        VoxelShape shape = Shapes.empty();
+        shape = Shapes.or(shape, Shapes.box(0, 0, 0.5, 0.0625, 1, 1));
+        shape = Shapes.or(shape, Shapes.box(0.9375, 0, 0.5, 1, 1, 1));
+        shape = Shapes.or(shape, Shapes.box(0.0625, 0.4375, 0.5625, 0.9375, 0.75, 0.9375));
+        shape = Shapes.or(shape, Shapes.box(0.0625, 0, 0.5, 0.9375, 0.125, 1));
+        shape = Shapes.or(shape, Shapes.box(0.0625, 0.9375, 0.5, 0.9375, 1, 1));
+        shape = Shapes.or(shape, Shapes.box(0.0625, 0.125, 0.9375, 0.9375, 0.9375, 1));
+        shape = Shapes.or(shape, Shapes.box(0.0625, 0.125, 0.5625, 0.9375, 0.375, 0.9375));
+        return shape;
+    };
+
+    public static final Map<Direction, VoxelShape> SHAPE = Util.make(new HashMap<>(), map -> {
+        for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
+            map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
+        }
+    });
+
+    @Override
+    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+        return SHAPE.get(state.getValue(FACING));
+    }
+    @Override
+    public BlockState rotate(BlockState state, Rotation rotation) {
+        return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
+    }
+
+    @Override
+    public BlockState mirror(BlockState state, Mirror mirror) {
+        return state.rotate(mirror.getRotation(state.getValue(FACING)));
+    }
+
+    static {
+        FACING = BlockStateProperties.HORIZONTAL_FACING;
+        TYPE = BakeryProperties.LINE_CONNECTING_TYPE;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack itemStack, BlockGetter world, List<Component> tooltip, TooltipFlag tooltipContext) {
+        tooltip.add(Component.translatable("block.bakery.canbeplaced.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
+        tooltip.add(Component.translatable("block.bakery.cakedisplay_1.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.WHITE));
+        tooltip.add(Component.translatable("block.bakery.cakedisplay_2.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.WHITE));
+    }
+}
