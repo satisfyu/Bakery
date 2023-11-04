@@ -1,0 +1,53 @@
+{
+  "parent": "bakery:main/place_cooking_pot",
+  "display": {
+    "icon": {
+      "item": "bakery:jar"
+    },
+    "title": {
+      "translate": "bakery.advancement.get_all_jams"
+    },
+    "description": {
+      "translate": "bakery.advancement.get_all_jams.desc"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "rewards": {
+    "experience": 50
+  },
+  "criteria": {
+    "get_all_jams": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": ["bakery:strawberry_jam"]
+          },
+          {
+            "items": ["bakery:chocolate_jam"]
+          },
+          {
+            "items": ["bakery:apple_jam"]
+          },
+          {
+            "items": ["bakery:glowberry_jam"]
+          },
+          {
+            "items": ["bakery:sweetberry_jam"]
+          },
+          {
+            "items": ["bakery:strawberry_jam"]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "get_all_jams"
+    ]
+  ]
+}

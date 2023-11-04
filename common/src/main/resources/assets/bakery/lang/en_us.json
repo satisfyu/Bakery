@@ -200,5 +200,7 @@
   "item.bakery.wandering_baker_spawn_egg": "Wandering Baker Spawn Egg",
   "block.bakery.cakedisplay_1.tooltip": "Present the most delicious cakes, pastries, or other delicacies",
   "block.bakery.cakedisplay_2.tooltip": "Offers space six food items",
-  "entity.bakery.wandering_baker": "Wandering Baker"
+  "entity.bakery.wandering_baker": "Wandering Baker",
+  "block.bakery.wall_display_1.tooltip": "Showcase your freshly baked Bread",
+  "block.bakery.wall_display_2.tooltip": "Offers space for four Breads"
 }

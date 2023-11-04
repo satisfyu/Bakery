@@ -149,13 +149,7 @@ public class WallDisplayBlock extends StorageBlock {
 
     private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
         VoxelShape shape = Shapes.empty();
-        shape = Shapes.or(shape, Shapes.box(0, 0, 0.5, 0.0625, 1, 1));
-        shape = Shapes.or(shape, Shapes.box(0.9375, 0, 0.5, 1, 1, 1));
-        shape = Shapes.or(shape, Shapes.box(0.0625, 0.4375, 0.5625, 0.9375, 0.75, 0.9375));
-        shape = Shapes.or(shape, Shapes.box(0.0625, 0, 0.5, 0.9375, 0.125, 1));
-        shape = Shapes.or(shape, Shapes.box(0.0625, 0.9375, 0.5, 0.9375, 1, 1));
-        shape = Shapes.or(shape, Shapes.box(0.0625, 0.125, 0.9375, 0.9375, 0.9375, 1));
-        shape = Shapes.or(shape, Shapes.box(0.0625, 0.125, 0.5625, 0.9375, 0.375, 0.9375));
+        shape = Shapes.or(shape, Shapes.box(0, 0, 0.5, 1, 1, 1));
         return shape;
     };
 
@@ -187,7 +181,7 @@ public class WallDisplayBlock extends StorageBlock {
     @Override
     public void appendHoverText(ItemStack itemStack, BlockGetter world, List<Component> tooltip, TooltipFlag tooltipContext) {
         tooltip.add(Component.translatable("block.bakery.canbeplaced.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
-        tooltip.add(Component.translatable("block.bakery.cakedisplay_1.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.WHITE));
-        tooltip.add(Component.translatable("block.bakery.cakedisplay_2.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.WHITE));
+        tooltip.add(Component.translatable("block.bakery.wall_display_1.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.WHITE));
+        tooltip.add(Component.translatable("block.bakery.wall_display_2.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.WHITE));
     }
 }

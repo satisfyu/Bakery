@@ -1,0 +1,147 @@
+{
+  "parent": "bakery:main/get_yeast",
+  "display": {
+    "icon": {
+      "item": "bakery:bundt_cake"
+    },
+    "title": {
+      "translate": "bakery.advancement.get_everything"
+    },
+    "description": {
+      "translate": "bakery.advancement.get_everything.desc"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "rewards": {
+    "experience": 1200
+  },
+  "criteria": {
+    "get_everything": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": ["bakery:crusty_bread"]
+          },
+          {
+            "items": ["bakery:bread"]
+          },
+          {
+            "items": ["bakery:braided_bread"]
+          },
+          {
+            "items": ["bakery:bun"]
+          },
+          {
+            "items": ["bakery:baguette"]
+          },
+          {
+            "items": ["bakery:glowberry_tart"]
+          },
+          {
+            "items": ["bakery:chocolate_tart"]
+          },
+          {
+            "items": ["bakery:croissant"]
+          },
+          {
+            "items": ["bakery:apple_pie"]
+          },
+          {
+            "items": ["bakery:waffle"]
+          },
+          {
+            "items": ["bakery:bundt_cake"]
+          },
+          {
+            "items": ["bakery:linzer_tart"]
+          },
+          {
+            "items": ["bakery:vegetable_sandwich"]
+          },
+          {
+            "items": ["bakery:sandwich"]
+          },
+          {
+            "items": ["bakery:strawberry_jam"]
+          },
+          {
+            "items": ["bakery:chocolate_jam"]
+          },
+          {
+            "items": ["bakery:apple_jam"]
+          },
+          {
+            "items": ["bakery:glowberry_jam"]
+          },
+          {
+            "items": ["bakery:sweetberry_jam"]
+          },
+          {
+            "items": ["bakery:strawberry_jam"]
+          },
+          {
+            "items": ["bakery:strawberry_cake"]
+          },
+          {
+            "items": ["minecraft:cake"]
+          },
+          {
+            "items": ["bakery:chocolate_cake"]
+          },
+          {
+            "items": ["bakery:sweetberry_cake"]
+          },
+          {
+            "items": ["bakery:strawberry_cake"]
+          },
+          {
+            "items": ["minecraft:cake"]
+          },
+          {
+            "items": ["bakery:chocolate_cake"]
+          },
+          {
+            "items": ["bakery:sweetberry_cake"]
+          },
+          {
+            "items": ["bakery:strawberry_glazed_cookie"]
+          },
+          {
+            "items": ["bakery:chocolate_glazed_cookie"]
+          },
+          {
+            "items": ["bakery:sweetberry_glazed_cookie"]
+          },
+          {
+            "items": ["bakery:apple_cupcake"]
+          },
+          {
+            "items": ["bakery:sweetberry_cupcake"]
+          },
+          {
+            "items": ["bakery:strawberry_cupcake"]
+          },
+          {
+            "items": ["bakery:misslilitu_biscuit"]
+          },
+          {
+            "items": ["bakery:jam_roll"]
+          },
+          {
+            "items": ["bakery:cornet"]
+          }
+
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "get_everything"
+    ]
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "parent": "bakery:main/eat_bread",
+  "display": {
+    "icon": {
+      "item": "bakery:crusty_bread"
+    },
+    "title": {
+      "translate": "bakery.advancement.get_all_baked_goods"
+    },
+    "description": {
+      "translate": "bakery.advancement.get_all_baked_goods.desc"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "rewards": {
+    "experience": 400
+  },
+  "criteria": {
+    "get_all_baked_goods": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": ["bakery:crusty_bread"]
+          },
+          {
+            "items": ["bakery:bread"]
+          },
+          {
+            "items": ["bakery:braided_bread"]
+          },
+          {
+            "items": ["bakery:bun"]
+          },
+          {
+            "items": ["bakery:baguette"]
+          },
+          {
+            "items": ["bakery:glowberry_tart"]
+          },
+          {
+            "items": ["bakery:chocolate_tart"]
+          },
+          {
+            "items": ["bakery:croissant"]
+          },
+          {
+            "items": ["bakery:apple_pie"]
+          },
+          {
+            "items": ["bakery:waffle"]
+          },
+          {
+            "items": ["bakery:bundt_cake"]
+          },
+          {
+            "items": ["bakery:linzer_tart"]
+          }
+
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "get_all_baked_goods"
+    ]
+  ]
+}

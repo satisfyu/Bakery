@@ -1,0 +1,39 @@
+{
+  "parent": "bakery:main/get_all_baked_goods",
+  "criteria": {
+    "eat_sandwich": {
+      "conditions": {
+        "item": {
+          "items": [
+            "bakery:sandwich"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "bakery.advancement.eat_sandwich.desc"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "bakery:sandwich"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "bakery.advancement.eat_sandwich"
+    }
+  },
+  "requirements": [
+    [
+      "eat_sandwich"
+    ]
+  ],
+  "rewards": {
+    "experience": 25
+  },
+  "sends_telemetry_event": true
+}

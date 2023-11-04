@@ -37,11 +37,11 @@ public class BakeryTabRegistry {
                 out.accept(ObjectRegistry.CAKE_STAND.get());
                 out.accept(ObjectRegistry.CAKE_DISPLAY.get());
                 out.accept(ObjectRegistry.CUPCAKE_DISPLAY.get());
+                out.accept(ObjectRegistry.WALL_DISPLAY.get());
                 out.accept(ObjectRegistry.BREADBOX.get());
                 out.accept(ObjectRegistry.TRAY.get());
                 out.accept(ObjectRegistry.BREAD_CRATE.get());
                 out.accept(ObjectRegistry.CHOCOLATE_BOX.get());
-                out.accept(ObjectRegistry.WALL_DISPLAY.get());
                 out.accept(ObjectRegistry.ROLLING_PIN.get());
                 out.accept(ObjectRegistry.BREAD_KNIFE.get());
                 out.accept(ObjectRegistry.SMALL_COOKING_POT.get());

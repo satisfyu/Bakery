@@ -1,0 +1,47 @@
+{
+  "parent": "bakery:main/place_baker_station",
+  "display": {
+    "icon": {
+      "item": "bakery:strawberry_cake"
+    },
+    "title": {
+      "translate": "bakery.advancement.get_all_cakes"
+    },
+    "description": {
+      "translate": "bakery.advancement.get_all_cakes.desc"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "rewards": {
+    "experience": 50
+  },
+  "criteria": {
+    "get_all_cakes": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": ["bakery:strawberry_cake"]
+          },
+          {
+            "items": ["minecraft:cake"]
+          },
+          {
+            "items": ["bakery:chocolate_cake"]
+          },
+          {
+            "items": ["bakery:sweetberry_cake"]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "get_all_cakes"
+    ]
+  ]
+}
