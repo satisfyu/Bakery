@@ -6,6 +6,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import satisfy.bakery.Bakery;
+import satisfy.bakery.registry.CompostableRegistry;
 
 @Mod(Bakery.MOD_ID)
 public class BakeryForge {
@@ -17,6 +18,7 @@ public class BakeryForge {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
+        event.enqueueWork(CompostableRegistry::registerCompostable);
         Bakery.commonInit();
     }
 }
