@@ -23,7 +23,6 @@ public class Bakery {
     }
 
     public static void commonInit() {
-        ObjectRegistry.registerCompostable();
     }
 }
 
