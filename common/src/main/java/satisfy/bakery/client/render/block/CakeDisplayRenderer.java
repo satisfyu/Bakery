@@ -10,7 +10,7 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
-import satisfy.bakery.client.ClientUtil;
+import satisfy.bakery.util.ClientUtil;
 
 @Environment(EnvType.CLIENT)
 public class CakeDisplayRenderer implements StorageTypeRenderer {

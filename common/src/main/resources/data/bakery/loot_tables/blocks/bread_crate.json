@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "bakery:bread_crate"
+          "name": "bakery:tray"
         }
       ],
       "rolls": 1.0

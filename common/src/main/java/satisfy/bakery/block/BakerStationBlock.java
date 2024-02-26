@@ -55,9 +55,6 @@ public class BakerStationBlock extends BaseEntityBlock implements EntityBlock {
         builder.add(FACING);
     }
 
-
-    /* BLOCK ENTITY */
-
     @Override
     public RenderShape getRenderShape(BlockState state) {
         return RenderShape.MODEL;
