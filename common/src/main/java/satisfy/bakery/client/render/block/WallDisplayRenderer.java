@@ -22,7 +22,7 @@ public class WallDisplayRenderer implements StorageTypeRenderer {
             ItemStack stack = itemStacks.get(i);
             if (stack.getItem() instanceof BlockItem blockItem) {
                 matrices.pushPose();
-                matrices.scale(0.6f, 0.6f, 0.6f);
+                matrices.scale(0.75f, 0.75f, 0.75f);
 
                 boolean firstColumn = i < 2;
                 int x = i % 2;
@@ -30,17 +30,17 @@ public class WallDisplayRenderer implements StorageTypeRenderer {
                 float xOffset = (x - 0.5f) * 1.85f;
                 float yOffset;
                 if (i < 2) {
-                    yOffset = -0.16f;
+                    yOffset = -0.25f;
                     xOffset -= -0.1f;
                 } else {
-                    yOffset = -0.8f;
+                    yOffset = -0.82f;
                     xOffset -= -2.5f;
                 }
                 float zOffset;
                 if (i < 2) {
-                    zOffset = -0.1f;
+                    zOffset = -0.19f;
                 } else {
-                    zOffset = -0.1f;
+                    zOffset = -0.19f;
                 }
 
                 matrices.translate(xOffset, yOffset, zOffset);
