@@ -4,9 +4,11 @@ import net.minecraft.util.LazyLoadedValue;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Supplier;
 
+@SuppressWarnings("all")
 public enum BakeryTiers implements Tier
 {
     IRON(2, 200, 5.0f, 2.0f, 12, () -> Ingredient.of(Items.IRON_INGOT));
@@ -53,7 +55,7 @@ public enum BakeryTiers implements Tier
     }
 
     @Override
-    public Ingredient getRepairIngredient() {
+    public @NotNull Ingredient getRepairIngredient() {
         return this.repairIngredient.get();
     }
 }

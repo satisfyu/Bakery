@@ -5,6 +5,12 @@
       "bakery:cooking_pot/juice_boiling"
     ]
   },
+  "small_cooking_pot_hit": {
+    "subtitle": "bakery.sound.small_cooking_pot_hit",
+    "sounds": [
+      "bakery:cooking_pot/small_cooking_pot_hit"
+    ]
+  },
   "drawer_open": {
     "subtitle": "bakery.sound.drawer_open",
     "sounds": [

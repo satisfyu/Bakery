@@ -202,5 +202,6 @@
   "block.bakery.cakedisplay_2.tooltip": "Offers space six food items",
   "entity.bakery.wandering_baker": "Wandering Baker",
   "block.bakery.wall_display_1.tooltip": "Showcase your freshly baked Bread",
-  "block.bakery.wall_display_2.tooltip": "Offers space for four Breads"
+  "block.bakery.wall_display_2.tooltip": "Offers space for four Breads",
+  "bakery.sound.small_cooking_pot_hit": "KLANG!"
 }

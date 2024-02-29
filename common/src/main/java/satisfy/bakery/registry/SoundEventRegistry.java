@@ -14,6 +14,7 @@ public class SoundEventRegistry {
 
     private static final Registrar<SoundEvent> SOUND_EVENTS = DeferredRegister.create(Bakery.MOD_ID, Registries.SOUND_EVENT).getRegistrar();
     public static final RegistrySupplier<SoundEvent> BLOCK_COOKING_POT_JUICE_BOILING = create("juice_boiling");
+    public static final RegistrySupplier<SoundEvent> SMALL_COOKING_POT_HIT = create("small_cooking_pot_hit");
     public static final RegistrySupplier<SoundEvent> BLOCK_CABINET_OPEN = create("cabinet_open");
     public static final RegistrySupplier<SoundEvent> BLOCK_CABINET_CLOSE = create("cabinet_close");
 
