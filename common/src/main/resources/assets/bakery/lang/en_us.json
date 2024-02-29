@@ -1,5 +1,5 @@
 {
-  "bakery.container.cabinet": "Cabinet",
+  "bakery.container.cabinet": "Storage",
   "block.bakery.apple_jam": "Apple Jam",
   "block.bakery.apple_pie": "Apple Pie",
   "block.bakery.baker_station": "Baking Station",
@@ -203,5 +203,11 @@
   "entity.bakery.wandering_baker": "Wandering Baker",
   "block.bakery.wall_display_1.tooltip": "Showcase your freshly baked Bread",
   "block.bakery.wall_display_2.tooltip": "Offers space for four Breads",
-  "bakery.sound.small_cooking_pot_hit": "KLANG!"
+  "bakery.sound.small_cooking_pot_hit": "KLANG!",
+  "bakery.sound.drawer_close": "Drawer closing",
+  "bakery.sound.drawer_open": "Drawer opening",
+  "bakery.sound.cabinet_close": "Cabinet closing",
+  "bakery.sound.cabinet_open": "Cabinet opening",
+  "bakery.sound.juice_boiling": "Bubbling cooking sounds"
+
 }

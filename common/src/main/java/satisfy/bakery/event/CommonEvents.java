@@ -33,7 +33,7 @@ public class CommonEvents {
         if (player.isHolding(item -> item.is(ObjectRegistry.SMALL_COOKING_POT_ITEM.get()))) {
             level.playSound(null,
                     target.getX(), target.getY(), target.getZ(),
-                    SoundEventRegistry.SMALL_COOKING_POT_HIT.get(),
+                    SoundEventRegistry.COOKING_POT_HIT.get(),
                     SoundSource.PLAYERS,
                     1.0F,
                     1.0F);

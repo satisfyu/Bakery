@@ -29,6 +29,7 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import satisfy.bakery.registry.SoundEventRegistry;
 import satisfy.bakery.registry.TagsRegistry;
 import satisfy.bakery.util.GeneralUtil;
 
@@ -142,7 +143,7 @@ public class PieBlock extends FacingBlock {
         double zMotion = direction.getStepZ() * 0.13;
 
         GeneralUtil.spawnSlice(level, this.getPieSliceItem(), pos.getX() + 0.5, pos.getY() + 0.3, pos.getZ() + 0.5, xMotion, yMotion, zMotion);
-        level.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.PLAYERS, 0.75F, 0.75F);
+        level.playSound(null, pos, SoundEventRegistry.CAKE_CUT.get(), SoundSource.PLAYERS, 0.75F, 0.75F);
         return InteractionResult.SUCCESS;
     }
 
