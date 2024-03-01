@@ -24,11 +24,13 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 import satisfy.bakery.registry.StorageTypeRegistry;
 
 import java.util.LinkedList;
 import java.util.List;
 
+@SuppressWarnings("all")
 public class CakeStandBlock extends StorageBlock {
 
     public static VoxelShape SHAPE = makeShape();
@@ -42,19 +44,19 @@ public class CakeStandBlock extends StorageBlock {
         shape = Shapes.or(shape, Shapes.box(0.875, 0.5000625, 0.125, 0.875, 1.0000625, 0.875));
         shape = Shapes.or(shape, Shapes.box(0.4375, 1, 0.4375, 0.5625, 1.0625, 0.5625));
         shape = Shapes.or(shape, Shapes.box(0.4375, 0.125, 0.4375, 0.5625, 0.4375, 0.5625));
-        shape = Shapes.or(shape, Shapes.box(0.3125, 0, 0.3125, 0.6875, 0.0625, 0.6875));
         shape = Shapes.or(shape, Shapes.box(0.25, 0.375, 0.25, 0.75, 0.4375, 0.75));
         shape = Shapes.or(shape, Shapes.box(0.125, 0.4375, 0.125, 0.875, 0.5, 0.875));
-        shape = Shapes.or(shape, Shapes.box(0.34375, 0.0625, 0.34375, 0.65625, 0.1875, 0.65625));
+        shape = Shapes.or(shape, Shapes.box(0.375, 0.0625, 0.375, 0.625, 0.1875, 0.625));
         shape = Shapes.or(shape, Shapes.box(0.875, 0.4375, 0.125, 0.9375, 0.5, 0.875));
         shape = Shapes.or(shape, Shapes.box(0.0625, 0.4375, 0.125, 0.125, 0.5, 0.875));
         shape = Shapes.or(shape, Shapes.box(0.125, 0.4375, 0.0625, 0.875, 0.5, 0.125));
         shape = Shapes.or(shape, Shapes.box(0.125, 0.4375, 0.875, 0.875, 0.5, 0.9375));
+        shape = Shapes.or(shape, Shapes.box(0.3125, 0, 0.3125, 0.6875, 0.0625, 0.6875));
         return shape;
     }
 
     @Override
-    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+    public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         return SHAPE;
     }
 
