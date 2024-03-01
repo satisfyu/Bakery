@@ -203,11 +203,15 @@
   "entity.bakery.wandering_baker": "Wandering Baker",
   "block.bakery.wall_display_1.tooltip": "Showcase your freshly baked Bread",
   "block.bakery.wall_display_2.tooltip": "Offers space for four Breads",
-  "bakery.sound.small_cooking_pot_hit": "KLANG!",
+  "bakery.sound.cooking_pot_hit": "KLANG!",
   "bakery.sound.drawer_close": "Drawer closing",
   "bakery.sound.drawer_open": "Drawer opening",
   "bakery.sound.cabinet_close": "Cabinet closing",
   "bakery.sound.cabinet_open": "Cabinet opening",
-  "bakery.sound.juice_boiling": "Bubbling cooking sounds"
-
+  "bakery.sound.cooking_pot_boiling": "Bubbling cooking sounds",
+  "tooltip.bakery.thankyou_1": "A reward for crafting all baked Goods",
+  "tooltip.bakery.thankyou_2": "When placed:",
+  "tooltip.bakery.thankyou_3": "Thank you for playing Bakery!",
+  "tooltip.bakery.thankyou_4": "Grants Resistance in a radius of 8 blocks",
+  "item.bakery.bakery_standard": "Completionist Banner: §cBakery"
 }

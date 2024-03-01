@@ -139,6 +139,7 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Block> RED_NETHER_BRICKS_STOVE = registerWithItem("red_nether_bricks_stove", () -> new StoveBlock(BlockBehaviour.Properties.copy(Blocks.BRICKS).lightLevel(state -> state.getValue(StoveBlock.LIT) ? 13 : 0)));
     public static final RegistrySupplier<Item> BLANK_CAKE = registerItem("blank_cake", () -> new Item(getSettingsWithoutTab().food(Foods.ROTTEN_FLESH)));
     public static final RegistrySupplier<Item> WANDERING_BAKER_SPAWN_EGG = registerItem("wandering_baker_spawn_egg", () -> new ArchitecturySpawnEggItem(EntityRegistry.WANDERING_BAKER, -1, -1, getSettingsWithoutTab()));
+    public static final RegistrySupplier<Item>  BAKERY_STANDARD = registerItem("bakery_standard", () -> new BakeryStandardItem(new Item.Properties().stacksTo(16).rarity(Rarity.UNCOMMON)));
 
     public static void init() {
         ITEMS.register();

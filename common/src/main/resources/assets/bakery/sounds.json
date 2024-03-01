@@ -1,14 +1,14 @@
 {
-  "small_cooking_pot_boiling": {
-    "subtitle": "bakery.sound.juice_boiling",
+  "cooking_pot_boiling": {
+    "subtitle": "bakery.sound.cooking_pot_boiling",
     "sounds": [
-      "bakery:small_cooking_pot_boiling"
+      "bakery:cooking_pot_boiling"
     ]
   },
-  "small_cooking_pot_hit": {
-    "subtitle": "bakery.sound.small_cooking_pot_hit",
+  "cooking_pot_hit": {
+    "subtitle": "bakery.sound.cooking_pot_hit",
     "sounds": [
-      "bakery:small_cooking_pot_hit"
+      "bakery:cooking_pot_hit"
     ]
   },
   "drawer_open": {

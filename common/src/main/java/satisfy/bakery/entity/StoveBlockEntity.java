@@ -1,6 +1,5 @@
 package satisfy.bakery.entity;
 
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
@@ -8,7 +7,6 @@ import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.ExperienceOrb;
@@ -26,12 +24,15 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import satisfy.bakery.block.StoveBlock;
 import satisfy.bakery.client.gui.handler.StoveGuiHandler;
 import satisfy.bakery.recipe.StoveRecipe;
 import satisfy.bakery.registry.BlockEntityRegistry;
 import satisfy.bakery.registry.RecipeTypeRegistry;
+
+import java.util.Objects;
 
 import static net.minecraft.world.item.ItemStack.isSameItemSameTags;
 
@@ -136,6 +137,7 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
         }
 
         final StoveRecipe recipe = world.getRecipeManager().getRecipeFor(RecipeTypeRegistry.STOVE_RECIPE_TYPE.get(), blockEntity, world).orElse(null);
+        assert level != null;
         RegistryAccess access = level.registryAccess();
         if (!initialBurningState && canCraft(recipe, access)) {
             this.burnTime = this.burnTimeTotal = this.getTotalBurnTime(this.getItem(FUEL_SLOT));
@@ -143,7 +145,7 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
                 dirty = true;
                 final ItemStack fuelStack = this.getItem(FUEL_SLOT);
                 if (fuelStack.getItem().hasCraftingRemainingItem()) {
-                    setItem(FUEL_SLOT, new ItemStack(fuelStack.getItem().getCraftingRemainingItem()));
+                    setItem(FUEL_SLOT, new ItemStack(Objects.requireNonNull(fuelStack.getItem().getCraftingRemainingItem())));
                 } else if (fuelStack.getCount() > 1) {
                     removeItem(FUEL_SLOT, 1);
                 } else if (fuelStack.getCount() == 1) {
@@ -203,42 +205,49 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
         if (recipe == null || !canCraft(recipe, access)) {
             return;
         }
-        final ItemStack recipeOutput = recipe.getResultItem(access);
+        final ItemStack recipeOutput = recipe.getResultItem(access).copy(); // Ensure you use a copy to avoid unintended modifications
         final ItemStack outputSlotStack = this.getItem(OUTPUT_SLOT);
         if (outputSlotStack.isEmpty()) {
             setItem(OUTPUT_SLOT, recipeOutput);
-        } else if (outputSlotStack.is(recipeOutput.getItem())) {
+        } else if (ItemStack.isSameItemSameTags(outputSlotStack, recipeOutput)) {
             outputSlotStack.grow(recipeOutput.getCount());
         }
 
-
-        final NonNullList<Ingredient> ingredients = recipe.getIngredients();
-        boolean[] slotUsed = new boolean[3];
-        for (int i = 0; i < recipe.getIngredients().size(); i++) {
-            Ingredient ingredient = ingredients.get(i);
-            ItemStack bestSlot = getItem(i);
-            if (ingredient.test(bestSlot) && !slotUsed[i]) {
-                slotUsed[i] = true;
-                ItemStack remainderStack = getRemainderItem(bestSlot);
-                bestSlot.shrink(1);
-                if (!remainderStack.isEmpty()) {
-                    setItem(i, remainderStack);
-                }
-            } else {
-                for (int j = 0; j < 3; j++) {
-                    ItemStack stack = getItem(j);
-                    if (ingredient.test(stack) && !slotUsed[j]) {
-                        slotUsed[j] = true;
-                        ItemStack remainderStack = getRemainderItem(stack);
-                        stack.shrink(1);
-                        if (!remainderStack.isEmpty()) {
-                            setItem(j, remainderStack);
+        for (int slot : INGREDIENT_SLOTS) {
+            ItemStack stackInSlot = this.getItem(slot);
+            for (Ingredient ingredient : recipe.getIngredients()) {
+                if (ingredient.test(stackInSlot)) {
+                    ItemStack remainderStack = getRemainderItem(stackInSlot); // Get the remainder item before shrinking the original stack
+                    stackInSlot.shrink(1);
+                    if (!remainderStack.isEmpty()) {
+                        if (stackInSlot.isEmpty()) {
+                            setItem(slot, remainderStack); // Replace the empty slot with the remainder item
+                        } else {
+                            boolean added = false;
+                            for (int i : INGREDIENT_SLOTS) {
+                                ItemStack is = this.getItem(i);
+                                if (is.isEmpty()) {
+                                    this.setItem(i, remainderStack.copy()); // Use copy to ensure item integrity
+                                    added = true;
+                                    break;
+                                } else if (ItemStack.isSameItemSameTags(is, remainderStack) && is.getCount() < is.getMaxStackSize()) {
+                                    is.grow(1);
+                                    added = true;
+                                    break;
+                                }
+                            }
+                            if (!added) {
+                                assert this.level != null;
+                                Block.popResource(this.level, this.worldPosition, remainderStack);
+                            }
                         }
                     }
+                    break;
                 }
             }
         }
     }
+
 
 
     protected int getTotalBurnTime(ItemStack fuel) {
@@ -252,7 +261,7 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
 
     private ItemStack getRemainderItem(ItemStack stack) {
         if (stack.getItem().hasCraftingRemainingItem()) {
-            return new ItemStack(stack.getItem().getCraftingRemainingItem());
+            return new ItemStack(Objects.requireNonNull(stack.getItem().getCraftingRemainingItem()));
         }
         return ItemStack.EMPTY;
     }
@@ -288,6 +297,7 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
 
     @Override
     public boolean stillValid(Player player) {
+        assert this.level != null;
         if (this.level.getBlockEntity(this.worldPosition) != this) {
             return false;
         } else {
@@ -296,7 +306,7 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
     }
 
     @Override
-    public Component getDisplayName() {
+    public @NotNull Component getDisplayName() {
         return Component.translatable(this.getBlockState().getBlock().getDescriptionId());
     }
 

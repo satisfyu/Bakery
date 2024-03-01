@@ -105,6 +105,8 @@ public class BakeryTabRegistry {
                 out.accept(ObjectRegistry.END_STOVE.get());
                 out.accept(ObjectRegistry.RED_NETHER_BRICKS_STOVE.get());
                 out.accept(ObjectRegistry.QUARTZ_STOVE.get());
+                out.accept(ObjectRegistry.BAKERY_STANDARD.get());
+
             })
             .build());
 
