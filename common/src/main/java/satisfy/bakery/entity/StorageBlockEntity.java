@@ -17,26 +17,27 @@ import net.minecraft.world.level.block.entity.ContainerOpenersCounter;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import org.jetbrains.annotations.NotNull;
 import satisfy.bakery.block.CabinetBlock;
 import satisfy.bakery.registry.BlockEntityRegistry;
 
-public class CabinetBlockEntity extends RandomizableContainerBlockEntity {
+public class StorageBlockEntity extends RandomizableContainerBlockEntity {
     private NonNullList<ItemStack> inventory;
     private ContainerOpenersCounter stateManager;
 
-    public CabinetBlockEntity(BlockPos pos, BlockState state) {
+    public StorageBlockEntity(BlockPos pos, BlockState state) {
         super(BlockEntityRegistry.CABINET_BLOCK_ENTITY.get(), pos, state);
         this.inventory = NonNullList.withSize(18, ItemStack.EMPTY);
         this.stateManager = new ContainerOpenersCounter() {
 
             @Override
             protected void onOpen(Level world, BlockPos pos, BlockState state) {
-                CabinetBlockEntity.this.setOpen(state, true);
+                StorageBlockEntity.this.setOpen(state, true);
             }
 
             @Override
             protected void onClose(Level world, BlockPos pos, BlockState state) {
-                CabinetBlockEntity.this.setOpen(state, false);
+                StorageBlockEntity.this.setOpen(state, false);
             }
 
             @Override
@@ -47,7 +48,7 @@ public class CabinetBlockEntity extends RandomizableContainerBlockEntity {
             protected boolean isOwnContainer(Player player) {
                 if (player.containerMenu instanceof ChestMenu) {
                     Container inventory = ((ChestMenu) player.containerMenu).getContainer();
-                    return inventory == CabinetBlockEntity.this;
+                    return inventory == StorageBlockEntity.this;
                 } else {
                     return false;
                 }
@@ -80,7 +81,7 @@ public class CabinetBlockEntity extends RandomizableContainerBlockEntity {
     }
 
     @Override
-    protected NonNullList<ItemStack> getItems() {
+    protected @NotNull NonNullList<ItemStack> getItems() {
         return this.inventory;
     }
 
@@ -90,12 +91,12 @@ public class CabinetBlockEntity extends RandomizableContainerBlockEntity {
     }
 
     @Override
-    protected Component getDefaultName() {
-        return Component.translatable("bakery.container.cabinet");
+    protected @NotNull Component getDefaultName() {
+        return Component.translatable(this.getBlockState().getBlock().getDescriptionId());
     }
 
     @Override
-    protected AbstractContainerMenu createMenu(int syncId, Inventory playerInventory) {
+    protected @NotNull AbstractContainerMenu createMenu(int syncId, Inventory playerInventory) {
         return new ChestMenu(MenuType.GENERIC_9x2, syncId, playerInventory, this, 2);
     }
 

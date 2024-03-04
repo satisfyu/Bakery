@@ -6,7 +6,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import satisfy.bakery.Bakery;
 import satisfy.bakery.entity.BakerStationBlockEntity;
-import satisfy.bakery.entity.CabinetBlockEntity;
+import satisfy.bakery.entity.StorageBlockEntity;
 import satisfy.bakery.entity.CookingPotBlockEntity;
 import satisfy.bakery.entity.StoveBlockEntity;
 
@@ -16,7 +16,7 @@ public class BlockEntityRegistry {
 
     private static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES = DeferredRegister.create(Bakery.MOD_ID, Registries.BLOCK_ENTITY_TYPE);
 
-    public static final RegistrySupplier<BlockEntityType<CabinetBlockEntity>> CABINET_BLOCK_ENTITY = create("cabinet", () -> BlockEntityType.Builder.of(CabinetBlockEntity::new, ObjectRegistry.CABINET.get(), ObjectRegistry.DRAWER.get(), ObjectRegistry.WALL_CABINET.get()).build(null));
+    public static final RegistrySupplier<BlockEntityType<StorageBlockEntity>> CABINET_BLOCK_ENTITY = create("cabinet", () -> BlockEntityType.Builder.of(StorageBlockEntity::new, ObjectRegistry.CABINET.get(), ObjectRegistry.DRAWER.get(), ObjectRegistry.WALL_CABINET.get()).build(null));
     public static final RegistrySupplier<BlockEntityType<StoveBlockEntity>> STOVE_BLOCK_ENTITY
             = create("stove_block", () -> BlockEntityType.Builder.of(StoveBlockEntity::new,
             ObjectRegistry.BRICK_STOVE.get(), ObjectRegistry.COBBLESTONE_STOVE.get(), ObjectRegistry.MUD_STOVE.get(), ObjectRegistry.GRANITE_STOVE.get(),

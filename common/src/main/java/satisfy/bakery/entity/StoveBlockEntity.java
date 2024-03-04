@@ -50,7 +50,6 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
     protected static final int FUEL_SLOT = StoveGuiHandler.FUEL_SLOT;
     protected static final int[] INGREDIENT_SLOTS = {1, 2, 3};
     protected static final int OUTPUT_SLOT = StoveGuiHandler.OUTPUT_SLOT;
-
     public static final int TOTAL_COOKING_TIME = 240;
 
     private final ContainerData propertyDelegate = new ContainerData() {
@@ -205,7 +204,7 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
         if (recipe == null || !canCraft(recipe, access)) {
             return;
         }
-        final ItemStack recipeOutput = recipe.getResultItem(access).copy(); // Ensure you use a copy to avoid unintended modifications
+        final ItemStack recipeOutput = recipe.getResultItem(access).copy();
         final ItemStack outputSlotStack = this.getItem(OUTPUT_SLOT);
         if (outputSlotStack.isEmpty()) {
             setItem(OUTPUT_SLOT, recipeOutput);
@@ -217,17 +216,17 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
             ItemStack stackInSlot = this.getItem(slot);
             for (Ingredient ingredient : recipe.getIngredients()) {
                 if (ingredient.test(stackInSlot)) {
-                    ItemStack remainderStack = getRemainderItem(stackInSlot); // Get the remainder item before shrinking the original stack
+                    ItemStack remainderStack = getRemainderItem(stackInSlot);
                     stackInSlot.shrink(1);
                     if (!remainderStack.isEmpty()) {
                         if (stackInSlot.isEmpty()) {
-                            setItem(slot, remainderStack); // Replace the empty slot with the remainder item
+                            setItem(slot, remainderStack);
                         } else {
                             boolean added = false;
                             for (int i : INGREDIENT_SLOTS) {
                                 ItemStack is = this.getItem(i);
                                 if (is.isEmpty()) {
-                                    this.setItem(i, remainderStack.copy()); // Use copy to ensure item integrity
+                                    this.setItem(i, remainderStack.copy());
                                     added = true;
                                     break;
                                 } else if (ItemStack.isSameItemSameTags(is, remainderStack) && is.getCount() < is.getMaxStackSize()) {

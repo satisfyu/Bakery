@@ -18,6 +18,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import satisfy.bakery.client.gui.handler.BakerStationGuiHandler;
 import satisfy.bakery.recipe.BakerStationRecipe;
@@ -107,6 +108,7 @@ public class BakerStationBlockEntity extends BlockEntity implements ImplementedI
         final var recipeType = world.getRecipeManager()
                 .getRecipeFor(RecipeTypeRegistry.BAKER_STATION_RECIPE_TYPE.get(), blockEntity, world)
                 .orElse(null);
+        assert level != null;
         RegistryAccess access = level.registryAccess();
         if (canCraft(recipeType, access)) {
             this.fermentationTime++;
@@ -187,6 +189,7 @@ public class BakerStationBlockEntity extends BlockEntity implements ImplementedI
 
     @Override
     public boolean stillValid(Player player) {
+        assert this.level != null;
         if (this.level.getBlockEntity(this.worldPosition) != this) {
             return false;
         } else {
@@ -195,7 +198,7 @@ public class BakerStationBlockEntity extends BlockEntity implements ImplementedI
     }
 
     @Override
-    public Component getDisplayName() {
+    public @NotNull Component getDisplayName() {
         return Component.translatable(this.getBlockState().getBlock().getDescriptionId());
     }
 

@@ -1,6 +1,5 @@
 package satisfy.bakery.block;
 
-import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvent;
@@ -25,7 +24,7 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import satisfy.bakery.entity.CabinetBlockEntity;
+import satisfy.bakery.entity.StorageBlockEntity;
 
 import java.util.function.Supplier;
 
@@ -48,7 +47,7 @@ public class CabinetBlock extends BaseEntityBlock {
             return InteractionResult.SUCCESS;
         } else {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof CabinetBlockEntity blockEntity1) {
+            if (blockEntity instanceof StorageBlockEntity blockEntity1) {
                 player.openMenu(blockEntity1);
             }
 
@@ -72,7 +71,7 @@ public class CabinetBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new CabinetBlockEntity(pos, state);
+        return new StorageBlockEntity(pos, state);
     }
 
     @Override
@@ -84,7 +83,7 @@ public class CabinetBlock extends BaseEntityBlock {
     public void setPlacedBy(Level world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
         if (itemStack.hasCustomHoverName()) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof CabinetBlockEntity blockEntity1) {
+            if (blockEntity instanceof StorageBlockEntity blockEntity1) {
                 blockEntity1.setCustomName(itemStack.getHoverName());
             }
         }

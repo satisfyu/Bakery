@@ -22,7 +22,6 @@ public class SoundEventRegistry {
     public static final RegistrySupplier<SoundEvent> CAKE_CUT = create("cake_cut");
 
 
-
     private static RegistrySupplier<SoundEvent> create(String name) {
         final ResourceLocation id = new BakeryIdentifier(name);
         return SOUND_EVENTS.register(id, () -> SoundEvent.createVariableRangeEvent(id));
