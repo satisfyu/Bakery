@@ -2,6 +2,7 @@ package satisfy.bakery.client;
 
 import dev.architectury.registry.client.level.entity.EntityModelLayerRegistry;
 import dev.architectury.registry.client.level.entity.EntityRendererRegistry;
+import dev.architectury.registry.client.rendering.BlockEntityRendererRegistry;
 import dev.architectury.registry.client.rendering.RenderTypeRegistry;
 import dev.architectury.registry.menu.MenuRegistry;
 import net.fabricmc.api.EnvType;
@@ -11,7 +12,9 @@ import satisfy.bakery.client.gui.BakerStationGui;
 import satisfy.bakery.client.gui.CookingPotGui;
 import satisfy.bakery.client.gui.StoveGui;
 import satisfy.bakery.client.model.WanderingBakerModel;
+import satisfy.bakery.client.render.block.StoveBlockEntityRenderer;
 import satisfy.bakery.client.render.entity.WanderingBakerRenderer;
+import satisfy.bakery.registry.BlockEntityRegistry;
 import satisfy.bakery.registry.EntityRegistry;
 import satisfy.bakery.registry.ScreenHandlerTypeRegistry;
 
@@ -24,7 +27,7 @@ public class BakeryClient {
         RenderTypeRegistry.register(RenderType.cutout(),
                 CAKE_STAND.get(), IRON_TABLE.get(), IRON_CHAIR.get(), JAR.get(), SWEETBERRY_JAM.get(), CHOCOLATE_JAM.get(),
                 STRAWBERRY_JAM.get(), GLOWBERRY_JAM.get(), APPLE_JAM.get(), OAT_CROP.get(), STRAWBERRY_CROP.get(), WILD_STRAWBERRIES.get(),
-                CAKE_DISPLAY.get(), CRAFTING_BOWL.get()
+                CAKE_DISPLAY.get(), CRAFTING_BOWL.get(), BRICK_STOVE.get()
         );
 
 
@@ -34,6 +37,7 @@ public class BakeryClient {
         RenderTypeRegistry.register(RenderType.translucent(), CAKE_DISPLAY.get());
         RenderTypeRegistry.register(RenderType.translucent(), CUPCAKE_DISPLAY.get());
         RenderTypeRegistry.register(RenderType.translucent(), WALL_DISPLAY.get());
+        BlockEntityRendererRegistry.register(BlockEntityRegistry.STOVE_BLOCK_ENTITY.get(), StoveBlockEntityRenderer::new);
 
         MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.STOVE_SCREEN_HANDLER.get(), StoveGui::new);
         MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.COOKING_POT_SCREEN_HANDLER.get(), CookingPotGui::new);

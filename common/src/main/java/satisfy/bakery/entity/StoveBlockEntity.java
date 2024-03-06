@@ -34,7 +34,6 @@ import satisfy.bakery.registry.RecipeTypeRegistry;
 
 import java.util.Objects;
 
-import static net.minecraft.world.item.ItemStack.isSameItemSameTags;
 
 public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<StoveBlockEntity>, ImplementedInventory, MenuProvider {
 
@@ -51,6 +50,13 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
     protected static final int[] INGREDIENT_SLOTS = {1, 2, 3};
     protected static final int OUTPUT_SLOT = StoveGuiHandler.OUTPUT_SLOT;
     public static final int TOTAL_COOKING_TIME = 240;
+    public int[] getIngredientSlots() {
+        return INGREDIENT_SLOTS;
+    }
+
+    public int getOutputSlot() {
+        return OUTPUT_SLOT;
+    }
 
     private final ContainerData propertyDelegate = new ContainerData() {
         @Override
@@ -190,7 +196,7 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
             final int outputSlotCount = outputSlotStack.getCount();
             if (this.getItem(OUTPUT_SLOT).isEmpty()) {
                 return true;
-            } else if (!isSameItemSameTags(outputSlotStack, recipeOutput)) {
+            } else if (!ItemStack.isSameItemSameTags(outputSlotStack, recipeOutput)) {
                 return false;
             } else if (outputSlotCount < this.getMaxStackSize() && outputSlotCount < outputSlotStack.getMaxStackSize()) {
                 return true;
