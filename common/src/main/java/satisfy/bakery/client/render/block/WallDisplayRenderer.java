@@ -1,55 +1,40 @@
 package satisfy.bakery.client.render.block;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import de.cristelknight.doapi.client.render.block.storage.StorageTypeRenderer;
-import de.cristelknight.doapi.common.block.entity.StorageBlockEntity;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import satisfy.bakery.util.ClientUtil;
+import de.cristelknight.doapi.client.render.block.storage.StorageTypeRenderer;
+import de.cristelknight.doapi.common.block.entity.StorageBlockEntity;
 
-@Environment(EnvType.CLIENT)
 public class WallDisplayRenderer implements StorageTypeRenderer {
     @Override
-    public void render(StorageBlockEntity entity, PoseStack matrices, MultiBufferSource vertexConsumers, NonNullList<ItemStack> itemStacks) {
-        int invSize = 4;
+    public void render(StorageBlockEntity entity, PoseStack poseStack, MultiBufferSource buffer, NonNullList<ItemStack> items) {
+        for (int i = 0; i < Math.min(items.size(), 4); i++) {
+            ItemStack stack = items.get(i);
+            if (!(stack.getItem() instanceof BlockItem)) continue;
 
-        for (int i = 0; i < invSize; i++) {
-            ItemStack stack = itemStacks.get(i);
-            if (stack.getItem() instanceof BlockItem blockItem) {
-                matrices.pushPose();
-                matrices.scale(0.75f, 0.75f, 0.75f);
+            poseStack.pushPose();
 
-                boolean firstColumn = i < 2;
-                int x = i % 2;
+            float scale = 0.75f;
+            poseStack.scale(scale, scale, scale);
 
-                float xOffset = (x - 0.5f) * 1.85f;
-                float yOffset;
-                if (i < 2) {
-                    yOffset = -0.25f;
-                    xOffset -= -0.1f;
-                } else {
-                    yOffset = -0.82f;
-                    xOffset -= -2.5f;
-                }
-                float zOffset;
-                if (i < 2) {
-                    zOffset = -0.19f;
-                } else {
-                    zOffset = -0.19f;
-                }
+            float xBaseOffset = -0.75f; 
+            float yBaseOffset = i < 2 ? 0.75f : 0.16f;
+            float zBaseOffset = -0.19f;
 
-                matrices.translate(xOffset, yOffset, zOffset);
+            float xSpacing = 0.52f;
+            float xOffset = xBaseOffset + (i % 2) * xSpacing;
+            float yOffset = yBaseOffset;
+            float zOffset = zBaseOffset;
 
-                matrices.mulPose(Axis.YN.rotationDegrees(0f));
-                matrices.translate(-1.2f * i, 1, 0);
-                ClientUtil.renderBlockFromItem(blockItem, matrices, vertexConsumers, entity);
-                matrices.popPose();
-            }
+            poseStack.translate(xOffset, yOffset, zOffset);
+
+            ClientUtil.renderBlockFromItem((BlockItem)stack.getItem(), poseStack, buffer, entity);
+
+            poseStack.popPose();
         }
     }
 }

@@ -16,40 +16,25 @@ import satisfy.bakery.util.ClientUtil;
 public class CupcakeDisplayRenderer implements StorageTypeRenderer {
     @Override
     public void render(StorageBlockEntity entity, PoseStack matrices, MultiBufferSource vertexConsumers, NonNullList<ItemStack> itemStacks) {
-        int invSize = 6;
-
-        for (int i = 0; i < invSize; i++) {
+        for (int i = 0; i < itemStacks.size(); i++) {
             ItemStack stack = itemStacks.get(i);
-            if (!stack.isEmpty() && !(stack.getItem() instanceof BlockItem)) {
-                matrices.pushPose();
-                matrices.scale(0.35f, 0.4f, 0.35f);
+            if (stack.isEmpty() || stack.getItem() instanceof BlockItem) continue;
 
-                boolean firstColumn = i < invSize / 2;
-                boolean secondColumn = !firstColumn;
-                int x = i - 1;
+            matrices.pushPose();
+            matrices.scale(0.3f, 0.4f, 0.3f);
 
-                float firstColumnOffset = x * 2.1f;
-                float secondColumnOffset = x * 2.1f;
-                float yOffset;
+            float xOffset = (i % 3) * 2.1f;
+            float yOffset = i < 3 ? 1.3f : 0.35f;
+            float zOffset = -1f;
 
-                if (firstColumn) {
-                    yOffset = 1.3f;
-                    firstColumnOffset -= -1.2f;
-                } else {
-                    yOffset = 0.35f; //
-                    secondColumnOffset -= 1.5f;
-                }
+            xOffset += i < 3 ? -0.9f : 2.7f;
 
-                float zOffset = -1f;
-                float xOffset = firstColumn ? firstColumnOffset : secondColumnOffset;
+            matrices.translate(xOffset, yOffset, zOffset);
+            matrices.mulPose(Axis.XP.rotationDegrees(90f));
+            matrices.translate(-1.2f * i, 1, 0);
 
-                matrices.translate(xOffset, yOffset, zOffset);
-
-                matrices.mulPose(Axis.XP.rotationDegrees(90f));
-                matrices.translate(-1.2f * i, 1, 0);
-                ClientUtil.renderItem(stack, matrices, vertexConsumers, entity);
-                matrices.popPose();
-            }
+            ClientUtil.renderItem(stack, matrices, vertexConsumers, entity);
+            matrices.popPose();
         }
     }
 }
