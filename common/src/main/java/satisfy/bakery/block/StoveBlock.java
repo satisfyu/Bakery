@@ -13,9 +13,7 @@ import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -42,6 +40,7 @@ import satisfy.bakery.entity.StoveBlockEntity;
 
 import java.util.List;
 
+@SuppressWarnings({"unchecked", "deprecation"})
 public class StoveBlock extends Block implements EntityBlock {
 
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
@@ -136,12 +135,9 @@ public class StoveBlock extends Block implements EntityBlock {
     @Override
     public void stepOn(Level world, BlockPos pos, BlockState state, Entity entity) {
         boolean isLit = state.getValue(LIT);
-        if (isLit && !entity.fireImmune() && entity instanceof LivingEntity livingEntity &&
-                !EnchantmentHelper.hasFrostWalker(livingEntity)) {
+        if (isLit && entity instanceof Player player && !EnchantmentHelper.hasFrostWalker(player)) {
             entity.hurt(world.damageSources().hotFloor(), 1.f);
         }
-
-        super.stepOn(world, pos, state, entity);
     }
 
     @Override
