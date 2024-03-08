@@ -22,11 +22,13 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import satisfy.bakery.entity.BakerStationBlockEntity;
 
 import java.util.List;
 
+@SuppressWarnings({"unchecked", "deprecation"})
 public class BakerStationBlock extends BaseEntityBlock implements EntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 
@@ -41,12 +43,12 @@ public class BakerStationBlock extends BaseEntityBlock implements EntityBlock {
     }
 
     @Override
-    public BlockState rotate(BlockState state, Rotation rotation) {
+    public @NotNull BlockState rotate(BlockState state, Rotation rotation) {
         return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
     }
 
     @Override
-    public BlockState mirror(BlockState state, Mirror mirror) {
+    public @NotNull BlockState mirror(BlockState state, Mirror mirror) {
         return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
 
@@ -56,7 +58,7 @@ public class BakerStationBlock extends BaseEntityBlock implements EntityBlock {
     }
 
     @Override
-    public RenderShape getRenderShape(BlockState state) {
+    public @NotNull RenderShape getRenderShape(BlockState state) {
         return RenderShape.MODEL;
     }
 
@@ -73,8 +75,8 @@ public class BakerStationBlock extends BaseEntityBlock implements EntityBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level world, BlockPos pos,
-                                 Player player, InteractionHand hand, BlockHitResult hit) {
+    public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos,
+                                          Player player, InteractionHand hand, BlockHitResult hit) {
         if (!world.isClientSide) {
             MenuProvider screenHandlerFactory = state.getMenuProvider(world, pos);
 

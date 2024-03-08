@@ -19,9 +19,11 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
+@SuppressWarnings({"deprecation"})
 public class StackableBlock extends Block {
     private final VoxelShape SHAPE = Shapes.box(0.1875, 0, 0.1875, 0.8125, 0.875, 0.8125);
     public static final IntegerProperty STACK = IntegerProperty.create("stack", 1, 3);
@@ -32,7 +34,7 @@ public class StackableBlock extends Block {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         final ItemStack stack = player.getItemInHand(hand);
         if (stack.getItem() == this.asItem()) {
             if (state.getBlock() instanceof StackableBlock && state.getValue(STACK) < 3) {
@@ -54,13 +56,12 @@ public class StackableBlock extends Block {
         return super.use(state, world, pos, player, hand, hit);
     }
 
-
     public boolean skipRendering(BlockState state, BlockState stateFrom, Direction direction) {
         return stateFrom.is(this) || super.skipRendering(state, stateFrom, direction);
     }
 
     @Override
-    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+    public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         return SHAPE;
     }
 

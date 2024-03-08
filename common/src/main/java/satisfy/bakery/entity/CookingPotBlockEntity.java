@@ -6,7 +6,6 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
@@ -22,6 +21,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import satisfy.bakery.block.CookingPotBlock;
 import satisfy.bakery.client.gui.handler.CookingPotGuiHandler;
@@ -30,13 +30,15 @@ import satisfy.bakery.registry.BlockEntityRegistry;
 import satisfy.bakery.registry.RecipeTypeRegistry;
 import satisfy.bakery.registry.TagsRegistry;
 
+import java.util.Objects;
+
 import static net.minecraft.world.item.ItemStack.isSameItemSameTags;
 
 public class CookingPotBlockEntity extends BlockEntity implements BlockEntityTicker<CookingPotBlockEntity>, ImplementedInventory, MenuProvider {
 
     private final NonNullList<ItemStack> inventory = NonNullList.withSize(MAX_CAPACITY, ItemStack.EMPTY);
     private static final int MAX_CAPACITY = 8;
-    public static final int MAX_COOKING_TIME = 600; // Time in ticks (30s)
+    public static final int MAX_COOKING_TIME = 600;
     private int cookingTime;
     protected static final int[] RECIPE_SLOTS = {1, 2, 3, 4, 5, 6};
     public static final int BOTTLE_INPUT_SLOT = 7;
@@ -185,7 +187,7 @@ public class CookingPotBlockEntity extends BlockEntity implements BlockEntityTic
 
     private ItemStack getRemainderItem(ItemStack stack) {
         if (stack.getItem().hasCraftingRemainingItem()) {
-            return new ItemStack(stack.getItem().getCraftingRemainingItem());
+            return new ItemStack(Objects.requireNonNull(stack.getItem().getCraftingRemainingItem()));
         }
         return ItemStack.EMPTY;
     }
@@ -207,6 +209,7 @@ public class CookingPotBlockEntity extends BlockEntity implements BlockEntityTic
         }
         delegate.set(1, 1);
         Recipe<?> recipe = world.getRecipeManager().getRecipeFor(RecipeTypeRegistry.COOKING_POT_RECIPE_TYPE.get(), blockEntity, world).orElse(null);
+        assert level != null;
         RegistryAccess access = level.registryAccess();
         boolean canCraft = canCraft(recipe, access);
         if (canCraft) {
@@ -222,8 +225,8 @@ public class CookingPotBlockEntity extends BlockEntity implements BlockEntityTic
             world.setBlock(pos, this.getBlockState().getBlock().defaultBlockState().setValue(CookingPotBlock.COOKING, true).setValue(CookingPotBlock.LIT, true), Block.UPDATE_ALL);
         } else if (state.getValue(CookingPotBlock.COOKING)) {
             world.setBlock(pos, this.getBlockState().getBlock().defaultBlockState().setValue(CookingPotBlock.COOKING, false).setValue(CookingPotBlock.LIT, true), Block.UPDATE_ALL);
-        } else if (state.getValue(CookingPotBlock.LIT) != isBeingBurned) {
-            world.setBlock(pos, state.setValue(CookingPotBlock.LIT, isBeingBurned), Block.UPDATE_ALL);
+        } else if (!state.getValue(CookingPotBlock.LIT)) {
+            world.setBlock(pos, state.setValue(CookingPotBlock.LIT, true), Block.UPDATE_ALL);
         }
     }
 
@@ -245,6 +248,7 @@ public class CookingPotBlockEntity extends BlockEntity implements BlockEntityTic
 
     @Override
     public boolean stillValid(Player player) {
+        assert this.level != null;
         if (this.level.getBlockEntity(this.worldPosition) != this) {
             return false;
         } else {
@@ -254,7 +258,7 @@ public class CookingPotBlockEntity extends BlockEntity implements BlockEntityTic
 
 
     @Override
-    public Component getDisplayName() {
+    public @NotNull Component getDisplayName() {
         return Component.translatable(this.getBlockState().getBlock().getDescriptionId());
     }
 

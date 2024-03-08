@@ -19,9 +19,11 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
+@SuppressWarnings({"deprecation"})
 public class StackableBunBlock extends Block {
     private final VoxelShape SHAPE = Shapes.box(0.1875, 0, 0.1875, 0.8125, 0.875, 0.8125);
     public static final IntegerProperty STACK = IntegerProperty.create("stack", 1, 4);
@@ -32,7 +34,7 @@ public class StackableBunBlock extends Block {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         final ItemStack stack = player.getItemInHand(hand);
         if (stack.getItem() == this.asItem()) {
             if (state.getBlock() instanceof StackableBunBlock && state.getValue(STACK) < 4) {
@@ -60,7 +62,7 @@ public class StackableBunBlock extends Block {
     }
 
     @Override
-    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+    public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         return SHAPE;
     }
 

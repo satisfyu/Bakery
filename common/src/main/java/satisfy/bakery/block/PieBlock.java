@@ -29,6 +29,7 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 import satisfy.bakery.registry.SoundEventRegistry;
 import satisfy.bakery.registry.TagsRegistry;
 import satisfy.bakery.util.GeneralUtil;
@@ -38,6 +39,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
+@SuppressWarnings({"deprecation"})
 public class PieBlock extends FacingBlock {
 
     public static final IntegerProperty CUTS = IntegerProperty.create("cuts", 0, 3);
@@ -80,7 +82,7 @@ public class PieBlock extends FacingBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    public @NotNull InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         ItemStack heldStack = player.getItemInHand(hand);
         if (level.isClientSide) {
             if (heldStack.is(TagsRegistry.KNIVES)) {
@@ -157,7 +159,7 @@ public class PieBlock extends FacingBlock {
     }
 
     @Override
-    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+    public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         return SHAPE.get(state.getValue(FACING));
     }
 

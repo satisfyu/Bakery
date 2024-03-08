@@ -7,7 +7,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -24,6 +23,7 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import satisfy.bakery.registry.StorageTypeRegistry;
 import satisfy.bakery.registry.TagsRegistry;
@@ -105,6 +105,7 @@ public class WallDisplayBlock extends StorageBlock {
     }
 
     @Override
+    @SuppressWarnings({"deprecation"})
     public void neighborChanged(BlockState state, Level world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
         if (world.isClientSide) return;
 
@@ -160,16 +161,17 @@ public class WallDisplayBlock extends StorageBlock {
     });
 
     @Override
-    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+    @SuppressWarnings({"deprecation"})
+    public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         return SHAPE.get(state.getValue(FACING));
     }
     @Override
-    public BlockState rotate(BlockState state, Rotation rotation) {
+    public @NotNull BlockState rotate(BlockState state, Rotation rotation) {
         return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
     }
 
     @Override
-    public BlockState mirror(BlockState state, Mirror mirror) {
+    public @NotNull BlockState mirror(BlockState state, Mirror mirror) {
         return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
 

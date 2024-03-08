@@ -19,10 +19,10 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.state.BlockState;
@@ -35,6 +35,8 @@ import satisfy.bakery.recipe.StoveRecipe;
 import satisfy.bakery.registry.BlockEntityRegistry;
 import satisfy.bakery.registry.RecipeTypeRegistry;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 
@@ -256,14 +258,17 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
         }
     }
 
-
-
     protected int getTotalBurnTime(ItemStack fuel) {
         if (fuel.isEmpty()) {
             return 0;
         } else {
-            final Item item = fuel.getItem();
-            return AbstractFurnaceBlockEntity.getFuel().getOrDefault(item, 0);
+            Item item = fuel.getItem();
+            Map<Item, Integer> fuelBurnTimes = new HashMap<>();
+            fuelBurnTimes.put(Items.COAL, 1600);
+            fuelBurnTimes.put(Items.CHARCOAL, 1600);
+            fuelBurnTimes.put(Items.LAVA_BUCKET, 20000);
+            fuelBurnTimes.put(Items.BLAZE_ROD, 2400);
+            return fuelBurnTimes.getOrDefault(item, 0);
         }
     }
 
@@ -312,6 +317,7 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
             return player.distanceToSqr((double) this.worldPosition.getX() + 0.5, (double) this.worldPosition.getY() + 0.5, (double) this.worldPosition.getZ() + 0.5) <= 64.0;
         }
     }
+
 
     @Override
     public @NotNull Component getDisplayName() {

@@ -7,6 +7,7 @@ import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class CounterBlock extends FacingBlock {
@@ -24,12 +25,12 @@ public class CounterBlock extends FacingBlock {
     }
 
     @Override
-    public BlockState rotate(BlockState state, Rotation rotation) {
+    public @NotNull BlockState rotate(BlockState state, Rotation rotation) {
         return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
     }
 
     @Override
-    public BlockState mirror(BlockState state, Mirror mirror) {
+    public @NotNull BlockState mirror(BlockState state, Mirror mirror) {
         return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
 }

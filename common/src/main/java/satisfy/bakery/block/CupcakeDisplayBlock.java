@@ -15,6 +15,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 import satisfy.bakery.registry.StorageTypeRegistry;
 import satisfy.bakery.util.GeneralUtil;
 
@@ -81,7 +82,8 @@ public class CupcakeDisplayBlock extends StorageBlock {
     });
 
     @Override
-    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+    @SuppressWarnings({"deprecation"})
+    public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         return SHAPE.get(state.getValue(FACING));
     }
 

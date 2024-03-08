@@ -32,6 +32,7 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import satisfy.bakery.registry.TagsRegistry;
 import satisfy.bakery.util.GeneralUtil;
@@ -41,6 +42,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
+@SuppressWarnings({"deprecation"})
 public class KitchenSinkBlock extends Block {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty FILLED = BooleanProperty.create("filled");
@@ -52,7 +54,7 @@ public class KitchenSinkBlock extends Block {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         if (world.isClientSide) return InteractionResult.SUCCESS;
         ItemStack itemStack = player.getItemInHand(hand);
         Item item = itemStack.getItem();
@@ -143,7 +145,7 @@ public class KitchenSinkBlock extends Block {
     });
 
     @Override
-    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+    public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         if (state.getValue(HAS_FAUCET)) {
             return SHAPE_WITH_FAUCET.get(state.getValue(FACING));
         } else {
@@ -157,12 +159,12 @@ public class KitchenSinkBlock extends Block {
     }
 
     @Override
-    public BlockState rotate(BlockState state, Rotation rotation) {
+    public @NotNull BlockState rotate(BlockState state, Rotation rotation) {
         return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
     }
 
     @Override
-    public BlockState mirror(BlockState state, Mirror mirror) {
+    public @NotNull BlockState mirror(BlockState state, Mirror mirror) {
         return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
 

@@ -40,6 +40,7 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import satisfy.bakery.entity.CookingPotBlockEntity;
 import satisfy.bakery.registry.BlockEntityRegistry;
@@ -158,7 +159,7 @@ public class CookingPotBlock extends BaseEntityBlock {
     }
 
     @Override
-    public RenderShape getRenderShape(BlockState state) {
+    public @NotNull RenderShape getRenderShape(BlockState state) {
         return RenderShape.MODEL;
     }
 

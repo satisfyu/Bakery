@@ -13,7 +13,7 @@ import satisfy.bakery.entity.StoveBlockEntity;
 import satisfy.bakery.util.ClientUtil;
 
 /**
- *  Glad you've found this class! Please back out asap because thats the worst thing you'll ever see
+ *  Glad you've found this class! Please back out asap because that's the worst thing you'll ever see
  */
 public class StoveBlockRenderer implements BlockEntityRenderer<StoveBlockEntity> {
     public StoveBlockRenderer(Context context) {
@@ -25,7 +25,7 @@ public class StoveBlockRenderer implements BlockEntityRenderer<StoveBlockEntity>
         Vec3 baseOffset = new Vec3(0.5, 1.0, 0.5);
         Vec3 directionOffset = Vec3.atLowerCornerOf(direction.getNormal()).scale(0.3);
         double rightOffset = 2 / 16.0;
-        double downOffset = (-7 / 16.0) - (1.2 / 16.0) + (1 / 16.0);
+        double downOffset = (-8 / 16.0) - (1.2 / 16.0) + (1 / 16.0);
 
         double inputSlotOffsetX = 0;
         double inputSlotOffsetY = 0;
@@ -49,16 +49,17 @@ public class StoveBlockRenderer implements BlockEntityRenderer<StoveBlockEntity>
         }
 
         double ySpacing = 0.02;
-
         int slotIndex = 0;
+        int numberOfSlots = blockEntity.getIngredientSlots().length;
+
         for (int slot : blockEntity.getIngredientSlots()) {
             ItemStack stack = blockEntity.getItem(slot);
             if (!stack.isEmpty()) {
                 poseStack.pushPose();
-                double yOffset = baseOffset.y + downOffset - ySpacing * slotIndex;
+                double yOffset = baseOffset.y + downOffset + ySpacing * (numberOfSlots - slotIndex - 1);
                 poseStack.translate(baseOffset.x + directionOffset.x + inputSlotOffsetX, yOffset, baseOffset.z + directionOffset.z + inputSlotOffsetZ);
 
-                float rotationAngle = 45f * slotIndex;
+                float rotationAngle = 45f * (numberOfSlots - slotIndex - 1);
                 poseStack.mulPose(Axis.YP.rotationDegrees(rotationAngle));
 
                 poseStack.mulPose(Axis.XP.rotationDegrees(90f));
