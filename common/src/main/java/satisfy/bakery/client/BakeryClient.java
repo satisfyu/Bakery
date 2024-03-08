@@ -12,7 +12,7 @@ import satisfy.bakery.client.gui.BakerStationGui;
 import satisfy.bakery.client.gui.CookingPotGui;
 import satisfy.bakery.client.gui.StoveGui;
 import satisfy.bakery.client.model.WanderingBakerModel;
-import satisfy.bakery.client.render.block.StoveBlockEntityRenderer;
+import satisfy.bakery.client.render.block.StoveBlockRenderer;
 import satisfy.bakery.client.render.entity.WanderingBakerRenderer;
 import satisfy.bakery.registry.BlockEntityRegistry;
 import satisfy.bakery.registry.EntityRegistry;
@@ -37,7 +37,7 @@ public class BakeryClient {
         RenderTypeRegistry.register(RenderType.translucent(), CAKE_DISPLAY.get());
         RenderTypeRegistry.register(RenderType.translucent(), CUPCAKE_DISPLAY.get());
         RenderTypeRegistry.register(RenderType.translucent(), WALL_DISPLAY.get());
-        BlockEntityRendererRegistry.register(BlockEntityRegistry.STOVE_BLOCK_ENTITY.get(), StoveBlockEntityRenderer::new);
+        BlockEntityRendererRegistry.register(BlockEntityRegistry.STOVE_BLOCK_ENTITY.get(), StoveBlockRenderer::new);
 
         MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.STOVE_SCREEN_HANDLER.get(), StoveGui::new);
         MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.COOKING_POT_SCREEN_HANDLER.get(), CookingPotGui::new);
