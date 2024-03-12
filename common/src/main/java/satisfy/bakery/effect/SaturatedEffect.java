@@ -8,7 +8,6 @@ import net.minecraft.world.food.FoodData;
 import net.minecraft.world.level.GameRules;
 
 public class SaturatedEffect extends MobEffect {
-
     public SaturatedEffect() {
         super(MobEffectCategory.BENEFICIAL, 0);
     }
