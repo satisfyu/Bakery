@@ -2,6 +2,7 @@ package satisfy.bakery.registry;
 
 import de.cristelknight.doapi.Util;
 import de.cristelknight.doapi.common.block.ChairBlock;
+import de.cristelknight.doapi.common.block.FacingBlock;
 import dev.architectury.core.item.ArchitecturySpawnEggItem;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.Registrar;
@@ -50,13 +51,13 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Block> KITCHEN_SINK = registerWithItem("kitchen_sink", () -> new KitchenSinkBlock(BlockBehaviour.Properties.copy(Blocks.BRICKS).noOcclusion()));
     public static final RegistrySupplier<Block> BRICK_STOVE = registerWithItem("brick_stove", () -> new StoveBlock(BlockBehaviour.Properties.copy(Blocks.BRICKS).lightLevel(state -> state.getValue(StoveBlock.LIT) ? 13 : 0)));
     public static final RegistrySupplier<Block> BAKER_STATION = registerWithItem("baker_station", () -> new BakerStationBlock(BlockBehaviour.Properties.copy(Blocks.BRICKS)));
-    public static final RegistrySupplier<Block> BRICK_COUNTER = registerWithItem("brick_counter", () -> new CounterBlock(BlockBehaviour.Properties.copy(Blocks.BRICKS)));
+    public static final RegistrySupplier<Block> BRICK_COUNTER = registerWithItem("brick_counter", () -> new FacingBlock(BlockBehaviour.Properties.copy(Blocks.BRICKS)));
     public static final RegistrySupplier<Block> CABINET = registerWithItem("cabinet", () -> new CabinetBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(2.0F, 3.0F).sound(SoundType.WOOD), SoundEventRegistry.CABINET_OPEN, SoundEventRegistry.CABINET_CLOSE));
     public static final RegistrySupplier<Block> DRAWER = registerWithItem("drawer", () -> new CabinetBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(2.0F, 3.0F).sound(SoundType.WOOD), SoundEventRegistry.DRAWER_OPEN, SoundEventRegistry.DRAWER_CLOSE));
     public static final RegistrySupplier<Block> WALL_CABINET = registerWithItem("wall_cabinet", () -> new CabinetWallBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(2.0F, 3.0F).sound(SoundType.WOOD), SoundEventRegistry.CABINET_OPEN, SoundEventRegistry.CABINET_CLOSE));
     public static final RegistrySupplier<Block> IRON_CHAIR = registerWithItem("iron_chair", () -> new ChairBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(2.0f, 3.0f).sound(SoundType.METAL)));
     public static final RegistrySupplier<Block> IRON_TABLE = registerWithItem("iron_table", () -> new TableBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
-    public static final RegistrySupplier<Block> STREET_SIGN = registerWithItem("street_sign", () -> new BoardBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS), true));
+    public static final RegistrySupplier<Block> STREET_SIGN = registerWithItem("street_sign", () -> new StreetSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
     public static final RegistrySupplier<Block> CAKE_STAND = registerWithItem("cake_stand", () -> new CakeStandBlock(BlockBehaviour.Properties.copy(Blocks.FLOWER_POT).sound(SoundType.GLASS)));
     public static final RegistrySupplier<Block> CAKE_DISPLAY = registerWithItem("cake_display", () -> new CakeDisplayBlock(BlockBehaviour.Properties.copy(Blocks.FLOWER_POT).sound(SoundType.GLASS)));
     public static final RegistrySupplier<Block> CUPCAKE_DISPLAY = registerWithItem("cupcake_display", () -> new CupcakeDisplayBlock(BlockBehaviour.Properties.copy(Blocks.FLOWER_POT).sound(SoundType.WOOD)));

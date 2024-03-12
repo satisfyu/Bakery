@@ -52,6 +52,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
+@SuppressWarnings("deprecation")
 public class CookingPotBlock extends BaseEntityBlock {
     private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
         VoxelShape shape = Shapes.empty();
@@ -88,13 +89,13 @@ public class CookingPotBlock extends BaseEntityBlock {
     }
 
     @Override
-    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+    public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         return SHAPE.get(state.getValue(FACING));
     }
 
 
     @Override
-    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         final BlockEntity entity = world.getBlockEntity(pos);
         if (entity instanceof MenuProvider factory) {
             player.openMenu(factory);

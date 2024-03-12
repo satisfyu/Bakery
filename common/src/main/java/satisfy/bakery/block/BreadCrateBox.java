@@ -26,6 +26,7 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 import satisfy.bakery.registry.ObjectRegistry;
 import satisfy.bakery.util.GeneralUtil;
 
@@ -34,6 +35,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
+@SuppressWarnings("deprecation")
 public class BreadCrateBox extends FacingBlock {
 
     public static final IntegerProperty CUTS = IntegerProperty.create("cuts", 0, 4);
@@ -44,7 +46,7 @@ public class BreadCrateBox extends FacingBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         ItemStack itemStack = player.getItemInHand(hand);
         if (world.isClientSide) {
             if (tryEat(world, pos, state, player).consumesAction()) {
@@ -97,7 +99,7 @@ public class BreadCrateBox extends FacingBlock {
     });
 
     @Override
-    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+    public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         return SHAPE.get(state.getValue(FACING));
     }
 

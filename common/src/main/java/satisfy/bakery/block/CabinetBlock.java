@@ -28,6 +28,7 @@ import satisfy.bakery.entity.StorageBlockEntity;
 
 import java.util.function.Supplier;
 
+@SuppressWarnings("deprecation")
 public class CabinetBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty OPEN = BlockStateProperties.OPEN;
@@ -75,7 +76,7 @@ public class CabinetBlock extends BaseEntityBlock {
     }
 
     @Override
-    public RenderShape getRenderShape(BlockState state) {
+    public @NotNull RenderShape getRenderShape(BlockState state) {
         return RenderShape.MODEL;
     }
 
@@ -105,7 +106,7 @@ public class CabinetBlock extends BaseEntityBlock {
     }
 
     @Override
-    public BlockState mirror(BlockState state, Mirror mirror) {
+    public @NotNull BlockState mirror(BlockState state, Mirror mirror) {
         return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
 

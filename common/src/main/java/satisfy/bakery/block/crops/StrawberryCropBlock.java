@@ -16,6 +16,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import org.jetbrains.annotations.NotNull;
 import satisfy.bakery.registry.ObjectRegistry;
 
 public class StrawberryCropBlock extends CropBlock {
@@ -26,7 +27,7 @@ public class StrawberryCropBlock extends CropBlock {
     }
 
     @Override
-    protected ItemLike getBaseSeedId() {
+    protected @NotNull ItemLike getBaseSeedId() {
         return ObjectRegistry.STRAWBERRY_SEEDS.get();
     }
 
@@ -36,7 +37,7 @@ public class StrawberryCropBlock extends CropBlock {
     }
 
     @Override
-    public IntegerProperty getAgeProperty() {
+    public @NotNull IntegerProperty getAgeProperty() {
         return AGE;
     }
 
@@ -46,7 +47,8 @@ public class StrawberryCropBlock extends CropBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    @SuppressWarnings("deprecation")
+    public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         int i = state.getValue(AGE);
         boolean bl = i == 5;
         if (!bl && player.getItemInHand(hand).is(Items.BONE_MEAL)) {

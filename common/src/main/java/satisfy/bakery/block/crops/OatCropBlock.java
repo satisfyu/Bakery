@@ -8,6 +8,7 @@ import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import org.jetbrains.annotations.NotNull;
 import satisfy.bakery.registry.ObjectRegistry;
 
 public class OatCropBlock extends CropBlock {
@@ -18,7 +19,7 @@ public class OatCropBlock extends CropBlock {
     }
 
     @Override
-    protected ItemLike getBaseSeedId() {
+    protected @NotNull ItemLike getBaseSeedId() {
         return ObjectRegistry.OAT_SEEDS.get();
     }
 
@@ -28,7 +29,7 @@ public class OatCropBlock extends CropBlock {
     }
 
     @Override
-    public IntegerProperty getAgeProperty() {
+    public @NotNull IntegerProperty getAgeProperty() {
         return AGE;
     }
 
