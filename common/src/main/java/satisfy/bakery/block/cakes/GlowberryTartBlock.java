@@ -10,7 +10,6 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
-import satisfy.bakery.block.PieBlock;
 import satisfy.bakery.util.GeneralUtil;
 
 import java.util.HashMap;

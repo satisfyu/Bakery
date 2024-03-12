@@ -4,6 +4,8 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -26,16 +28,22 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Objects;
 
-@SuppressWarnings({"deprecation"})
+@SuppressWarnings("deprecation")
 public class StackableBlock extends Block {
+    private static final IntegerProperty STACK_PROPERTY = IntegerProperty.create("stack", 1, 4); // Example initialization
     private final VoxelShape SHAPE = Shapes.box(0.1875, 0, 0.1875, 0.8125, 0.875, 0.8125);
-    public static final IntegerProperty STACK = IntegerProperty.create("stack", 1, 3);
+    private final int maxStack;
 
-    public StackableBlock(Properties settings) {
+    public StackableBlock(Properties settings, int maxStack) {
         super(settings);
-        registerDefaultState(this.defaultBlockState().setValue(STACK, 1));
+        this.maxStack = maxStack;
+        this.registerDefaultState(this.stateDefinition.any().setValue(STACK_PROPERTY, 1));
     }
 
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(STACK_PROPERTY);
+    }
 
     @Nullable
     @Override
@@ -50,18 +58,29 @@ public class StackableBlock extends Block {
     @Override
     public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         final ItemStack stack = player.getItemInHand(hand);
-        if (!player.isShiftKeyDown() && stack.getItem() == this.asItem()) {
-            if (state.getBlock() instanceof StackableBlock && state.getValue(STACK) < 3) {
-                world.setBlock(pos, state.setValue(STACK, state.getValue(STACK) + 1), Block.UPDATE_ALL);
+        if (player.isShiftKeyDown() && stack.isEmpty()) {
+            if (!world.isClientSide) {
+                if (state.getValue(STACK_PROPERTY) > 1) { 
+                    world.setBlock(pos, state.setValue(STACK_PROPERTY, state.getValue(STACK_PROPERTY) - 1), Block.UPDATE_ALL); 
+                } else {
+                    world.removeBlock(pos, false);
+                }
+                player.getFoodData().eat(3, 0.6f);
+                world.playSound(null, pos, SoundEvents.GENERIC_EAT, SoundSource.PLAYERS, 1.0F, 1.0F);
+                return InteractionResult.sidedSuccess(world.isClientSide);
+            }
+        } else if (stack.getItem() == this.asItem()) {
+            if (state.getValue(STACK_PROPERTY) < this.maxStack) { 
+                world.setBlock(pos, state.setValue(STACK_PROPERTY, state.getValue(STACK_PROPERTY) + 1), Block.UPDATE_ALL); 
                 if (!player.isCreative()) {
                     stack.shrink(1);
                 }
                 return InteractionResult.SUCCESS;
             }
-        } else if (!player.isShiftKeyDown() && stack.isEmpty()) {
-            if (state.getValue(STACK) > 1) {
-                world.setBlock(pos, state.setValue(STACK, state.getValue(STACK) - 1), Block.UPDATE_ALL);
-            } else if (state.getValue(STACK) == 1) {
+        } else if (stack.isEmpty()) {
+            if (state.getValue(STACK_PROPERTY) > 1) { 
+                world.setBlock(pos, state.setValue(STACK_PROPERTY, state.getValue(STACK_PROPERTY) - 1), Block.UPDATE_ALL); 
+            } else if (state.getValue(STACK_PROPERTY) == 1) { 
                 world.destroyBlock(pos, false);
             }
             player.addItem(this.asItem().getDefaultInstance());
@@ -69,6 +88,7 @@ public class StackableBlock extends Block {
         }
         return super.use(state, world, pos, player, hand, hit);
     }
+
 
     @Override
     public boolean skipRendering(BlockState state, BlockState stateFrom, Direction direction) {
@@ -78,11 +98,6 @@ public class StackableBlock extends Block {
     @Override
     public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         return SHAPE;
-    }
-
-    @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(STACK);
     }
 
     @Override

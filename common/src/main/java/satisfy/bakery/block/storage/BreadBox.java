@@ -1,4 +1,4 @@
-package satisfy.bakery.block;
+package satisfy.bakery.block.storage;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
@@ -14,6 +14,7 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import satisfy.bakery.block.storage.CakeStandBlock;
 import satisfy.bakery.registry.StorageTypeRegistry;
 import satisfy.bakery.util.GeneralUtil;
 

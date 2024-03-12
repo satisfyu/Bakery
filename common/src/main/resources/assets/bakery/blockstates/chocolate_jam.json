@@ -8,6 +8,9 @@
     },
     "stack=3": {
       "model": "bakery:block/chocolate_jam_stack3"
+    },
+    "stack=4": {
+      "model": "bakery:block/chocolate_jam_stack3"
     }
   }
 }

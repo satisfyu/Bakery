@@ -1,4 +1,4 @@
-package satisfy.bakery.block;
+package satisfy.bakery.block.cakes;
 
 import com.mojang.datafixers.util.Pair;
 import de.cristelknight.doapi.common.block.FacingBlock;

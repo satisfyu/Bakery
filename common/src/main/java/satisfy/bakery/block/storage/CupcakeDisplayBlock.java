@@ -1,4 +1,4 @@
-package satisfy.bakery.block;
+package satisfy.bakery.block.storage;
 
 import de.cristelknight.doapi.common.block.StorageBlock;
 import net.minecraft.ChatFormatting;

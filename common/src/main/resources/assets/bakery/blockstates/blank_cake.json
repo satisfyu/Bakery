@@ -8,6 +8,21 @@
     },
     "cake=false,cupcake=false,cookie=true": {
       "model": "bakery:block/blank_cookies"
+    },
+    "cake=true,cupcake=true,cookie=false": {
+      "model": "bakery:block/blank_cake"
+    },
+    "cake=false,cupcake=false,cookie=false": {
+      "model": "bakery:block/blank_cake"
+    },
+    "cake=true,cookie=true,cupcake=false": {
+      "model": "bakery:block/blank_cake"
+    },
+    "cake=false,cookie=true,cupcake=true": {
+      "model": "bakery:block/blank_cake"
+    },
+    "cake=true,cookie=true,cupcake=true": {
+      "model": "bakery:block/blank_cake"
     }
   }
 }

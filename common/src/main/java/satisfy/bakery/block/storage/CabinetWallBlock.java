@@ -1,4 +1,4 @@
-package satisfy.bakery.block;
+package satisfy.bakery.block.storage;
 
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.Util;
@@ -12,6 +12,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
+import satisfy.bakery.block.CabinetBlock;
 import satisfy.bakery.util.GeneralUtil;
 
 import java.util.HashMap;
