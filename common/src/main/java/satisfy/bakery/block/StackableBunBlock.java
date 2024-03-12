@@ -4,11 +4,14 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -20,8 +23,10 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Objects;
 
 @SuppressWarnings({"deprecation"})
 public class StackableBunBlock extends Block {
@@ -33,10 +38,31 @@ public class StackableBunBlock extends Block {
         registerDefaultState(this.defaultBlockState().setValue(STACK, 1));
     }
 
+    @Nullable
+    @Override
+    public BlockState getStateForPlacement(BlockPlaceContext ctx) {
+        if (!Objects.requireNonNull(ctx.getPlayer()).isShiftKeyDown()) {
+            return null;
+        }
+
+        return this.defaultBlockState();
+    }
+
     @Override
     public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         final ItemStack stack = player.getItemInHand(hand);
-        if (stack.getItem() == this.asItem()) {
+        if (player.isShiftKeyDown() && stack.isEmpty()) {
+            if (!world.isClientSide) {
+                if (state.getValue(STACK) > 1) {
+                    world.setBlock(pos, state.setValue(STACK, state.getValue(STACK) - 1), Block.UPDATE_ALL);
+                } else {
+                    world.removeBlock(pos, false);
+                }
+                player.getFoodData().eat(3, 0.6f);
+                world.playSound(null, pos, SoundEvents.GENERIC_EAT, SoundSource.PLAYERS, 1.0F, 1.0F);
+                return InteractionResult.sidedSuccess(false);
+            }
+        } else if (stack.getItem() == this.asItem()) {
             if (state.getBlock() instanceof StackableBunBlock && state.getValue(STACK) < 4) {
                 world.setBlock(pos, state.setValue(STACK, state.getValue(STACK) + 1), Block.UPDATE_ALL);
                 if (!player.isCreative()) {
@@ -55,6 +81,7 @@ public class StackableBunBlock extends Block {
         }
         return super.use(state, world, pos, player, hand, hit);
     }
+
 
 
     public boolean skipRendering(BlockState state, BlockState stateFrom, Direction direction) {

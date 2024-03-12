@@ -1,16 +1,16 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"1": "bakery:block/bricks_stove_side",
-		"4": "bakery:block/bricks_stove_bottom",
-		"5": "bakery:block/bricks_woodfiredoven_front_on",
+		"1": "bakery:block/brick_stove_side",
+		"4": "bakery:block/brick_stove_bottom",
+		"5": "bakery:block/brick_stove_front_on",
 		"6": "bakery:block/furnace_lit_inside",
-		"7": "bakery:block/wood_fired_oven_top_on",
+		"7": "bakery:block/brick_stove_top_on",
 		"8": "bakery:block/furnace_lit_inside_bottom",
 		"9": "bakery:block/furnace_lit_grate",
 		"10": "block/fire_0",
 		"11": "block/fire_1",
-		"particle": "bakery:block/bricks_stove_side"
+		"particle": "bakery:block/brick_stove_side"
 	},
 	"elements": [
 		{

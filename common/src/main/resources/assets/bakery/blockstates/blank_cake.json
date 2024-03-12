@@ -1,6 +1,13 @@
 {
   "variants": {
-    "one=true,four=false": { "model": "bakery:block/blank_cake" },
-    "one=false,four=true": { "model": "bakery:block/blank_cupcakes" }
+    "cake=true,cupcake=false,cookie=false": {
+      "model": "bakery:block/blank_cake"
+    },
+    "cake=false,cupcake=true,cookie=false": {
+      "model": "bakery:block/blank_cupcakes"
+    },
+    "cake=false,cupcake=false,cookie=true": {
+      "model": "bakery:block/blank_cookies"
+    }
   }
 }

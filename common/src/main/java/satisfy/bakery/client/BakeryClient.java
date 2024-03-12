@@ -28,7 +28,7 @@ public class BakeryClient {
                 STRAWBERRY_JAM.get(), GLOWBERRY_JAM.get(), APPLE_JAM.get(), OAT_CROP.get(), STRAWBERRY_CROP.get(), WILD_STRAWBERRIES.get(),
                 CAKE_DISPLAY.get(), CRAFTING_BOWL.get(), BRICK_STOVE.get(), DEEPSLATE_STOVE.get(), MUD_STOVE.get(), GRANITE_STOVE.get(),
                 QUARTZ_STOVE.get(), RED_NETHER_BRICKS_STOVE.get(), END_STOVE.get(), SANDSTONE_STOVE.get(), COBBLESTONE_STOVE.get(),
-                STONE_BRICKS_STOVE.get()
+                STONE_BRICKS_STOVE.get(), BAKER_STATION.get()
         );
 
 

@@ -1,8 +1,9 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"4": "bakery:block/blank_cake_side",
-		"5": "bakery:block/blank_cake_top"
+		"4": "bakery:block/cakes/blank_cake_side",
+		"5": "bakery:block/cakes/blank_cake_top",
+		"particle": "bakery:block/cakes/blank_cake_top"
 	},
 	"elements": [
 		{

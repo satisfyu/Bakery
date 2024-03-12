@@ -9,6 +9,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -20,8 +21,10 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Objects;
 
 @SuppressWarnings({"deprecation"})
 public class StackableBlock extends Block {
@@ -33,10 +36,21 @@ public class StackableBlock extends Block {
         registerDefaultState(this.defaultBlockState().setValue(STACK, 1));
     }
 
+
+    @Nullable
+    @Override
+    public BlockState getStateForPlacement(BlockPlaceContext ctx) {
+        if (!Objects.requireNonNull(ctx.getPlayer()).isShiftKeyDown()) {
+            return null;
+        }
+
+        return this.defaultBlockState();
+    }
+
     @Override
     public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         final ItemStack stack = player.getItemInHand(hand);
-        if (stack.getItem() == this.asItem()) {
+        if (!player.isShiftKeyDown() && stack.getItem() == this.asItem()) {
             if (state.getBlock() instanceof StackableBlock && state.getValue(STACK) < 3) {
                 world.setBlock(pos, state.setValue(STACK, state.getValue(STACK) + 1), Block.UPDATE_ALL);
                 if (!player.isCreative()) {
@@ -44,7 +58,7 @@ public class StackableBlock extends Block {
                 }
                 return InteractionResult.SUCCESS;
             }
-        } else if (stack.isEmpty()) {
+        } else if (!player.isShiftKeyDown() && stack.isEmpty()) {
             if (state.getValue(STACK) > 1) {
                 world.setBlock(pos, state.setValue(STACK, state.getValue(STACK) - 1), Block.UPDATE_ALL);
             } else if (state.getValue(STACK) == 1) {
@@ -56,6 +70,7 @@ public class StackableBlock extends Block {
         return super.use(state, world, pos, player, hand, hit);
     }
 
+    @Override
     public boolean skipRendering(BlockState state, BlockState stateFrom, Direction direction) {
         return stateFrom.is(this) || super.skipRendering(state, stateFrom, direction);
     }
