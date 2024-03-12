@@ -5,7 +5,6 @@ import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import satisfy.bakery.Bakery;
-import satisfy.bakery.entity.BakerStationBlockEntity;
 import satisfy.bakery.entity.StorageBlockEntity;
 import satisfy.bakery.entity.CookingPotBlockEntity;
 import satisfy.bakery.entity.StoveBlockEntity;
@@ -23,7 +22,6 @@ public class BlockEntityRegistry {
             ObjectRegistry.SANDSTONE_STOVE.get(), ObjectRegistry.STONE_BRICKS_STOVE.get(), ObjectRegistry.RED_NETHER_BRICKS_STOVE.get(),
             ObjectRegistry.DEEPSLATE_STOVE.get(), ObjectRegistry.QUARTZ_STOVE.get(), ObjectRegistry.END_STOVE.get()).build(null));
     public static final RegistrySupplier<BlockEntityType<CookingPotBlockEntity>> COOKING_POT_BLOCK_ENTITY = create("cooking_pot", () -> BlockEntityType.Builder.of(CookingPotBlockEntity::new, ObjectRegistry.SMALL_COOKING_POT.get()).build(null));
-    public static final RegistrySupplier<BlockEntityType<BakerStationBlockEntity>> BAKER_STATION_BLOCK_ENTITY = create("baker_station", () -> BlockEntityType.Builder.of(BakerStationBlockEntity::new, ObjectRegistry.BAKER_STATION.get()).build(null));
 
 
     private static <T extends BlockEntityType<?>> RegistrySupplier<T> create(final String path, final Supplier<T> type) {

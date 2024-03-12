@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "one=true,four=false": { "model": "bakery:block/blank_cake" },
+    "one=false,four=true": { "model": "bakery:block/blank_cupcakes" }
+  }
+}

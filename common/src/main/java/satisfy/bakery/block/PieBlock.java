@@ -84,25 +84,29 @@ public class PieBlock extends FacingBlock {
     @Override
     public @NotNull InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         ItemStack heldStack = player.getItemInHand(hand);
-        if (level.isClientSide) {
-            if (heldStack.is(TagsRegistry.KNIVES)) {
-                return cutSlice(level, pos, state, player);
+        if (!level.isClientSide && !player.isShiftKeyDown() && state.getValue(CUTS) == 0 && heldStack.isEmpty()) {
+            if (!player.getInventory().add(new ItemStack(this))) {
+                Direction direction = player.getDirection().getOpposite();
+                double xMotion = direction.getStepX() * 0.13;
+                double yMotion = 0.35;
+                double zMotion = direction.getStepZ() * 0.13;
+                GeneralUtil.spawnSlice(level, new ItemStack(this), pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, xMotion, yMotion, zMotion);
             }
-
-            if (this.consumeBite(level, pos, state, player) == InteractionResult.SUCCESS) {
-                return InteractionResult.SUCCESS;
-            }
-
-            if (heldStack.isEmpty()) {
-                return InteractionResult.CONSUME;
-            }
+            level.removeBlock(pos, false);
+            return InteractionResult.SUCCESS;
         }
 
-        if (heldStack.is(TagsRegistry.KNIVES)) {
+        if (player.isShiftKeyDown() && (heldStack.isEmpty() || heldStack.is(TagsRegistry.KNIVES))) {
+            return this.consumeBite(level, pos, state, player);
+        }
+        if (!player.isShiftKeyDown() && heldStack.is(TagsRegistry.KNIVES)) {
             return cutSlice(level, pos, state, player);
         }
-        return this.consumeBite(level, pos, state, player);
+
+        return InteractionResult.PASS;
     }
+
+
 
     protected InteractionResult consumeBite(Level level, BlockPos pos, BlockState state, Player playerIn) {
         if (!playerIn.canEat(false)) {

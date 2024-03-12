@@ -8,7 +8,6 @@ import dev.architectury.registry.menu.MenuRegistry;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.renderer.RenderType;
-import satisfy.bakery.client.gui.BakerStationGui;
 import satisfy.bakery.client.gui.CookingPotGui;
 import satisfy.bakery.client.gui.StoveGui;
 import satisfy.bakery.client.model.WanderingBakerModel;
@@ -43,7 +42,6 @@ public class BakeryClient {
 
         MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.STOVE_SCREEN_HANDLER.get(), StoveGui::new);
         MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.COOKING_POT_SCREEN_HANDLER.get(), CookingPotGui::new);
-        MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.BAKER_STATION_SCREEN_HANDLER.get(), BakerStationGui::new);
 
     }
 
