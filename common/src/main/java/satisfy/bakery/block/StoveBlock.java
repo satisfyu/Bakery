@@ -48,7 +48,7 @@ public class StoveBlock extends Block implements EntityBlock {
 
     public StoveBlock(Properties settings) {
         super(settings);
-        this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(LIT, true));
+        this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(LIT, false));
     }
 
     @Override

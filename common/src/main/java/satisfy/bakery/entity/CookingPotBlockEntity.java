@@ -26,7 +26,7 @@ import org.jetbrains.annotations.Nullable;
 import satisfy.bakery.block.CookingPotBlock;
 import satisfy.bakery.client.gui.handler.CookingPotGuiHandler;
 import satisfy.bakery.recipe.CookingPotRecipe;
-import satisfy.bakery.registry.BlockEntityRegistry;
+import satisfy.bakery.registry.BlockEntityTypeRegistry;
 import satisfy.bakery.registry.RecipeTypeRegistry;
 import satisfy.bakery.registry.TagsRegistry;
 
@@ -50,7 +50,7 @@ public class CookingPotBlockEntity extends BlockEntity implements BlockEntityTic
     private final ContainerData delegate;
 
     public CookingPotBlockEntity(BlockPos pos, BlockState state) {
-        super(BlockEntityRegistry.COOKING_POT_BLOCK_ENTITY.get(), pos, state);
+        super(BlockEntityTypeRegistry.COOKING_POT_BLOCK_ENTITY.get(), pos, state);
         this.delegate = new ContainerData() {
             @Override
             public int get(int index) {

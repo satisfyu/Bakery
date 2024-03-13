@@ -19,14 +19,14 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import org.jetbrains.annotations.NotNull;
 import satisfy.bakery.block.CabinetBlock;
-import satisfy.bakery.registry.BlockEntityRegistry;
+import satisfy.bakery.registry.BlockEntityTypeRegistry;
 
 public class StorageBlockEntity extends RandomizableContainerBlockEntity {
     private NonNullList<ItemStack> inventory;
     private ContainerOpenersCounter stateManager;
 
     public StorageBlockEntity(BlockPos pos, BlockState state) {
-        super(BlockEntityRegistry.CABINET_BLOCK_ENTITY.get(), pos, state);
+        super(BlockEntityTypeRegistry.CABINET_BLOCK_ENTITY.get(), pos, state);
         this.inventory = NonNullList.withSize(18, ItemStack.EMPTY);
         this.stateManager = new ContainerOpenersCounter() {
 

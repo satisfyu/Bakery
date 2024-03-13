@@ -12,7 +12,7 @@ public class Bakery {
 
     public static void init() {
         ObjectRegistry.init();
-        BlockEntityRegistry.init();
+        BlockEntityTypeRegistry.init();
         EffectRegistry.init();
         EntityRegistry.init();
         RecipeTypeRegistry.init();
