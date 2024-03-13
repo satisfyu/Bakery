@@ -8,33 +8,21 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.state.BlockState;
-import org.jetbrains.annotations.NotNull;
 import satisfy.bakery.registry.BlockEntityTypeRegistry;
 import satisfy.bakery.registry.ObjectRegistry;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-public class CraftingBowlBlockEntity extends BlockEntity implements ImplementedInventory {
-    @NotNull
-    private Set<BlockPos> components = new HashSet<>(4);
+public class CraftingBowlBlockEntity extends BlockEntity implements ImplementedInventory, BlockEntityTicker<CraftingBowlBlockEntity> {
+    private NonNullList<ItemStack> ingredients = NonNullList.withSize(3, ItemStack.EMPTY);
     private int craftingProgress = 0;
+    private long lastInteractionTime = 0;
     private static final int CRAFTING_TIME_TOTAL = 300;
-    private float swingRotationDegrees = 0.0f;
-    private NonNullList<ItemStack> ingredients;
-
 
     public CraftingBowlBlockEntity(BlockPos pos, BlockState state) {
         super(BlockEntityTypeRegistry.CRAFTING_BOWL_BLOCK_ENTITY.get(), pos, state);
-        ingredients = NonNullList.withSize(3, ItemStack.EMPTY);
-
-    }
-
-    public List<ItemStack> getIngredient() {
-        return this.ingredients;
     }
 
     @Override
@@ -43,7 +31,7 @@ public class CraftingBowlBlockEntity extends BlockEntity implements ImplementedI
         ingredients = NonNullList.withSize(3, ItemStack.EMPTY);
         ContainerHelper.loadAllItems(tag, ingredients);
         craftingProgress = tag.getInt("CraftingProgress");
-        swingRotationDegrees = tag.getFloat("SwingRotationDegrees");
+        lastInteractionTime = tag.getLong("LastInteractionTime");
     }
 
     @Override
@@ -51,7 +39,7 @@ public class CraftingBowlBlockEntity extends BlockEntity implements ImplementedI
         super.saveAdditional(tag);
         ContainerHelper.saveAllItems(tag, ingredients);
         tag.putInt("CraftingProgress", craftingProgress);
-        tag.putFloat("SwingRotationDegrees", swingRotationDegrees);
+        tag.putLong("LastInteractionTime", lastInteractionTime);
     }
 
     public boolean addItem(ItemStack itemStack) {
@@ -78,14 +66,6 @@ public class CraftingBowlBlockEntity extends BlockEntity implements ImplementedI
         return ItemStack.EMPTY;
     }
 
-    public int getCraftingProgress() {
-        return craftingProgress;
-    }
-
-    public void setCraftingProgress(int craftingProgress) {
-        this.craftingProgress = craftingProgress;
-    }
-
     public boolean containsIngredient(Item searchItem) {
         for (ItemStack stack : ingredients) {
             if (stack.getItem() == searchItem) {
@@ -99,33 +79,62 @@ public class CraftingBowlBlockEntity extends BlockEntity implements ImplementedI
         ItemStack result = ItemStack.EMPTY;
         if (containsIngredient(Items.WHEAT) && containsIngredient(ObjectRegistry.YEAST.get())) {
             result = ObjectRegistry.DOUGH.get().getDefaultInstance();
-        }
-        else if (containsIngredient(Items.WHEAT) && containsIngredient(Items.SUGAR) && containsIngredient(Items.EGG)) {
+        } else if (containsIngredient(Items.WHEAT) && containsIngredient(Items.SUGAR) && containsIngredient(Items.EGG)) {
             result = ObjectRegistry.SWEET_DOUGH.get().getDefaultInstance();
-        }
-        else if (containsIngredient(Items.WHEAT) && containsIngredient(Items.SUGAR) && containsIngredient(Items.MILK_BUCKET)) {
+        } else if (containsIngredient(Items.WHEAT) && containsIngredient(Items.SUGAR) && containsIngredient(Items.MILK_BUCKET)) {
             result = ObjectRegistry.CAKE_DOUGH.get().getDefaultInstance();
         }
 
         if (!result.isEmpty()) {
             ingredients.clear();
             addItem(result);
-            setCraftingProgress(0);
+            craftingProgress = 0;
         }
     }
 
+    public void setCraftingProgress(int craftingProgress) {
+        this.craftingProgress = craftingProgress;
+    }
+
+    public int getCraftingProgress() {
+        return craftingProgress;
+    }
+
+    public long getLastInteractionTime() {
+        return lastInteractionTime;
+    }
+
+    public void setLastInteractionTime(long lastInteractionTime) {
+        this.lastInteractionTime = lastInteractionTime;
+    }
+
     @Override
+    public void tick(Level level, BlockPos pos, BlockState state, CraftingBowlBlockEntity be) {
+        if (!level.isClientSide) {
+            long currentTime = level.getGameTime();
+            if (currentTime - be.getLastInteractionTime() <= 20 * 15) {
+                be.craftingProgress++;
+                if (be.craftingProgress >= CRAFTING_TIME_TOTAL) {
+                    be.transformContents();
+                    be.craftingProgress = 0;
+                }
+            } else {
+                be.craftingProgress = 0;
+            }
+            be.setChanged();
+        }
+    }
+
+
     public NonNullList<ItemStack> getItems() {
         return ingredients;
     }
 
-    @Override
     public boolean stillValid(Player player) {
         assert this.level != null;
         if (this.level.getBlockEntity(this.worldPosition) != this) {
             return false;
-        } else {
-            return player.distanceToSqr((double) this.worldPosition.getX() + 0.5, (double) this.worldPosition.getY() + 0.5, (double) this.worldPosition.getZ() + 0.5) <= 64.0;
         }
+        return player.distanceToSqr((double)this.worldPosition.getX() + 0.5D, (double)this.worldPosition.getY() + 0.5D, (double)this.worldPosition.getZ() + 0.5D) <= 64.0D;
     }
 }

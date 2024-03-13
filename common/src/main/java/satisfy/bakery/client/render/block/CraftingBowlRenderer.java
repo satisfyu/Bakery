@@ -54,7 +54,7 @@ public class CraftingBowlRenderer implements BlockEntityRenderer<CraftingBowlBlo
     public void render(CraftingBowlBlockEntity entity, float partialTicks, PoseStack matrixStack, MultiBufferSource bufferSource, int combinedLight, int combinedOverlay) {
         if (!entity.hasLevel() || !(entity.getBlockState().getBlock() instanceof CraftingBowlBlock)) return;
 
-        List<ItemStack> ingredients = entity.getIngredient();
+        List<ItemStack> ingredients = entity.getItems();
         if (ingredients.isEmpty()) return;
 
         matrixStack.pushPose();
