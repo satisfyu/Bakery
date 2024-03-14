@@ -16,6 +16,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+@SuppressWarnings("all")
 public class StoveDisplay extends BasicDisplay implements SimpleGridMenuDisplay {
 
     public static final CategoryIdentifier<StoveDisplay> STOVE_DISPLAY = CategoryIdentifier.of(Bakery.MOD_ID, "stove_display");

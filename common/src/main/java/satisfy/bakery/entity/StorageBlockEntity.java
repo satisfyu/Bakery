@@ -23,7 +23,7 @@ import satisfy.bakery.registry.BlockEntityTypeRegistry;
 
 public class StorageBlockEntity extends RandomizableContainerBlockEntity {
     private NonNullList<ItemStack> inventory;
-    private ContainerOpenersCounter stateManager;
+    private final ContainerOpenersCounter stateManager;
 
     public StorageBlockEntity(BlockPos pos, BlockState state) {
         super(BlockEntityTypeRegistry.CABINET_BLOCK_ENTITY.get(), pos, state);
@@ -114,6 +114,7 @@ public class StorageBlockEntity extends RandomizableContainerBlockEntity {
         }
     }
 
+    @SuppressWarnings("unused")
     public void tick() {
         if (!this.remove) {
             this.stateManager.recheckOpeners(this.getLevel(), this.getBlockPos(), this.getBlockState());
@@ -121,7 +122,11 @@ public class StorageBlockEntity extends RandomizableContainerBlockEntity {
     }
 
     public void setOpen(BlockState state, boolean open) {
-        if (state.getBlock() instanceof CabinetBlock rack) rack.playSound(level, this.getBlockPos(), open);
+        if (state.getBlock() instanceof CabinetBlock rack) {
+            assert level != null;
+            rack.playSound(level, this.getBlockPos(), open);
+        }
+        assert this.level != null;
         this.level.setBlock(this.getBlockPos(), state.setValue(BlockStateProperties.OPEN, open), 3);
     }
 

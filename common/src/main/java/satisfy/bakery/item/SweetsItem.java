@@ -27,7 +27,7 @@ public class SweetsItem extends Item {
     }
 
     @Override
-    public ItemStack finishUsingItem(ItemStack stack, Level world, LivingEntity entity) {
+    public @NotNull ItemStack finishUsingItem(ItemStack stack, Level world, LivingEntity entity) {
         if (!world.isClientSide) {
             int level = 0;
             MobEffectInstance effect = entity.getEffect(EffectRegistry.SWEETS.get());

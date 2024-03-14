@@ -8,6 +8,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import satisfy.bakery.Bakery;
 
+@SuppressWarnings("all")
 public class BakeryTabRegistry {
     public static final DeferredRegister<CreativeModeTab> BAKERY_TABS = DeferredRegister.create(Bakery.MOD_ID, Registries.CREATIVE_MODE_TAB);
 

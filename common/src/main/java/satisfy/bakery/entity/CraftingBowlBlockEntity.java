@@ -92,6 +92,7 @@ public class CraftingBowlBlockEntity extends BlockEntity implements ImplementedI
         }
     }
 
+    @SuppressWarnings("unused")
     public void setCraftingProgress(int craftingProgress) {
         this.craftingProgress = craftingProgress;
     }

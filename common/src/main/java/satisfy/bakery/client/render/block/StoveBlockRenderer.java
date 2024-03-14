@@ -25,7 +25,7 @@ public class StoveBlockRenderer implements BlockEntityRenderer<StoveBlockEntity>
         Vec3 baseOffset = new Vec3(0.5, 1.0, 0.5);
         Vec3 directionOffset = Vec3.atLowerCornerOf(direction.getNormal()).scale(0.3);
         double rightOffset = 2 / 16.0;
-        double downOffset = (-8 / 16.0) - (1.2 / 16.0) + (1 / 16.0);
+        double downOffset = (-7.5 / 16.0) - (1.2 / 16.0) + (1 / 16.0);
 
         double inputSlotOffsetX = 0;
         double inputSlotOffsetY = 0;

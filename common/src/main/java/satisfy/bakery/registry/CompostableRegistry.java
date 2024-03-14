@@ -1,8 +1,5 @@
 package satisfy.bakery.registry;
 
-import dev.architectury.registry.registries.RegistrySupplier;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.ComposterBlock;
 
 public class CompostableRegistry {

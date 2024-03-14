@@ -15,12 +15,14 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.crafting.Ingredient;
+import org.jetbrains.annotations.NotNull;
 import satisfy.bakery.Bakery;
 import satisfy.bakery.client.gui.CookingPotGui;
 import satisfy.bakery.compat.jei.BakeryJEIPlugin;
 import satisfy.bakery.entity.CookingPotBlockEntity;
 import satisfy.bakery.recipe.CookingPotRecipe;
 import satisfy.bakery.registry.ObjectRegistry;
+
 public class CookingPotCategory implements IRecipeCategory<CookingPotRecipe> {
     public static final RecipeType<CookingPotRecipe> COOKING_POT = RecipeType.create(Bakery.MOD_ID, "pot_cooking", CookingPotRecipe.class);
     public static final int WIDTH = 124;
@@ -43,8 +45,6 @@ public class CookingPotCategory implements IRecipeCategory<CookingPotRecipe> {
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, CookingPotRecipe recipe, IFocusGroup focuses) {
-
-        // Wine input
         NonNullList<Ingredient> ingredients = recipe.getIngredients();
         int s = ingredients.size();
 
@@ -58,7 +58,7 @@ public class CookingPotCategory implements IRecipeCategory<CookingPotRecipe> {
             }
         }
 
-        // Output
+        assert Minecraft.getInstance().level != null;
         builder.addSlot(RecipeIngredientRole.OUTPUT, 124 - WIDTH_OF,  28 - HEIGHT_OF).addItemStack(recipe.getResultItem(Minecraft.getInstance().level.registryAccess()));
     }
 
@@ -68,22 +68,22 @@ public class CookingPotCategory implements IRecipeCategory<CookingPotRecipe> {
     }
 
     @Override
-    public RecipeType<CookingPotRecipe> getRecipeType() {
+    public @NotNull RecipeType<CookingPotRecipe> getRecipeType() {
         return COOKING_POT;
     }
 
     @Override
-    public Component getTitle() {
+    public @NotNull Component getTitle() {
         return this.localizedName;
     }
 
     @Override
-    public IDrawable getBackground() {
+    public @NotNull IDrawable getBackground() {
         return this.background;
     }
 
     @Override
-    public IDrawable getIcon() {
+    public @NotNull IDrawable getIcon() {
         return this.icon;
     }
 }

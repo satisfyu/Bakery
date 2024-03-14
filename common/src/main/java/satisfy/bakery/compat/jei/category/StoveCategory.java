@@ -16,6 +16,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.crafting.Ingredient;
+import org.jetbrains.annotations.NotNull;
 import satisfy.bakery.Bakery;
 import satisfy.bakery.client.gui.StoveGui;
 import satisfy.bakery.compat.jei.BakeryJEIPlugin;
@@ -53,8 +54,7 @@ public class StoveCategory implements IRecipeCategory<StoveRecipe> {
         BakeryJEIPlugin.addSlot(builder,29 - WIDTH_OF, 18 - HEIGHT_OF, ingredients.get(0));
         BakeryJEIPlugin.addSlot(builder,47 - WIDTH_OF, 18 - HEIGHT_OF, ingredients.get(1));
         BakeryJEIPlugin.addSlot(builder,65 - WIDTH_OF, 18 - HEIGHT_OF, ingredients.get(2));
-
-        // Output
+        assert Minecraft.getInstance().level != null;
         builder.addSlot(RecipeIngredientRole.OUTPUT, 126 - WIDTH_OF,  42 - HEIGHT_OF).addItemStack(recipe.getResultItem(Minecraft.getInstance().level.registryAccess()));
     }
 
@@ -78,22 +78,22 @@ public class StoveCategory implements IRecipeCategory<StoveRecipe> {
     }
 
     @Override
-    public RecipeType<StoveRecipe> getRecipeType() {
+    public @NotNull RecipeType<StoveRecipe> getRecipeType() {
         return STOVE;
     }
 
     @Override
-    public Component getTitle() {
+    public @NotNull Component getTitle() {
         return this.localizedName;
     }
 
     @Override
-    public IDrawable getBackground() {
+    public @NotNull IDrawable getBackground() {
         return this.background;
     }
 
     @Override
-    public IDrawable getIcon() {
+    public @NotNull IDrawable getIcon() {
         return this.icon;
     }
 }
