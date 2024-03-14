@@ -16,7 +16,10 @@
     "hidden": false
   },
   "rewards": {
-    "experience": 1200
+    "experience": 800,
+    "loot": [
+      "bakery:advancements/completionist"
+    ]
   },
   "criteria": {
     "get_everything": {

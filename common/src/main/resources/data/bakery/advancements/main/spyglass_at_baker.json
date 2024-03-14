@@ -29,7 +29,7 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "bakery.advancement.spyglass_at_baker.description"
+      "translate": "bakery.advancement.spyglass_at_baker.desc"
     },
     "frame": "task",
     "hidden": false,
