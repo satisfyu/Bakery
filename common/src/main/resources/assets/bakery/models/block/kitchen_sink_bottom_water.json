@@ -4,6 +4,7 @@
 		"1": "bakery:block/brick_sink_side",
 		"2": "bakery:block/brick_baker_station_side_1",
 		"3": "bakery:block/brick_sink_bottom",
+		"4": "bakery:block/water_still",
 		"5": "bakery:block/sink_top",
 		"particle": "bakery:block/brick_sink_side"
 	},
@@ -21,16 +22,12 @@
 			}
 		},
 		{
-			"name": "f_part",
-			"from": [0, 12, 0],
-			"to": [16, 16, 3],
+			"from": [0, 12, 3],
+			"to": [3, 16, 12],
 			"faces": {
-				"north": {"uv": [0, 0, 16, 4], "texture": "#1", "cullface": "north"},
-				"east": {"uv": [13, 0, 16, 4], "texture": "#1", "cullface": "east"},
-				"south": {"uv": [4, 4, 12, 1], "texture": "#5"},
-				"west": {"uv": [0, 0, 3, 4], "texture": "#1", "cullface": "west"},
-				"up": {"uv": [16, 16, 0, 13], "texture": "#5", "cullface": "up"},
-				"down": {"uv": [16, 16, 0, 13], "texture": "#5"}
+				"east": {"uv": [5, 4, 13, 0], "texture": "#5"},
+				"west": {"uv": [3, 0, 11, 4], "texture": "#1", "cullface": "west"},
+				"up": {"uv": [4, 3, 12, 0], "rotation": 90, "texture": "#5", "cullface": "up"}
 			}
 		},
 		{
@@ -46,12 +43,16 @@
 			}
 		},
 		{
-			"from": [0, 12, 3],
-			"to": [2.975, 16, 12],
+			"name": "f_part",
+			"from": [0, 12, 0],
+			"to": [16, 16, 3],
 			"faces": {
-				"east": {"uv": [5, 4, 13, 0], "texture": "#5"},
-				"west": {"uv": [3, 0, 11, 4], "texture": "#1", "cullface": "west"},
-				"up": {"uv": [4, 3, 12, 0], "rotation": 90, "texture": "#5", "cullface": "up"}
+				"north": {"uv": [0, 0, 16, 4], "texture": "#1", "cullface": "north"},
+				"east": {"uv": [13, 0, 16, 4], "texture": "#1", "cullface": "east"},
+				"south": {"uv": [4, 4, 12, 1], "texture": "#5"},
+				"west": {"uv": [0, 0, 3, 4], "texture": "#1", "cullface": "west"},
+				"up": {"uv": [16, 16, 0, 13], "texture": "#5", "cullface": "up"},
+				"down": {"uv": [16, 16, 0, 13], "texture": "#5"}
 			}
 		},
 		{
@@ -61,6 +62,16 @@
 				"east": {"uv": [6, 0, 14, 4], "texture": "#1", "cullface": "east"},
 				"west": {"uv": [3, 4, 11, 0], "texture": "#5"},
 				"up": {"uv": [4, 1, 12, 4], "rotation": 90, "texture": "#5", "cullface": "up"}
+			}
+		},
+		{
+			"name": "water",
+			"from": [3, 15, 2],
+			"to": [13, 15, 12],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 14.5, 7.99375]},
+			"faces": {
+				"up": {"uv": [0, 0, 10, 10], "texture": "#4"},
+				"down": {"uv": [0, 0, 4, 5], "texture": "#4"}
 			}
 		}
 	],
@@ -94,5 +105,15 @@
 		"fixed": {
 			"scale": [0.5, 0.5, 0.5]
 		}
-	}
+	},
+	"groups": [
+		{
+			"name": "sink",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"nbt": "{}",
+			"children": [0, 1, 2, 3, 4]
+		},
+		5
+	]
 }
