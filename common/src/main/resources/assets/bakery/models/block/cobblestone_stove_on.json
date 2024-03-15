@@ -68,6 +68,16 @@
 			"faces": {
 				"north": {"uv": [2, 2, 14, 10], "texture": "#11"}
 			}
+		},
+		{
+			"name": "fire_front",
+			"from": [1.75736, 1, 0.92893],
+			"to": [13.75736, 9, 0.92893],
+			"shade": false,
+			"rotation": {"angle": 0, "axis": "y", "origin": [3.75736, 0, 0.92893]},
+			"faces": {
+				"north": {"uv": [2, 2, 14, 10], "texture": "#10"}
+			}
 		}
 	],
 	"display": {

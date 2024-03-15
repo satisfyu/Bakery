@@ -41,12 +41,13 @@
 		},
 		{
 			"name": "grill",
-			"from": [1, 8, 0],
-			"to": [15, 8, 13],
+			"from": [3, 8, 0],
+			"to": [13, 8, 13],
 			"shade": false,
+			"rotation": {"angle": 0, "axis": "y", "origin": [2, 0, 0]},
 			"faces": {
 				"north": {"uv": [0, 0, 0, 0], "texture": "#9"},
-				"up": {"uv": [0, 0, 13, 14], "rotation": 90, "texture": "#9"}
+				"up": {"uv": [0, 0, 13, 10], "rotation": 90, "texture": "#9"}
 			}
 		},
 		{
@@ -67,6 +68,16 @@
 			"rotation": {"angle": 45, "axis": "y", "origin": [3.75736, 0, 0.92893]},
 			"faces": {
 				"north": {"uv": [2, 2, 14, 10], "texture": "#11"}
+			}
+		},
+		{
+			"name": "fire_front",
+			"from": [1.75736, 1, 0.92893],
+			"to": [13.75736, 9, 0.92893],
+			"shade": false,
+			"rotation": {"angle": 0, "axis": "y", "origin": [3.75736, 0, 0.92893]},
+			"faces": {
+				"north": {"uv": [2, 2, 14, 10], "texture": "#10"}
 			}
 		}
 	],
