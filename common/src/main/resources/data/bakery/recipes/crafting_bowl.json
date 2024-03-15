@@ -1,16 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    " B ",
-    "W W",
+    " U ",
+    "WBW",
     "WWW"
   ],
   "key": {
     "W": {
-      "item": "minecraft:dried_kelp"
+      "tag": "minecraft:wooden_slabs"
     },
     "B": {
       "item": "minecraft:iron_ingot"
+    },
+    "U": {
+      "item": "minecraft:stick"
     }
   },
   "result": {

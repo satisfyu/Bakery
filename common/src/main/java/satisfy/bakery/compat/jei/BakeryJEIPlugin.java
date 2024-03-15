@@ -18,8 +18,10 @@ import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.NotNull;
 import satisfy.bakery.client.gui.handler.StoveGuiHandler;
 import satisfy.bakery.compat.jei.category.CookingPotCategory;
+import satisfy.bakery.compat.jei.category.CraftingBowlCategory;
 import satisfy.bakery.compat.jei.category.StoveCategory;
 import satisfy.bakery.compat.jei.transfer.CookingTransferInfo;
+import satisfy.bakery.recipe.CraftingBowlRecipe;
 import satisfy.bakery.recipe.CookingPotRecipe;
 import satisfy.bakery.recipe.StoveRecipe;
 import satisfy.bakery.registry.ObjectRegistry;
@@ -38,6 +40,8 @@ public class BakeryJEIPlugin implements IModPlugin {
     public void registerCategories(IRecipeCategoryRegistration registration) {
         registration.addRecipeCategories(new CookingPotCategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new StoveCategory(registration.getJeiHelpers().getGuiHelper()));
+        registration.addRecipeCategories(new CraftingBowlCategory(registration.getJeiHelpers().getGuiHelper()));
+
     }
 
 
@@ -51,6 +55,8 @@ public class BakeryJEIPlugin implements IModPlugin {
         List<StoveRecipe> stoveRecipes = rm.getAllRecipesFor(RecipeTypeRegistry.STOVE_RECIPE_TYPE.get());
         registration.addRecipes(StoveCategory.STOVE, stoveRecipes);
 
+        List<CraftingBowlRecipe> doughingRecipes = rm.getAllRecipesFor(RecipeTypeRegistry.CRAFTING_BOWL_RECIPE_TYPE.get());
+        registration.addRecipes(CraftingBowlCategory.DOUGHING, doughingRecipes);
     }
 
     @Override
@@ -61,8 +67,8 @@ public class BakeryJEIPlugin implements IModPlugin {
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
         addCatalyst(registration, ObjectRegistry.SMALL_COOKING_POT, CookingPotCategory.COOKING_POT);
+        addCatalyst(registration, ObjectRegistry.CRAFTING_BOWL);
         addCatalyst(registration, ObjectRegistry.BAKER_STATION);
-
         addCatalyst(registration, ObjectRegistry.BRICK_STOVE);
         addCatalyst(registration, ObjectRegistry.STONE_BRICKS_STOVE);
         addCatalyst(registration, ObjectRegistry.COBBLESTONE_STOVE);

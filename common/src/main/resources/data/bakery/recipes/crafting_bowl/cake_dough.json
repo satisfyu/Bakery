@@ -1,0 +1,20 @@
+{
+  "type": "bakery:crafting_bowl",
+  "ingredients": [
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "tag": "bakery:milk"
+    }
+  ],
+  "result": {
+    "item": "bakery:cake_dough"
+  }
+}

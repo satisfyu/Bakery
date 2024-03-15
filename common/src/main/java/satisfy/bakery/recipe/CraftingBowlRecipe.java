@@ -16,13 +16,13 @@ import satisfy.bakery.registry.RecipeTypeRegistry;
 import satisfy.bakery.util.GeneralUtil;
 
 
-public class BakerStationRecipe implements Recipe<Container> {
+public class CraftingBowlRecipe implements Recipe<Container> {
 
     final ResourceLocation id;
     private final NonNullList<Ingredient> inputs;
     private final ItemStack output;
 
-    public BakerStationRecipe(ResourceLocation id, NonNullList<Ingredient> inputs, ItemStack output) {
+    public CraftingBowlRecipe(ResourceLocation id, NonNullList<Ingredient> inputs, ItemStack output) {
         this.id = id;
         this.inputs = inputs;
         this.output = output;
@@ -30,7 +30,7 @@ public class BakerStationRecipe implements Recipe<Container> {
 
     @Override
     public boolean matches(Container inventory, Level world) {
-        return GeneralUtil.matchesRecipe(inventory, inputs, 1, 2);
+        return GeneralUtil.matchesRecipe(inventory, inputs, 1, 4);
     }
 
     @Override
@@ -54,12 +54,12 @@ public class BakerStationRecipe implements Recipe<Container> {
 
     @Override
     public @NotNull RecipeSerializer<?> getSerializer() {
-        return RecipeTypeRegistry.BAKER_STATION_RECIPE_SERIALIZER.get();
+        return RecipeTypeRegistry.CRAFTING_BOWL_RECIPE_SERIALIZER.get();
     }
 
     @Override
     public @NotNull RecipeType<?> getType() {
-        return RecipeTypeRegistry.BAKER_STATION_RECIPE_TYPE.get();
+        return RecipeTypeRegistry.CRAFTING_BOWL_RECIPE_TYPE.get();
     }
 
     @Override
@@ -72,29 +72,29 @@ public class BakerStationRecipe implements Recipe<Container> {
         return true;
     }
 
-    public static class Serializer implements RecipeSerializer<BakerStationRecipe> {
+    public static class Serializer implements RecipeSerializer<CraftingBowlRecipe> {
 
         @Override
-        public @NotNull BakerStationRecipe fromJson(ResourceLocation id, JsonObject json) {
+        public @NotNull CraftingBowlRecipe fromJson(ResourceLocation id, JsonObject json) {
             final var ingredients = GeneralUtil.deserializeIngredients(GsonHelper.getAsJsonArray(json, "ingredients"));
             if (ingredients.isEmpty()) {
-                throw new JsonParseException("No ingredients for Baker Station Recipe");
-            } else if (ingredients.size() > 2) {
-                throw new JsonParseException("Too many ingredients for Baker Station Recipe");
+                throw new JsonParseException("No ingredients for Crafting Bowl Recipe");
+            } else if (ingredients.size() > 4) {
+                throw new JsonParseException("Too many ingredients for Crafting Bowl Recipe");
             } else {
-                return new BakerStationRecipe(id, ingredients, ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "result")));
+                return new CraftingBowlRecipe(id, ingredients, ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "result")));
             }
         }
 
         @Override
-        public @NotNull BakerStationRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
+        public @NotNull CraftingBowlRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
             final var ingredients = NonNullList.withSize(buf.readVarInt(), Ingredient.EMPTY);
             ingredients.replaceAll(ignored -> Ingredient.fromNetwork(buf));
-            return new BakerStationRecipe(id, ingredients, buf.readItem());
+            return new CraftingBowlRecipe(id, ingredients, buf.readItem());
         }
 
         @Override
-        public void toNetwork(FriendlyByteBuf buf, BakerStationRecipe recipe) {
+        public void toNetwork(FriendlyByteBuf buf, CraftingBowlRecipe recipe) {
             buf.writeVarInt(recipe.inputs.size());
             recipe.inputs.forEach(entry -> entry.toNetwork(buf));
             buf.writeItem(recipe.output);

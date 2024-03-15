@@ -7,7 +7,7 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import satisfy.bakery.Bakery;
-import satisfy.bakery.recipe.BakerStationRecipe;
+import satisfy.bakery.recipe.CraftingBowlRecipe;
 import satisfy.bakery.recipe.CookingPotRecipe;
 import satisfy.bakery.recipe.StoveRecipe;
 
@@ -22,8 +22,8 @@ public class RecipeTypeRegistry {
     public static final RegistrySupplier<RecipeSerializer<CookingPotRecipe>> COOKING_POT_RECIPE_SERIALIZER = create("pot_cooking", CookingPotRecipe.Serializer::new);
     public static final RegistrySupplier<RecipeType<StoveRecipe>> STOVE_RECIPE_TYPE = create("stove");
     public static final RegistrySupplier<RecipeSerializer<StoveRecipe>> STOVE_RECIPE_SERIALIZER = create("stove", StoveRecipe.Serializer::new);
-    public static final RegistrySupplier<RecipeType<BakerStationRecipe>> BAKER_STATION_RECIPE_TYPE = create("baker");
-    public static final RegistrySupplier<RecipeSerializer<BakerStationRecipe>> BAKER_STATION_RECIPE_SERIALIZER = create("baker", BakerStationRecipe.Serializer::new);
+    public static final RegistrySupplier<RecipeType<CraftingBowlRecipe>> CRAFTING_BOWL_RECIPE_TYPE = create("crafting_bowl");
+    public static final RegistrySupplier<RecipeSerializer<CraftingBowlRecipe>> CRAFTING_BOWL_RECIPE_SERIALIZER = create("crafting_bowl", CraftingBowlRecipe.Serializer::new);
 
 
     private static <T extends Recipe<?>> RegistrySupplier<RecipeSerializer<T>> create(String name, Supplier<RecipeSerializer<T>> serializer) {
@@ -44,6 +44,4 @@ public class RecipeTypeRegistry {
         RECIPE_SERIALIZERS.register();
         RECIPE_TYPES.register();
     }
-
-
 }

@@ -7,13 +7,13 @@ import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
-import satisfy.bakery.compat.rei.baking.BakingCategory;
-import satisfy.bakery.compat.rei.baking.BakingDisplay;
+import satisfy.bakery.compat.rei.baking.CraftingBowlCategory;
+import satisfy.bakery.compat.rei.baking.CraftingBowlDisplay;
 import satisfy.bakery.compat.rei.cooking.CookingPotCategory;
 import satisfy.bakery.compat.rei.cooking.CookingPotDisplay;
 import satisfy.bakery.compat.rei.stove.StoveCategory;
 import satisfy.bakery.compat.rei.stove.StoveDisplay;
-import satisfy.bakery.recipe.BakerStationRecipe;
+import satisfy.bakery.recipe.CraftingBowlRecipe;
 import satisfy.bakery.recipe.CookingPotRecipe;
 import satisfy.bakery.recipe.StoveRecipe;
 import satisfy.bakery.registry.ObjectRegistry;
@@ -26,9 +26,9 @@ public class BakeryREIClientPlugin {
     public static void registerCategories(CategoryRegistry registry) {
         registry.add(new CookingPotCategory());
         registry.add(new StoveCategory());
-        registry.add(new BakingCategory());
+        registry.add(new CraftingBowlCategory());
 
-        registry.addWorkstations(BakingCategory.BAKING_DISPLAY, EntryStacks.of(ObjectRegistry.BAKER_STATION.get()));
+        registry.addWorkstations(CraftingBowlCategory.CRAFITING_BOWL_DISPLAY, EntryStacks.of(ObjectRegistry.CRAFTING_BOWL.get()));
         registry.addWorkstations(CookingPotDisplay.COOKING_POT_DISPLAY, EntryStacks.of(ObjectRegistry.SMALL_COOKING_POT.get()));
 
         registry.addWorkstations(StoveDisplay.STOVE_DISPLAY,
@@ -42,7 +42,7 @@ public class BakeryREIClientPlugin {
     public static void registerDisplays(DisplayRegistry registry) {
         registry.registerFiller(CookingPotRecipe.class, CookingPotDisplay::new);
         registry.registerFiller(StoveRecipe.class, StoveDisplay::new);
-        registry.registerFiller(BakerStationRecipe.class, BakingDisplay::new);
+        registry.registerFiller(CraftingBowlRecipe.class, CraftingBowlDisplay::new);
     }
 
     public static List<Ingredient> ingredients(Recipe<Container> recipe, ItemStack stack) {
