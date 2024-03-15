@@ -99,7 +99,7 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Item> STRAWBERRY_CAKE_SLICE = registerItem("strawberry_cake_slice", () -> new SweetsItem(getSettings().food(Foods.COOKED_BEEF), 700));
     public static final RegistrySupplier<Item> SWEETBERRY_CAKE_SLICE = registerItem("sweetberry_cake_slice", () -> new SweetsItem(getSettings().food(Foods.COOKED_BEEF), 700));
     public static final RegistrySupplier<Item> CHOCOLATE_CAKE_SLICE = registerItem("chocolate_cake_slice", () -> new SweetsItem(getSettings().food(Foods.COOKED_BEEF), 700));
-    public static final RegistrySupplier<Item> CHERRY_GATEAU_SLICE = registerItem("cherry_gateau_slice", () -> new SweetlySatiatedItem(getFoodItemSettings(5, 1.4f, EffectRegistry.STUFFED.get(), 60 * 15), 800));
+    public static final RegistrySupplier<Item> CHOCOLATE_GATEAU_SLICE = registerItem("chocolate_gateau_slice", () -> new SweetlySatiatedItem(getFoodItemSettings(5, 1.4f, EffectRegistry.STUFFED.get(), 60 * 15), 800));
     public static final RegistrySupplier<Item> BUNDT_CAKE_SLICE = registerItem("bundt_cake_slice", () -> new SweetlySatiatedItem(getFoodItemSettings(5, 1.4f, EffectRegistry.STUFFED.get(), 60 * 15), 800));
     public static final RegistrySupplier<Item> LINZER_TART_SLICE = registerItem("linzer_tart_slice", () -> new SweetlySatiatedItem(getFoodItemSettings(5, 1.4f, EffectRegistry.STUFFED.get(), 60 * 15), 800));
     public static final RegistrySupplier<Item> APPLE_PIE_SLICE = registerItem("apple_pie_slice", () -> new SweetlySatiatedItem(getFoodItemSettings(5, 1.4f, EffectRegistry.STUFFED.get(), 60 * 15), 800));
@@ -108,7 +108,7 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Block> STRAWBERRY_CAKE = registerWithItem("strawberry_cake", () -> new CakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), ObjectRegistry.STRAWBERRY_CAKE_SLICE));
     public static final RegistrySupplier<Block> SWEETBERRY_CAKE = registerWithItem("sweetberry_cake", () -> new CakeBlock((BlockBehaviour.Properties.copy(Blocks.CAKE)), ObjectRegistry.SWEETBERRY_CAKE_SLICE));
     public static final RegistrySupplier<Block> CHOCOLATE_CAKE = registerWithItem("chocolate_cake", () -> new CakeBlock((BlockBehaviour.Properties.copy(Blocks.CAKE)), ObjectRegistry.CHOCOLATE_CAKE_SLICE));
-    public static final RegistrySupplier<Block> CHERRY_GATEAU = registerWithItem("cherry_gateau", () -> new CakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), CHERRY_GATEAU_SLICE));
+    public static final RegistrySupplier<Block> CHOCOLATE_GATEAU = registerWithItem("chocolate_gateau", () -> new CakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), CHOCOLATE_GATEAU_SLICE));
     public static final RegistrySupplier<Block> BUNDT_CAKE = registerWithItem("bundt_cake", () -> new BundtCakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), ObjectRegistry.BUNDT_CAKE_SLICE));
     public static final RegistrySupplier<Block> LINZER_TART = registerWithItem("linzer_tart", () -> new LinzerTartBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), ObjectRegistry.LINZER_TART_SLICE));
     public static final RegistrySupplier<Block> APPLE_PIE = registerWithItem("apple_pie", () -> new ApplePieBlock((BlockBehaviour.Properties.copy(Blocks.CAKE)), ObjectRegistry.APPLE_PIE_SLICE));

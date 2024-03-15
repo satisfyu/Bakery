@@ -110,8 +110,8 @@ public class BlankCakeBlock extends Block {
                         world.setBlock(pos, ObjectRegistry.SWEETBERRY_CAKE.get().defaultBlockState(), 3);
                         world.levelEvent(2001, pos, Block.getId(ObjectRegistry.SWEETBERRY_CAKE.get().defaultBlockState()));
                     } else if (item == ObjectRegistry.CHOCOLATE_TRUFFLE.get()) {
-                        world.setBlock(pos, ObjectRegistry.CHERRY_GATEAU.get().defaultBlockState(), 3);
-                        world.levelEvent(2001, pos, Block.getId(ObjectRegistry.CHERRY_GATEAU.get().defaultBlockState()));
+                        world.setBlock(pos, ObjectRegistry.CHOCOLATE_GATEAU.get().defaultBlockState(), 3);
+                        world.levelEvent(2001, pos, Block.getId(ObjectRegistry.CHOCOLATE_GATEAU.get().defaultBlockState()));
                     }
                     else {
                         return InteractionResult.PASS;

@@ -2,7 +2,7 @@
   "parent": "bakery:main/place_baker_station",
   "display": {
     "icon": {
-      "item": "bakery:cherry_gateau"
+      "item": "bakery:chocolate_gateau"
     },
     "title": {
       "translate": "bakery.advancement.get_all_cakes"

@@ -64,7 +64,7 @@ public class BakeryTabRegistry {
                 out.accept(ObjectRegistry.STRAWBERRY_CAKE_SLICE.get());
                 out.accept(ObjectRegistry.SWEETBERRY_CAKE_SLICE.get());
                 out.accept(ObjectRegistry.CHOCOLATE_CAKE_SLICE.get());
-                out.accept(ObjectRegistry.CHERRY_GATEAU_SLICE.get());
+                out.accept(ObjectRegistry.CHOCOLATE_GATEAU_SLICE.get());
                 out.accept(ObjectRegistry.BUNDT_CAKE_SLICE.get());
                 out.accept(ObjectRegistry.LINZER_TART_SLICE.get());
                 out.accept(ObjectRegistry.APPLE_PIE_SLICE.get());
@@ -73,7 +73,7 @@ public class BakeryTabRegistry {
                 out.accept(ObjectRegistry.STRAWBERRY_CAKE.get());
                 out.accept(ObjectRegistry.SWEETBERRY_CAKE.get());
                 out.accept(ObjectRegistry.CHOCOLATE_CAKE.get());
-                out.accept(ObjectRegistry.CHERRY_GATEAU.get());
+                out.accept(ObjectRegistry.CHOCOLATE_GATEAU.get());
                 out.accept(ObjectRegistry.BUNDT_CAKE.get());
                 out.accept(ObjectRegistry.LINZER_TART.get());
                 out.accept(ObjectRegistry.APPLE_PIE.get());

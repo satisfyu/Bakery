@@ -1,4 +1,4 @@
-package satisfy.bakery.compat.rei.baking;
+package satisfy.bakery.compat.rei.doughing;
 
 import me.shedaniel.rei.api.common.category.CategoryIdentifier;
 import me.shedaniel.rei.api.common.display.basic.BasicDisplay;
@@ -14,7 +14,6 @@ import java.util.Optional;
 
 @SuppressWarnings("all")
 public class CraftingBowlDisplay extends BasicDisplay {
-
     public CraftingBowlDisplay(CraftingBowlRecipe recipe) {
         this(EntryIngredients.ofIngredients(new ArrayList<>(recipe.getIngredients())), Collections.singletonList(EntryIngredients.of(recipe.getResultItem(BasicDisplay.registryAccess()))), Optional.of(recipe.getId()));
     }
@@ -25,7 +24,7 @@ public class CraftingBowlDisplay extends BasicDisplay {
 
     @Override
     public CategoryIdentifier<?> getCategoryIdentifier() {
-        return CraftingBowlCategory.CRAFITING_BOWL_DISPLAY;
+        return CraftingBowlCategory.CRAFTING_BOWL_DISPLAY;
     }
 
 }

@@ -1,4 +1,4 @@
-package satisfy.bakery.compat.rei.baking;
+package satisfy.bakery.compat.rei.doughing;
 
 import com.google.common.collect.Lists;
 import me.shedaniel.math.Point;
@@ -16,16 +16,16 @@ import satisfy.bakery.registry.ObjectRegistry;
 import java.util.List;
 
 public class CraftingBowlCategory implements DisplayCategory<CraftingBowlDisplay> {
-    public static final CategoryIdentifier<CraftingBowlDisplay> CRAFITING_BOWL_DISPLAY = CategoryIdentifier.of(Bakery.MOD_ID, "bowl_display");
+    public static final CategoryIdentifier<CraftingBowlDisplay> CRAFTING_BOWL_DISPLAY = CategoryIdentifier.of(Bakery.MOD_ID, "bowl_display");
 
     @Override
     public CategoryIdentifier<CraftingBowlDisplay> getCategoryIdentifier() {
-        return CRAFITING_BOWL_DISPLAY;
+        return CRAFTING_BOWL_DISPLAY;
     }
 
     @Override
     public Component getTitle() {
-        return Component.translatable("rei.bakery.bowl_category");
+        return Component.translatable("rei.bakery.baking_category");
     }
 
     @Override

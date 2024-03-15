@@ -1,0 +1,14 @@
+{
+  "type": "bakery:baking_station",
+  "ingredients": [
+    {
+      "item": "bakery:sweet_dough"
+    },
+    {
+      "item": "bakery:sweetberry_jam"
+    }
+  ],
+  "result": {
+    "item": "bakery:sweetberry_cake"
+  }
+}
