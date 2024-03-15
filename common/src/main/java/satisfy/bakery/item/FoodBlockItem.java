@@ -88,7 +88,7 @@ public class FoodBlockItem extends BlockItem {
                     );
                 }
                 tooltip.add(Component.empty());
-                tooltip.add(Component.translatable("block.bakery.canbeplaced.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
+                tooltip.add(Component.translatable("tooltip.bakery.canbeplaced").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
             }
         }
     }

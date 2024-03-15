@@ -1,42 +1,42 @@
 {
   "cooking_pot_boiling": {
-    "subtitle": "bakery.sound.cooking_pot_boiling",
+    "subtitle": "sound.bakery.cooking_pot_boiling",
     "sounds": [
       "bakery:cooking_pot_boiling"
     ]
   },
   "cooking_pot_hit": {
-    "subtitle": "bakery.sound.cooking_pot_hit",
+    "subtitle": "sound.bakery.cooking_pot_hit",
     "sounds": [
       "bakery:cooking_pot_hit"
     ]
   },
   "drawer_open": {
-    "subtitle": "bakery.sound.drawer_open",
+    "subtitle": "sound.bakery.drawer_open",
     "sounds": [
       "bakery:drawer_open"
     ]
   },
   "drawer_close": {
-    "subtitle": "bakery.sound.drawer_close",
+    "subtitle": "sound.bakery.drawer_close",
     "sounds": [
       "bakery:drawer_close"
     ]
   },
   "cabinet_open": {
-    "subtitle": "bakery.sound.cabinet_open",
+    "subtitle": "sound.bakery.cabinet_open",
     "sounds": [
       "bakery:cabinet_open"
     ]
   },
   "cabinet_close": {
-    "subtitle": "bakery.sound.cabinet_close",
+    "subtitle": "sound.bakery.cabinet_close",
     "sounds": [
       "bakery:cabinet_close"
     ]
   },
   "cake_cut": {
-    "subtitle": "bakery.sound.cake_cut",
+    "subtitle": "sound.bakery.cake_cut",
     "sounds": [
       "bakery:cake_cut"
     ]

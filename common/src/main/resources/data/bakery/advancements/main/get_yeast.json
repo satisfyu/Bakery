@@ -5,10 +5,10 @@
       "item": "bakery:yeast"
     },
     "title": {
-      "translate": "bakery.advancement.get_yeast"
+      "translate": "advancement.bakery.get_yeast"
     },
     "description": {
-      "translate": "bakery.advancement.get_yeast.desc"
+      "translate": "advancement.bakery.get_yeast.desc"
     },
     "frame": "task",
     "show_toast": true,

@@ -1,0 +1,25 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "bakery:strawberry_seeds"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "bakery:strawberry_crop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "bakery:strawberry"
+      },
+      "minRolls": 2,
+      "maxRolls": 4
+    }
+  ]
+}

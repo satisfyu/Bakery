@@ -15,7 +15,7 @@
   "block.bakery.cake_stand": "Подставка для торта",
   "block.bakery.cakestand_1.tooltip": "Подарите самые вкусные торты, пирожные и другие деликатесы",
   "block.bakery.cakestand_2.tooltip": "Предлагает место для одного торта или трех блюд",
-  "block.bakery.canbeplaced.tooltip": "Можно разместить",
+  "tooltip.bakery.canbeplaced": "Можно разместить",
   "block.bakery.chocolate_box": "Коробка шоколада",
   "block.bakery.chocolate_box.tooltip": "Идеальный подарок или сладкое лакомство в перерыве",
   "block.bakery.chocolate_cake": "Шоколадный торт",

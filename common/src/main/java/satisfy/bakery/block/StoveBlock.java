@@ -139,9 +139,4 @@ public class StoveBlock extends Block implements EntityBlock {
             entity.hurt(world.damageSources().hotFloor(), 1.f);
         }
     }
-
-    @Override
-    public void appendHoverText(ItemStack itemStack, BlockGetter world, List<Component> tooltip, TooltipFlag tooltipContext) {
-        tooltip.add(Component.translatable("block.bakery.stove.tooltip").withStyle(ChatFormatting.WHITE, ChatFormatting.ITALIC));
-    }
 }

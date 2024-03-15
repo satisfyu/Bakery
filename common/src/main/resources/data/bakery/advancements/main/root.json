@@ -4,10 +4,10 @@
       "item": "bakery:misslilitu_biscuit"
     },
     "title": {
-      "translate": "bakery.advancement.root"
+      "translate": "advancement.bakery.root"
     },
     "description": {
-      "translate": "bakery.advancement.root.desc"
+      "translate": "advancement.bakery.root.desc"
     },
     "frame": "task",
     "show_toast": false,

@@ -254,10 +254,4 @@ public class KitchenSinkBlock extends Block {
         ParticleOptions particleOptions = ParticleTypes.DRIPPING_WATER;
         level.addParticle(particleOptions, e, f, g, 0.0, 0.0, 0.0);
     }
-
-
-    @Override
-    public void appendHoverText(ItemStack itemStack, BlockGetter world, List<Component> tooltip, TooltipFlag tooltipContext) {
-        tooltip.add(Component.translatable("tooltip.bakery.sink").withStyle(ChatFormatting.WHITE, ChatFormatting.ITALIC));
-    }
 }

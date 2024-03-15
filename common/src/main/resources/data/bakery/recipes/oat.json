@@ -1,0 +1,25 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "bakery:oat_seeds"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "bakery:oat_crop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "bakery:oat"
+      },
+      "minRolls": 2,
+      "maxRolls": 4
+    }
+  ]
+}

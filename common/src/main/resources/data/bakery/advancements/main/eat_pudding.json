@@ -15,7 +15,7 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "bakery.advancement.eat_pudding_slice.desc"
+      "translate": "advancement.bakery.eat_pudding_slice.desc"
     },
     "frame": "goal",
     "hidden": false,
@@ -24,7 +24,7 @@
     },
     "show_toast": true,
     "title": {
-      "translate": "bakery.advancement.eat_pudding_slice"
+      "translate": "advancement.bakery.eat_pudding_slice"
     }
   },
   "requirements": [

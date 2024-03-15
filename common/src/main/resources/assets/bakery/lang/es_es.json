@@ -15,7 +15,7 @@
   "block.bakery.cake_stand": "Soporte para tartas",
   "block.bakery.cakestand_1.tooltip": "Exhibe tartas, pastas y otros deliciosos dulces",
   "block.bakery.cakestand_2.tooltip": "Ofrece espacio para una tarta o tres alimentos",
-  "block.bakery.canbeplaced.tooltip": "Se puede colocar",
+  "tooltip.bakery.canbeplaced": "Se puede colocar",
   "block.bakery.chocolate_box": "Caja de chocolate",
   "block.bakery.chocolate_box.tooltip": "El regalo perfecto o un dulce para picar entre horas",
   "block.bakery.chocolate_cake": "Tarta de chocolate",

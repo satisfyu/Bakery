@@ -170,9 +170,12 @@ public class PieBlock extends FacingBlock {
 
     @Override
     public void appendHoverText(ItemStack itemStack, BlockGetter world, List<Component> tooltip, TooltipFlag tooltipContext) {
-        tooltip.add(Component.translatable("block.bakery.canbeplaced.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
-        tooltip.add(Component.translatable("block.bakery.cake.tooltip_1").withStyle(ChatFormatting.WHITE));
-        tooltip.add(Component.translatable("block.bakery.cake.tooltip_2").withStyle(ChatFormatting.WHITE));
+        tooltip.add(Component.translatable("tooltip.bakery.canbeplaced").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
+        tooltip.add(Component.empty());
+        tooltip.add(Component.translatable("tooltip.bakery.cake_1").withStyle(ChatFormatting.WHITE));
+        tooltip.add(Component.translatable("tooltip.bakery.cake_2").withStyle(ChatFormatting.WHITE));
+        tooltip.add(Component.translatable("tooltip.bakery.cake_3").withStyle(ChatFormatting.WHITE));
+
 
     }
 }

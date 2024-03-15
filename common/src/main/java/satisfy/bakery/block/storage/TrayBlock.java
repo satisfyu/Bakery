@@ -1,14 +1,10 @@
 package satisfy.bakery.block.storage;
 
 
-import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.BooleanOp;
@@ -16,12 +12,10 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
-import satisfy.bakery.block.storage.CakeStandBlock;
 import satisfy.bakery.registry.StorageTypeRegistry;
 import satisfy.bakery.util.GeneralUtil;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
@@ -77,12 +71,5 @@ public class TrayBlock extends CakeStandBlock {
         nSection = (int) (f / oneS);
 
         return 8 - nSection;
-    }
-
-    @Override
-    public void appendHoverText(ItemStack itemStack, BlockGetter world, List<Component> tooltip, TooltipFlag tooltipContext) {
-        tooltip.add(Component.translatable("block.bakery.canbeplaced.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
-        tooltip.add(Component.translatable("block.bakery.cakestand_1.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.WHITE));
-        tooltip.add(Component.translatable("block.bakery.tray.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.WHITE));
     }
 }

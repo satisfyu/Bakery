@@ -21,11 +21,10 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.phys.Vec2;
-import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import satisfy.bakery.registry.StorageTypeRegistry;
 import satisfy.bakery.util.BakeryProperties;
@@ -37,7 +36,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
-
+@SuppressWarnings("deprecation")
 public class CakeDisplayBlock extends StorageBlock {
 
     public static final DirectionProperty FACING;
@@ -164,16 +163,16 @@ public class CakeDisplayBlock extends StorageBlock {
     });
 
     @Override
-    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+    public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         return SHAPE.get(state.getValue(FACING));
     }
     @Override
-    public BlockState rotate(BlockState state, Rotation rotation) {
+    public @NotNull BlockState rotate(BlockState state, Rotation rotation) {
         return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
     }
 
     @Override
-    public BlockState mirror(BlockState state, Mirror mirror) {
+    public @NotNull BlockState mirror(BlockState state, Mirror mirror) {
         return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
 
@@ -184,8 +183,6 @@ public class CakeDisplayBlock extends StorageBlock {
 
     @Override
     public void appendHoverText(ItemStack itemStack, BlockGetter world, List<Component> tooltip, TooltipFlag tooltipContext) {
-        tooltip.add(Component.translatable("block.bakery.canbeplaced.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
-        tooltip.add(Component.translatable("block.bakery.cakedisplay_1.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.WHITE));
-        tooltip.add(Component.translatable("block.bakery.cakedisplay_2.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.WHITE));
+        tooltip.add(Component.translatable("tooltip.bakery.canbeplaced").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
     }
 }

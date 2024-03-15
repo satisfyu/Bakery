@@ -16,7 +16,7 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "bakery.advancement.place_baker_station.desc"
+      "translate": "advancement.bakery.place_baker_station.desc"
     },
     "frame": "task",
     "hidden": false,
@@ -25,7 +25,7 @@
     },
     "show_toast": true,
     "title": {
-      "translate": "bakery.advancement.place_baker_station"
+      "translate": "advancement.bakery.place_baker_station"
     }
   },
   "requirements": [

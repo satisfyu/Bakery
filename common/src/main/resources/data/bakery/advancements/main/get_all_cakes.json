@@ -5,10 +5,10 @@
       "item": "bakery:chocolate_gateau"
     },
     "title": {
-      "translate": "bakery.advancement.get_all_cakes"
+      "translate": "advancement.bakery.get_all_cakes"
     },
     "description": {
-      "translate": "bakery.advancement.get_all_cakes.desc"
+      "translate": "advancement.bakery.get_all_cakes.desc"
     },
     "frame": "challenge",
     "show_toast": true,

@@ -15,7 +15,7 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "bakery.advancement.eat_bread.desc"
+      "translate": "advancement.bakery.eat_bread.desc"
     },
     "frame": "goal",
     "hidden": false,
@@ -24,7 +24,7 @@
     },
     "show_toast": true,
     "title": {
-      "translate": "bakery.advancement.eat_bread"
+      "translate": "advancement.bakery.eat_bread"
     }
   },
   "requirements": [

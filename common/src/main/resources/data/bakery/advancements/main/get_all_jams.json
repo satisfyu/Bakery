@@ -5,10 +5,10 @@
       "item": "bakery:jar"
     },
     "title": {
-      "translate": "bakery.advancement.get_all_jams"
+      "translate": "advancement.bakery.get_all_jams"
     },
     "description": {
-      "translate": "bakery.advancement.get_all_jams.desc"
+      "translate": "advancement.bakery.get_all_jams.desc"
     },
     "frame": "challenge",
     "show_toast": true,

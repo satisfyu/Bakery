@@ -15,7 +15,7 @@
   "block.bakery.cake_stand": "Supporto per torte",
   "block.bakery.cakestand_1.tooltip": "Presenta le torte, i pasticcini o altre prelibatezze più deliziose",
   "block.bakery.cakestand_2.tooltip": "Offre spazio per una torta o tre alimenti",
-  "block.bakery.canbeplaced.tooltip": "Può essere posizionato",
+  "tooltip.bakery.canbeplaced": "Può essere posizionato",
   "block.bakery.chocolate_box": "Scatola di cioccolatini",
   "block.bakery.chocolate_box.tooltip": "Il regalo perfetto",
   "block.bakery.chocolate_cake": "Torta al cioccolato",

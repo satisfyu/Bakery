@@ -5,10 +5,10 @@
       "item": "bakery:bundt_cake"
     },
     "title": {
-      "translate": "bakery.advancement.get_everything"
+      "translate": "advancement.bakery.get_everything"
     },
     "description": {
-      "translate": "bakery.advancement.get_everything.desc"
+      "translate": "advancement.bakery.get_everything.desc"
     },
     "frame": "challenge",
     "show_toast": true,

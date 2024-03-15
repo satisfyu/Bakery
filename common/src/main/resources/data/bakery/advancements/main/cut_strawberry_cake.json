@@ -30,7 +30,7 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "bakery.advancement.use_bread_knife_on_strawberry_cake.desc"
+      "translate": "advancement.bakery.use_bread_knife_on_strawberry_cake.desc"
     },
     "frame": "task",
     "hidden": false,
@@ -39,7 +39,7 @@
     },
     "show_toast": true,
     "title": {
-      "translate": "bakery.advancement.use_bread_knife_on_strawberry_cake"
+      "translate": "advancement.bakery.use_bread_knife_on_strawberry_cake"
     }
   },
   "requirements": [

@@ -5,10 +5,10 @@
       "item": "bakery:wild_strawberries"
     },
     "title": {
-      "translate": "bakery.advancement.find_wild_crops"
+      "translate": "advancement.bakery.find_wild_crops"
     },
     "description": {
-      "translate": "bakery.advancement.find_wild_crops.desc"
+      "translate": "advancement.bakery.find_wild_crops.desc"
     },
     "frame": "task",
     "show_toast": true,

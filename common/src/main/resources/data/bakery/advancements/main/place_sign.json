@@ -16,7 +16,7 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "bakery.advancement.street_sign.desc"
+      "translate": "advancement.bakery.street_sign.desc"
     },
     "frame": "task",
     "hidden": false,
@@ -25,7 +25,7 @@
     },
     "show_toast": true,
     "title": {
-      "translate": "bakery.advancement.street_sign"
+      "translate": "advancement.bakery.street_sign"
     }
   },
   "requirements": [

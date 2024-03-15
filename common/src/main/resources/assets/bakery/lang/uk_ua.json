@@ -15,7 +15,7 @@
   "block.bakery.cake_stand": "Тортниця",
   "block.bakery.cakestand_1.tooltip": "Представляє найсмачніші торти, випічки та інші делікатеси",
   "block.bakery.cakestand_2.tooltip": "Пропонує простір для одного торта або трьох предметів їжі",
-  "block.bakery.canbeplaced.tooltip": "Можна розмістити",
+  "tooltip.bakery.canbeplaced": "Можна розмістити",
   "block.bakery.chocolate_box": "Коробка шоколаду",
   "block.bakery.chocolate_box.tooltip": "Ідеальний подарунок або солодке частування в перервах між ними",
   "block.bakery.chocolate_cake": "Шоколадний торт",

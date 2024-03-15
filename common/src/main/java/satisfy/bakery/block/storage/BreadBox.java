@@ -74,8 +74,6 @@ public class BreadBox extends CakeStandBlock {
 
     @Override
     public void appendHoverText(ItemStack itemStack, BlockGetter world, List<Component> tooltip, TooltipFlag tooltipContext) {
-        tooltip.add(Component.translatable("block.bakery.canbeplaced.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
-        tooltip.add(Component.translatable("block.bakery.store_1.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.WHITE));
-        tooltip.add(Component.translatable("block.bakery.store_2.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.WHITE));
+        tooltip.add(Component.translatable("tooltip.bakery.canbeplaced").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
     }
 }

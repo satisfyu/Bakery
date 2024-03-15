@@ -15,7 +15,7 @@
   "block.bakery.cake_stand": "蛋糕台",
   "block.bakery.cakestand_1.tooltip": "呈現最美味的蛋糕、糕點，或其他美食",
   "block.bakery.cakestand_2.tooltip": "可放置一個蛋糕或三種食品",
-  "block.bakery.canbeplaced.tooltip": "可放置",
+  "tooltip.bakery.canbeplaced": "可放置",
   "block.bakery.chocolate_box": "巧克力禮盒",
   "block.bakery.chocolate_box.tooltip": "完美的禮物 - 或是作為兩者之間的甜點",
   "block.bakery.chocolate_cake": "巧克力蛋糕",

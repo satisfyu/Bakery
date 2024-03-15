@@ -113,7 +113,7 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "bakery.advancement.place_stove.desc"
+      "translate": "advancement.bakery.place_stove.desc"
     },
     "frame": "task",
     "hidden": false,
@@ -122,7 +122,7 @@
     },
     "show_toast": true,
     "title": {
-      "translate": "bakery.advancement.place_stove"
+      "translate": "advancement.bakery.place_stove"
     }
   },
   "requirements": [

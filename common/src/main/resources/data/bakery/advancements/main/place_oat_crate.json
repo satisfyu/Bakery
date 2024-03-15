@@ -16,7 +16,7 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "bakery.advancement.place_oat_crate.desc"
+      "translate": "advancement.bakery.place_oat_crate.desc"
     },
     "frame": "task",
     "hidden": false,
@@ -25,7 +25,7 @@
     },
     "show_toast": true,
     "title": {
-      "translate": "bakery.advancement.place_oat_crate"
+      "translate": "advancement.bakery.place_oat_crate"
     }
   },
   "requirements": [
