@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "bakery:misslilitu_biscuit"
+      "item": "bakery:cake_dough"
     },
     "title": {
       "translate": "advancement.bakery.root"
