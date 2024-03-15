@@ -16,10 +16,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
-/**
- * I have no clue about Voxelshapes - so if you do have a better solution please help! <3
- **/
-
 public class GlowberryTartBlock extends PieBlock {
     public GlowberryTartBlock(Properties settings, Supplier<Item> slice) {
         super(settings, slice);

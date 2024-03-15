@@ -38,6 +38,7 @@ public class CakeDisplayRenderer implements StorageTypeRenderer {
 
                 matrices.translate(xOffset, yOffset, zOffset);
                 matrices.mulPose(Axis.XP.rotationDegrees(90f));
+
                 matrices.translate(-1.2f * i, 1, 0);
                 ClientUtil.renderItem(stack, matrices, vertexConsumers, entity);
                 matrices.popPose();

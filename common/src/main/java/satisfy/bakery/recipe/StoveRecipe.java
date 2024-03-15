@@ -11,6 +11,7 @@ import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 import satisfy.bakery.registry.RecipeTypeRegistry;
 import satisfy.bakery.util.GeneralUtil;
 
@@ -34,7 +35,7 @@ public class StoveRecipe implements Recipe<Container> {
         return GeneralUtil.matchesRecipe(inventory, inputs, 1, 3);
     }
     @Override
-    public ItemStack assemble(Container container, RegistryAccess registryAccess) {
+    public @NotNull ItemStack assemble(Container container, RegistryAccess registryAccess) {
         return ItemStack.EMPTY;
     }
 
@@ -45,18 +46,18 @@ public class StoveRecipe implements Recipe<Container> {
     }
 
     @Override
-    public ItemStack getResultItem(RegistryAccess registryAccess) {
+    public @NotNull ItemStack getResultItem(RegistryAccess registryAccess) {
         return this.output.copy();
     }
 
     @Override
-    public NonNullList<Ingredient> getIngredients() {
+    public @NotNull NonNullList<Ingredient> getIngredients() {
         return this.inputs;
     }
 
 
     @Override
-    public ResourceLocation getId() {
+    public @NotNull ResourceLocation getId() {
         return this.id;
     }
 
@@ -66,12 +67,12 @@ public class StoveRecipe implements Recipe<Container> {
     }
 
     @Override
-    public RecipeSerializer<?> getSerializer() {
+    public @NotNull RecipeSerializer<?> getSerializer() {
         return RecipeTypeRegistry.STOVE_RECIPE_SERIALIZER.get();
     }
 
     @Override
-    public RecipeType<?> getType() {
+    public @NotNull RecipeType<?> getType() {
         return RecipeTypeRegistry.STOVE_RECIPE_TYPE.get();
     }
 
@@ -83,7 +84,7 @@ public class StoveRecipe implements Recipe<Container> {
     public static class Serializer implements RecipeSerializer<StoveRecipe> {
 
         @Override
-        public StoveRecipe fromJson(ResourceLocation id, JsonObject json) {
+        public @NotNull StoveRecipe fromJson(ResourceLocation id, JsonObject json) {
             final var ingredients = GeneralUtil.deserializeIngredients(GsonHelper.getAsJsonArray(json, "ingredients"));
             if (ingredients.isEmpty()) {
                 throw new JsonParseException("No ingredients for Stove Recipe");
@@ -100,7 +101,7 @@ public class StoveRecipe implements Recipe<Container> {
 
 
         @Override
-        public StoveRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
+        public @NotNull StoveRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
             final var ingredients = NonNullList.withSize(buf.readVarInt(), Ingredient.EMPTY);
             ingredients.replaceAll(ignored -> Ingredient.fromNetwork(buf));
             final ItemStack output = buf.readItem();
