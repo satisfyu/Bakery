@@ -101,7 +101,7 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
     }
 
     @Override
-    public int[] getSlotsForFace(Direction side) {
+    public int @NotNull [] getSlotsForFace(Direction side) {
         if(side.equals(Direction.UP)){
             return INGREDIENT_SLOTS;
         } else if (side.equals(Direction.DOWN)){

@@ -10,8 +10,8 @@ import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 
+@SuppressWarnings("unused")
 public class VillagerUtil {
-
     public static class BuyForOneEmeraldFactory implements VillagerTrades.ItemListing {
         private final Item buy;
         private final int price;

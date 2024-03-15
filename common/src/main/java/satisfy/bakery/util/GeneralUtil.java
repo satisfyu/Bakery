@@ -24,12 +24,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class GeneralUtil {
-    public static Collection<ServerPlayer> tracking(ServerLevel world, BlockPos pos) {
-        Objects.requireNonNull(pos, "BlockPos cannot be null");
-
-        return tracking(world, new ChunkPos(pos));
-    }
-
     public static boolean isFullAndSolid(LevelReader levelReader, BlockPos blockPos) {
         return isFaceFull(levelReader, blockPos) && isSolid(levelReader, blockPos);
     }
@@ -45,7 +39,7 @@ public class GeneralUtil {
         level.addFreshEntity(entity);
     }
 
-
+    @SuppressWarnings("deprecation")
     public static boolean isSolid(LevelReader levelReader, BlockPos blockPos){
         return levelReader.getBlockState(blockPos.below()).isSolid();
     }

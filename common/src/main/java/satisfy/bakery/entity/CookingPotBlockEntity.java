@@ -77,7 +77,7 @@ public class CookingPotBlockEntity extends BlockEntity implements BlockEntityTic
     }
 
     @Override
-    public int[] getSlotsForFace(Direction side) {
+    public int @NotNull [] getSlotsForFace(Direction side) {
         if(side.equals(Direction.UP)){
             return RECIPE_SLOTS;
         } else if (side.equals(Direction.DOWN)){

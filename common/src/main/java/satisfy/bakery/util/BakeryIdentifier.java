@@ -9,6 +9,7 @@ public class BakeryIdentifier extends ResourceLocation {
         super(Bakery.MOD_ID, path);
     }
 
+    @SuppressWarnings("unused")
     public static String asString(String path) {
         return (Bakery.MOD_ID + ":" + path);
     }

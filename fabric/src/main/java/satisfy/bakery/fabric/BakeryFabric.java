@@ -16,8 +16,6 @@ public class BakeryFabric implements ModInitializer {
         BakeryBiomeModification.init();
         CompostableRegistry.registerCompostable();
 
-        FabricLoader.getInstance().getModContainer(Bakery.MOD_ID).ifPresent(container -> {
-            ResourceManagerHelper.registerBuiltinResourcePack(new BakeryIdentifier("minecraft_bricks"), container, ResourcePackActivationType.NORMAL);
-        });
+        FabricLoader.getInstance().getModContainer(Bakery.MOD_ID).ifPresent(container -> ResourceManagerHelper.registerBuiltinResourcePack(new BakeryIdentifier("minecraft_bricks"), container, ResourcePackActivationType.NORMAL));
     }
 }

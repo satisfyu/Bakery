@@ -11,16 +11,15 @@ import java.util.function.Predicate;
 
 
 public class BakeryBiomeModification {
-
     public static void init() {
         BiomeModification world = BiomeModifications.create(new BakeryIdentifier("world_features"));
-        Predicate<BiomeSelectionContext> strawberryBiomes = getBakerySelector("spawns_strawberries");
+        Predicate<BiomeSelectionContext> strawberryBiomes = getBakerySelector();
 
         world.add(ModificationPhase.ADDITIONS, strawberryBiomes, ctx -> ctx.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, BakeryPlacedFeature.STRAWBERRY_PATCH_CHANCE_KEY));
     }
 
-    private static Predicate<BiomeSelectionContext> getBakerySelector(String path) {
-        return BiomeSelectors.tag(TagKey.create(Registries.BIOME, new BakeryIdentifier(path)));
+    private static Predicate<BiomeSelectionContext> getBakerySelector() {
+        return BiomeSelectors.tag(TagKey.create(Registries.BIOME, new BakeryIdentifier("spawns_strawberries")));
     }
 
 

@@ -7,6 +7,7 @@ import me.shedaniel.rei.forge.REIPluginClient;
 import satisfy.bakery.compat.rei.BakeryREIClientPlugin;
 
 @REIPluginClient
+@SuppressWarnings("unused")
 public class BakeryREIClientPluginForge implements REIClientPlugin {
 
     @Override
