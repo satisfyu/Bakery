@@ -10,19 +10,20 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffectUtil;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Map;
 
-public class FoodBlockItem extends BlockItem {
-    public FoodBlockItem(Block block, Properties properties) {
-        super(block, properties);
+@SuppressWarnings("unused")
+public class EffectItem extends Item {
+
+    public EffectItem(Properties properties, int duration) {
+        super(properties);
     }
 
     @Override
@@ -87,10 +88,7 @@ public class FoodBlockItem extends BlockItem {
                                     .withStyle(ChatFormatting.RED)
                     );
                 }
-                tooltip.add(Component.empty());
-                tooltip.add(Component.translatable("block.bakery.canbeplaced.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
             }
         }
     }
 }
-

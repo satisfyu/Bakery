@@ -7,8 +7,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodData;
 import net.minecraft.world.level.GameRules;
 
-public class SaturatedEffect extends MobEffect {
-    public SaturatedEffect() {
+public class StuffedEffect extends MobEffect {
+    public StuffedEffect() {
         super(MobEffectCategory.BENEFICIAL, 0);
     }
 
