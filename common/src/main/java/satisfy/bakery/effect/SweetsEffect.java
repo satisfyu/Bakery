@@ -1,16 +1,10 @@
 package satisfy.bakery.effect;
 
-import net.minecraft.core.particles.ItemParticleOption;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.item.Items;
 
 import java.util.UUID;
 
@@ -20,7 +14,7 @@ public class SweetsEffect extends MobEffect {
     public static final UUID ATTACK_DAMAGE_MODIFIER_ID = UUID.fromString("CB3F55D3-645C-4F38-A497-9C13A33DB5CF");
 
     public SweetsEffect() {
-        super(MobEffectCategory.BENEFICIAL, 0xFAFA6E);
+        super(MobEffectCategory.BENEFICIAL, 0);
     }
 
     @Override
@@ -32,15 +26,6 @@ public class SweetsEffect extends MobEffect {
             applyModifier(livingEntity, Attributes.MOVEMENT_SPEED, SPEED_MODIFIER_ID, percentIncrease, "Bakery speed boost");
             applyModifier(livingEntity, Attributes.ATTACK_SPEED, ATTACK_SPEED_MODIFIER_ID, percentIncrease, "Bakery attack speed boost");
             applyModifier(livingEntity, Attributes.ATTACK_DAMAGE, ATTACK_DAMAGE_MODIFIER_ID, percentIncrease, "Bakery attack damage boost");
-
-            if (livingEntity.level().random.nextFloat() < 0.2) {
-                livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 40, 0, false, false));
-                if (livingEntity.level() instanceof ServerLevel serverLevel) {
-                    serverLevel.sendParticles(new ItemParticleOption(ParticleTypes.ITEM, Items.GREEN_DYE.getDefaultInstance()),
-                            livingEntity.getX(), livingEntity.getY() + livingEntity.getBbHeight() * 0.8, livingEntity.getZ(),
-                            1, 0.0, 0.0, 0.0, 0.0);
-                }
-            }
         }
     }
 

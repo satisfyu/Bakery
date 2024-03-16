@@ -85,13 +85,11 @@ public class PieBlock extends FacingBlock {
     public @NotNull InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         ItemStack heldStack = player.getItemInHand(hand);
         if (!level.isClientSide && !player.isShiftKeyDown() && state.getValue(CUTS) == 0 && heldStack.isEmpty()) {
-            if (!player.getInventory().add(new ItemStack(this))) {
-                Direction direction = player.getDirection().getOpposite();
-                double xMotion = direction.getStepX() * 0.13;
-                double yMotion = 0.35;
-                double zMotion = direction.getStepZ() * 0.13;
-                GeneralUtil.spawnSlice(level, new ItemStack(this), pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, xMotion, yMotion, zMotion);
-            }
+            Direction direction = player.getDirection().getOpposite();
+            double xMotion = direction.getStepX() * 0.13;
+            double yMotion = 0.35;
+            double zMotion = direction.getStepZ() * 0.13;
+            GeneralUtil.spawnSlice(level, new ItemStack(this), pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, xMotion, yMotion, zMotion);
             level.removeBlock(pos, false);
             return InteractionResult.SUCCESS;
         }
@@ -105,8 +103,6 @@ public class PieBlock extends FacingBlock {
 
         return InteractionResult.PASS;
     }
-
-
 
     protected InteractionResult consumeBite(Level level, BlockPos pos, BlockState state, Player playerIn) {
         if (!playerIn.canEat(false)) {
