@@ -46,18 +46,18 @@
       "y": 270
     },
     "stack=4,facing=north": {
-      "model": "bakery:block/braided_bread_4"
+      "model": "bakery:block/braided_bread_3"
     },
     "stack=4,facing=east": {
-      "model": "bakery:block/braided_bread_4",
+      "model": "bakery:block/braided_bread_3",
       "y": 90
     },
     "stack=4,facing=south": {
-      "model": "bakery:block/braided_bread_4",
+      "model": "bakery:block/braided_bread_3",
       "y": 180
     },
     "stack=4,facing=west": {
-      "model": "bakery:block/braided_bread_4",
+      "model": "bakery:block/braided_bread_3",
       "y": 270
     }
   }

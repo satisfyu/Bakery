@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:block/crop",
-  "textures": {
-    "crop": "bakery:block/oat_stage1"
-  }
+	"parent": "bakery:block/oat_template",
+	"textures": {
+		"crop": "bakery:block/oat_stage2"
+	}
 }

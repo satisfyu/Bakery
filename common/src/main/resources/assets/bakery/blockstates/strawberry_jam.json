@@ -46,18 +46,18 @@
       "y": 270
     },
     "stack=4,facing=north": {
-      "model": "bakery:block/strawberry_jam_stack4"
+      "model": "bakery:block/strawberry_jam_stack3"
     },
     "stack=4,facing=east": {
-      "model": "bakery:block/strawberry_jam_stack4",
+      "model": "bakery:block/strawberry_jam_stack3",
       "y": 90
     },
     "stack=4,facing=south": {
-      "model": "bakery:block/strawberry_jam_stack4",
+      "model": "bakery:block/strawberry_jam_stack3",
       "y": 180
     },
     "stack=4,facing=west": {
-      "model": "bakery:block/strawberry_jam_stack4",
+      "model": "bakery:block/strawberry_jam_stack3",
       "y": 270
     }
   }

@@ -46,18 +46,18 @@
       "y": 270
     },
     "stack=4,facing=north": {
-      "model": "bakery:block/toast_4"
+      "model": "bakery:block/toast_3"
     },
     "stack=4,facing=east": {
-      "model": "bakery:block/toast_4",
+      "model": "bakery:block/toast_3",
       "y": 90
     },
     "stack=4,facing=south": {
-      "model": "bakery:block/toast_4",
+      "model": "bakery:block/toast_3",
       "y": 180
     },
     "stack=4,facing=west": {
-      "model": "bakery:block/toast_4",
+      "model": "bakery:block/toast_3",
       "y": 270
     }
   }

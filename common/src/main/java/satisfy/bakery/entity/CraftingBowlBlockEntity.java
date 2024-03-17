@@ -1,5 +1,6 @@
 package satisfy.bakery.entity;
 
+import de.cristelknight.doapi.common.entity.ImplementedInventory;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;

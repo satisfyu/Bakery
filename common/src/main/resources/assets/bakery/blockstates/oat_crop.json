@@ -30,6 +30,10 @@
       {
         "model": "bakery:block/oat_stage4_1",
         "weight": 1
+      },
+      {
+        "model": "bakery:block/oat_stage4_2",
+        "weight": 1
       }
     ],
     "age=5": [
@@ -55,18 +59,6 @@
       },
       {
         "model": "bakery:block/oat_stage5_6",
-        "weight": 1
-      },
-      {
-        "model": "bakery:block/oat_stage5_7",
-        "weight": 1
-      },
-      {
-        "model": "bakery:block/oat_stage5_8",
-        "weight": 1
-      },
-      {
-        "model": "bakery:block/oat_stage5_9",
         "weight": 1
       }
     ]

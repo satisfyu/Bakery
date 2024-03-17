@@ -17,7 +17,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class StreetSignBlock extends FacingBlock {
-    private static final VoxelShape SHAPE_BIG = Block.box(1, 0, 1, 14, 15, 14);
+    private static final VoxelShape SHAPE = Block.box(1, 0, 1, 14, 15, 14);
 
 
     public StreetSignBlock(Properties settings) {
@@ -27,9 +27,8 @@ public class StreetSignBlock extends FacingBlock {
     @Override
     @SuppressWarnings("deprecation")
     public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-        return SHAPE_BIG;
+        return SHAPE;
     }
-
 
     @Override
     public @NotNull BlockState mirror(BlockState state, Mirror mirror) {
