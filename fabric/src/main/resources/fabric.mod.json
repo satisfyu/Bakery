@@ -8,10 +8,9 @@
     "satisfy"
   ],
   "contact": {
-    "homepage": "https://www.curseforge.com/minecraft/mc-mods/bakery-lets-do-a-bakery-dinner",
     "sources": "https://guthib.com"
   },
-  "license": "Insert License Here",
+  "license": "Custom",
   "icon": "pack.png",
   "environment": "*",
   "entrypoints": {
@@ -38,6 +37,6 @@
     "fabric": "*",
     "minecraft": ">=1.20",
     "architectury": ">=9.0.8",
-    "doapi": ">=1.2.8"
+    "doapi": ">=1.2.9"
   }
 }

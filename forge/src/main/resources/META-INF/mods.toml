@@ -1,7 +1,6 @@
 modLoader = "javafml"
 loaderVersion = "[46,)"
-#issueTrackerURL = "https://discord.gg/Vqu6wYZwdZ"
-license = "ARR"
+license = "Custom"
 
 [[mods]]
 modId = "bakery"
@@ -29,7 +28,7 @@ side = "BOTH"
 [[dependencies.bakery]]
 modId = "doapi"
 mandatory = true
-versionRange = "[1.2.8,)"
+versionRange = "[1.2.9,)"
 ordering = "NONE"
 side = "BOTH"
 
