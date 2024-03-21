@@ -1,142 +1,163 @@
 package satisfy.bakery.entity;
 
-import de.cristelknight.doapi.common.entity.ImplementedInventory;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.ContainerHelper;
+import net.minecraft.world.WorldlyContainer;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ChestMenu;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import satisfy.bakery.registry.BlockEntityTypeRegistry;
 import satisfy.bakery.registry.ObjectRegistry;
 
-public class CraftingBowlBlockEntity extends BlockEntity implements ImplementedInventory, BlockEntityTicker<CraftingBowlBlockEntity> {
-    private NonNullList<ItemStack> ingredients = NonNullList.withSize(3, ItemStack.EMPTY);
-    private int craftingProgress = 0;
-    private long lastInteractionTime = 0;
-    private static final int CRAFTING_TIME_TOTAL = 300;
+import java.util.Set;
+import java.util.stream.IntStream;
 
-    public CraftingBowlBlockEntity(BlockPos pos, BlockState state) {
-        super(BlockEntityTypeRegistry.CRAFTING_BOWL_BLOCK_ENTITY.get(), pos, state);
+public class CraftingBowlBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
+
+    private NonNullList<ItemStack> stacks = NonNullList.withSize(5, ItemStack.EMPTY);
+
+
+    public CraftingBowlBlockEntity(BlockPos position, BlockState state) {
+        super(BlockEntityTypeRegistry.CRAFTING_BOWL_BLOCK_ENTITY.get(), position, state);
+    }
+
+
+    @Override
+    public void load(CompoundTag compound) {
+        super.load(compound);
+        if (!this.tryLoadLootTable(compound))
+            this.stacks = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
+        ContainerHelper.loadAllItems(compound, this.stacks);
     }
 
     @Override
-    public void load(CompoundTag tag) {
-        super.load(tag);
-        ingredients = NonNullList.withSize(3, ItemStack.EMPTY);
-        ContainerHelper.loadAllItems(tag, ingredients);
-        craftingProgress = tag.getInt("CraftingProgress");
-        lastInteractionTime = tag.getLong("LastInteractionTime");
+    public void saveAdditional(CompoundTag compound) {
+        super.saveAdditional(compound);
+        if (!this.trySaveLootTable(compound))
+            ContainerHelper.saveAllItems(compound, this.stacks);
     }
 
     @Override
-    protected void saveAdditional(CompoundTag tag) {
-        super.saveAdditional(tag);
-        ContainerHelper.saveAllItems(tag, ingredients);
-        tag.putInt("CraftingProgress", craftingProgress);
-        tag.putLong("LastInteractionTime", lastInteractionTime);
+    public ClientboundBlockEntityDataPacket getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
     }
 
-    public boolean addItem(ItemStack itemStack) {
-        for (int i = 0; i < ingredients.size(); i++) {
-            if (ingredients.get(i).isEmpty()) {
-                ingredients.set(i, itemStack.copy());
-                itemStack.shrink(1);
-                this.setChanged();
-                return true;
-            }
-        }
-        return false;
+    @Override
+    public @NotNull CompoundTag getUpdateTag() {
+        return this.saveWithoutMetadata();
     }
 
-    public ItemStack removeItem() {
-        for (int i = ingredients.size() - 1; i >= 0; i--) {
-            if (!ingredients.get(i).isEmpty()) {
-                ItemStack removed = ingredients.get(i);
-                ingredients.set(i, ItemStack.EMPTY);
-                this.setChanged();
-                return removed;
+    @Override
+    public int getContainerSize() {
+        return stacks.size();
+    }
+
+    @Override
+    public boolean isEmpty() {
+        for (ItemStack itemstack : this.stacks)
+            if (!itemstack.isEmpty())
+                return false;
+        return true;
+    }
+
+    @Override
+    public @NotNull Component getDefaultName() {
+        return Component.literal("crafting_bowl");
+    }
+
+    @Override
+    public @NotNull AbstractContainerMenu createMenu(int id, Inventory inventory) {
+        return ChestMenu.threeRows(id, inventory);
+    }
+
+
+    @Override
+    public int getMaxStackSize() {
+        return 1;
+    }
+
+    @Override
+    public boolean canPlaceItem(int index, ItemStack stack) {
+        Item item = stack.getItem();
+        return  (item == Items.WHEAT || item == Items.SUGAR || item == Items.MILK_BUCKET || item == Items.EGG || item == ObjectRegistry.YEAST.get()) &&
+                !this.hasAnyOf(Set.of(stack.getItem()));
+    }
+
+    @Override
+    public @NotNull NonNullList<ItemStack> getItems() {
+        return this.stacks;
+    }
+
+    public int filledSlots() {
+        int i = 4;
+
+        for(int j = 0; j < this.getContainerSize(); ++j) {
+            if (this.getItem(j) == ItemStack.EMPTY) {
+                i--;
             }
         }
+
+        return i;
+    }
+
+    @Override
+    protected void setItems(NonNullList<ItemStack> stacks) {
+        this.stacks = stacks;
+    }
+
+    public boolean canAddItem(ItemStack stack) {
+        return this.canPlaceItem(0, stack) && filledSlots() < this.getContainerSize() - 1;
+    }
+
+    public void addItemStack(ItemStack stack) {
+        for(int j = 0; j < this.getContainerSize(); ++j) {
+            if (this.getItem(j) == ItemStack.EMPTY) {
+                this.setItem(j, stack);
+                setChanged();
+                return;
+            }
+        }
+    }
+
+    public ItemStack removeItemstack(Item item) {
+        this.unpackLootTable((Player)null);
+        for(int j = 0; j < this.getContainerSize(); ++j) {
+            ItemStack currentStack = this.getItem(j);
+            if (currentStack.getItem() == item) {
+                this.setItem(j, ItemStack.EMPTY);
+                setChanged();
+                return currentStack;
+            }
+        }
+
         return ItemStack.EMPTY;
     }
 
-    public boolean containsIngredient(Item searchItem) {
-        for (ItemStack stack : ingredients) {
-            if (stack.getItem() == searchItem) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public void transformContents() {
-        ItemStack result = ItemStack.EMPTY;
-        if (containsIngredient(Items.WHEAT) && containsIngredient(ObjectRegistry.YEAST.get())) {
-            result = ObjectRegistry.DOUGH.get().getDefaultInstance();
-        } else if (containsIngredient(Items.WHEAT) && containsIngredient(Items.SUGAR) && containsIngredient(Items.EGG)) {
-            result = ObjectRegistry.SWEET_DOUGH.get().getDefaultInstance();
-        } else if (containsIngredient(Items.WHEAT) && containsIngredient(Items.SUGAR) && containsIngredient(Items.MILK_BUCKET)) {
-            result = ObjectRegistry.CAKE_DOUGH.get().getDefaultInstance();
-        }
-
-        if (!result.isEmpty()) {
-            ingredients.clear();
-            addItem(result);
-            craftingProgress = 0;
-        }
-    }
-
-    @SuppressWarnings("unused")
-    public void setCraftingProgress(int craftingProgress) {
-        this.craftingProgress = craftingProgress;
-    }
-
-    public int getCraftingProgress() {
-        return craftingProgress;
-    }
-
-    public long getLastInteractionTime() {
-        return lastInteractionTime;
-    }
-
-    public void setLastInteractionTime(long lastInteractionTime) {
-        this.lastInteractionTime = lastInteractionTime;
+    @Override
+    public int @NotNull [] getSlotsForFace(Direction side) {
+        return IntStream.range(0, this.getContainerSize()).toArray();
     }
 
     @Override
-    public void tick(Level level, BlockPos pos, BlockState state, CraftingBowlBlockEntity be) {
-        if (!level.isClientSide) {
-            long currentTime = level.getGameTime();
-            if (currentTime - be.getLastInteractionTime() <= 20 * 15) {
-                be.craftingProgress++;
-                if (be.craftingProgress >= CRAFTING_TIME_TOTAL) {
-                    be.transformContents();
-                    be.craftingProgress = 0;
-                }
-            } else {
-                be.craftingProgress = 0;
-            }
-            be.setChanged();
-        }
+    public boolean canPlaceItemThroughFace(int index, ItemStack stack, @Nullable Direction direction) {
+        return this.canPlaceItem(index, stack);
     }
 
-
-    public NonNullList<ItemStack> getItems() {
-        return ingredients;
-    }
-
-    public boolean stillValid(Player player) {
-        assert this.level != null;
-        if (this.level.getBlockEntity(this.worldPosition) != this) {
-            return false;
-        }
-        return player.distanceToSqr((double)this.worldPosition.getX() + 0.5D, (double)this.worldPosition.getY() + 0.5D, (double)this.worldPosition.getZ() + 0.5D) <= 64.0D;
+    @Override
+    public boolean canTakeItemThroughFace(int index, ItemStack stack, Direction direction) {
+        return true;
     }
 }

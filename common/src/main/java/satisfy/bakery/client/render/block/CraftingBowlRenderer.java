@@ -1,108 +1,97 @@
 package satisfy.bakery.client.render.block;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.geom.ModelLayerLocation;
+import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.math.Axis;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.client.renderer.entity.ItemRenderer;
+import net.minecraft.core.NonNullList;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
+import satisfy.bakery.Bakery;
 import satisfy.bakery.block.CraftingBowlBlock;
+import satisfy.bakery.client.model.CraftingBowlModel;
 import satisfy.bakery.entity.CraftingBowlBlockEntity;
-import satisfy.bakery.util.BakeryIdentifier;
-import satisfy.bakery.util.ClientUtil;
-
-import java.util.List;
-import java.util.Random;
 
 public class CraftingBowlRenderer implements BlockEntityRenderer<CraftingBowlBlockEntity> {
-    private static final ResourceLocation TEXTURE = new BakeryIdentifier("textures/entity/crafting_bowl.png");
     private final ModelPart bowl;
     private final ModelPart swing;
 
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new BakeryIdentifier("crafting_bowl"), "main");
-
     public CraftingBowlRenderer(BlockEntityRendererProvider.Context context) {
-        ModelPart modelPart = context.bakeLayer(LAYER_LOCATION);
-        this.bowl = modelPart.getChild("bowl");
-        this.swing = modelPart.getChild("swing");
-    }
+        ModelPart root = context.bakeLayer(CraftingBowlModel.LAYER_LOCATION);
 
-    public static LayerDefinition getTexturedModelData() {
-        MeshDefinition meshdefinition = new MeshDefinition();
-        PartDefinition partdefinition = meshdefinition.getRoot();
-
-        PartDefinition bowl = partdefinition.addOrReplaceChild("bowl", CubeListBuilder.create().texOffs(0, 0).addBox(-13.0F, -8.05F, 3.0F, 10.0F, 8.0F, 10.0F, new CubeDeformation(0.0F))
-                .texOffs(0, 0).addBox(-4.0F, -3.0F, 12.0F, -8.0F, -5.0F, -8.0F, new CubeDeformation(0.0F))
-                .texOffs(30, 0).addBox(-13.0F, -7.0F, 3.0F, 10.0F, 0.0F, 10.0F, new CubeDeformation(0.0F)), PartPose.offset(8.0F, 24.0F, -8.0F));
-
-        PartDefinition swing = partdefinition.addOrReplaceChild("swing", CubeListBuilder.create(), PartPose.offsetAndRotation(-1.0F, 21.0F, 0.0F, 0.0F, 0.0F, 0.0873F));
-
-        PartDefinition swing_r1 = swing.addOrReplaceChild("swing_r1", CubeListBuilder.create().texOffs(0, 0).addBox(-1.2556F, 0.5F, 1.125F, 5.0F, 6.0F, 0.0F, new CubeDeformation(0.0F))
-                .texOffs(0, -5).addBox(1.3444F, 0.5F, -1.375F, 0.0F, 6.0F, 5.0F, new CubeDeformation(0.0F))
-                .texOffs(10, 18).addBox(0.8444F, -5.5F, 0.625F, 1.0F, 8.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-2.5444F, -2.8143F, -1.125F, 0.0F, 0.0F, -0.7854F));
-
-        return LayerDefinition.create(meshdefinition, 48, 48);
+        this.bowl = root.getChild("bowl");
+        this.swing = root.getChild("swing");
     }
 
     @Override
-    public void render(CraftingBowlBlockEntity entity, float partialTicks, PoseStack matrixStack, MultiBufferSource bufferSource, int combinedLight, int combinedOverlay) {
-        if (!entity.hasLevel() || !(entity.getBlockState().getBlock() instanceof CraftingBowlBlock)) return;
+    public void render(CraftingBowlBlockEntity blockEntity, float f, PoseStack poseStack, MultiBufferSource multiBufferSource, int i, int j) {
 
-        List<ItemStack> ingredients = entity.getItems();
-        if (ingredients.isEmpty()) return;
+        Level level = blockEntity.getLevel();
+        assert level != null;
+        BlockState blockState = level.getBlockState(blockEntity.getBlockPos());
+        if (!(blockState.getBlock() instanceof CraftingBowlBlock)) return;
 
-        matrixStack.pushPose();
-        setupInitialTransform(matrixStack, entity);
+        poseStack.pushPose();
+        poseStack.mulPose(Axis.XP.rotationDegrees(180));
+        poseStack.translate(0.5f, -1.5f, -0.5f);
 
-        Random random = new Random(entity.getBlockPos().hashCode());
-        float angleOffset = 360f / ingredients.size();
 
-        for (int index = 0; index < ingredients.size(); index++) {
-            ItemStack stack = ingredients.get(index);
-            matrixStack.pushPose();
-            Vector3f position = calculateItemPosition(index, angleOffset, ingredients.size());
-            applyItemTransform(matrixStack, position, angleOffset * index);
-            renderItems(matrixStack, bufferSource, entity, stack, random);
-            matrixStack.popPose();
-        }
+        ResourceLocation location = blockEntity.getItem(4) == ItemStack.EMPTY ?
+                new ResourceLocation(Bakery.MOD_ID, "textures/entity/crafting_bowl.png") :
+                new ResourceLocation(Bakery.MOD_ID, "textures/entity/crafting_bowl_full.png");
 
-        matrixStack.popPose();
+
+        VertexConsumer vertexConsumer = multiBufferSource.getBuffer(RenderType.entityTranslucent(location));
+
+        bowl.render(poseStack, vertexConsumer, i, j);
+        if (level.getBlockState(blockEntity.getBlockPos()).getValue(CraftingBowlBlock.STIRRING) > 0) poseStack.mulPose (Axis.YP.rotation(((float) (System.currentTimeMillis() % 100000) / 100f)% 360));
+        swing.render(poseStack, vertexConsumer, i, j);
+
+        this.renderItems(poseStack, multiBufferSource, blockEntity.getItems(), i, j);
+
+        poseStack.popPose();
+
+
     }
 
-    private void setupInitialTransform(PoseStack matrixStack, CraftingBowlBlockEntity entity) {
-        matrixStack.scale(0.45F, 0.45F, 0.45F);
-        matrixStack.translate(1.0f, 0.3F, 1.0f);
-    }
+    private void renderItems(PoseStack poseStack, MultiBufferSource multiBufferSource, NonNullList<ItemStack> items, int i, int j) {
 
-    private Vector3f calculateItemPosition(int index, float angleOffset, int itemCount) {
-        if (itemCount == 1) return new Vector3f(0, 0.3f, 0);
-        double angleRad = Math.toRadians(angleOffset * index);
-        return new Vector3f((float) (0.125 * Math.cos(angleRad)), 0.3f, (float) (0.125 * Math.sin(angleRad)));
-    }
+        final ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
+        final LocalPlayer player = Minecraft.getInstance().player;
 
-    private void applyItemTransform(PoseStack matrixStack, Vector3f position, float angle) {
-        Quaternionf rotation = new Quaternionf().rotateY(angle + 35).rotateX(65);
-        matrixStack.translate(position.x, position.y, position.z);
-        matrixStack.mulPose(rotation);
-    }
+        poseStack.translate(0f, 1f, 0f);
+        poseStack.scale(0.35f, 0.35f, 0.35f);
 
-    private void renderItems(PoseStack matrixStack, MultiBufferSource bufferSource, CraftingBowlBlockEntity entity, ItemStack stack, Random random) {
-        for (int i = 0; i <= stack.getCount() / 8; i++) {
-            matrixStack.pushPose();
-            Vector3f offset = offsetRandomly(random, 1 / 16f);
-            matrixStack.translate(offset.x, offset.y, offset.z);
-            ClientUtil.renderItem(stack, matrixStack, bufferSource, entity);
-            matrixStack.popPose();
-        }
-    }
+        float offset = 0.26f;
 
-    private Vector3f offsetRandomly(Random random, float radius) {
-        return new Vector3f((random.nextFloat() - 0.5f) * 2 * radius, (random.nextFloat() - 0.5f) * 2 * radius, (random.nextFloat() - 0.5f) * 2 * radius);
+        poseStack.translate(-offset, 0.1f, -offset);
+        poseStack.mulPose(Axis.XP.rotationDegrees(90));
+        itemRenderer.renderStatic(player, items.get(0), ItemDisplayContext.FIXED, false, poseStack, multiBufferSource, Minecraft.getInstance().level, i, j, 0);
+        poseStack.mulPose(Axis.XP.rotationDegrees(-90));
+
+        poseStack.translate(2*offset, 0.1f, 0f);
+        poseStack.mulPose(Axis.XP.rotationDegrees(90));
+        itemRenderer.renderStatic(player, items.get(1), ItemDisplayContext.FIXED, false, poseStack, multiBufferSource, Minecraft.getInstance().level, i, j, 0);
+        poseStack.mulPose(Axis.XP.rotationDegrees(-90));
+
+        poseStack.translate(0f, 0.1f, 2*offset);
+        poseStack.mulPose(Axis.XP.rotationDegrees(90));
+        itemRenderer.renderStatic(player, items.get(2), ItemDisplayContext.FIXED, false, poseStack, multiBufferSource, Minecraft.getInstance().level, i, j, 0);
+        poseStack.mulPose(Axis.XP.rotationDegrees(-90));
+
+        poseStack.translate(-2*offset, 0.1f, 0f);
+        poseStack.mulPose(Axis.XP.rotationDegrees(90));
+        itemRenderer.renderStatic(player, items.get(3), ItemDisplayContext.FIXED, false, poseStack, multiBufferSource, Minecraft.getInstance().level, i, j, 0);
+        poseStack.mulPose(Axis.XP.rotationDegrees(-90));
     }
 }

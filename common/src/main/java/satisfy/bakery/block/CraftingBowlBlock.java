@@ -1,141 +1,221 @@
 package satisfy.bakery.block;
 
-import de.cristelknight.doapi.common.block.FacingBlock;
-import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import satisfy.bakery.entity.CraftingBowlBlockEntity;
+import satisfy.bakery.registry.ObjectRegistry;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.Supplier;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
 
 @SuppressWarnings("deprecation")
-public class CraftingBowlBlock extends FacingBlock implements EntityBlock {
-    private static final Supplier<VoxelShape> VOXEL_SHAPE_SUPPLIER = () -> Shapes.box(0.1875, 0, 0.1875, 0.8125, 0.5, 0.8125);
-    public static final Map<Direction, VoxelShape> SHAPES = Util.make(new HashMap<>(), map -> {
-        for (Direction direction : Direction.values()) {
-            map.put(direction, VOXEL_SHAPE_SUPPLIER.get());
-        }
-    });
+public class CraftingBowlBlock extends Block implements EntityBlock {
+    public static final int STIRS_NEEDED = 50;
+    public static final IntegerProperty STIRRING = IntegerProperty.create("stirring", 0, 32);
+    public static final IntegerProperty STIRRED = IntegerProperty.create("stirred", 0, 100);
 
     public CraftingBowlBlock(Properties settings) {
         super(settings);
+        this.registerDefaultState(this.stateDefinition.any().setValue(STIRRING, 0));
+        this.registerDefaultState(this.stateDefinition.any().setValue(STIRRED, 0));
     }
 
     @Override
-    public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-        return SHAPES.get(state.getValue(FACING));
-    }
-
-    @Override
-    public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        BlockEntity blockEntity = world.getBlockEntity(pos);
-        if (blockEntity instanceof CraftingBowlBlockEntity craftingBowlBlockEntity) {
-            if (player.isShiftKeyDown()) {
-                ItemStack removed = craftingBowlBlockEntity.removeItem();
-                if (!removed.isEmpty()) {
-                    if (!player.addItem(removed)) {
-                        player.drop(removed, false);
-                    }
-                    world.sendBlockUpdated(pos, state, state, 3);
-                    return InteractionResult.sidedSuccess(world.isClientSide());
-                }
-            } else {
-                ItemStack stack = player.getItemInHand(hand);
-                if (!stack.isEmpty() && canInsertStack(stack, craftingBowlBlockEntity)) {
-                    ItemStack stackCopy = stack.copy();
-                    stackCopy.setCount(1);
-                    if (craftingBowlBlockEntity.addItem(stackCopy)) {
-                        if (!player.getAbilities().instabuild) {
-                            stack.shrink(1);
-                        }
-                        craftingBowlBlockEntity.setChanged();
-                        world.sendBlockUpdated(pos, state, state, 3);
-                        return InteractionResult.sidedSuccess(world.isClientSide());
-                    }
-                }
-            }
-            if (hand == InteractionHand.MAIN_HAND && !player.isShiftKeyDown() && !world.isClientSide()) {
-                CraftingBowlBlockEntity entity = (CraftingBowlBlockEntity) blockEntity;
-                long currentTime = world.getGameTime();
-                if (entity.getCraftingProgress() == 0 || currentTime - entity.getLastInteractionTime() >= 5) {
-                    entity.setLastInteractionTime(currentTime);
-                    world.addParticle(ParticleTypes.HAPPY_VILLAGER, pos.getX() + 0.5, pos.getY() + 1.0, pos.getZ() + 0.5, 0.0, 0.05, 0.0);
-                    world.playSound(null, pos, SoundEvents.SLIME_BLOCK_BREAK, SoundSource.BLOCKS, 0.5F, 1.5F); // 75% schneller
-                }
-                return InteractionResult.sidedSuccess(world.isClientSide());
-            }
-        }
-        return InteractionResult.PASS;
-    }
-
-    @SuppressWarnings("unused")
-    public boolean canInsertStack(ItemStack stack, CraftingBowlBlockEntity craftingBowlBlockEntity) {
-        if (!stack.isEdible() && !(stack.getItem() instanceof BlockItem)) {
-            stack.getItem();
-        }
+    public boolean propagatesSkylightDown(BlockState state, BlockGetter reader, BlockPos pos) {
         return true;
     }
 
     @Override
-    public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean isMoving) {
-        if (!state.is(newState.getBlock())) {
-            BlockEntity be = world.getBlockEntity(pos);
-            if (be instanceof CraftingBowlBlockEntity) {
-                Containers.dropContents(world, pos, (CraftingBowlBlockEntity) be);
-                world.updateNeighbourForOutputSignal(pos, this);
-            }
-        }
-        super.onRemove(state, world, pos, newState, isMoving);
+    public int getLightBlock(BlockState state, BlockGetter worldIn, BlockPos pos) {
+        return 0;
     }
 
     @Override
-    public void neighborChanged(BlockState state, Level world, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
-        super.neighborChanged(state, world, pos, block, fromPos, isMoving);
-        if (!world.isClientSide) {
-            if (!canSurvive(state, world, pos)) {
-                world.destroyBlock(pos, true);
-            }
-        }
+    public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+        Vec3 offset = state.getOffset(world, pos);
+        return (Shapes.or(box(3, 0, 3, 13, 8, 13), box(4, 3, 4, 12, 8, 12))).move(offset.x, offset.y, offset.z);
     }
 
     @Override
-    public boolean canSurvive(BlockState state, LevelReader world, BlockPos pos) {
-        return !world.isEmptyBlock(pos.below());
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(STIRRING);
+        builder.add(STIRRED);
     }
 
-    @Nullable
+    @Override
+    public @NotNull List<ItemStack> getDrops(BlockState state, LootParams.Builder builder) {
+        List<ItemStack> dropsOriginal = super.getDrops(state, builder);
+        if (!dropsOriginal.isEmpty())
+            return dropsOriginal;
+        return Collections.singletonList(new ItemStack(this, 1));
+    }
+
+    @Override
+    public @NotNull InteractionResult use(BlockState blockState, Level world, BlockPos pos, Player entity, InteractionHand hand, BlockHitResult hit) {
+        BlockEntity blockEntity = world.getBlockEntity(pos);
+
+        ItemStack itemStack = entity.getItemInHand(hand);
+        int stirring = blockState.getValue(STIRRING);
+        int stirred = blockState.getValue(STIRRED);
+
+        if(blockEntity instanceof CraftingBowlBlockEntity bowlEntity) {
+
+            if (stirring == 0) {
+                if (bowlEntity.canAddItem(itemStack)) {
+                    bowlEntity.addItemStack(itemStack.copy());
+                    if (!entity.isCreative()) itemStack.shrink(1);
+                    return InteractionResult.SUCCESS;
+                }
+            }
+
+            if (itemStack.isEmpty()) {
+                if (stirred >= STIRS_NEEDED) {
+                    if (stirring == 0) {
+                        entity.getInventory().add(bowlEntity.getItem(4));
+                        bowlEntity.setItem(4, ItemStack.EMPTY);
+                        world.setBlock(pos, blockState.setValue(STIRRED, 0), 3);
+                    }
+                } else {
+                    if(world instanceof ServerLevel _world) {
+                        RandomSource randomsource = _world.random;
+                        for (ItemStack stack : bowlEntity.getItems()) {
+                            if (stack != ItemStack.EMPTY && bowlEntity.getItem(4) != stack) {
+                                ItemParticleOption p = new ItemParticleOption(ParticleTypes.ITEM, stack);
+                                _world.sendParticles(p, pos.getCenter().x, pos.getCenter().y + 0.25d, pos.getCenter().z, 1, randomsource.nextGaussian() * 0.15D, randomsource.nextDouble() * 0.15D, randomsource.nextGaussian() * 0.15, randomsource.nextGaussian() * 0.05);
+                            }
+                        }
+                    }
+
+                    if (stirring <= 6) {
+                        world.setBlock(pos, blockState.setValue(STIRRING, 10), 3);
+
+                    }
+                }
+                return InteractionResult.SUCCESS;
+            }
+        }
+        return InteractionResult.SUCCESS;
+    }
+
+    @Override
+    public void tick(BlockState blockState, ServerLevel world, BlockPos pos, RandomSource random) {
+        super.tick(blockState, world, pos, random);
+
+        int stirring = world.getBlockState(pos).getValue(STIRRING);
+        int stirred = world.getBlockState(pos).getValue(STIRRED);
+
+        if(stirring > 0) {
+            if (stirred <= STIRS_NEEDED) {
+                stirred++;
+
+                if (stirred == STIRS_NEEDED) {
+
+                    BlockEntity blockEntity = world.getBlockEntity(pos);
+                    if (blockEntity instanceof CraftingBowlBlockEntity bowlEntity) {
+
+                        boolean hasYeast = bowlEntity.hasAnyOf(Set.of(ObjectRegistry.YEAST.get()));
+                        boolean hasWheat = bowlEntity.hasAnyOf(Set.of(Items.WHEAT));
+                        boolean hasEgg = bowlEntity.hasAnyOf(Set.of(Items.EGG));
+                        boolean hasMilk = bowlEntity.hasAnyOf(Set.of(Items.MILK_BUCKET));
+                        boolean hasSugar = bowlEntity.hasAnyOf(Set.of(Items.SUGAR));
+                        if (hasWheat && hasYeast) {
+                            bowlEntity.removeItemstack(Items.WHEAT);
+                            bowlEntity.removeItemstack(ObjectRegistry.YEAST.get());
+                            bowlEntity.setItem(4, ObjectRegistry.DOUGH.get().getDefaultInstance());
+
+                        } else if (hasWheat && hasSugar && hasEgg && hasMilk) {
+                            bowlEntity.removeItemstack(Items.WHEAT);
+                            bowlEntity.removeItemstack(Items.SUGAR);
+                            bowlEntity.removeItemstack(Items.EGG);
+                            bowlEntity.removeItemstack(Items.MILK_BUCKET);
+                            bowlEntity.setItem(4, ObjectRegistry.CAKE_DOUGH.get().getDefaultInstance());
+                        } else if (hasWheat && hasSugar && hasEgg) {
+                            bowlEntity.removeItemstack(Items.WHEAT);
+                            bowlEntity.removeItemstack(Items.SUGAR);
+                            bowlEntity.removeItemstack(Items.EGG);
+                            bowlEntity.setItem(4, ObjectRegistry.SWEET_DOUGH.get().getDefaultInstance());
+                        }
+                    }
+                }
+            }
+
+            stirring -= 1;
+
+            world.setBlock(pos, blockState.setValue(STIRRING, stirring).setValue(STIRRED, stirred), 3);
+        } else if (stirred > 0 && stirred < STIRS_NEEDED)
+            world.setBlock(pos, blockState.setValue(STIRRED, 0), 3);
+
+        world.scheduleTick(pos, this, 1);
+
+    }
+
+    @Override
+    public void onPlace(BlockState blockstate, Level world, BlockPos pos, BlockState oldState, boolean moving) {
+        super.onPlace(blockstate, world, pos, oldState, moving);
+        world.scheduleTick(pos, this, 1);
+    }
+
+
+    @Override
+    public MenuProvider getMenuProvider(BlockState state, Level worldIn, BlockPos pos) {
+        BlockEntity tileEntity = worldIn.getBlockEntity(pos);
+        return tileEntity instanceof MenuProvider ? (MenuProvider) tileEntity : null;
+    }
+
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new CraftingBowlBlockEntity(pos, state);
     }
 
     @Override
+    public boolean triggerEvent(BlockState state, Level world, BlockPos pos, int eventID, int eventParam) {
+        super.triggerEvent(state, world, pos, eventID, eventParam);
+        BlockEntity blockEntity = world.getBlockEntity(pos);
+        return blockEntity != null && blockEntity.triggerEvent(eventID, eventParam);
+    }
+
+    @Override
+    public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean isMoving) {
+        if (state.getBlock() != newState.getBlock()) {
+            BlockEntity blockEntity = world.getBlockEntity(pos);
+            if (blockEntity instanceof CraftingBowlBlockEntity be) {
+                Containers.dropContents(world, pos, be);
+                world.updateNeighbourForOutputSignal(pos, this);
+            }
+            super.onRemove(state, world, pos, newState, isMoving);
+        }
+    }
+
+
+    @Override
     public @NotNull RenderShape getRenderShape(BlockState state) {
-        return RenderShape.MODEL;
+        return RenderShape.ENTITYBLOCK_ANIMATED;
     }
 }

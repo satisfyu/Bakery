@@ -3,15 +3,14 @@ package satisfy.bakery.client;
 import dev.architectury.registry.client.level.entity.EntityModelLayerRegistry;
 import dev.architectury.registry.client.level.entity.EntityRendererRegistry;
 import dev.architectury.registry.client.rendering.BlockEntityRendererRegistry;
-import dev.architectury.registry.client.rendering.ColorHandlerRegistry;
 import dev.architectury.registry.client.rendering.RenderTypeRegistry;
 import dev.architectury.registry.menu.MenuRegistry;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
 import satisfy.bakery.client.gui.CookingPotGui;
 import satisfy.bakery.client.gui.StoveGui;
+import satisfy.bakery.client.model.CraftingBowlModel;
 import satisfy.bakery.client.model.WanderingBakerModel;
 import satisfy.bakery.client.render.block.CraftingBowlRenderer;
 import satisfy.bakery.client.render.block.StoveBlockRenderer;
@@ -44,7 +43,6 @@ public class BakeryClient {
         RenderTypeRegistry.register(RenderType.translucent(), CRAFTING_BOWL.get());
         BlockEntityRendererRegistry.register(BlockEntityTypeRegistry.STOVE_BLOCK_ENTITY.get(), StoveBlockRenderer::new);
         BlockEntityRendererRegistry.register(BlockEntityTypeRegistry.CRAFTING_BOWL_BLOCK_ENTITY.get(), CraftingBowlRenderer::new);
-
         MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.STOVE_SCREEN_HANDLER.get(), StoveGui::new);
         MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.COOKING_POT_SCREEN_HANDLER.get(), CookingPotGui::new);
 
@@ -62,7 +60,7 @@ public class BakeryClient {
 
     public static void registerEntityModelLayer() {
         EntityModelLayerRegistry.register(WanderingBakerModel.LAYER_LOCATION, WanderingBakerModel::getTexturedModelData);
-        EntityModelLayerRegistry.register(CraftingBowlRenderer.LAYER_LOCATION, CraftingBowlRenderer::getTexturedModelData);
+        EntityModelLayerRegistry.register(CraftingBowlModel.LAYER_LOCATION, CraftingBowlModel::getTexturedModelData);
 
     }
 }
