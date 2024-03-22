@@ -69,7 +69,7 @@ public class CraftingBowlRenderer implements BlockEntityRenderer<CraftingBowlBlo
         final ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
         final LocalPlayer player = Minecraft.getInstance().player;
 
-        poseStack.translate(0f, 1f, 0f);
+        poseStack.translate(0f, 1.25f, 0f);
         poseStack.scale(0.35f, 0.35f, 0.35f);
 
         float offset = 0.26f;
