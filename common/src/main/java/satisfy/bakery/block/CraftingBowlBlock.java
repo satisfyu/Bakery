@@ -14,10 +14,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
@@ -28,15 +31,19 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import satisfy.bakery.entity.CraftingBowlBlockEntity;
+import satisfy.bakery.recipe.CraftingBowlRecipe;
+import satisfy.bakery.registry.BlockEntityTypeRegistry;
 import satisfy.bakery.registry.ObjectRegistry;
+import satisfy.bakery.registry.RecipeTypeRegistry;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
 @SuppressWarnings("deprecation")
-public class CraftingBowlBlock extends Block implements EntityBlock {
+public class CraftingBowlBlock extends BaseEntityBlock {
     public static final int STIRS_NEEDED = 50;
     public static final IntegerProperty STIRRING = IntegerProperty.create("stirring", 0, 32);
     public static final IntegerProperty STIRRED = IntegerProperty.create("stirred", 0, 100);
@@ -125,61 +132,13 @@ public class CraftingBowlBlock extends Block implements EntityBlock {
     }
 
     @Override
-    public void tick(BlockState blockState, ServerLevel world, BlockPos pos, RandomSource random) {
-        super.tick(blockState, world, pos, random);
-
-        int stirring = world.getBlockState(pos).getValue(STIRRING);
-        int stirred = world.getBlockState(pos).getValue(STIRRED);
-
-        if(stirring > 0) {
-            if (stirred <= STIRS_NEEDED) {
-                stirred++;
-
-                if (stirred == STIRS_NEEDED) {
-
-                    BlockEntity blockEntity = world.getBlockEntity(pos);
-                    if (blockEntity instanceof CraftingBowlBlockEntity bowlEntity) {
-
-                        boolean hasYeast = bowlEntity.hasAnyOf(Set.of(ObjectRegistry.YEAST.get()));
-                        boolean hasWheat = bowlEntity.hasAnyOf(Set.of(Items.WHEAT));
-                        boolean hasEgg = bowlEntity.hasAnyOf(Set.of(Items.EGG));
-                        boolean hasMilk = bowlEntity.hasAnyOf(Set.of(Items.MILK_BUCKET));
-                        boolean hasSugar = bowlEntity.hasAnyOf(Set.of(Items.SUGAR));
-                        if (hasWheat && hasYeast) {
-                            bowlEntity.removeItemstack(Items.WHEAT);
-                            bowlEntity.removeItemstack(ObjectRegistry.YEAST.get());
-                            bowlEntity.setItem(4, ObjectRegistry.DOUGH.get().getDefaultInstance());
-
-                        } else if (hasWheat && hasSugar && hasEgg && hasMilk) {
-                            bowlEntity.removeItemstack(Items.WHEAT);
-                            bowlEntity.removeItemstack(Items.SUGAR);
-                            bowlEntity.removeItemstack(Items.EGG);
-                            bowlEntity.removeItemstack(Items.MILK_BUCKET);
-                            bowlEntity.setItem(4, ObjectRegistry.CAKE_DOUGH.get().getDefaultInstance());
-                        } else if (hasWheat && hasSugar && hasEgg) {
-                            bowlEntity.removeItemstack(Items.WHEAT);
-                            bowlEntity.removeItemstack(Items.SUGAR);
-                            bowlEntity.removeItemstack(Items.EGG);
-                            bowlEntity.setItem(4, ObjectRegistry.SWEET_DOUGH.get().getDefaultInstance());
-                        }
-                    }
-                }
-            }
-
-            stirring -= 1;
-
-            world.setBlock(pos, blockState.setValue(STIRRING, stirring).setValue(STIRRED, stirred), 3);
-        } else if (stirred > 0 && stirred < STIRS_NEEDED)
-            world.setBlock(pos, blockState.setValue(STIRRED, 0), 3);
-
-        world.scheduleTick(pos, this, 1);
-
+    public void tick(BlockState blockState, ServerLevel level, BlockPos pos, RandomSource random) {
+        super.tick(blockState, level, pos, random);
     }
 
     @Override
     public void onPlace(BlockState blockstate, Level world, BlockPos pos, BlockState oldState, boolean moving) {
         super.onPlace(blockstate, world, pos, oldState, moving);
-        world.scheduleTick(pos, this, 1);
     }
 
 
@@ -211,6 +170,12 @@ public class CraftingBowlBlock extends Block implements EntityBlock {
             }
             super.onRemove(state, world, pos, newState, isMoving);
         }
+    }
+
+    @Nullable
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> type) {
+        return createTickerHelper(type, BlockEntityTypeRegistry.CRAFTING_BOWL_BLOCK_ENTITY.get(), (world1, pos, state1, be) -> be.tick(world1, pos, state1, be));
     }
 
 

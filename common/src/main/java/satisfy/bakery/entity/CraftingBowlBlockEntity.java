@@ -15,17 +15,24 @@ import net.minecraft.world.inventory.ChestMenu;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import satisfy.bakery.block.CraftingBowlBlock;
+import satisfy.bakery.recipe.CraftingBowlRecipe;
 import satisfy.bakery.registry.BlockEntityTypeRegistry;
 import satisfy.bakery.registry.ObjectRegistry;
+import satisfy.bakery.registry.RecipeTypeRegistry;
 
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.IntStream;
 
-public class CraftingBowlBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
+public class CraftingBowlBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer, BlockEntityTicker<CraftingBowlBlockEntity> {
 
     private NonNullList<ItemStack> stacks = NonNullList.withSize(5, ItemStack.EMPTY);
 
@@ -159,5 +166,40 @@ public class CraftingBowlBlockEntity extends RandomizableContainerBlockEntity im
     @Override
     public boolean canTakeItemThroughFace(int index, ItemStack stack, Direction direction) {
         return true;
+    }
+
+    @Override
+    public void tick(Level level, BlockPos blockPos, BlockState blockState, CraftingBowlBlockEntity blockEntity) {
+
+
+        int stirring = level.getBlockState(blockPos).getValue(CraftingBowlBlock.STIRRING);
+        int stirred = level.getBlockState(blockPos).getValue(CraftingBowlBlock.STIRRED);
+
+        if (stirring > 0) {
+            if (stirred <= CraftingBowlBlock.STIRS_NEEDED) {
+                stirred++;
+                CraftingBowlRecipe recipe = level.getRecipeManager().getRecipeFor(RecipeTypeRegistry.CRAFTING_BOWL_RECIPE_TYPE.get(), blockEntity, level).orElse(null);
+                if (stirred == CraftingBowlBlock.STIRS_NEEDED && recipe != null) {
+                    recipe.getIngredients().forEach(ingredient -> {
+                        int size = blockEntity.getItems().size();
+                        boolean[] slotUsed = new boolean[size];
+                        for (int slot = 0; slot < size; slot++) {
+                            ItemStack stack = blockEntity.getItem(slot);
+                            if (ingredient.test(stack)) {
+                                slotUsed[slot] = true;
+                                blockEntity.setItem(slot, ItemStack.EMPTY);
+                                break;
+                            }
+                        }
+                    });
+                    blockEntity.setItem(4, recipe.getResultItem(level.registryAccess()));
+                }
+            }
+
+            stirring -= 1;
+
+            level.setBlock(blockPos, blockState.setValue(CraftingBowlBlock.STIRRING, stirring).setValue(CraftingBowlBlock.STIRRED, stirred), 3);
+        } else if (stirred > 0 && stirred < CraftingBowlBlock.STIRS_NEEDED)
+            level.setBlock(blockPos, blockState.setValue(CraftingBowlBlock.STIRRED, 0), 3);
     }
 }

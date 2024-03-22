@@ -30,7 +30,7 @@ public class CraftingBowlRecipe implements Recipe<Container> {
 
     @Override
     public boolean matches(Container inventory, Level world) {
-        return GeneralUtil.matchesRecipe(inventory, inputs, 1, 4);
+        return GeneralUtil.matchesRecipe(inventory, inputs, 0, 3);
     }
 
     @Override
