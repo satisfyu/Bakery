@@ -7,6 +7,10 @@ architectury {
     forge()
 }
 
+def jarFileName = 'letsdo-bakery-forge'
+
+archivesBaseName = jarFileName
+
 loom {
     accessWidenerPath = project(":common").loom.accessWidenerPath
 

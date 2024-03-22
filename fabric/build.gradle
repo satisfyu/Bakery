@@ -7,6 +7,10 @@ architectury {
     fabric()
 }
 
+def jarFileName = 'letsdo-bakery-fabric'
+
+archivesBaseName = jarFileName
+
 loom {
     accessWidenerPath = project(":common").loom.accessWidenerPath
 }

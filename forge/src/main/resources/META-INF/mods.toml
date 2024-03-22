@@ -8,7 +8,7 @@ version = "${version}"
 displayName = "Bakery"
 authors = "Satisfy"
 description = '''
-A Mod all about crafting Bread, Cakes and Pastry'''
+Build your own bakery, bake the finest pastries, delicious bread, and sweet cakes!'''
 logoFile = "pack.png"
 
 [[dependencies.bakery]]
