@@ -5,7 +5,7 @@ license = "Custom"
 [[mods]]
 modId = "bakery"
 version = "${version}"
-displayName = "Bakery"
+displayName = "[Let's Do] Bakery"
 authors = "Satisfy"
 description = '''
 Build your own bakery, bake the finest pastries, delicious bread, and sweet cakes!'''

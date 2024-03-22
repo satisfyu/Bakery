@@ -2,13 +2,14 @@
   "schemaVersion": 1,
   "id": "bakery",
   "version": "${version}",
-  "name": "Bakery",
+  "name": "[Let's Do] Bakery",
   "description": "Build your own bakery, bake the finest pastries, delicious bread, and sweet cakes!",
   "authors": [
     "satisfy"
   ],
   "contact": {
-    "sources": "https://guthib.com"
+    "sources": "https://github.com/satisfyu/Bakery",
+    "homepage": "https://legacy.curseforge.com/minecraft/mc-mods/lets-do-bakery"
   },
   "license": "Custom",
   "icon": "pack.png",
