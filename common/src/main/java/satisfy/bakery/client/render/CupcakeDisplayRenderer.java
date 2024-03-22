@@ -1,4 +1,4 @@
-package satisfy.bakery.client.render.block;
+package satisfy.bakery.client.render;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;

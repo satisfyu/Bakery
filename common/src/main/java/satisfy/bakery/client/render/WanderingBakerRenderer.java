@@ -1,4 +1,4 @@
-package satisfy.bakery.client.render.entity;
+package satisfy.bakery.client.render;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

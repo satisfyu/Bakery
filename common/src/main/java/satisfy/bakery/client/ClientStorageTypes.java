@@ -4,7 +4,7 @@ import de.cristelknight.doapi.client.render.block.storage.StorageBlockEntityRend
 import de.cristelknight.doapi.client.render.block.storage.StorageTypeRenderer;
 import net.minecraft.resources.ResourceLocation;
 import satisfy.bakery.Bakery;
-import satisfy.bakery.client.render.block.*;
+import satisfy.bakery.client.render.*;
 import satisfy.bakery.registry.StorageTypeRegistry;
 
 public class ClientStorageTypes {
