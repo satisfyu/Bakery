@@ -3,6 +3,8 @@
   "values": [
     "#bakery:stove",
     "#forge:allows_cooking",
-    "#c:allows_cooking"
+    "#c:allows_cooking",
+    "minecraft:magma_block",
+    "minecraft:lava_cauldron"
   ]
 }

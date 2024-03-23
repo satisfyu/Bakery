@@ -1,11 +1,8 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"0": "bakery:block/bowl_1",
-		"1": "bakery:block/bowl_2",
-		"2": "bakery:block/bowl_3",
-		"3": "bakery:block/bowl_4",
-		"particle": "bakery:block/bowl_1"
+		"0": "bakery:block/crafting_bowl",
+		"particle": "bakery:block/crafting_bowl_full"
 	},
 	"elements": [
 		{

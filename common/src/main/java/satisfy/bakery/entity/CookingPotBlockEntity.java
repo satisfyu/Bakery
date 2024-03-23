@@ -101,19 +101,12 @@ public class CookingPotBlockEntity extends BlockEntity implements BlockEntityTic
     }
 
     public boolean isBeingBurned() {
-        if (getLevel() == null)
+        if (getLevel() == null) {
             throw new NullPointerException("Null world invoked");
-        final BlockState belowState = this.getLevel().getBlockState(getBlockPos().below());
-        if (belowState.is(TagsRegistry.ALLOWS_COOKING)) {
-            try {
-                return belowState.getValue(BlockStateProperties.LIT);
-            } catch (IllegalArgumentException e) {
-                return true;
-            }
         }
-        return false;
+        final BlockState belowState = this.getLevel().getBlockState(getBlockPos().below());
+        return belowState.is(TagsRegistry.ALLOWS_COOKING);
     }
-
 
     private boolean canCraft(Recipe<?> recipe, RegistryAccess access) {
         if (recipe == null || recipe.getResultItem(access).isEmpty()) {

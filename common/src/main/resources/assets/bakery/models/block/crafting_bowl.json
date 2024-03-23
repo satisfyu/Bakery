@@ -1,11 +1,9 @@
 {
-  "parent": "bakery:custom/crafting_bowl",
+  "parent": "bakery:block/crafting_bowl_main",
   "textures": {
     "all": "bakery:block/crafting_bowl",
     "particle": "bakery:block/crafting_bowl",
-    "0": "bakery:block/bowl_1",
-    "1": "bakery:block/bowl_2",
-    "2": "bakery:block/bowl_3"
+    "0": "bakery:block/crafting_bowl"
   },
   "render_type": "translucent"
 }
