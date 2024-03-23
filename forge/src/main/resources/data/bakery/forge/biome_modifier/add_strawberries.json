@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#bakery:spawns_strawberry",
+  "features": "bakery:strawberries_chance",
+  "step": "vegetal_decoration"
+}
