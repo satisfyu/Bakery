@@ -15,6 +15,7 @@
     }
   ],
   "result": {
-    "item": "bakery:cake_dough"
+    "item": "bakery:cake_dough",
+    "count": 5
   }
 }

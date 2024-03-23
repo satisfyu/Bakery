@@ -9,6 +9,7 @@
     }
   ],
   "result": {
-    "item": "bakery:dough"
+    "item": "bakery:dough",
+    "count": 5
   }
 }

@@ -22,10 +22,11 @@ public class CraftingBowlRecipe implements Recipe<Container> {
     private final NonNullList<Ingredient> inputs;
     private final ItemStack output;
 
-    public CraftingBowlRecipe(ResourceLocation id, NonNullList<Ingredient> inputs, ItemStack output) {
+    public CraftingBowlRecipe(ResourceLocation id, NonNullList<Ingredient> inputs, ItemStack output, int count) {
         this.id = id;
         this.inputs = inputs;
         this.output = output;
+        this.output.setCount(count);
     }
 
     @Override
@@ -82,7 +83,10 @@ public class CraftingBowlRecipe implements Recipe<Container> {
             } else if (ingredients.size() > 4) {
                 throw new JsonParseException("Too many ingredients for Crafting Bowl Recipe");
             } else {
-                return new CraftingBowlRecipe(id, ingredients, ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "result")));
+                final var result = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "result"));
+                final var count = GsonHelper.getAsInt(json, "count", 1);
+                result.setCount(count);
+                return new CraftingBowlRecipe(id, ingredients, result, count);
             }
         }
 
@@ -90,7 +94,10 @@ public class CraftingBowlRecipe implements Recipe<Container> {
         public @NotNull CraftingBowlRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
             final var ingredients = NonNullList.withSize(buf.readVarInt(), Ingredient.EMPTY);
             ingredients.replaceAll(ignored -> Ingredient.fromNetwork(buf));
-            return new CraftingBowlRecipe(id, ingredients, buf.readItem());
+            final var output = buf.readItem();
+            final var count = buf.readVarInt();
+            output.setCount(count);
+            return new CraftingBowlRecipe(id, ingredients, output, count);
         }
 
         @Override
@@ -98,7 +105,7 @@ public class CraftingBowlRecipe implements Recipe<Container> {
             buf.writeVarInt(recipe.inputs.size());
             recipe.inputs.forEach(entry -> entry.toNetwork(buf));
             buf.writeItem(recipe.output);
+            buf.writeVarInt(recipe.output.getCount());
         }
     }
-
 }
