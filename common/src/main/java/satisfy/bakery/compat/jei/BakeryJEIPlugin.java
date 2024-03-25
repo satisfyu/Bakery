@@ -1,11 +1,9 @@
 package satisfy.bakery.compat.jei;
 
-import dev.architectury.registry.registries.RegistrySupplier;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.recipe.RecipeIngredientRole;
-import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
@@ -14,7 +12,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeManager;
-import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.NotNull;
 import satisfy.bakery.client.gui.handler.StoveGuiHandler;
 import satisfy.bakery.compat.jei.category.BakerStationCategory;
@@ -23,8 +20,8 @@ import satisfy.bakery.compat.jei.category.CraftingBowlCategory;
 import satisfy.bakery.compat.jei.category.StoveCategory;
 import satisfy.bakery.compat.jei.transfer.CookingTransferInfo;
 import satisfy.bakery.recipe.BakingStationRecipe;
-import satisfy.bakery.recipe.CraftingBowlRecipe;
 import satisfy.bakery.recipe.CookingPotRecipe;
+import satisfy.bakery.recipe.CraftingBowlRecipe;
 import satisfy.bakery.recipe.StoveRecipe;
 import satisfy.bakery.registry.ObjectRegistry;
 import satisfy.bakery.registry.RecipeTypeRegistry;
@@ -70,30 +67,26 @@ public class BakeryJEIPlugin implements IModPlugin {
     }
 
     @Override
-    public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
-        addCatalyst(registration, ObjectRegistry.SMALL_COOKING_POT, CookingPotCategory.COOKING_POT);
-        addCatalyst(registration, ObjectRegistry.CRAFTING_BOWL);
-        addCatalyst(registration, ObjectRegistry.BAKER_STATION);
-        addCatalyst(registration, ObjectRegistry.BRICK_STOVE);
-        addCatalyst(registration, ObjectRegistry.STONE_BRICKS_STOVE);
-        addCatalyst(registration, ObjectRegistry.COBBLESTONE_STOVE);
-        addCatalyst(registration, ObjectRegistry.DEEPSLATE_STOVE);
-        addCatalyst(registration, ObjectRegistry.GRANITE_STOVE);
-        addCatalyst(registration, ObjectRegistry.MUD_STOVE);
-        addCatalyst(registration, ObjectRegistry.SANDSTONE_STOVE);
-        addCatalyst(registration, ObjectRegistry.END_STOVE);
-        addCatalyst(registration, ObjectRegistry.RED_NETHER_BRICKS_STOVE);
-        addCatalyst(registration, ObjectRegistry.QUARTZ_STOVE);
-    }
-
-    private static void addCatalyst(IRecipeCatalystRegistration registration, RegistrySupplier<Block> block, RecipeType<?>... recipeTypes){
-        registration.addRecipeCatalyst(block.get().asItem().getDefaultInstance(), recipeTypes);
-    }
-
-    @Override
     public void registerRecipeTransferHandlers(IRecipeTransferRegistration registration) {
         registration.addRecipeTransferHandler(new CookingTransferInfo());
         registration.addRecipeTransferHandler(StoveGuiHandler.class, ScreenHandlerTypeRegistry.STOVE_SCREEN_HANDLER.get(), StoveCategory.STOVE, 1, 3, 5, 36);
+    }
+
+    @Override
+    public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
+        registration.addRecipeCatalyst(ObjectRegistry.SMALL_COOKING_POT.get().asItem().getDefaultInstance(), CookingPotCategory.COOKING_POT);
+        registration.addRecipeCatalyst(ObjectRegistry.BAKER_STATION.get().asItem().getDefaultInstance(), BakerStationCategory.CAKING);
+        registration.addRecipeCatalyst(ObjectRegistry.CRAFTING_BOWL.get().asItem().getDefaultInstance(), CraftingBowlCategory.DOUGHING);
+        registration.addRecipeCatalyst(ObjectRegistry.BRICK_STOVE.get().asItem().getDefaultInstance(), StoveCategory.STOVE);
+        registration.addRecipeCatalyst(ObjectRegistry.STONE_BRICKS_STOVE.get().asItem().getDefaultInstance(), StoveCategory.STOVE);
+        registration.addRecipeCatalyst(ObjectRegistry.COBBLESTONE_STOVE.get().asItem().getDefaultInstance(), StoveCategory.STOVE);
+        registration.addRecipeCatalyst(ObjectRegistry.DEEPSLATE_STOVE.get().asItem().getDefaultInstance(), StoveCategory.STOVE);
+        registration.addRecipeCatalyst(ObjectRegistry.GRANITE_STOVE.get().asItem().getDefaultInstance(), StoveCategory.STOVE);
+        registration.addRecipeCatalyst(ObjectRegistry.MUD_STOVE.get().asItem().getDefaultInstance(), StoveCategory.STOVE);
+        registration.addRecipeCatalyst(ObjectRegistry.SANDSTONE_STOVE.get().asItem().getDefaultInstance(), StoveCategory.STOVE);
+        registration.addRecipeCatalyst(ObjectRegistry.END_STOVE.get().asItem().getDefaultInstance(), StoveCategory.STOVE);
+        registration.addRecipeCatalyst(ObjectRegistry.RED_NETHER_BRICKS_STOVE.get().asItem().getDefaultInstance(), StoveCategory.STOVE);
+        registration.addRecipeCatalyst(ObjectRegistry.QUARTZ_STOVE.get().asItem().getDefaultInstance(), StoveCategory.STOVE);
     }
 
     public static void addSlot(IRecipeLayoutBuilder builder, int x, int y, Ingredient ingredient){

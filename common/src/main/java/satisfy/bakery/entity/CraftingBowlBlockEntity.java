@@ -9,14 +9,12 @@ import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ChestMenu;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -28,7 +26,6 @@ import satisfy.bakery.registry.BlockEntityTypeRegistry;
 import satisfy.bakery.registry.ObjectRegistry;
 import satisfy.bakery.registry.RecipeTypeRegistry;
 
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.IntStream;
 
@@ -139,20 +136,6 @@ public class CraftingBowlBlockEntity extends RandomizableContainerBlockEntity im
         }
     }
 
-    public ItemStack removeItemstack(Item item) {
-        this.unpackLootTable((Player)null);
-        for(int j = 0; j < this.getContainerSize(); ++j) {
-            ItemStack currentStack = this.getItem(j);
-            if (currentStack.getItem() == item) {
-                this.setItem(j, ItemStack.EMPTY);
-                setChanged();
-                return currentStack;
-            }
-        }
-
-        return ItemStack.EMPTY;
-    }
-
     @Override
     public int @NotNull [] getSlotsForFace(Direction side) {
         return IntStream.range(0, this.getContainerSize()).toArray();
@@ -170,23 +153,23 @@ public class CraftingBowlBlockEntity extends RandomizableContainerBlockEntity im
 
     @Override
     public void tick(Level level, BlockPos blockPos, BlockState blockState, CraftingBowlBlockEntity blockEntity) {
+        if (!(level.getBlockState(blockPos).getBlock() instanceof CraftingBowlBlock)) {
+            return;
+        }
 
-
-        int stirring = level.getBlockState(blockPos).getValue(CraftingBowlBlock.STIRRING);
-        int stirred = level.getBlockState(blockPos).getValue(CraftingBowlBlock.STIRRED);
+        int stirring = blockState.getValue(CraftingBowlBlock.STIRRING);
+        int stirred = blockState.getValue(CraftingBowlBlock.STIRRED);
 
         if (stirring > 0) {
-            if (stirred <= CraftingBowlBlock.STIRS_NEEDED) {
+            if (stirred < CraftingBowlBlock.STIRS_NEEDED) {
                 stirred++;
                 CraftingBowlRecipe recipe = level.getRecipeManager().getRecipeFor(RecipeTypeRegistry.CRAFTING_BOWL_RECIPE_TYPE.get(), blockEntity, level).orElse(null);
                 if (stirred == CraftingBowlBlock.STIRS_NEEDED && recipe != null) {
                     recipe.getIngredients().forEach(ingredient -> {
                         int size = blockEntity.getItems().size();
-                        boolean[] slotUsed = new boolean[size];
                         for (int slot = 0; slot < size; slot++) {
                             ItemStack stack = blockEntity.getItem(slot);
                             if (ingredient.test(stack)) {
-                                slotUsed[slot] = true;
                                 blockEntity.setItem(slot, ItemStack.EMPTY);
                                 break;
                             }
@@ -199,7 +182,8 @@ public class CraftingBowlBlockEntity extends RandomizableContainerBlockEntity im
             stirring -= 1;
 
             level.setBlock(blockPos, blockState.setValue(CraftingBowlBlock.STIRRING, stirring).setValue(CraftingBowlBlock.STIRRED, stirred), 3);
-        } else if (stirred > 0 && stirred < CraftingBowlBlock.STIRS_NEEDED)
+        } else if (stirred > 0 && stirred < CraftingBowlBlock.STIRS_NEEDED) {
             level.setBlock(blockPos, blockState.setValue(CraftingBowlBlock.STIRRED, 0), 3);
+        }
     }
 }

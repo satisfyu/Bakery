@@ -5,6 +5,9 @@
       "item": "minecraft:wheat"
     },
     {
+      "item": "minecraft:wheat"
+    },
+    {
       "item": "minecraft:sugar"
     },
     {
@@ -12,7 +15,6 @@
     }
   ],
   "result": {
-    "item": "bakery:sweet_dough",
-    "count": 5
+    "item": "bakery:sweet_dough"
   }
 }

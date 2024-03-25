@@ -29,13 +29,13 @@ import satisfy.bakery.entity.StorageBlockEntity;
 import java.util.function.Supplier;
 
 @SuppressWarnings("deprecation")
-public class CabinetBlock extends BaseEntityBlock {
+public class StorageBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty OPEN = BlockStateProperties.OPEN;
     private final Supplier<SoundEvent> openSound;
     private final Supplier<SoundEvent> closeSound;
 
-    public CabinetBlock(Properties settings, Supplier<SoundEvent> openSound, Supplier<SoundEvent> closeSound) {
+    public StorageBlock(Properties settings, Supplier<SoundEvent> openSound, Supplier<SoundEvent> closeSound) {
         super(settings);
         this.openSound = openSound;
         this.closeSound = closeSound;

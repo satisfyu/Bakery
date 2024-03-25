@@ -12,14 +12,14 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
-import satisfy.bakery.block.CabinetBlock;
+import satisfy.bakery.block.StorageBlock;
 import satisfy.bakery.util.GeneralUtil;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class CabinetWallBlock extends CabinetBlock {
+public class CabinetWallBlock extends StorageBlock {
     public CabinetWallBlock(Properties settings, RegistrySupplier<SoundEvent> openSound, RegistrySupplier<SoundEvent> closeSound) {
         super(settings, openSound, closeSound);
     }
