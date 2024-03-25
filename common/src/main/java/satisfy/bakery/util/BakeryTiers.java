@@ -11,7 +11,7 @@ import java.util.function.Supplier;
 @SuppressWarnings("all")
 public enum BakeryTiers implements Tier
 {
-    IRON(2, 200, 5.0f, 2.0f, 12, () -> Ingredient.of(Items.IRON_INGOT));
+    IRON(2, 200, 5.0f, 0.0f, 12, () -> Ingredient.of(Items.IRON_INGOT));
 
     private final int level;
     private final int uses;

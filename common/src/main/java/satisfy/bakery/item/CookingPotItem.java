@@ -4,29 +4,34 @@ import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import satisfy.bakery.block.CookingPotBlock;
 import satisfy.bakery.util.BakeryTiers;
 
 public class CookingPotItem extends BlockItem {
     private final Multimap<Attribute, AttributeModifier> toolAttributes;
 
-    @SuppressWarnings("unused")
-    public CookingPotItem(Block block, Properties properties) {
-        super(block, properties.defaultDurability(COOKING_PAN_TIER.getUses()));
-        float attackDamage = 0.0F + COOKING_PAN_TIER.getAttackDamageBonus();
+    public CookingPotItem(Block block, Item.Properties properties) {
+        super(block, properties.defaultDurability(COOKING_POT_TIER.getUses()));
+        float attackDamage = 1.2F + COOKING_POT_TIER.getAttackDamageBonus();
         ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
-
+        builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Tool modifier", -2F, AttributeModifier.Operation.ADDITION));
+        builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Tool modifier", attackDamage, AttributeModifier.Operation.ADDITION));
         this.toolAttributes = builder.build();
     }
 
@@ -36,11 +41,11 @@ public class CookingPotItem extends BlockItem {
         return true;
     }
 
-    public static final BakeryTiers COOKING_PAN_TIER = BakeryTiers.IRON;
+    public static final BakeryTiers COOKING_POT_TIER = BakeryTiers.IRON;
 
     @Override
     public boolean isValidRepairItem(ItemStack toRepair, ItemStack repair) {
-        return COOKING_PAN_TIER.getRepairIngredient().test(repair) || super.isValidRepairItem(toRepair, repair);
+        return COOKING_POT_TIER.getRepairIngredient().test(repair) || super.isValidRepairItem(toRepair, repair);
     }
 
     public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity entity) {
@@ -60,10 +65,30 @@ public class CookingPotItem extends BlockItem {
         return InteractionResult.PASS;
     }
 
+    public static void damage(ItemStack stack, Player entity) {
+        if (entity.getAbilities().instabuild) return;
+        int damage = stack.getDamageValue();
+        if (damage < 25) {
+            stack.setDamageValue(damage + 1);
+        }
+    }
+
+    @Override
+    public void inventoryTick(ItemStack itemStack, Level level, Entity entity, int i, boolean bl) {
+        super.inventoryTick(itemStack, level, entity, i, bl);
+    }
+
+    @Nullable
+    @Override
+    protected BlockState getPlacementState(BlockPlaceContext blockPlaceContext) {
+        BlockState state = super.getPlacementState(blockPlaceContext);
+        if(state != null) state = state.setValue(CookingPotBlock.DAMAGE, blockPlaceContext.getItemInHand().getDamageValue());
+        return state;
+    }
 
     @Override
     public int getEnchantmentValue() {
-        return COOKING_PAN_TIER.getEnchantmentValue();
+        return COOKING_POT_TIER.getEnchantmentValue();
     }
 
     public @NotNull Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot equipmentSlot) {

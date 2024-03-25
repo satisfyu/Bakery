@@ -17,6 +17,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -35,6 +36,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -76,6 +78,7 @@ public class CookingPotBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty LIT = BooleanProperty.create("lit");
     public static final BooleanProperty COOKING = BooleanProperty.create("cooking");
+    public static final IntegerProperty DAMAGE = IntegerProperty.create("damage", 0, 25);
 
     public CookingPotBlock(Properties settings) {
         super(settings);
@@ -107,17 +110,13 @@ public class CookingPotBlock extends BaseEntityBlock {
 
 
     @Override
-    public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean moved) {
-        if (!state.is(newState.getBlock())) {
-            BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof CookingPotBlockEntity pot) {
-                if (world instanceof ServerLevel) {
-                    Containers.dropContents(world, pos, pot);
-                }
-                world.updateNeighbourForOutputSignal(pos, this);
-            }
-            super.onRemove(state, world, pos, newState, moved);
-        }
+    public void playerWillDestroy(@NotNull Level level, BlockPos blockPos, @NotNull BlockState blockState, @NotNull Player player) {
+        ItemStack stack = new ItemStack(this);
+        stack.setDamageValue(blockState.getValue(DAMAGE));
+        ItemEntity itemEntity = new ItemEntity(level, blockPos.getX(), blockPos.getY(), blockPos.getZ(), stack);
+        itemEntity.setDefaultPickUpDelay();
+        level.addFreshEntity(itemEntity);
+        super.playerWillDestroy(level, blockPos, blockState, player);
     }
 
     @Override
