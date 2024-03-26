@@ -107,12 +107,6 @@ public class BlankCakeBlock extends Block {
                     } else if (block == ObjectRegistry.SWEETBERRY_JAM.get()) {
                         world.setBlock(pos, ObjectRegistry.SWEETBERRY_CAKE.get().defaultBlockState(), 3);
                         world.levelEvent(2001, pos, Block.getId(ObjectRegistry.SWEETBERRY_CAKE.get().defaultBlockState()));
-                    } else if (item == ObjectRegistry.CHOCOLATE_TRUFFLE.get()) {
-                        world.setBlock(pos, ObjectRegistry.CHOCOLATE_GATEAU.get().defaultBlockState(), 3);
-                        world.levelEvent(2001, pos, Block.getId(ObjectRegistry.CHOCOLATE_GATEAU.get().defaultBlockState()));
-                    }
-                    else {
-                        return InteractionResult.PASS;
                     }
                     world.playSound(null, pos, SoundEvents.SLIME_BLOCK_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
                     if (!player.isCreative()) {
@@ -129,8 +123,6 @@ public class BlankCakeBlock extends Block {
                     } else if (block == ObjectRegistry.SWEETBERRY_JAM.get()) {
                         world.setBlock(pos, ObjectRegistry.SWEETBERRY_CUPCAKE_BLOCK.get().defaultBlockState(), 3);
                         world.levelEvent(2001, pos, Block.getId(ObjectRegistry.SWEETBERRY_CUPCAKE_BLOCK.get().defaultBlockState()));
-                    } else {
-                        return InteractionResult.PASS;
                     }
                     world.playSound(null, pos, SoundEvents.SLIME_BLOCK_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
                     if (!player.isCreative()) {
@@ -147,8 +139,6 @@ public class BlankCakeBlock extends Block {
                     } else if (block == ObjectRegistry.SWEETBERRY_JAM.get()) {
                         world.setBlock(pos, ObjectRegistry.SWEETBERRY_COOKIE_BLOCK.get().defaultBlockState(), 3);
                         world.levelEvent(2001, pos, Block.getId(ObjectRegistry.SWEETBERRY_COOKIE_BLOCK.get().defaultBlockState()));
-                    } else {
-                        return InteractionResult.PASS;
                     }
                     world.playSound(null, pos, SoundEvents.SLIME_BLOCK_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
                     if (!player.isCreative()) {
@@ -157,7 +147,16 @@ public class BlankCakeBlock extends Block {
                     return InteractionResult.sidedSuccess(false);
                 }
             } else {
-                if (isCake && itemStack.is(TagsRegistry.KNIVES)) {
+                if (isCake && item == ObjectRegistry.CHOCOLATE_TRUFFLE.get()) {
+                    player.getCooldowns().addCooldown(item, 20);
+                    world.setBlock(pos, ObjectRegistry.CHOCOLATE_GATEAU.get().defaultBlockState(), 3);
+                    world.levelEvent(2001, pos, Block.getId(ObjectRegistry.CHOCOLATE_GATEAU.get().defaultBlockState()));
+                    world.playSound(null, pos, SoundEvents.SLIME_BLOCK_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
+                    if (!player.isCreative()) {
+                        itemStack.shrink(1);
+                    }
+                    return InteractionResult.sidedSuccess(false);
+                } else if (isCake && itemStack.is(TagsRegistry.KNIVES)) {
                     world.setBlock(pos, state.setValue(CAKE, false).setValue(CUPCAKE, true), 3);
                     world.levelEvent(2001, pos, Block.getId(state));
                     world.playSound(null, pos, SoundEventRegistry.CAKE_CUT.get(), SoundSource.BLOCKS, 1.0F, 1.0F);

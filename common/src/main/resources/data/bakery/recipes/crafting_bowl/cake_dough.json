@@ -2,7 +2,7 @@
   "type": "bakery:crafting_bowl",
   "ingredients": [
     {
-      "item": "minecraft:wheat"
+      "tag": "bakery:wheat"
     },
     {
       "item": "minecraft:sugar"
@@ -11,7 +11,7 @@
       "item": "minecraft:egg"
     },
     {
-      "tag": "bakery:milk"
+      "item": "minecraft:milk_bucket"
     }
   ],
   "result": {

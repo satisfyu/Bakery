@@ -24,7 +24,6 @@ public class WanderingBakerEntity extends WanderingTrader {
                 new VillagerUtil.SellItemFactory(ObjectRegistry.CAKE_STAND.get(), 15, 1, 8, 30),
                 new VillagerUtil.SellItemFactory(ObjectRegistry.OAT.get(), 3, 5, 8, 5),
                 new VillagerUtil.SellItemFactory(ObjectRegistry.STRAWBERRY.get(), 3, 5, 8, 5),
-                new VillagerUtil.SellItemFactory(ObjectRegistry.OAT.get(), 2, 6, 8, 3),
                 new VillagerUtil.SellItemFactory(ObjectRegistry.STRAWBERRY_SEEDS.get(), 2, 6, 8, 3),
                 new VillagerUtil.SellItemFactory(ObjectRegistry.BRICK_STOVE.get(), 25, 1, 8, 40),
                 new VillagerUtil.SellItemFactory(ObjectRegistry.SMALL_COOKING_POT.get(), 8, 1, 8, 15),

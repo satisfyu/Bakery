@@ -84,12 +84,6 @@
             "items": ["bakery:sweetberry_jam"]
           },
           {
-            "items": ["bakery:strawberry_jam"]
-          },
-          {
-            "items": ["bakery:strawberry_cake"]
-          },
-          {
             "items": ["minecraft:cake"]
           },
           {
@@ -100,9 +94,6 @@
           },
           {
             "items": ["bakery:strawberry_cake"]
-          },
-          {
-            "items": ["minecraft:cake"]
           },
           {
             "items": ["bakery:chocolate_cake"]

@@ -142,9 +142,9 @@ public class ObjectRegistry {
 
 
     public static final RegistrySupplier<Block> BLANK_CAKE = registerWithoutItem("blank_cake", () -> new BlankCakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE).forceSolidOn()));
-    public static final RegistrySupplier<Block> APPLE_CUPCAKE_BLOCK = registerWithoutItem("apple_cupcake_block", () -> new BlankCakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE).instabreak().forceSolidOn()));
-    public static final RegistrySupplier<Block> SWEETBERRY_CUPCAKE_BLOCK = registerWithoutItem("sweetberry_cupcake_block", () -> new BlankCakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE).instabreak().forceSolidOn()));
-    public static final RegistrySupplier<Block> STRAWBERRY_CUPCAKE_BLOCK = registerWithoutItem("strawberry_cupcake_block", () -> new BlankCakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE).instabreak().forceSolidOn()));
+    public static final RegistrySupplier<Block> APPLE_CUPCAKE_BLOCK = registerWithoutItem("apple_cupcake_block", () -> new CupcakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE).instabreak().forceSolidOn()));
+    public static final RegistrySupplier<Block> SWEETBERRY_CUPCAKE_BLOCK = registerWithoutItem("sweetberry_cupcake_block", () -> new CupcakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE).instabreak().forceSolidOn()));
+    public static final RegistrySupplier<Block> STRAWBERRY_CUPCAKE_BLOCK = registerWithoutItem("strawberry_cupcake_block", () -> new CupcakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE).instabreak().forceSolidOn()));
     public static final RegistrySupplier<Block> CHOCOLATE_COOKIE_BLOCK = registerWithoutItem("chocolate_cookie_block", () -> new CookieBlock(BlockBehaviour.Properties.copy(Blocks.CAKE).instabreak().forceSolidOn()));
     public static final RegistrySupplier<Block> SWEETBERRY_COOKIE_BLOCK = registerWithoutItem("sweetberry_cookie_block", () -> new CookieBlock(BlockBehaviour.Properties.copy(Blocks.CAKE).instabreak().forceSolidOn()));
     public static final RegistrySupplier<Block> STRAWBERRY_COOKIE_BLOCK = registerWithoutItem("strawberry_cookie_block", () -> new CookieBlock(BlockBehaviour.Properties.copy(Blocks.CAKE).instabreak().forceSolidOn()));

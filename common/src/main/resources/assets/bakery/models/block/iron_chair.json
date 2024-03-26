@@ -23,7 +23,7 @@
 		{
 			"name": "leg_1",
 			"from": [11, 0, 3],
-			"to": [13, 9, 5],
+			"to": [13, 8.99, 5],
 			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, 16]},
 			"faces": {
 				"north": {"uv": [16, 0, 14, 9], "texture": "#0"},
@@ -37,7 +37,7 @@
 		{
 			"name": "leg_2",
 			"from": [3, 0, 3],
-			"to": [5, 9, 5],
+			"to": [5, 8.99, 5],
 			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, 16]},
 			"faces": {
 				"north": {"uv": [16, 0, 14, 9], "texture": "#0"},
@@ -51,7 +51,7 @@
 		{
 			"name": "leg_3",
 			"from": [3, 0, 11],
-			"to": [5, 9, 13],
+			"to": [5, 8.99, 13],
 			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, 16]},
 			"faces": {
 				"north": {"uv": [16, 0, 14, 9], "texture": "#0"},
@@ -65,7 +65,7 @@
 		{
 			"name": "leg_4",
 			"from": [11, 0, 11],
-			"to": [13, 9, 13],
+			"to": [13, 8.99, 13],
 			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, 16]},
 			"faces": {
 				"north": {"uv": [16, 0, 14, 9], "texture": "#0"},

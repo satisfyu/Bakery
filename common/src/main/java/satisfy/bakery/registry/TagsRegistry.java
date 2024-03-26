@@ -16,5 +16,6 @@ public class TagsRegistry {
     public static final TagKey<Item> FAUCET = TagKey.create(Registries.ITEM, new BakeryIdentifier("faucet"));
     public static final TagKey<Item> KNIVES = TagKey.create(Registries.ITEM, new BakeryIdentifier("knives"));
     public static final TagKey<Item> CONTAINER = TagKey.create(Registries.ITEM, new BakeryIdentifier("container"));
+    public static final TagKey<Item> WHEAT = TagKey.create(Registries.ITEM, new BakeryIdentifier("wheat"));
 
 }

@@ -6,6 +6,7 @@
     "bakery:drawer",
     "bakery:street_sign",
     "bakery:breadbox",
-    "bakery:tray"
+    "bakery:tray",
+    "bakery:wall_display"
   ]
 }

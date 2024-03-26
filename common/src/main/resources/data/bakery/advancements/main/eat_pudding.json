@@ -5,7 +5,7 @@
       "conditions": {
         "item": {
           "items": [
-            "bakery:pudding"
+            "bakery:pudding_slice"
           ]
         }
       },

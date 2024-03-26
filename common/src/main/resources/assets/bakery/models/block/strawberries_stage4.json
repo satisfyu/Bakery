@@ -1,31 +1,6 @@
-
 {
-	"credit": "Made by Satisfy",
-	"parent": "minecraft:block/crop",
+	"parent": "bakery:block/oat_template",
 	"textures": {
-		"particle": "bakery:block/strawberries_stage4",
 		"crop": "bakery:block/strawberries_stage4"
-	},
-	"elements": [
-		{
-			"from": [0.8, 0, 8],
-			"to": [15.2, 16, 8],
-			"shade": false,
-			"rotation": {"angle": 45, "axis": "y", "origin": [8, 8, 8], "rescale": true},
-			"faces": {
-				"north": {"uv": [0, 0, 16, 16], "texture": "#crop", "tintindex": 0},
-				"south": {"uv": [0, 0, 16, 16], "texture": "#crop", "tintindex": 0}
-			}
-		},
-		{
-			"from": [8, 0, 0.8],
-			"to": [8, 16, 15.2],
-			"shade": false,
-			"rotation": {"angle": 45, "axis": "y", "origin": [8, 8, 8], "rescale": true},
-			"faces": {
-				"east": {"uv": [0, 0, 16, 16], "texture": "#crop", "tintindex": 0},
-				"west": {"uv": [0, 0, 16, 16], "texture": "#crop", "tintindex": 0}
-			}
-		}
-	]
+	}
 }

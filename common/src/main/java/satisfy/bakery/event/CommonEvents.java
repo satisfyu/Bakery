@@ -12,6 +12,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
@@ -41,13 +42,23 @@ public class CommonEvents {
             target.hurt(level.damageSources().generic(), 1.2F);
             itemStack.hurtAndBreak(1, player, (p) -> p.broadcastBreakEvent(hand));
             itemStack.addAttributeModifier(Attributes.ATTACK_SPEED, new AttributeModifier(ATTACK_SPEED_MODIFIER_ID, "Weapon modifier", -2.0, AttributeModifier.Operation.ADDITION), EquipmentSlot.MAINHAND);
+
+            if (target instanceof Mob) {
+                Mob mob = (Mob) target;
+                mob.setTarget(player);
+            }
+
             return EventResult.interruptTrue();
         } else if (itemStack.is(ObjectRegistry.ROLLING_PIN.get())) {
             if (!level.isClientSide) {
                 level.playSound(null, target.getX(), target.getY(), target.getZ(), SoundEvents.WOOD_BREAK, SoundSource.PLAYERS, 1.0F, 1.0F);
-                if (target instanceof LivingEntity) {
-                    target.hurt(level.damageSources().generic(), 1.0F);
-                    ((LivingEntity) target).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 120, 1));
+                if (target instanceof LivingEntity livingTarget) {
+                    livingTarget.hurt(level.damageSources().generic(), 2.0F);
+                    livingTarget.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 120, 1));
+
+                    if (livingTarget instanceof Mob mob) {
+                        mob.setTarget(player);
+                    }
                 }
                 itemStack.hurtAndBreak(1, player, (p) -> p.broadcastBreakEvent(hand));
                 itemStack.addAttributeModifier(Attributes.ATTACK_SPEED, new AttributeModifier(ATTACK_SPEED_MODIFIER_ID, "Weapon modifier", -2.0, AttributeModifier.Operation.ADDITION), EquipmentSlot.MAINHAND);
@@ -56,7 +67,6 @@ public class CommonEvents {
         }
         return EventResult.pass();
     }
-
 
     private static void onModifyLootTable(@Nullable LootDataManager lootDataManager, ResourceLocation id, LootEvent.LootTableModificationContext ctx, boolean b) {
         LoottableInjector.InjectLoot(id, ctx);

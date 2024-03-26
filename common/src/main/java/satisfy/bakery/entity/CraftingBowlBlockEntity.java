@@ -25,6 +25,7 @@ import satisfy.bakery.recipe.CraftingBowlRecipe;
 import satisfy.bakery.registry.BlockEntityTypeRegistry;
 import satisfy.bakery.registry.ObjectRegistry;
 import satisfy.bakery.registry.RecipeTypeRegistry;
+import satisfy.bakery.registry.TagsRegistry;
 
 import java.util.Set;
 import java.util.stream.IntStream;
@@ -96,7 +97,7 @@ public class CraftingBowlBlockEntity extends RandomizableContainerBlockEntity im
     @Override
     public boolean canPlaceItem(int index, ItemStack stack) {
         Item item = stack.getItem();
-        return  (item == Items.WHEAT || item == Items.SUGAR || item == Items.MILK_BUCKET || item == Items.EGG || item == ObjectRegistry.YEAST.get()) &&
+        return  (item == Items.WHEAT || item == Items.SUGAR || item == Items.MILK_BUCKET || item == Items.WATER_BUCKET|| stack.is(TagsRegistry.WHEAT) || item == Items.EGG || item == ObjectRegistry.YEAST.get()) &&
                 !this.hasAnyOf(Set.of(stack.getItem()));
     }
 
