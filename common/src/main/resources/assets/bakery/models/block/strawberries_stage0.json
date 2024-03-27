@@ -1,5 +1,5 @@
 {
-	"parent": "bakery:block/oat_template",
+	"parent": "minecraft:block/crop",
 	"textures": {
 		"crop": "bakery:block/strawberries_stage0"
 	}

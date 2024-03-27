@@ -108,6 +108,20 @@ public class CookingPotBlock extends BaseEntityBlock {
         }
     }
 
+    @Override
+    public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean moved) {
+        if (!state.is(newState.getBlock())) {
+            BlockEntity blockEntity = world.getBlockEntity(pos);
+            if (blockEntity instanceof CookingPotBlockEntity pan) {
+                if (world instanceof ServerLevel) {
+                    Containers.dropContents(world, pos, pan);
+                }
+                world.updateNeighbourForOutputSignal(pos, this);
+            }
+            super.onRemove(state, world, pos, newState, moved);
+        }
+    }
+
 
     @Override
     public void playerWillDestroy(@NotNull Level level, BlockPos blockPos, @NotNull BlockState blockState, @NotNull Player player) {
@@ -155,7 +169,7 @@ public class CookingPotBlock extends BaseEntityBlock {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, COOKING, LIT);
+        builder.add(FACING, COOKING, LIT, DAMAGE);
     }
 
     @Override

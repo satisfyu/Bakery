@@ -65,14 +65,6 @@ public class CookingPotItem extends BlockItem {
         return InteractionResult.PASS;
     }
 
-    public static void damage(ItemStack stack, Player entity) {
-        if (entity.getAbilities().instabuild) return;
-        int damage = stack.getDamageValue();
-        if (damage < 25) {
-            stack.setDamageValue(damage + 1);
-        }
-    }
-
     @Override
     public void inventoryTick(ItemStack itemStack, Level level, Entity entity, int i, boolean bl) {
         super.inventoryTick(itemStack, level, entity, i, bl);
