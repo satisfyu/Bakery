@@ -96,50 +96,53 @@ public class BlankCakeBlock extends Block {
 
             if (item instanceof BlockItem) {
                 var block = ((BlockItem) item).getBlock();
+                boolean matched = false;
 
                 if (isCake) {
                     if (block == ObjectRegistry.STRAWBERRY_JAM.get()) {
                         world.setBlock(pos, ObjectRegistry.STRAWBERRY_CAKE.get().defaultBlockState(), 3);
                         world.levelEvent(2001, pos, Block.getId(ObjectRegistry.STRAWBERRY_CAKE.get().defaultBlockState()));
+                        matched = true;
                     } else if (block == ObjectRegistry.CHOCOLATE_JAM.get()) {
                         world.setBlock(pos, ObjectRegistry.CHOCOLATE_CAKE.get().defaultBlockState(), 3);
                         world.levelEvent(2001, pos, Block.getId(ObjectRegistry.CHOCOLATE_CAKE.get().defaultBlockState()));
+                        matched = true;
                     } else if (block == ObjectRegistry.SWEETBERRY_JAM.get()) {
                         world.setBlock(pos, ObjectRegistry.SWEETBERRY_CAKE.get().defaultBlockState(), 3);
                         world.levelEvent(2001, pos, Block.getId(ObjectRegistry.SWEETBERRY_CAKE.get().defaultBlockState()));
+                        matched = true;
                     }
-                    world.playSound(null, pos, SoundEvents.SLIME_BLOCK_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
-                    if (!player.isCreative()) {
-                        itemStack.shrink(1);
-                    }
-                    return InteractionResult.sidedSuccess(false);
                 } else if (isCupcake) {
                     if (block == ObjectRegistry.STRAWBERRY_JAM.get()) {
                         world.setBlock(pos, ObjectRegistry.STRAWBERRY_CUPCAKE_BLOCK.get().defaultBlockState(), 3);
                         world.levelEvent(2001, pos, Block.getId(ObjectRegistry.STRAWBERRY_CUPCAKE_BLOCK.get().defaultBlockState()));
+                        matched = true;
                     } else if (block == ObjectRegistry.APPLE_JAM.get()) {
                         world.setBlock(pos, ObjectRegistry.APPLE_CUPCAKE_BLOCK.get().defaultBlockState(), 3);
                         world.levelEvent(2001, pos, Block.getId(ObjectRegistry.APPLE_CUPCAKE_BLOCK.get().defaultBlockState()));
+                        matched = true;
                     } else if (block == ObjectRegistry.SWEETBERRY_JAM.get()) {
                         world.setBlock(pos, ObjectRegistry.SWEETBERRY_CUPCAKE_BLOCK.get().defaultBlockState(), 3);
                         world.levelEvent(2001, pos, Block.getId(ObjectRegistry.SWEETBERRY_CUPCAKE_BLOCK.get().defaultBlockState()));
+                        matched = true;
                     }
-                    world.playSound(null, pos, SoundEvents.SLIME_BLOCK_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
-                    if (!player.isCreative()) {
-                        itemStack.shrink(1);
-                    }
-                    return InteractionResult.sidedSuccess(false);
                 } else if (isCookie) {
                     if (block == ObjectRegistry.STRAWBERRY_JAM.get()) {
                         world.setBlock(pos, ObjectRegistry.STRAWBERRY_COOKIE_BLOCK.get().defaultBlockState(), 3);
                         world.levelEvent(2001, pos, Block.getId(ObjectRegistry.STRAWBERRY_COOKIE_BLOCK.get().defaultBlockState()));
+                        matched = true;
                     } else if (block == ObjectRegistry.CHOCOLATE_JAM.get()) {
                         world.setBlock(pos, ObjectRegistry.CHOCOLATE_COOKIE_BLOCK.get().defaultBlockState(), 3);
                         world.levelEvent(2001, pos, Block.getId(ObjectRegistry.CHOCOLATE_COOKIE_BLOCK.get().defaultBlockState()));
+                        matched = true;
                     } else if (block == ObjectRegistry.SWEETBERRY_JAM.get()) {
                         world.setBlock(pos, ObjectRegistry.SWEETBERRY_COOKIE_BLOCK.get().defaultBlockState(), 3);
                         world.levelEvent(2001, pos, Block.getId(ObjectRegistry.SWEETBERRY_COOKIE_BLOCK.get().defaultBlockState()));
+                        matched = true;
                     }
+                }
+
+                if (matched) {
                     world.playSound(null, pos, SoundEvents.SLIME_BLOCK_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
                     if (!player.isCreative()) {
                         itemStack.shrink(1);
