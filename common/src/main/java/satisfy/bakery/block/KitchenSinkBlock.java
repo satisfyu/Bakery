@@ -100,13 +100,12 @@ public class KitchenSinkBlock extends Block {
 
     @Override
     public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        if (world.isClientSide) return InteractionResult.SUCCESS;
+        if (world.isClientSide || state.getValue(HALF) != DoubleBlockHalf.LOWER) return InteractionResult.SUCCESS;
         ItemStack itemStack = player.getItemInHand(hand);
         Item item = itemStack.getItem();
         if (itemStack.isEmpty() && !state.getValue(FILLED)) {
             world.setBlock(pos, state.setValue(FILLED, true), Block.UPDATE_ALL);
             world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0f, 1.0f);
-            world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.WATER_AMBIENT, SoundSource.BLOCKS, 1.0f, 1.0f);
             return InteractionResult.SUCCESS;
         } else if ((item == Items.WATER_BUCKET || item == Items.GLASS_BOTTLE) && !state.getValue(FILLED)) {
             world.setBlock(pos, state.setValue(FILLED, true), Block.UPDATE_ALL);

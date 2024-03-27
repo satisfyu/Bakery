@@ -79,51 +79,46 @@ public class CraftingBowlBlock extends BaseEntityBlock {
     }
 
     @Override
-    public @NotNull InteractionResult use(BlockState blockState, Level world, BlockPos pos, Player entity, InteractionHand hand, BlockHitResult hit) {
+    public @NotNull InteractionResult use(BlockState blockState, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
+        ItemStack itemStack = player.getItemInHand(hand);
+        if (blockEntity instanceof CraftingBowlBlockEntity bowlEntity) {
+            int stirring = blockState.getValue(STIRRING);
+            int stirred = blockState.getValue(STIRRED);
 
-        ItemStack itemStack = entity.getItemInHand(hand);
-        int stirring = blockState.getValue(STIRRING);
-        int stirred = blockState.getValue(STIRRED);
-
-        if(blockEntity instanceof CraftingBowlBlockEntity bowlEntity) {
-
-            if (stirring == 0) {
+            if (!itemStack.isEmpty() && stirring == 0) {
                 if (bowlEntity.canAddItem(itemStack)) {
                     bowlEntity.addItemStack(itemStack.copy());
-                    if (!entity.isCreative()) itemStack.shrink(1);
+                    if (!player.isCreative()) {
+                        itemStack.shrink(1);
+                    }
+                    return InteractionResult.SUCCESS;
+                }
+            } else if (itemStack.isEmpty()) {
+                if (stirred >= STIRS_NEEDED && stirring == 0) {
+                    player.getInventory().add(bowlEntity.getItem(4));
+                    bowlEntity.setItem(4, ItemStack.EMPTY);
+                    world.setBlock(pos, blockState.setValue(STIRRED, 0), 3);
+                    return InteractionResult.SUCCESS;
+                }
+                if (world instanceof ServerLevel serverWorld) {
+                    RandomSource randomSource = serverWorld.random;
+                    for (ItemStack stack : bowlEntity.getItems()) {
+                        if (!stack.isEmpty() && bowlEntity.getItem(4) != stack) {
+                            ItemParticleOption particleOption = new ItemParticleOption(ParticleTypes.ITEM, stack);
+                            serverWorld.sendParticles(particleOption, pos.getX() + 0.5, pos.getY() + 0.25, pos.getZ() + 0.5, 1, randomSource.nextGaussian() * 0.15D, 0.05D, randomSource.nextGaussian() * 0.15D, 0.05D);
+                        }
+                    }
+                }
+                if (stirring <= 6) {
+                    world.setBlock(pos, blockState.setValue(STIRRING, 10), 3);
                     return InteractionResult.SUCCESS;
                 }
             }
-
-            if (itemStack.isEmpty()) {
-                if (stirred >= STIRS_NEEDED) {
-                    if (stirring == 0) {
-                        entity.getInventory().add(bowlEntity.getItem(4));
-                        bowlEntity.setItem(4, ItemStack.EMPTY);
-                        world.setBlock(pos, blockState.setValue(STIRRED, 0), 3);
-                    }
-                } else {
-                    if(world instanceof ServerLevel _world) {
-                        RandomSource randomsource = _world.random;
-                        for (ItemStack stack : bowlEntity.getItems()) {
-                            if (stack != ItemStack.EMPTY && bowlEntity.getItem(4) != stack) {
-                                ItemParticleOption p = new ItemParticleOption(ParticleTypes.ITEM, stack);
-                                _world.sendParticles(p, pos.getCenter().x, pos.getCenter().y + 0.25d, pos.getCenter().z, 1, randomsource.nextGaussian() * 0.15D, randomsource.nextDouble() * 0.15D, randomsource.nextGaussian() * 0.15, randomsource.nextGaussian() * 0.05);
-                            }
-                        }
-                    }
-
-                    if (stirring <= 6) {
-                        world.setBlock(pos, blockState.setValue(STIRRING, 10), 3);
-
-                    }
-                }
-                return InteractionResult.SUCCESS;
-            }
         }
-        return InteractionResult.SUCCESS;
+        return InteractionResult.PASS;
     }
+
 
     @Override
     public void tick(BlockState blockState, ServerLevel level, BlockPos pos, RandomSource random) {
@@ -134,7 +129,6 @@ public class CraftingBowlBlock extends BaseEntityBlock {
     public void onPlace(BlockState blockstate, Level world, BlockPos pos, BlockState oldState, boolean moving) {
         super.onPlace(blockstate, world, pos, oldState, moving);
     }
-
 
     @Override
     public MenuProvider getMenuProvider(BlockState state, Level worldIn, BlockPos pos) {

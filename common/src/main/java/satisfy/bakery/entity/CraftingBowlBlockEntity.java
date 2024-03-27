@@ -96,10 +96,9 @@ public class CraftingBowlBlockEntity extends RandomizableContainerBlockEntity im
 
     @Override
     public boolean canPlaceItem(int index, ItemStack stack) {
-        Item item = stack.getItem();
-        return  (item == Items.WHEAT || item == Items.SUGAR || item == Items.MILK_BUCKET || item == Items.WATER_BUCKET|| stack.is(TagsRegistry.WHEAT) || item == Items.EGG || item == ObjectRegistry.YEAST.get()) &&
-                !this.hasAnyOf(Set.of(stack.getItem()));
+        return true;
     }
+
 
     @Override
     public @NotNull NonNullList<ItemStack> getItems() {
