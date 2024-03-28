@@ -26,6 +26,7 @@ public class CraftingBowlRenderer implements BlockEntityRenderer<CraftingBowlBlo
     private final ModelPart bowl;
     private final ModelPart swing;
 
+
     public CraftingBowlRenderer(BlockEntityRendererProvider.Context context) {
         ModelPart root = context.bakeLayer(CraftingBowlModel.LAYER_LOCATION);
 

@@ -12,7 +12,7 @@ import net.minecraft.world.entity.Entity;
 import satisfy.bakery.Bakery;
 
 public class CraftingBowlModel<T extends Entity> extends EntityModel<T> {
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(Bakery.MOD_ID, "modelcrafting_bowl"), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(Bakery.MOD_ID, "crafting_bowl"), "main");
     private final ModelPart bowl;
     private final ModelPart swing;
 
