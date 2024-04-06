@@ -15,7 +15,6 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeType;
 import org.jetbrains.annotations.Nullable;
-import satisfy.bakery.recipe.StoveRecipe;
 import satisfy.bakery.registry.RecipeTypeRegistry;
 
 import java.util.List;
