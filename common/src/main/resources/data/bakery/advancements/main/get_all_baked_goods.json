@@ -19,54 +19,187 @@
     "experience": 400
   },
   "criteria": {
-    "get_all_baked_goods": {
+    "bakery:crusty_bread": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "items": ["bakery:crusty_bread"]
-          },
-          {
-            "items": ["bakery:bread"]
-          },
-          {
-            "items": ["bakery:braided_bread"]
-          },
-          {
-            "items": ["bakery:bun"]
-          },
-          {
-            "items": ["bakery:baguette"]
-          },
-          {
-            "items": ["bakery:glowberry_tart"]
-          },
-          {
-            "items": ["bakery:chocolate_tart"]
-          },
-          {
-            "items": ["bakery:croissant"]
-          },
-          {
-            "items": ["bakery:apple_pie"]
-          },
-          {
-            "items": ["bakery:waffle"]
-          },
-          {
-            "items": ["bakery:bundt_cake"]
-          },
-          {
-            "items": ["bakery:linzer_tart"]
+            "items": [
+              "bakery:crusty_bread"
+            ]
           }
-
+        ]
+      }
+    },
+    "bakery:bread": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bakery:bread"
+            ]
+          }
+        ]
+      }
+    },
+    "bakery:braided_bread": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bakery:braided_bread"
+            ]
+          }
+        ]
+      }
+    },
+    "bakery:bun": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bakery:bun"
+            ]
+          }
+        ]
+      }
+    },
+    "bakery:baguette": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bakery:baguette"
+            ]
+          }
+        ]
+      }
+    },
+    "bakery:glowberry_tart": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bakery:glowberry_tart"
+            ]
+          }
+        ]
+      }
+    },
+    "bakery:chocolate_tart": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bakery:chocolate_tart"
+            ]
+          }
+        ]
+      }
+    },
+    "bakery:croissant": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bakery:croissant"
+            ]
+          }
+        ]
+      }
+    },
+    "bakery:apple_pie": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bakery:apple_pie"
+            ]
+          }
+        ]
+      }
+    },
+    "bakery:waffle": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bakery:waffle"
+            ]
+          }
+        ]
+      }
+    },
+    "bakery:bundt_cake": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bakery:bundt_cake"
+            ]
+          }
+        ]
+      }
+    },
+    "bakery:linzer_tart": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bakery:linzer_tart"
+            ]
+          }
         ]
       }
     }
   },
   "requirements": [
     [
-      "get_all_baked_goods"
+      "bakery:crusty_bread"
+    ],
+    [
+      "bakery:bread"
+    ],
+    [
+      "bakery:braided_bread"
+    ],
+    [
+      "bakery:bun"
+    ],
+    [
+      "bakery:baguette"
+    ],
+    [
+      "bakery:glowberry_tart"
+    ],
+    [
+      "bakery:chocolate_tart"
+    ],
+    [
+      "bakery:croissant"
+    ],
+    [
+      "bakery:apple_pie"
+    ],
+    [
+      "bakery:waffle"
+    ],
+    [
+      "bakery:bundt_cake"
+    ],
+    [
+      "bakery:linzer_tart"
     ]
   ]
 }

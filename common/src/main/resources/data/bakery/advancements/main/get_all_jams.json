@@ -19,27 +19,62 @@
     "experience": 50
   },
   "criteria": {
-    "get_all_jams": {
+    "bakery:strawberry_jam": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "items": ["bakery:strawberry_jam"]
-          },
+            "items": [
+              "bakery:strawberry_jam"
+            ]
+          }
+        ]
+      }
+    },
+    "bakery:chocolate_jam": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["bakery:chocolate_jam"]
-          },
+            "items": [
+              "bakery:chocolate_jam"
+            ]
+          }
+        ]
+      }
+    },
+    "bakery:apple_jam": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["bakery:apple_jam"]
-          },
+            "items": [
+              "bakery:apple_jam"
+            ]
+          }
+        ]
+      }
+    },
+    "bakery:glowberry_jam": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["bakery:glowberry_jam"]
-          },
+            "items": [
+              "bakery:glowberry_jam"
+            ]
+          }
+        ]
+      }
+    },
+    "bakery:sweetberry_jam": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["bakery:sweetberry_jam"]
-          },
-          {
-            "items": ["bakery:strawberry_jam"]
+            "items": [
+              "bakery:sweetberry_jam"
+            ]
           }
         ]
       }
@@ -47,7 +82,19 @@
   },
   "requirements": [
     [
-      "get_all_jams"
+      "bakery:strawberry_jam"
+    ],
+    [
+      "bakery:chocolate_jam"
+    ],
+    [
+      "bakery:apple_jam"
+    ],
+    [
+      "bakery:glowberry_jam"
+    ],
+    [
+      "bakery:sweetberry_jam"
     ]
   ]
 }

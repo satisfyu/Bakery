@@ -19,39 +19,122 @@
     "experience": 150
   },
   "criteria": {
-    "get_all_caked_goods": {
+    "bakery:strawberry_cake": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "items": ["bakery:strawberry_cake"]
-          },
+            "items": [
+              "bakery:strawberry_cake"
+            ]
+          }
+        ]
+      }
+    },
+    "minecraft:cake": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["minecraft:cake"]
-          },
+            "items": [
+              "minecraft:cake"
+            ]
+          }
+        ]
+      }
+    },
+    "bakery:chocolate_cake": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["bakery:chocolate_cake"]
-          },
+            "items": [
+              "bakery:chocolate_cake"
+            ]
+          }
+        ]
+      }
+    },
+    "bakery:sweetberry_cake": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["bakery:sweetberry_cake"]
-          },
+            "items": [
+              "bakery:sweetberry_cake"
+            ]
+          }
+        ]
+      }
+    },
+    "bakery:strawberry_glazed_cookie": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["bakery:strawberry_glazed_cookie"]
-          },
+            "items": [
+              "bakery:strawberry_glazed_cookie"
+            ]
+          }
+        ]
+      }
+    },
+    "bakery:chocolate_glazed_cookie": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["bakery:chocolate_glazed_cookie"]
-          },
+            "items": [
+              "bakery:chocolate_glazed_cookie"
+            ]
+          }
+        ]
+      }
+    },
+    "bakery:sweetberry_glazed_cookie": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["bakery:sweetberry_glazed_cookie"]
-          },
+            "items": [
+              "bakery:sweetberry_glazed_cookie"
+            ]
+          }
+        ]
+      }
+    },
+    "bakery:apple_cupcake": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["bakery:apple_cupcake"]
-          },
+            "items": [
+              "bakery:apple_cupcake"
+            ]
+          }
+        ]
+      }
+    },
+    "bakery:sweetberry_cupcake": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["bakery:sweetberry_cupcake"]
-          },
+            "items": [
+              "bakery:sweetberry_cupcake"
+            ]
+          }
+        ]
+      }
+    },
+    "bakery:strawberry_cupcake": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["bakery:strawberry_cupcake"]
+            "items": [
+              "bakery:strawberry_cupcake"
+            ]
           }
         ]
       }
@@ -59,7 +142,34 @@
   },
   "requirements": [
     [
-      "get_all_caked_goods"
+      "bakery:strawberry_cake"
+    ],
+    [
+      "minecraft:cake"
+    ],
+    [
+      "bakery:chocolate_cake"
+    ],
+    [
+      "bakery:sweetberry_cake"
+    ],
+    [
+      "bakery:strawberry_glazed_cookie"
+    ],
+    [
+      "bakery:chocolate_glazed_cookie"
+    ],
+    [
+      "bakery:sweetberry_glazed_cookie"
+    ],
+    [
+      "bakery:apple_cupcake"
+    ],
+    [
+      "bakery:sweetberry_cupcake"
+    ],
+    [
+      "bakery:strawberry_cupcake"
     ]
   ]
 }

@@ -19,21 +19,50 @@
     "experience": 50
   },
   "criteria": {
-    "get_all_cakes": {
+    "bakery:strawberry_cake": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "items": ["bakery:strawberry_cake"]
-          },
+            "items": [
+              "bakery:strawberry_cake"
+            ]
+          }
+        ]
+      }
+    },
+    "minecraft:cake": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["minecraft:cake"]
-          },
+            "items": [
+              "minecraft:cake"
+            ]
+          }
+        ]
+      }
+    },
+    "bakery:chocolate_cake": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["bakery:chocolate_cake"]
-          },
+            "items": [
+              "bakery:chocolate_cake"
+            ]
+          }
+        ]
+      }
+    },
+    "bakery:sweetberry_cake": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["bakery:sweetberry_cake"]
+            "items": [
+              "bakery:sweetberry_cake"
+            ]
           }
         ]
       }
@@ -41,7 +70,16 @@
   },
   "requirements": [
     [
-      "get_all_cakes"
+      "bakery:strawberry_cake"
+    ],
+    [
+      "minecraft:cake"
+    ],
+    [
+      "bakery:chocolate_cake"
+    ],
+    [
+      "bakery:sweetberry_cake"
     ]
   ]
 }
