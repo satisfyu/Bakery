@@ -38,3 +38,10 @@ mandatory = true
 versionRange = "[9.0.8,)"
 ordering = "AFTER"
 side = "BOTH"
+
+[[dependencies.bakery]]
+modId = "farm_and_charm"
+mandatory = true
+versionRange = "[1.0.0)"
+ordering = "AFTER"
+side = "BOTH"

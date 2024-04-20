@@ -8,9 +8,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Supplier;
 
-@SuppressWarnings("all")
-public enum BakeryTiers implements Tier
-{
+@SuppressWarnings("deprecation")
+public enum BakeryTiers implements Tier {
     IRON(2, 200, 5.0f, 0.0f, 12, () -> Ingredient.of(Items.IRON_INGOT));
 
     private final int level;
@@ -20,13 +19,13 @@ public enum BakeryTiers implements Tier
     private final int enchantmentValue;
     private final LazyLoadedValue<Ingredient> repairIngredient;
 
-    private BakeryTiers(int j, int k, float f, float g, int l, Supplier<Ingredient> supplier) {
+    BakeryTiers(int j, int k, float f, float g, int l, Supplier<Ingredient> supplier) {
         this.level = j;
         this.uses = k;
         this.speed = f;
         this.damage = g;
         this.enchantmentValue = l;
-        this.repairIngredient = new LazyLoadedValue<Ingredient>(supplier);
+        this.repairIngredient = new LazyLoadedValue<>(supplier);
     }
 
     @Override

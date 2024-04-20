@@ -1,6 +1,8 @@
 package satisfy.bakery.block.storage;
 
 import de.cristelknight.doapi.common.block.StorageBlock;
+import de.cristelknight.doapi.common.block.entity.StorageBlockEntity;
+import de.cristelknight.doapi.common.util.GeneralUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
@@ -11,13 +13,13 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import satisfy.bakery.registry.StorageTypeRegistry;
-import satisfy.bakery.util.GeneralUtil;
 
 import java.util.HashMap;
 import java.util.List;
@@ -35,13 +37,13 @@ public class CupcakeDisplayBlock extends StorageBlock {
     }
 
     @Override
-    public boolean canInsertStack(ItemStack stack) {
-        return !(stack.getItem() instanceof BlockItem);
+    public ResourceLocation type() {
+        return StorageTypeRegistry.CUPCAKE_DISPLAY;
     }
 
     @Override
-    public ResourceLocation type() {
-        return StorageTypeRegistry.CUPCAKE_DISPLAY;
+    public boolean canInsertStack(ItemStack stack) {
+        return !(stack.getItem() instanceof BlockItem);
     }
 
     @Override

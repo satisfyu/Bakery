@@ -20,7 +20,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import satisfy.bakery.registry.EntityRegistry;
+import satisfy.bakery.registry.EntityTypeRegistry;
 
 import java.util.Optional;
 
@@ -52,7 +52,7 @@ public abstract class WanderingTraderManagerMixin implements CustomSpawner {
                     return;
                 }
 
-                WanderingTrader wanderingTraderEntity = EntityRegistry.WANDERING_BAKER.get().spawn(world,  blockPos3, MobSpawnType.EVENT);
+                WanderingTrader wanderingTraderEntity = EntityTypeRegistry.WANDERING_BAKER.get().spawn(world,  blockPos3, MobSpawnType.EVENT);
                 if (wanderingTraderEntity != null) {
                     for (int j = 0; j < 2; ++j) {
                         BlockPos blockPos4 = this.findSpawnPositionNear(world, wanderingTraderEntity.blockPosition(), 4);

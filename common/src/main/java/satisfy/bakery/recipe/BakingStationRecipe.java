@@ -13,8 +13,7 @@ import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import satisfy.bakery.registry.RecipeTypeRegistry;
-import satisfy.bakery.util.GeneralUtil;
-
+import de.cristelknight.doapi.common.util.GeneralUtil;
 
 public class BakingStationRecipe implements Recipe<Container> {
 

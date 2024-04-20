@@ -1,0 +1,21 @@
+{
+  "type": "farm_and_charm:pot_cooking",
+  "ingredients": [
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "tag": "bakery:jam"
+    },
+    {
+      "tag": "bakery:milk"
+    }
+  ],
+  "container": {
+    "item": "minecraft:bowl"
+  },
+  "result": {
+    "item": "bakery:pudding",
+    "count": 1
+  }
+}

@@ -1,6 +1,7 @@
 package satisfy.bakery.block;
 
 import de.cristelknight.doapi.common.block.FacingBlock;
+import de.cristelknight.doapi.common.util.GeneralUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
@@ -31,7 +32,6 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
-import satisfy.bakery.util.GeneralUtil;
 
 import java.util.HashMap;
 import java.util.List;
@@ -40,15 +40,12 @@ import java.util.function.Supplier;
 
 @SuppressWarnings("deprecation")
 public class ChocolateBoxBlock extends FacingBlock {
-
-
     public static final IntegerProperty CUTS = IntegerProperty.create("cuts", 0, 5);
 
     public ChocolateBoxBlock(Properties settings) {
         super(settings);
         this.registerDefaultState(this.stateDefinition.any().setValue(CUTS, 0));
     }
-
 
     @Override
     public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
@@ -100,7 +97,6 @@ public class ChocolateBoxBlock extends FacingBlock {
         builder.add(CUTS);
 
     }
-
 
     private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
         VoxelShape shape = Shapes.empty();

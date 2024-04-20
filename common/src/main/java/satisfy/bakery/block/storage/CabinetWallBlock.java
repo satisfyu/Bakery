@@ -1,5 +1,7 @@
 package satisfy.bakery.block.storage;
 
+import de.cristelknight.doapi.common.block.CabinetBlock;
+import de.cristelknight.doapi.common.util.GeneralUtil;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
@@ -12,14 +14,12 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
-import satisfy.bakery.block.StorageBlock;
-import satisfy.bakery.util.GeneralUtil;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class CabinetWallBlock extends StorageBlock {
+public class CabinetWallBlock extends CabinetBlock {
     public CabinetWallBlock(Properties settings, RegistrySupplier<SoundEvent> openSound, RegistrySupplier<SoundEvent> closeSound) {
         super(settings, openSound, closeSound);
     }

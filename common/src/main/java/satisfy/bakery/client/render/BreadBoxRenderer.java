@@ -2,6 +2,7 @@ package satisfy.bakery.client.render;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
+import de.cristelknight.doapi.client.ClientUtil;
 import de.cristelknight.doapi.client.render.block.storage.StorageTypeRenderer;
 import de.cristelknight.doapi.common.block.entity.StorageBlockEntity;
 import net.fabricmc.api.EnvType;
@@ -10,9 +11,10 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
-import satisfy.bakery.util.ClientUtil;
+
 import satisfy.bakery.registry.ObjectRegistry;
 
+//TODO test if that works - tried to heavily simplify the renderer
 @Environment(EnvType.CLIENT)
 public class BreadBoxRenderer implements StorageTypeRenderer {
     @Override
@@ -24,47 +26,33 @@ public class BreadBoxRenderer implements StorageTypeRenderer {
             if (!stack.isEmpty()) {
                 matrices.pushPose();
                 if (stack.getItem() instanceof BlockItem blockItem) {
-                    if (blockItem.getBlock() == ObjectRegistry.CRUSTY_BREAD_BLOCK.get()) {
-                        matrices.translate(-0.5f, -0.5f, -0.9f);
-                        matrices.scale(2f, 2f, 2f);
-                        ClientUtil.renderBlockFromItem(blockItem, matrices, vertexConsumers, entity);
-                    } else if (blockItem.getBlock() == ObjectRegistry.BUN_BLOCK.get()) {
-                        matrices.translate(-0.5f, -0.5f, -0.9f);
-                        matrices.scale(2f, 2f, 2f);
-                        ClientUtil.renderBlockFromItem(blockItem, matrices, vertexConsumers, entity);
-                    } else if (blockItem.getBlock() == ObjectRegistry.BREAD_BLOCK.get()) {
-                        matrices.translate(-0.5f, -0.5f, 0.93f);
-                        matrices.scale(2f, 2f, 2f);
-                        matrices.mulPose(Axis.YP.rotationDegrees(90.0f));
-                        ClientUtil.renderBlockFromItem(blockItem, matrices, vertexConsumers, entity);
-                    } else if (blockItem.getBlock() == ObjectRegistry.BRAIDED_BREAD_BLOCK.get()) {
-                        matrices.translate(-0.5f, -0.5f, 0.93f);
-                        matrices.scale(2f, 2f, 2f);
-                        matrices.mulPose(Axis.YP.rotationDegrees(90.0f));
-                        ClientUtil.renderBlockFromItem(blockItem, matrices, vertexConsumers, entity);
-                    } else if (blockItem.getBlock() == ObjectRegistry.TOAST_BLOCK.get()) {
-                        matrices.translate(-0.5f, -0.5f, 0.93f);
-                        matrices.scale(2f, 2f, 2f);
-                        matrices.mulPose(Axis.YP.rotationDegrees(90.0f));
-                        ClientUtil.renderBlockFromItem(blockItem, matrices, vertexConsumers, entity);
-                    } else if (blockItem.getBlock() == ObjectRegistry.BAGUETTE_BLOCK.get()) {
-                        matrices.translate(-0.28f, -0.48f, 0.6f);
-                        matrices.scale(1.5f, 1.5f, 1.5f);
-                        matrices.mulPose(Axis.YP.rotationDegrees(90.0f));
-                        ClientUtil.renderBlockFromItem(blockItem, matrices, vertexConsumers, entity);
-                    } else {
-                        matrices.translate(0.2, -0.5f, -0.3f);
-                        matrices.scale(0.6f, 0.6f, 0.6f);
-                        ClientUtil.renderBlockFromItem(blockItem, matrices, vertexConsumers, entity);
-                    }
+                    renderBlockItem(blockItem, matrices, vertexConsumers, entity);
                 } else {
-                    matrices.translate(0.3f * i, 0, 0);
-                    matrices.mulPose(Axis.YN.rotationDegrees(45.0f));
-                    ClientUtil.renderItem(stack, matrices, vertexConsumers, entity);
+                    renderNonBlockItem(stack, i, matrices, vertexConsumers, entity);
                 }
-
                 matrices.popPose();
             }
         }
+    }
+
+    private void renderBlockItem(BlockItem blockItem, PoseStack matrices, MultiBufferSource vertexConsumers, StorageBlockEntity entity) {
+        float translateX = -0.5f, translateY = -0.5f, translateZ, scale;
+        boolean rotate = blockItem.getBlock() != ObjectRegistry.CRUSTY_BREAD_BLOCK.get() && blockItem.getBlock() != ObjectRegistry.BUN_BLOCK.get();
+        if (rotate) {
+            translateZ = 0.93f;
+            matrices.mulPose(Axis.YP.rotationDegrees(90.0f));
+        } else {
+            translateZ = -0.9f;
+        }
+        scale = blockItem.getBlock() == ObjectRegistry.BAGUETTE_BLOCK.get() ? 1.5f : 2f;
+        matrices.translate(translateX, translateY, translateZ);
+        matrices.scale(scale, scale, scale);
+        ClientUtil.renderBlockFromItem(blockItem, matrices, vertexConsumers, entity);
+    }
+
+    private void renderNonBlockItem(ItemStack stack, int index, PoseStack matrices, MultiBufferSource vertexConsumers, StorageBlockEntity entity) {
+        matrices.translate(0.3f * index, 0, 0);
+        matrices.mulPose(Axis.YN.rotationDegrees(45.0f));
+        ClientUtil.renderItem(stack, matrices, vertexConsumers, entity);
     }
 }

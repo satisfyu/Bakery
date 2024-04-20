@@ -1,12 +1,12 @@
 package satisfy.bakery.entity;
 
+import de.cristelknight.doapi.common.util.VillagerUtil;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.npc.WanderingTrader;
 import net.minecraft.world.item.trading.MerchantOffers;
 import net.minecraft.world.level.Level;
 import satisfy.bakery.registry.ObjectRegistry;
-import satisfy.bakery.util.VillagerUtil;
 
 import java.util.HashMap;
 
@@ -16,16 +16,13 @@ public class WanderingBakerEntity extends WanderingTrader {
     private static  HashMap<Integer, VillagerTrades.ItemListing[]> createTrades() {
         HashMap<Integer, VillagerTrades.ItemListing[]> trades = new HashMap<>();
         trades.put(1, new VillagerTrades.ItemListing[]{
-                new VillagerUtil.SellItemFactory(ObjectRegistry.DOUGH.get(), 2, 4, 8, 15),
+                new VillagerUtil.SellItemFactory(satisfy.farm_and_charm.registry.ObjectRegistry.DOUGH.get(), 2, 4, 8, 15),
                 new VillagerUtil.SellItemFactory(ObjectRegistry.SWEET_DOUGH.get(), 2, 4, 8, 15),
                 new VillagerUtil.SellItemFactory(ObjectRegistry.JAR.get(), 4, 2, 8, 1),
                 new VillagerUtil.SellItemFactory(ObjectRegistry.TRAY.get(), 12, 1, 8, 25),
                 new VillagerUtil.SellItemFactory(ObjectRegistry.BREADBOX.get(), 15, 1, 8, 30),
                 new VillagerUtil.SellItemFactory(ObjectRegistry.CAKE_STAND.get(), 15, 1, 8, 30),
-                new VillagerUtil.SellItemFactory(ObjectRegistry.OAT.get(), 3, 5, 8, 5),
-                new VillagerUtil.SellItemFactory(ObjectRegistry.STRAWBERRY.get(), 3, 5, 8, 5),
-                new VillagerUtil.SellItemFactory(ObjectRegistry.STRAWBERRY_SEEDS.get(), 2, 6, 8, 3),
-                new VillagerUtil.SellItemFactory(ObjectRegistry.BRICK_STOVE.get(), 25, 1, 8, 40),
+                new VillagerUtil.SellItemFactory(satisfy.farm_and_charm.registry.ObjectRegistry.STOVE.get(), 25, 1, 8, 40),
                 new VillagerUtil.SellItemFactory(ObjectRegistry.SMALL_COOKING_POT.get(), 8, 1, 8, 15),
                 new VillagerUtil.SellItemFactory(ObjectRegistry.BAGUETTE_BLOCK.get(), 4, 2, 8, 5),
                 new VillagerUtil.SellItemFactory(ObjectRegistry.CRUSTY_BREAD_BLOCK.get(), 4, 2, 8, 5),

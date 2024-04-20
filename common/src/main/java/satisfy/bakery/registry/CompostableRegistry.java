@@ -4,12 +4,6 @@ import net.minecraft.world.level.block.ComposterBlock;
 
 public class CompostableRegistry {
     public static void registerCompostable() {
-        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.OAT.get(), .3f);
-        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.OAT_SEEDS.get().asItem(), .3f);
-        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.STRAWBERRY.get(), .3f);
-        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.STRAWBERRY_SEEDS.get().asItem(), .3f);
-        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.YEAST.get(), .3f);
-        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.DOUGH.get(), .3f);
         ComposterBlock.COMPOSTABLES.put(ObjectRegistry.SWEET_DOUGH.get(), .3f);
         ComposterBlock.COMPOSTABLES.put(ObjectRegistry.CRUSTY_BREAD.get().asItem(), 0.3f);
         ComposterBlock.COMPOSTABLES.put(ObjectRegistry.BREAD.get().asItem(), 0.3f);

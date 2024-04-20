@@ -2,22 +2,13 @@ package satisfy.bakery.client;
 
 import dev.architectury.registry.client.level.entity.EntityModelLayerRegistry;
 import dev.architectury.registry.client.level.entity.EntityRendererRegistry;
-import dev.architectury.registry.client.rendering.BlockEntityRendererRegistry;
 import dev.architectury.registry.client.rendering.RenderTypeRegistry;
-import dev.architectury.registry.menu.MenuRegistry;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.renderer.RenderType;
-import satisfy.bakery.client.gui.CookingPotGui;
-import satisfy.bakery.client.gui.StoveGui;
-import satisfy.bakery.client.model.CraftingBowlModel;
 import satisfy.bakery.client.model.WanderingBakerModel;
-import satisfy.bakery.client.render.CraftingBowlRenderer;
-import satisfy.bakery.client.render.StoveBlockRenderer;
 import satisfy.bakery.client.render.WanderingBakerRenderer;
-import satisfy.bakery.registry.BlockEntityTypeRegistry;
-import satisfy.bakery.registry.EntityRegistry;
-import satisfy.bakery.registry.ScreenHandlerTypeRegistry;
+import satisfy.bakery.registry.EntityTypeRegistry;
 
 import static satisfy.bakery.registry.ObjectRegistry.*;
 
@@ -27,12 +18,11 @@ public class BakeryClient {
     public static void initClient() {
         RenderTypeRegistry.register(RenderType.cutout(),
                 CAKE_STAND.get(), IRON_TABLE.get(), IRON_CHAIR.get(), JAR.get(), SWEETBERRY_JAM.get(), CHOCOLATE_JAM.get(),
-                STRAWBERRY_JAM.get(), GLOWBERRY_JAM.get(), APPLE_JAM.get(), OAT_CROP.get(), STRAWBERRY_CROP.get(), WILD_STRAWBERRIES.get(),
-                CAKE_DISPLAY.get(), BRICK_STOVE.get(), DEEPSLATE_STOVE.get(), MUD_STOVE.get(), GRANITE_STOVE.get(),
+                STRAWBERRY_JAM.get(), GLOWBERRY_JAM.get(), APPLE_JAM.get(), CAKE_DISPLAY.get(), DEEPSLATE_STOVE.get(),
+                MUD_STOVE.get(), GRANITE_STOVE.get(),
                 QUARTZ_STOVE.get(), RED_NETHER_BRICKS_STOVE.get(), END_STOVE.get(), SANDSTONE_STOVE.get(), COBBLESTONE_STOVE.get(),
                 STONE_BRICKS_STOVE.get(), BAKER_STATION.get()
         );
-
 
         ClientStorageTypes.init();
         RenderTypeRegistry.register(RenderType.translucent(), TRAY.get());
@@ -40,14 +30,7 @@ public class BakeryClient {
         RenderTypeRegistry.register(RenderType.translucent(), CAKE_DISPLAY.get());
         RenderTypeRegistry.register(RenderType.translucent(), CUPCAKE_DISPLAY.get());
         RenderTypeRegistry.register(RenderType.translucent(), WALL_DISPLAY.get());
-        RenderTypeRegistry.register(RenderType.translucent(), CRAFTING_BOWL.get());
-        BlockEntityRendererRegistry.register(BlockEntityTypeRegistry.STOVE_BLOCK_ENTITY.get(), StoveBlockRenderer::new);
-        BlockEntityRendererRegistry.register(BlockEntityTypeRegistry.CRAFTING_BOWL_BLOCK_ENTITY.get(), CraftingBowlRenderer::new);
-        MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.STOVE_SCREEN_HANDLER.get(), StoveGui::new);
-        MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.COOKING_POT_SCREEN_HANDLER.get(), CookingPotGui::new);
-
     }
-
 
     public static void preInitClient() {
         registerEntityRenderers();
@@ -55,12 +38,10 @@ public class BakeryClient {
     }
 
     public static void registerEntityRenderers() {
-        EntityRendererRegistry.register(EntityRegistry.WANDERING_BAKER, WanderingBakerRenderer::new);
+        EntityRendererRegistry.register(EntityTypeRegistry.WANDERING_BAKER, WanderingBakerRenderer::new);
     }
 
     public static void registerEntityModelLayer() {
         EntityModelLayerRegistry.register(WanderingBakerModel.LAYER_LOCATION, WanderingBakerModel::getTexturedModelData);
-        EntityModelLayerRegistry.register(CraftingBowlModel.LAYER_LOCATION, CraftingBowlModel::getTexturedModelData);
-
     }
 }
