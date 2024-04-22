@@ -102,7 +102,6 @@
   "item.bakery.apple_pie_slice": "Slice of Apple Pie",
   "item.bakery.bakery_standard": "Completionist Banner: §cBakery",
   "item.bakery.bread_knife": "Bread Knife",
-  "item.bakery.bread_with_chocolate_spread": "Bread with Chocolate Spread",
   "item.bakery.bread_with_jam": "Bread with Jam",
   "item.bakery.bundt_cake_slice": "Slice of Bundt Cake",
   "item.bakery.cake_dough": "Cake Dough",
@@ -117,6 +116,7 @@
   "item.bakery.donut": "Donut",
   "item.bakery.dough": "Dough",
   "item.bakery.glowberry_pie_slice": "Slice of Glowberry Tart",
+  "item.bakery.grilled_bacon_sandwich": "Grilled Bacon Sandwich",
   "item.bakery.grilled_salmon_sandwich": "Grilled Salmon Sandwich",
   "item.bakery.jam_roll": "Jam Roll",
   "item.bakery.jam_sandwich": "Jam Sandwich",
@@ -143,6 +143,5 @@
   "tooltip.bakery.thankyou_1": "A reward for crafting all baked Goods",
   "tooltip.bakery.thankyou_2": "When placed:",
   "tooltip.bakery.thankyou_3": "Thank you for playing Bakery!",
-  "tooltip.bakery.thankyou_4": "Grants Resistance in a radius of 8 blocks",
-  "item.bakery.grilled_bacon_sandwich":"Grilled Bacon Sandwich"
+  "tooltip.bakery.thankyou_4": "Grants Resistance in a radius of 8 blocks"
 }

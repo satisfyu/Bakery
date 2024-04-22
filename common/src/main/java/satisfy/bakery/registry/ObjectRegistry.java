@@ -1,7 +1,6 @@
 package satisfy.bakery.registry;
 
 import de.cristelknight.doapi.Util;
-import de.cristelknight.doapi.common.BenchBlock;
 import de.cristelknight.doapi.common.block.*;
 import de.cristelknight.doapi.common.registry.DoApiSoundEventRegistry;
 import dev.architectury.core.item.ArchitecturySpawnEggItem;
@@ -13,7 +12,10 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.food.Foods;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.Tiers;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
@@ -26,8 +28,6 @@ import satisfy.bakery.block.storage.*;
 import satisfy.bakery.item.BakeryStandardItem;
 import satisfy.bakery.item.SmallCookingPotItem;
 import satisfy.bakery.util.BakeryIdentifier;
-import satisfy.farm_and_charm.block.CookingPotBlock;
-import satisfy.farm_and_charm.block.StoveBlock;
 import satisfy.farm_and_charm.item.food.EffectBlockItem;
 import satisfy.farm_and_charm.item.food.EffectItem;
 import satisfy.farm_and_charm.registry.MobEffectRegistry;
@@ -57,7 +57,7 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Block> TRAY = registerWithItem("tray", () -> new TrayBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
     public static final RegistrySupplier<Block> BREAD_CRATE = registerWithItem("bread_crate", () -> new BreadBasketBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
     public static final RegistrySupplier<Block> WALL_DISPLAY = registerWithItem("wall_display", () -> new WallDisplayBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
-    public static final RegistrySupplier<Block> CHOCOLATE_BOX = registerWithItem("chocolate_box", () -> new ChocolateBoxBlock(BlockBehaviour.Properties.copy(Blocks.CAKE)));
+    public static final RegistrySupplier<Block> CHOCOLATE_BOX = registerWithItem("chocolate_box", () -> new EatableBoxBlock(BlockBehaviour.Properties.copy(Blocks.CAKE)));
     public static final RegistrySupplier<Item> ROLLING_PIN = registerItem("rolling_pin", () -> new SwordItem(Tiers.WOOD, 1, -2f, getSettings().rarity(Rarity.COMMON)));
     public static final RegistrySupplier<Item> BREAD_KNIFE = registerItem("bread_knife", () -> new SwordItem(Tiers.IRON, 1, -2f, getSettings().rarity(Rarity.COMMON)));
     public static final RegistrySupplier<Block> SMALL_COOKING_POT = registerWithoutItem("small_cooking_pot", () -> new SmallCookingPotBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
@@ -174,6 +174,7 @@ public class ObjectRegistry {
         return getFoodItemSettings(nutrition, saturationMod, effect, duration, true, false);
     }
 
+    @SuppressWarnings("all")
     private static Item.Properties getFoodItemSettings(int nutrition, float saturationMod, MobEffect effect, int duration, boolean alwaysEat, boolean fast) {
         return getSettings().food(createFood(nutrition, saturationMod, effect, duration, alwaysEat, fast));
     }
