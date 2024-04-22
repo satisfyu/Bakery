@@ -1,8 +1,8 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"0": "bakery:block/cakes/sweetberry_cupcake_block",
-		"particle": "bakery:block/cakes/sweetberry_cupcake_block"
+		"0": "bakery:block/sweetberry_cupcake_block",
+		"particle": "bakery:block/sweetberry_cupcake_block"
 	},
 	"elements": [
 		{

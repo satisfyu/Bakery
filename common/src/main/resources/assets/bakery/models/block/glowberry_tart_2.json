@@ -1,10 +1,10 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"side": "bakery:block/cakes/glowberry_tart_side",
-		"top": "bakery:block/cakes/glowberry_tart_top",
-		"bottom": "bakery:block/cakes/glowberry_tart_bottom",
-		"particle": "bakery:block/cakes/glowberry_tart_inner"
+		"side": "bakery:block/glowberry_tart_side",
+		"top": "bakery:block/glowberry_tart_top",
+		"bottom": "bakery:block/glowberry_tart_bottom",
+		"particle": "bakery:block/glowberry_tart_inner"
 	},
 	"elements": [
 		{

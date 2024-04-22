@@ -22,8 +22,8 @@ import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import satisfy.bakery.block.SmallCookingPotBlock;
 import satisfy.bakery.registry.EntityTypeRegistry;
-import satisfy.farm_and_charm.block.CookingPotBlock;
 import satisfy.farm_and_charm.client.gui.handler.CookingPotGuiHandler;
 import satisfy.farm_and_charm.item.food.EffectFood;
 import satisfy.farm_and_charm.item.food.EffectFoodHelper;
@@ -123,7 +123,8 @@ public class SmallCookingPotBlockEntity extends BlockEntity implements BlockEnti
     }
 
     private ItemStack generateOutputItem(Recipe<?> recipe, RegistryAccess access) {
-        ItemStack outputStack = recipe.getResultItem(access);
+        ItemStack outputStack = recipe.getResultItem(access).copy();
+        outputStack.setCount(1);
         if (outputStack.getItem() instanceof EffectFood) {
             recipe.getIngredients().forEach(ingredient -> {
                 for (int slot = 0; slot < INGREDIENTS_AREA; slot++) {
@@ -138,12 +139,13 @@ public class SmallCookingPotBlockEntity extends BlockEntity implements BlockEnti
         return outputStack;
     }
 
+
     public void tick(Level world, BlockPos pos, BlockState state, SmallCookingPotBlockEntity blockEntity) {
         if (world.isClientSide()) return;
         boolean wasBeingBurned = isBeingBurned;
         isBeingBurned = isBeingBurned();
-        if (wasBeingBurned != isBeingBurned || state.getValue(CookingPotBlock.LIT) != isBeingBurned) {
-            world.setBlock(pos, state.setValue(CookingPotBlock.LIT, isBeingBurned), Block.UPDATE_ALL);
+        if (wasBeingBurned != isBeingBurned || state.getValue(SmallCookingPotBlock.LIT) != isBeingBurned) {
+            world.setBlock(pos, state.setValue(SmallCookingPotBlock.LIT, isBeingBurned), Block.UPDATE_ALL);
         }
 
         if (!isBeingBurned) {
@@ -158,13 +160,13 @@ public class SmallCookingPotBlockEntity extends BlockEntity implements BlockEnti
                 cookingTime = 0;
                 craft(recipe, access);
             }
-            if (!state.getValue(CookingPotBlock.COOKING)) {
-                world.setBlock(pos, state.setValue(CookingPotBlock.COOKING, true), Block.UPDATE_ALL);
+            if (!state.getValue(SmallCookingPotBlock.COOKING)) {
+                world.setBlock(pos, state.setValue(SmallCookingPotBlock.COOKING, true), Block.UPDATE_ALL);
             }
         } else {
             cookingTime = 0;
-            if (state.getValue(CookingPotBlock.COOKING)) {
-                world.setBlock(pos, state.setValue(CookingPotBlock.COOKING, false), Block.UPDATE_ALL);
+            if (state.getValue(SmallCookingPotBlock.COOKING)) {
+                world.setBlock(pos, state.setValue(SmallCookingPotBlock.COOKING, false), Block.UPDATE_ALL);
             }
         }
     }

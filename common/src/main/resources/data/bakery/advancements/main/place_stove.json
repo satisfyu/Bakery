@@ -1,110 +1,13 @@
 {
   "parent": "bakery:main/get_yeast",
   "criteria": {
-    "brick_stove": {
+    "stove": {
       "conditions": {
         "location": [
           {
-            "block": "bakery:brick_stove",
+            "block": "farm_and_charm:stove",
             "condition": "minecraft:block_state_property"
           }
-
-        ]
-      },
-      "trigger": "minecraft:placed_block"
-    },
-    "granite_stove": {
-      "conditions": {
-        "location": [
-          {
-            "block": "bakery:granite_stove",
-            "condition": "minecraft:block_state_property"
-          }
-
-        ]
-      },
-      "trigger": "minecraft:placed_block"
-    },
-    "cobblestone_stove": {
-      "conditions": {
-        "location": [
-          {
-            "block": "bakery:cobblestone_stove",
-            "condition": "minecraft:block_state_property"
-          }
-
-        ]
-      },
-      "trigger": "minecraft:placed_block"
-    },
-    "stone_bricks_stove": {
-      "conditions": {
-        "location": [
-          {
-            "block": "bakery:stone_bricks_stove",
-            "condition": "minecraft:block_state_property"
-          }
-
-        ]
-      },
-      "trigger": "minecraft:placed_block"
-    },
-    "sandstone_stove": {
-      "conditions": {
-        "location": [
-          {
-            "block": "bakery:sandstone_stove",
-            "condition": "minecraft:block_state_property"
-          }
-
-        ]
-      },
-      "trigger": "minecraft:placed_block"
-    },
-    "deepslate_stove": {
-      "conditions": {
-        "location": [
-          {
-            "block": "bakery:deepslate_stove",
-            "condition": "minecraft:block_state_property"
-          }
-
-        ]
-      },
-      "trigger": "minecraft:placed_block"
-    },
-    "end_stove": {
-      "conditions": {
-        "location": [
-          {
-            "block": "bakery:end_stove",
-            "condition": "minecraft:block_state_property"
-          }
-
-        ]
-      },
-      "trigger": "minecraft:placed_block"
-    },
-    "quartz_stove": {
-      "conditions": {
-        "location": [
-          {
-            "block": "bakery:quartz_stove",
-            "condition": "minecraft:block_state_property"
-          }
-
-        ]
-      },
-      "trigger": "minecraft:placed_block"
-    },
-    "red_nether_bricks_stove": {
-      "conditions": {
-        "location": [
-          {
-            "block": "bakery:red_nether_bricks_stove",
-            "condition": "minecraft:block_state_property"
-          }
-
         ]
       },
       "trigger": "minecraft:placed_block"
@@ -118,7 +21,7 @@
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "bakery:brick_stove"
+      "item": "farm_and_charm:stove"
     },
     "show_toast": true,
     "title": {
@@ -127,15 +30,7 @@
   },
   "requirements": [
     [
-      "brick_stove",
-      "granite_stove",
-      "cobblestone_stove",
-      "stone_bricks_stove",
-      "sandstone_stove",
-      "deepslate_stove",
-      "end_stove",
-      "quartz_stove",
-      "red_nether_bricks_stove"
+      "stove"
     ]
   ],
   "sends_telemetry_event": true

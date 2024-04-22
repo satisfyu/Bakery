@@ -1,6 +1,0 @@
-{
-	"parent": "minecraft:block/cross",
-	"textures": {
-		"cross": "bakery:block/wild_strawberries2"
-	}
-}

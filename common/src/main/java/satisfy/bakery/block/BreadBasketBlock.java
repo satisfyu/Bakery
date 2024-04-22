@@ -37,12 +37,11 @@ import java.util.function.Supplier;
 
 @SuppressWarnings("deprecation")
 public class BreadBasketBlock extends FacingBlock {
-
-    public static final IntegerProperty CUTS = IntegerProperty.create("cuts", 0, 4);
+    public static final IntegerProperty BITES = IntegerProperty.create("bites", 0, 4);
 
     public BreadBasketBlock(Properties settings) {
         super(settings);
-        this.registerDefaultState(this.stateDefinition.any().setValue(CUTS, 0));
+        this.registerDefaultState(this.stateDefinition.any().setValue(BITES, 0));
     }
 
     @Override
@@ -62,10 +61,10 @@ public class BreadBasketBlock extends FacingBlock {
     private InteractionResult tryEat(Level world, BlockPos pos, BlockState state, Player player) {
         world.playSound(null, pos, SoundEvents.FOX_EAT, SoundSource.PLAYERS, 0.5f, world.getRandom().nextFloat() * 0.1f + 0.9f);
         player.getFoodData().eat(6, 0.8f);
-        int cuts = state.getValue(CUTS);
+        int bites = state.getValue(BITES);
         world.gameEvent(player, GameEvent.EAT, pos);
-        if (cuts < 4) {
-            world.setBlock(pos, state.setValue(CUTS, cuts + 1), Block.UPDATE_ALL);
+        if (bites < 4) {
+            world.setBlock(pos, state.setValue(BITES, bites + 1), Block.UPDATE_ALL);
         } else {
             world.destroyBlock(pos, false);
             ItemStack bowlStack = new ItemStack(ObjectRegistry.TRAY.get());
@@ -89,7 +88,7 @@ public class BreadBasketBlock extends FacingBlock {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
-        builder.add(CUTS);
+        builder.add(BITES);
     }
 
     public static final Map<Direction, VoxelShape> SHAPE = Util.make(new HashMap<>(), map -> {

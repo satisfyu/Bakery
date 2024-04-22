@@ -1,8 +1,8 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"0": "bakery:block/cakes/apple_pie",
-		"particle": "bakery:block/cakes/apple_pie"
+		"0": "bakery:block/apple_pie",
+		"particle": "bakery:block/apple_pie"
 	},
 	"elements": [
 		{

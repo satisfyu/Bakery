@@ -1,8 +1,8 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"0": "bakery:block/cakes/bundt_pie",
-		"particle": "bakery:block/cakes/bundt_pie"
+		"0": "bakery:block/bundt_pie",
+		"particle": "bakery:block/bundt_pie"
 	},
 	"elements": [
 		{

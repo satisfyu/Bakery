@@ -1,10 +1,10 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"0": "bakery:block/brick_baker_station_top",
+		"0": "bakery:block/baker_station_top",
 		"3": "bakery:block/wall_display_side",
 		"5": "bakery:block/cabinet_side",
-		"particle": "bakery:block/brick_baker_station_top"
+		"particle": "bakery:block/baker_station_top"
 	},
 	"elements": [
 		{

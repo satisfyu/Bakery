@@ -3,10 +3,10 @@
 	"texture_size": [64, 64],
 	"textures": {
 		"3": "bakery:block/brick_counter_bottom",
-		"4": "bakery:block/brick_baker_station_side_1",
-		"5": "bakery:block/brick_baker_station_side_2",
-		"6": "bakery:block/brick_baker_station_top",
-		"particle": "bakery:block/brick_baker_station_side_2"
+		"4": "bakery:block/baker_station_side_1",
+		"5": "bakery:block/baker_station_side_2",
+		"6": "bakery:block/baker_station_top",
+		"particle": "bakery:block/baker_station_side_2"
 	},
 	"elements": [
 		{

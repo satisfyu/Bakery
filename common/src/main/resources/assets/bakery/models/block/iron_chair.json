@@ -1,9 +1,9 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"0": "bakery:block/chair_base",
-		"1": "bakery:block/chair_parts",
-		"particle": "bakery:block/chair_base"
+		"0": "bakery:block/iron_chair",
+		"1": "bakery:block/iron_chair_parts",
+		"particle": "bakery:block/iron_chair"
 	},
 	"elements": [
 		{

@@ -3,9 +3,8 @@
 	"textures": {
 		"2": "bakery:block/wall_display",
 		"3": "bakery:block/wall_display_side",
-		"4": "bakery:block/brick_baker_station_extended",
-		"5": "bakery:block/table_side",
-		"particle": "bakery:block/brick_baker_station_extended"
+		"4": "bakery:block/baker_station_extended",
+		"particle": "bakery:block/baker_station_extended"
 	},
 	"elements": [
 		{
@@ -17,8 +16,8 @@
 				"east": {"uv": [11, 1, 5, 2], "texture": "#4"},
 				"south": {"uv": [15, 1, 1, 2], "texture": "#4"},
 				"west": {"uv": [11, 14, 5, 15], "texture": "#4"},
-				"up": {"uv": [0, 3, 16, 9], "texture": "#5"},
-				"down": {"uv": [0, 3, 16, 9], "texture": "#5"}
+				"up": {"uv": [9, 0, 15, 16], "rotation": 90, "texture": "#2"},
+				"down": {"uv": [9, 0, 15, 16], "rotation": 90, "texture": "#2"}
 			}
 		},
 		{

@@ -3,8 +3,8 @@
 	"textures": {
 		"2": "bakery:block/wall_display",
 		"3": "bakery:block/wall_display_side",
-		"4": "bakery:block/brick_baker_station_top_extended_side",
-		"particle": "bakery:block/brick_baker_station_top_extended_side"
+		"4": "bakery:block/baker_station_top_extended_side",
+		"particle": "bakery:block/baker_station_top_extended_side"
 	},
 	"elements": [
 		{

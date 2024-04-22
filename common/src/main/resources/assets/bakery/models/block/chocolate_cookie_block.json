@@ -1,8 +1,8 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"2": "bakery:block/cakes/chocolate_cookie",
-		"particle": "bakery:block/cakes/chocolate_cookie"
+		"2": "bakery:block/chocolate_cookie",
+		"particle": "bakery:block/chocolate_cookie"
 	},
 	"elements": [
 		{

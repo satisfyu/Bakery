@@ -1,10 +1,10 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"side": "bakery:block/cakes/linzer_tart_side",
-		"top": "bakery:block/cakes/linzer_tart_top",
-		"bottom": "bakery:block/cakes/linzer_tart_bottom",
-		"particle": "bakery:block/cakes/linzer_tart_inner"
+		"side": "bakery:block/linzer_tart_side",
+		"top": "bakery:block/linzer_tart_top",
+		"bottom": "bakery:block/linzer_tart_bottom",
+		"particle": "bakery:block/linzer_tart_inner"
 	},
 	"elements": [
 		{

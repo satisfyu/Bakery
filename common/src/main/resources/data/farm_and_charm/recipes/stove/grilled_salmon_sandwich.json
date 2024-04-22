@@ -1,0 +1,17 @@
+{
+  "type": "farm_and_charm:stove",
+  "ingredients": [
+    {
+      "tag": "bakery:bread"
+    },
+    {
+      "item": "minecraft:salmon"
+    },
+    {
+      "tag": "farm_and_charm:cabbage"
+    }
+  ],
+  "item": "bakery:grilled_salmon_sandwich",
+  "count": 2,
+  "experience": 0.15
+}

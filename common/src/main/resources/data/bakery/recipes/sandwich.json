@@ -6,10 +6,13 @@
     },
     {
       "tag": "bakery:cooked_beef"
+    },
+    {
+      "tag": "farm_and_charm:cabbage"
     }
   ],
   "result": {
     "item": "bakery:sandwich",
-    "count": 1
+    "count": 2
   }
 }

@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "#bakery:stove",
     "bakery:kitchen_sink",
     "bakery:small_cooking_pot",
     "bakery:baker_station",

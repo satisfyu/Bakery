@@ -9,10 +9,16 @@
     },
     {
       "item": "minecraft:carrot"
+    },
+    {
+      "tag": "farm_and_charm:cabbage"
+    },
+    {
+      "tag": "farm_and_charm:tomato"
     }
   ],
   "result": {
     "item": "bakery:vegetable_sandwich",
-    "count": 1
+    "count": 4
   }
 }

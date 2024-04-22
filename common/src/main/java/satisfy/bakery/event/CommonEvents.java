@@ -33,7 +33,7 @@ public class CommonEvents {
     public static EventResult attack(Player player, Level level, Entity target, InteractionHand hand, @Nullable EntityHitResult result) {
         ItemStack itemStack = player.getItemInHand(hand);
         if (itemStack.is(ObjectRegistry.SMALL_COOKING_POT_ITEM.get())) {
-            level.playSound(null, target.getX(), target.getY(), target.getZ(), DoApiSoundEventRegistry.COOKING_POT_HIT.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+            level.playSound(null, target.getX(), target.getY(), target.getZ(), DoApiSoundEventRegistry.COOKING_POT_HIT.get(), SoundSource.PLAYERS, 0.5F, 0.75F);
             target.hurt(level.damageSources().generic(), 1.2F);
             itemStack.hurtAndBreak(1, player, (p) -> p.broadcastBreakEvent(hand));
             itemStack.addAttributeModifier(Attributes.ATTACK_SPEED, new AttributeModifier(ATTACK_SPEED_MODIFIER_ID, "Weapon modifier", -2.0, AttributeModifier.Operation.ADDITION), EquipmentSlot.MAINHAND);
@@ -45,7 +45,7 @@ public class CommonEvents {
             return EventResult.interruptTrue();
         } else if (itemStack.is(ObjectRegistry.ROLLING_PIN.get())) {
             if (!level.isClientSide) {
-                level.playSound(null, target.getX(), target.getY(), target.getZ(), SoundEvents.WOOD_BREAK, SoundSource.PLAYERS, 1.0F, 1.0F);
+                level.playSound(null, target.getX(), target.getY(), target.getZ(), SoundEvents.WOOD_BREAK, SoundSource.PLAYERS, 1.0F, 0.5F);
                 if (target instanceof LivingEntity livingTarget) {
                     livingTarget.hurt(level.damageSources().generic(), 2.0F);
                     livingTarget.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 120, 1));

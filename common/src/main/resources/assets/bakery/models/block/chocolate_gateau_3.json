@@ -1,11 +1,11 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"0": "bakery:block/cakes/chocolate_gateau_top",
-		"1": "bakery:block/cakes/chocolate_gateau_side",
-		"2": "bakery:block/cakes/chocolate_gateau_bottom",
-		"3": "bakery:block/cakes/chocolate_gateau_inner",
-		"particle": "bakery:block/cakes/chocolate_gateau_top"
+		"0": "bakery:block/chocolate_gateau_top",
+		"1": "bakery:block/chocolate_gateau_side",
+		"2": "bakery:block/chocolate_gateau_bottom",
+		"3": "bakery:block/chocolate_gateau_inner",
+		"particle": "bakery:block/chocolate_gateau_top"
 	},
 	"elements": [
 		{

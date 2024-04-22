@@ -6,6 +6,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.BlockGetter;
@@ -103,45 +104,70 @@ public class BlankCakeBlock extends Block {
                         world.setBlock(pos, ObjectRegistry.STRAWBERRY_CAKE.get().defaultBlockState(), 3);
                         world.levelEvent(2001, pos, Block.getId(ObjectRegistry.STRAWBERRY_CAKE.get().defaultBlockState()));
                         matched = true;
+                        if (!player.getInventory().add(ObjectRegistry.JAR.get().asItem().getDefaultInstance())) {
+                            world.addFreshEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), ObjectRegistry.JAR.get().asItem().getDefaultInstance()));
+                        }
                     } else if (block == ObjectRegistry.CHOCOLATE_JAM.get()) {
                         world.setBlock(pos, ObjectRegistry.CHOCOLATE_CAKE.get().defaultBlockState(), 3);
                         world.levelEvent(2001, pos, Block.getId(ObjectRegistry.CHOCOLATE_CAKE.get().defaultBlockState()));
                         matched = true;
+                        if (!player.getInventory().add(ObjectRegistry.JAR.get().asItem().getDefaultInstance())) {
+                            world.addFreshEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), ObjectRegistry.JAR.get().asItem().getDefaultInstance()));
+                        }
                     } else if (block == ObjectRegistry.SWEETBERRY_JAM.get()) {
                         world.setBlock(pos, ObjectRegistry.SWEETBERRY_CAKE.get().defaultBlockState(), 3);
                         world.levelEvent(2001, pos, Block.getId(ObjectRegistry.SWEETBERRY_CAKE.get().defaultBlockState()));
                         matched = true;
-                    }
+                        if (!player.getInventory().add(ObjectRegistry.JAR.get().asItem().getDefaultInstance())) {
+                            world.addFreshEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), ObjectRegistry.JAR.get().asItem().getDefaultInstance()));
+                        }                    }
                 } else if (isCupcake) {
                     if (block == ObjectRegistry.STRAWBERRY_JAM.get()) {
                         world.setBlock(pos, ObjectRegistry.STRAWBERRY_CUPCAKE_BLOCK.get().defaultBlockState(), 3);
                         world.levelEvent(2001, pos, Block.getId(ObjectRegistry.STRAWBERRY_CUPCAKE_BLOCK.get().defaultBlockState()));
                         matched = true;
+                        if (!player.getInventory().add(ObjectRegistry.JAR.get().asItem().getDefaultInstance())) {
+                            world.addFreshEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), ObjectRegistry.JAR.get().asItem().getDefaultInstance()));
+                        }
                     } else if (block == ObjectRegistry.APPLE_JAM.get()) {
                         world.setBlock(pos, ObjectRegistry.APPLE_CUPCAKE_BLOCK.get().defaultBlockState(), 3);
                         world.levelEvent(2001, pos, Block.getId(ObjectRegistry.APPLE_CUPCAKE_BLOCK.get().defaultBlockState()));
                         matched = true;
+                        if (!player.getInventory().add(ObjectRegistry.JAR.get().asItem().getDefaultInstance())) {
+                            world.addFreshEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), ObjectRegistry.JAR.get().asItem().getDefaultInstance()));
+                        }
                     } else if (block == ObjectRegistry.SWEETBERRY_JAM.get()) {
                         world.setBlock(pos, ObjectRegistry.SWEETBERRY_CUPCAKE_BLOCK.get().defaultBlockState(), 3);
                         world.levelEvent(2001, pos, Block.getId(ObjectRegistry.SWEETBERRY_CUPCAKE_BLOCK.get().defaultBlockState()));
                         matched = true;
+                        if (!player.getInventory().add(ObjectRegistry.JAR.get().asItem().getDefaultInstance())) {
+                            world.addFreshEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), ObjectRegistry.JAR.get().asItem().getDefaultInstance()));
+                        }
                     }
                 } else if (isCookie) {
                     if (block == ObjectRegistry.STRAWBERRY_JAM.get()) {
                         world.setBlock(pos, ObjectRegistry.STRAWBERRY_COOKIE_BLOCK.get().defaultBlockState(), 3);
                         world.levelEvent(2001, pos, Block.getId(ObjectRegistry.STRAWBERRY_COOKIE_BLOCK.get().defaultBlockState()));
                         matched = true;
+                        if (!player.getInventory().add(ObjectRegistry.JAR.get().asItem().getDefaultInstance())) {
+                            world.addFreshEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), ObjectRegistry.JAR.get().asItem().getDefaultInstance()));
+                        }
                     } else if (block == ObjectRegistry.CHOCOLATE_JAM.get()) {
                         world.setBlock(pos, ObjectRegistry.CHOCOLATE_COOKIE_BLOCK.get().defaultBlockState(), 3);
                         world.levelEvent(2001, pos, Block.getId(ObjectRegistry.CHOCOLATE_COOKIE_BLOCK.get().defaultBlockState()));
                         matched = true;
+                        if (!player.getInventory().add(ObjectRegistry.JAR.get().asItem().getDefaultInstance())) {
+                            world.addFreshEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), ObjectRegistry.JAR.get().asItem().getDefaultInstance()));
+                        }
                     } else if (block == ObjectRegistry.SWEETBERRY_JAM.get()) {
                         world.setBlock(pos, ObjectRegistry.SWEETBERRY_COOKIE_BLOCK.get().defaultBlockState(), 3);
                         world.levelEvent(2001, pos, Block.getId(ObjectRegistry.SWEETBERRY_COOKIE_BLOCK.get().defaultBlockState()));
                         matched = true;
+                        if (!player.getInventory().add(ObjectRegistry.JAR.get().asItem().getDefaultInstance())) {
+                            world.addFreshEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), ObjectRegistry.JAR.get().asItem().getDefaultInstance()));
+                        }
                     }
                 }
-
                 if (matched) {
                     world.playSound(null, pos, SoundEvents.SLIME_BLOCK_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
                     if (!player.isCreative()) {

@@ -64,7 +64,7 @@ public class SmallCookingPotBlock extends BaseEntityBlock {
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, LIT, COOKING, NEEDS_SUPPORT);
+        builder.add(FACING, LIT, COOKING, NEEDS_SUPPORT, DAMAGE);
     }
 
     @Override
@@ -166,7 +166,7 @@ public class SmallCookingPotBlock extends BaseEntityBlock {
         double e = pos.getY() + 0.7;
         double f = pos.getZ() + 0.5;
 
-        world.playLocalSound(d, e, f, DoApiSoundEventRegistry.COOKING_POT_BOILING.get(), SoundSource.BLOCKS, 0.1f, 1.0f, false);
+        world.playLocalSound(d, e, f, DoApiSoundEventRegistry.COOKING_POT_BOILING.get(), SoundSource.BLOCKS, 0.05f, 1.0f, false);
 
 
         double h = random.nextDouble() * 0.6 - 0.3;
@@ -195,8 +195,8 @@ public class SmallCookingPotBlock extends BaseEntityBlock {
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> type) {
         if (!world.isClientSide) {
             return (lvl, pos, blkState, t) -> {
-                if (t instanceof SmallCookingPotBlockEntity cookingPot) {
-                    cookingPot.tick(lvl, pos, blkState, cookingPot);
+                if (t instanceof SmallCookingPotBlockEntity smallcookingPot) {
+                    smallcookingPot.tick(lvl, pos, blkState, smallcookingPot);
                 }
             };
         }
