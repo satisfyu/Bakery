@@ -31,5 +31,10 @@ public class CompostableRegistry {
         ComposterBlock.COMPOSTABLES.put(ObjectRegistry.JAM_ROLL.get(), 0.3f);
         ComposterBlock.COMPOSTABLES.put(ObjectRegistry.WAFFLE.get().asItem(), 0.3f);
         ComposterBlock.COMPOSTABLES.put(ObjectRegistry.CHOCOLATE_TRUFFLE.get(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.GRILLED_BACON_SANDWICH.get(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.GRILLED_SALMON_SANDWICH.get(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.BREAD_WITH_JAM.get(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.MISSLILITU_BISCUIT.get(), 0.3f);
+
     }
 }
