@@ -13,7 +13,7 @@
     "show_toast": false,
     "announce_to_chat": false,
     "hidden": false,
-    "background": "bakery:textures/block/advancement.png"
+    "background": "minecraft:textures/block/bricks.png"
   },
   "criteria": {
     "seeds": {

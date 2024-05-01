@@ -1,31 +1,68 @@
 {
   "variants": {
-    "facing=east": [
-      {
-        "model": "bakery:block/brick_counter",
-        "weight": 1,
-        "y": 90
-      }
-    ],
-    "facing=north": [
-      {
-        "model": "bakery:block/brick_counter",
-        "weight": 1
-      }
-    ],
-    "facing=south": [
-      {
-        "model": "bakery:block/brick_counter",
-        "weight": 1,
-        "y": 180
-      }
-    ],
-    "facing=west": [
-      {
-        "model": "bakery:block/brick_counter",
-        "weight": 1,
-        "y": 270
-      }
-    ]
+
+    "facing=north,type=none": {
+      "model": "bakery:block/brick_counter"
+    },
+    "facing=east,type=none": {
+      "model": "bakery:block/brick_counter",
+      "y": 90
+    },
+    "facing=south,type=none": {
+      "model": "bakery:block/brick_counter",
+      "y": 180
+    },
+    "facing=west,type=none": {
+      "model": "bakery:block/brick_counter",
+      "y": 270
+    },
+
+    "facing=north,type=middle": {
+      "model": "bakery:block/brick_counter_middle"
+    },
+    "facing=east,type=middle": {
+      "model": "bakery:block/brick_counter_middle",
+      "y": 90
+    },
+    "facing=south,type=middle": {
+      "model": "bakery:block/brick_counter_middle",
+      "y": 180
+    },
+    "facing=west,type=middle": {
+      "model": "bakery:block/brick_counter_middle",
+      "y": 270
+    },
+
+    "facing=north,type=left": {
+      "model": "bakery:block/brick_counter_connected_left"
+    },
+    "facing=east,type=left": {
+      "model": "bakery:block/brick_counter_connected_left",
+      "y": 90
+    },
+    "facing=south,type=left": {
+      "model": "bakery:block/brick_counter_connected_left",
+      "y": 180
+    },
+    "facing=west,type=left": {
+      "model": "bakery:block/brick_counter_connected_left",
+      "y": 270
+    },
+
+    "facing=north,type=right": {
+      "model": "bakery:block/brick_counter_connected_right",
+      "y": 180
+    },
+    "facing=east,type=right": {
+      "model": "bakery:block/brick_counter_connected_right",
+      "y": 270
+    },
+    "facing=south,type=right": {
+      "model": "bakery:block/brick_counter_connected_right"
+    },
+    "facing=west,type=right": {
+      "model": "bakery:block/brick_counter_connected_right",
+      "y": 90
+    }
   }
 }

@@ -10,6 +10,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.Containers;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -95,11 +96,25 @@ public class SmallCookingPotBlock extends BaseEntityBlock {
     @Override
     public void neighborChanged(BlockState state, Level world, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
         if (!world.isClientSide) {
-            if (state.getValue(NEEDS_SUPPORT) && !world.getBlockState(pos.below()).isSolidRender(world, pos.below())) {
-                world.destroyBlock(pos, true);
+            if (state.getValue(NEEDS_SUPPORT)) {
+                boolean isSupported = world.getBlockState(pos.below()).isSolidRender(world, pos.below()) || world.getBlockState(pos.below()).is(BlockTags.CAMPFIRES);
+                if (!isSupported) {
+                    for (Direction direction : Direction.Plane.HORIZONTAL) {
+                        BlockPos neighborPos = pos.relative(direction);
+                        BlockState neighborState = world.getBlockState(neighborPos);
+                        if (neighborState.getBlock() instanceof SmallCookingPotBlock && neighborState.getValue(NEEDS_SUPPORT)) {
+                            isSupported = true;  
+                            break;
+                        }
+                    }
+                }
+                if (!isSupported) {
+                    world.destroyBlock(pos, true);
+                }
             }
         }
     }
+
 
 
     @Override
@@ -189,6 +204,18 @@ public class SmallCookingPotBlock extends BaseEntityBlock {
     @Override
     public BlockEntity newBlockEntity(@NotNull BlockPos pos, @NotNull BlockState state) {
         return new SmallCookingPotBlockEntity(pos, state);
+    }
+
+    @Override
+    public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean isMoving) {
+        if (!state.is(newState.getBlock())) {
+            BlockEntity blockEntity = world.getBlockEntity(pos);
+            if (blockEntity instanceof SmallCookingPotBlockEntity) {
+                Containers.dropContents(world, pos, ((SmallCookingPotBlockEntity) blockEntity).getItems());
+                world.updateNeighbourForOutputSignal(pos, this);
+            }
+            super.onRemove(state, world, pos, newState, isMoving);
+        }
     }
 
     @Override

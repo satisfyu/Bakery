@@ -107,8 +107,11 @@ public class SmallCookingPotBlockEntity extends BlockEntity implements BlockEnti
     private void craft(Recipe<?> recipe, RegistryAccess access) {
         if (!canCraft(recipe, access)) return;
         ItemStack recipeOutput = generateOutputItem(recipe, access), outputSlotStack = getItem(OUTPUT_SLOT);
-        if (outputSlotStack.isEmpty()) setItem(OUTPUT_SLOT, recipeOutput);
-        else outputSlotStack.grow(recipeOutput.getCount());
+        if (outputSlotStack.isEmpty()) {
+            setItem(OUTPUT_SLOT, recipeOutput);
+        } else {
+            outputSlotStack.grow(recipeOutput.getCount());
+        }
         recipe.getIngredients().forEach(ingredient -> {
             for (int slot = 0; slot < INGREDIENTS_AREA; slot++) {
                 ItemStack stack = getItem(slot);
@@ -120,6 +123,11 @@ public class SmallCookingPotBlockEntity extends BlockEntity implements BlockEnti
                 }
             }
         });
+        ItemStack containerSlotStack = getItem(CONTAINER_SLOT);
+        if (!containerSlotStack.isEmpty()) {
+            containerSlotStack.shrink(1);
+            if (containerSlotStack.isEmpty()) setItem(CONTAINER_SLOT, ItemStack.EMPTY);
+        }
     }
 
     private ItemStack generateOutputItem(Recipe<?> recipe, RegistryAccess access) {
