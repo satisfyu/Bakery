@@ -6,7 +6,7 @@ license = "Custom"
 modId = "bakery"
 version = "${version}"
 displayName = "[Let's Do] Bakery"
-authors = "Satisfy"
+authors = "Satisfy, Cristelknight666"
 description = '''
 Build your own bakery, bake the finest pastries, delicious bread, and sweet cakes!'''
 logoFile = "pack.png"
@@ -28,7 +28,7 @@ side = "BOTH"
 [[dependencies.bakery]]
 modId = "doapi"
 mandatory = true
-versionRange = "[1.2.9,)"
+versionRange = "[1.2.10,)"
 ordering = "NONE"
 side = "BOTH"
 
