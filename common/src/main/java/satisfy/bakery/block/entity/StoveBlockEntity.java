@@ -1,4 +1,4 @@
-package satisfy.bakery.entity;
+package satisfy.bakery.block.entity;
 
 import de.cristelknight.doapi.common.world.ImplementedInventory;
 import net.minecraft.core.BlockPos;

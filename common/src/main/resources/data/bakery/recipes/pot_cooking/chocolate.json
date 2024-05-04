@@ -2,7 +2,7 @@
   "type": "bakery:pot_cooking",
   "ingredients": [
     {
-      "item": "minecraft:sugar"
+      "item": "minecraft:wheat"
     },
     {
       "item": "minecraft:cocoa_beans"

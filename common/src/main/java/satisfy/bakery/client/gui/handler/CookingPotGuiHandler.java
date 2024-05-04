@@ -14,7 +14,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import satisfy.bakery.client.gui.handler.slot.ExtendedSlot;
 import satisfy.bakery.client.recipebook.group.CookingPotRecipeBookGroup;
-import satisfy.bakery.entity.CookingPotBlockEntity;
+import satisfy.bakery.block.entity.CookingPotBlockEntity;
 import satisfy.bakery.recipe.CookingPotRecipe;
 import satisfy.bakery.registry.ScreenHandlerTypeRegistry;
 import satisfy.bakery.registry.TagsRegistry;

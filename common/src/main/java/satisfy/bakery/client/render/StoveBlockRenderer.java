@@ -2,6 +2,7 @@ package satisfy.bakery.client.render;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
+import de.cristelknight.doapi.client.ClientUtil;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider.Context;
@@ -9,8 +10,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
 import satisfy.bakery.block.StoveBlock;
-import satisfy.bakery.entity.StoveBlockEntity;
-import satisfy.bakery.util.ClientUtil;
+import satisfy.bakery.block.entity.StoveBlockEntity;
 
 /**
  *  Glad you've found this class! Please back out asap because that's the worst thing you'll ever see

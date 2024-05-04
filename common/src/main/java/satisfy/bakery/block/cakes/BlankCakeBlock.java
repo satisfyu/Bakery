@@ -1,5 +1,6 @@
 package satisfy.bakery.block.cakes;
 
+import de.cristelknight.doapi.common.registry.DoApiSoundEventRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -20,7 +21,6 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import satisfy.bakery.registry.ObjectRegistry;
-import satisfy.bakery.registry.SoundEventRegistry;
 import satisfy.bakery.registry.TagsRegistry;
 
 @SuppressWarnings({"deprecation"})
@@ -162,7 +162,7 @@ public class BlankCakeBlock extends Block {
                 } else if (isCake && itemStack.is(TagsRegistry.KNIVES)) {
                     world.setBlock(pos, state.setValue(CAKE, false).setValue(CUPCAKE, true), 3);
                     world.levelEvent(2001, pos, Block.getId(state));
-                    world.playSound(null, pos, SoundEventRegistry.CAKE_CUT.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+                    world.playSound(null, pos, DoApiSoundEventRegistry.CAKE_CUT.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
                     return InteractionResult.sidedSuccess(false);
                 } else if (isCupcake && item == ObjectRegistry.ROLLING_PIN.get()) {
                     world.setBlock(pos, state.setValue(CUPCAKE, false).setValue(COOKIE, true), 3);

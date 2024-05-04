@@ -1,4 +1,4 @@
-package satisfy.bakery.entity;
+package satisfy.bakery.block.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

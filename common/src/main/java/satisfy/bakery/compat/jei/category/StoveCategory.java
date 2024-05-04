@@ -20,7 +20,7 @@ import org.jetbrains.annotations.NotNull;
 import satisfy.bakery.Bakery;
 import satisfy.bakery.client.gui.StoveGui;
 import satisfy.bakery.compat.jei.BakeryJEIPlugin;
-import satisfy.bakery.entity.StoveBlockEntity;
+import satisfy.bakery.block.entity.StoveBlockEntity;
 import satisfy.bakery.recipe.StoveRecipe;
 import satisfy.bakery.registry.ObjectRegistry;
 

@@ -1,5 +1,7 @@
 package satisfy.bakery.block;
 
+import de.cristelknight.doapi.common.registry.DoApiSoundEventRegistry;
+import de.cristelknight.doapi.common.util.GeneralUtil;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.ChatFormatting;
@@ -44,10 +46,8 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import satisfy.bakery.entity.CookingPotBlockEntity;
+import satisfy.bakery.block.entity.CookingPotBlockEntity;
 import satisfy.bakery.registry.BlockEntityTypeRegistry;
-import satisfy.bakery.registry.SoundEventRegistry;
-import satisfy.bakery.util.GeneralUtil;
 
 import java.util.HashMap;
 import java.util.List;
@@ -141,7 +141,7 @@ public class CookingPotBlock extends BaseEntityBlock {
             double e = pos.getY() + 0.5;
             double f = (double) pos.getZ() + 0.5D;
             if (random.nextDouble() < 0.3) {
-                world.playLocalSound(d, e, f, SoundEventRegistry.COOKING_POT_BOILING.get(), SoundSource.BLOCKS, 0.05F, 0.05F, false);
+                world.playLocalSound(d, e, f, DoApiSoundEventRegistry.COOKING_POT_BOILING.get(), SoundSource.BLOCKS, 0.05F, 0.05F, false);
             }
             Direction direction = state.getValue(FACING);
             Direction.Axis axis = direction.getAxis();

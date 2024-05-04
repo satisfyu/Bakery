@@ -19,7 +19,7 @@ import org.jetbrains.annotations.NotNull;
 import satisfy.bakery.Bakery;
 import satisfy.bakery.client.gui.CookingPotGui;
 import satisfy.bakery.compat.jei.BakeryJEIPlugin;
-import satisfy.bakery.entity.CookingPotBlockEntity;
+import satisfy.bakery.block.entity.CookingPotBlockEntity;
 import satisfy.bakery.recipe.CookingPotRecipe;
 import satisfy.bakery.registry.ObjectRegistry;
 
