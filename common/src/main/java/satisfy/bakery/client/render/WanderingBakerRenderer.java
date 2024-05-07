@@ -5,6 +5,7 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
+import org.jetbrains.annotations.NotNull;
 import satisfy.bakery.client.model.WanderingBakerModel;
 import satisfy.bakery.entity.WanderingBakerEntity;
 import satisfy.bakery.util.BakeryIdentifier;
@@ -18,7 +19,7 @@ public class WanderingBakerRenderer<T extends WanderingBakerEntity> extends MobR
     }
 
     @Override
-    public ResourceLocation getTextureLocation(WanderingBakerEntity entity) {
+    public @NotNull ResourceLocation getTextureLocation(WanderingBakerEntity entity) {
         return TEXTURE;
     }
 

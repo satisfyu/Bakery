@@ -7,7 +7,7 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import de.cristelknight.doapi.client.render.block.storage.StorageTypeRenderer;
+import de.cristelknight.doapi.client.render.block.storage.api.StorageTypeRenderer;
 import de.cristelknight.doapi.common.block.entity.StorageBlockEntity;
 
 public class WallDisplayRenderer implements StorageTypeRenderer {

@@ -3,7 +3,7 @@ package satisfy.bakery.client.render;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import de.cristelknight.doapi.client.ClientUtil;
-import de.cristelknight.doapi.client.render.block.storage.StorageTypeRenderer;
+import de.cristelknight.doapi.client.render.block.storage.api.StorageTypeRenderer;
 import de.cristelknight.doapi.common.block.entity.StorageBlockEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -14,7 +14,6 @@ import net.minecraft.world.item.ItemStack;
 
 import satisfy.bakery.registry.ObjectRegistry;
 
-//TODO test if that works - tried to heavily simplify the renderer
 @Environment(EnvType.CLIENT)
 public class BreadBoxRenderer implements StorageTypeRenderer {
     @Override
