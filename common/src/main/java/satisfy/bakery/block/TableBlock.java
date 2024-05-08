@@ -10,14 +10,14 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
 public class TableBlock extends Block {
-    public TableBlock(Properties properties) {
-        super(properties);
-    }
-
     private final VoxelShape SHAPE = Shapes.or(
             Shapes.box(0.4375, 0.1875, 0.4375, 0.5625, 0.8125, 0.5625),
             Shapes.box(0, 0.8125, 0, 1, 1, 1)
     );
+
+    public TableBlock(Properties properties) {
+        super(properties);
+    }
 
     @Override
     @SuppressWarnings({"deprecation"})

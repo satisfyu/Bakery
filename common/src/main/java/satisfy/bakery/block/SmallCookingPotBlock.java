@@ -58,6 +58,23 @@ public class SmallCookingPotBlock extends BaseEntityBlock {
     public static final BooleanProperty COOKING = BooleanProperty.create("cooking");
     public static final BooleanProperty NEEDS_SUPPORT = BooleanProperty.create("needs_support");
     public static final IntegerProperty DAMAGE = IntegerProperty.create("damage", 0, 25);
+    private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
+        VoxelShape shape = Shapes.empty();
+        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.25, 0, 0.25, 0.75, 0.0625, 0.75), BooleanOp.OR);
+        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.25, 0.0625, 0.6875, 0.75, 0.3125, 0.75), BooleanOp.OR);
+        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.25, 0.0625, 0.25, 0.75, 0.3125, 0.3125), BooleanOp.OR);
+        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.25, 0.0625, 0.3125, 0.3125, 0.3125, 0.6875), BooleanOp.OR);
+        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.6875, 0.0625, 0.3125, 0.75, 0.3125, 0.6875), BooleanOp.OR);
+        shape = Shapes.joinUnoptimized(shape, Shapes.box(-0.0625, 0.1875, 0.4375, 0.25, 0.25, 0.5625), BooleanOp.OR);
+
+
+        return shape;
+    };
+    public static final Map<Direction, VoxelShape> SHAPE = Util.make(new HashMap<>(), map -> {
+        for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
+            map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
+        }
+    });
 
     public SmallCookingPotBlock(Properties properties) {
         super(properties);
@@ -73,26 +90,6 @@ public class SmallCookingPotBlock extends BaseEntityBlock {
         return SHAPE.getOrDefault(state.getValue(FACING), Shapes.empty());
     }
 
-    private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
-        VoxelShape shape = Shapes.empty();
-        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.25, 0, 0.25, 0.75, 0.0625, 0.75), BooleanOp.OR);
-        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.25, 0.0625, 0.6875, 0.75, 0.3125, 0.75), BooleanOp.OR);
-        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.25, 0.0625, 0.25, 0.75, 0.3125, 0.3125), BooleanOp.OR);
-        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.25, 0.0625, 0.3125, 0.3125, 0.3125, 0.6875), BooleanOp.OR);
-        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.6875, 0.0625, 0.3125, 0.75, 0.3125, 0.6875), BooleanOp.OR);
-        shape = Shapes.joinUnoptimized(shape, Shapes.box(-0.0625, 0.1875, 0.4375, 0.25, 0.25, 0.5625), BooleanOp.OR);
-
-
-        return shape;
-    };
-
-    public static final Map<Direction, VoxelShape> SHAPE = Util.make(new HashMap<>(), map -> {
-        for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
-            map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
-        }
-    });
-
-
     @Override
     public void neighborChanged(BlockState state, Level world, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
         if (!world.isClientSide) {
@@ -103,7 +100,7 @@ public class SmallCookingPotBlock extends BaseEntityBlock {
                         BlockPos neighborPos = pos.relative(direction);
                         BlockState neighborState = world.getBlockState(neighborPos);
                         if (neighborState.getBlock() instanceof SmallCookingPotBlock && neighborState.getValue(NEEDS_SUPPORT)) {
-                            isSupported = true;  
+                            isSupported = true;
                             break;
                         }
                     }
@@ -114,7 +111,6 @@ public class SmallCookingPotBlock extends BaseEntityBlock {
             }
         }
     }
-
 
 
     @Override
@@ -166,7 +162,7 @@ public class SmallCookingPotBlock extends BaseEntityBlock {
         if (!world.isClientSide) {
             BlockEntity entity = world.getBlockEntity(pos);
             if (entity instanceof MenuProvider) {
-                player.openMenu((MenuProvider)entity);
+                player.openMenu((MenuProvider) entity);
                 return InteractionResult.CONSUME;
             }
         }

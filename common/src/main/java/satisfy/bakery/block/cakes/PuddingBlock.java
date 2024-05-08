@@ -17,10 +17,6 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 public class PuddingBlock extends PieBlock {
-    public PuddingBlock(Properties settings, Supplier<Item> slice) {
-        super(settings, slice);
-    }
-
     private static final Supplier<VoxelShape> fullShapeSupplier = () -> {
         VoxelShape shape = Shapes.empty();
         shape = Shapes.or(shape, Shapes.box(0.25, 0, 0.25, 0.75, 0.5, 0.75));
@@ -32,7 +28,6 @@ public class PuddingBlock extends PieBlock {
             map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, fullShapeSupplier.get()));
         }
     });
-
     private static final Supplier<VoxelShape> threeShapeSupplier = () -> {
         VoxelShape shape = Shapes.empty();
         shape = Shapes.or(shape, Shapes.box(0.25, 0, 0.5, 0.75, 0.5, 0.75));
@@ -46,7 +41,6 @@ public class PuddingBlock extends PieBlock {
             map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, threeShapeSupplier.get()));
         }
     });
-
     private static final Supplier<VoxelShape> halfShapeSupplier = () -> {
         VoxelShape shape = Shapes.empty();
         shape = Shapes.or(shape, Shapes.box(0.25, 0, 0.5, 0.75, 0.5, 0.75));
@@ -58,19 +52,21 @@ public class PuddingBlock extends PieBlock {
             map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, halfShapeSupplier.get()));
         }
     });
-
     private static final Supplier<VoxelShape> quarterShapeSupplier = () -> {
         VoxelShape shape = Shapes.empty();
         shape = Shapes.or(shape, Shapes.box(0.25, 0, 0.5, 0.5, 0.5, 0.75));
         shape = Shapes.or(shape, Shapes.box(0.3125, 0.5, 0.5, 0.5, 0.5625, 0.6875));
         return shape;
     };
-
     public static final Map<Direction, VoxelShape> QUARTER_SHAPE = Util.make(new HashMap<>(), map -> {
         for (Direction direction : Direction.Plane.HORIZONTAL) {
             map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, quarterShapeSupplier.get()));
         }
     });
+
+    public PuddingBlock(Properties settings, Supplier<Item> slice) {
+        super(settings, slice);
+    }
 
     @Override
     public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {

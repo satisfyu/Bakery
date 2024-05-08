@@ -18,18 +18,13 @@ import java.util.function.Supplier;
 public enum EntityTypeRegistry {
     ;
 
-    private static final Registrar<BlockEntityType<?>> BLOCK_ENTITY_TYPES = DeferredRegister.create(FarmAndCharm.MOD_ID, Registries.BLOCK_ENTITY_TYPE).getRegistrar();
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(FarmAndCharm.MOD_ID, Registries.ENTITY_TYPE);
-
-    public static final RegistrySupplier<BlockEntityType<SmallCookingPotBlockEntity>> SMALL_COOKING_POT_BLOCK_ENTITY = registerBlockEntity(() -> BlockEntityType.Builder.of(SmallCookingPotBlockEntity::new, ObjectRegistry.SMALL_COOKING_POT.get()).build(null));
-
     public static final RegistrySupplier<EntityType<WanderingBakerEntity>> WANDERING_BAKER = registerEntityType(
             () -> EntityType.Builder.of(WanderingBakerEntity::new, MobCategory.CREATURE)
                     .sized(0.6f, 1.95f)
                     .clientTrackingRange(10)
                     .build(new BakeryIdentifier("wandering_baker").toString()));
-
-
+    private static final Registrar<BlockEntityType<?>> BLOCK_ENTITY_TYPES = DeferredRegister.create(FarmAndCharm.MOD_ID, Registries.BLOCK_ENTITY_TYPE).getRegistrar();    public static final RegistrySupplier<BlockEntityType<SmallCookingPotBlockEntity>> SMALL_COOKING_POT_BLOCK_ENTITY = registerBlockEntity(() -> BlockEntityType.Builder.of(SmallCookingPotBlockEntity::new, ObjectRegistry.SMALL_COOKING_POT.get()).build(null));
 
     private static <T extends BlockEntityType<?>> RegistrySupplier<T> registerBlockEntity(final Supplier<T> type) {
         return BLOCK_ENTITY_TYPES.register(new BakeryIdentifier("small_cooking_pot"), type);
@@ -43,4 +38,6 @@ public enum EntityTypeRegistry {
         ENTITY_TYPES.register();
         Bakery.LOGGER.debug("Registering Mod Entities and Block Entities for " + Bakery.MOD_ID);
     }
+
+
 }

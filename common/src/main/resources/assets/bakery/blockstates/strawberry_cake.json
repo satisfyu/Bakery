@@ -15,7 +15,6 @@
       "model": "bakery:block/strawberry_cake_4",
       "y": 270
     },
-
     "facing=east,cuts=1": {
       "model": "bakery:block/strawberry_cake_3",
       "y": 90
@@ -31,7 +30,6 @@
       "model": "bakery:block/strawberry_cake_3",
       "y": 270
     },
-
     "facing=east,cuts=2": {
       "model": "bakery:block/strawberry_cake_2",
       "y": 90

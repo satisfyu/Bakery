@@ -13,7 +13,11 @@ import java.util.HashMap;
 public class WanderingBakerEntity extends WanderingTrader {
     public static final HashMap<Integer, VillagerTrades.ItemListing[]> TRADES = createTrades();
 
-    private static  HashMap<Integer, VillagerTrades.ItemListing[]> createTrades() {
+    public WanderingBakerEntity(EntityType<? extends WanderingBakerEntity> entityType, Level world) {
+        super(entityType, world);
+    }
+
+    private static HashMap<Integer, VillagerTrades.ItemListing[]> createTrades() {
         HashMap<Integer, VillagerTrades.ItemListing[]> trades = new HashMap<>();
         trades.put(1, new VillagerTrades.ItemListing[]{
                 new VillagerUtil.SellItemFactory(net.satisfy.farm_and_charm.registry.ObjectRegistry.DOUGH.get(), 2, 4, 8, 15),
@@ -34,10 +38,6 @@ public class WanderingBakerEntity extends WanderingTrader {
                 new VillagerUtil.SellItemFactory(ObjectRegistry.CHOCOLATE_TRUFFLE.get(), 1, 1, 8, 2),
         });
         return trades;
-    }
-
-    public WanderingBakerEntity(EntityType<? extends WanderingBakerEntity> entityType, Level world) {
-        super(entityType, world);
     }
 
     @Override

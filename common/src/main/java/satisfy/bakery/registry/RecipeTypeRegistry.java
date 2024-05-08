@@ -15,13 +15,11 @@ import java.util.function.Supplier;
 public class RecipeTypeRegistry {
 
     private static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(Bakery.MOD_ID, Registries.RECIPE_SERIALIZER);
-    private static final DeferredRegister<RecipeType<?>> RECIPE_TYPES = DeferredRegister.create(Bakery.MOD_ID, Registries.RECIPE_TYPE);
-
-    public static final RegistrySupplier<RecipeType<CookingPotRecipe>> COOKING_POT_RECIPE_TYPE = create("pot_cooking");
     public static final RegistrySupplier<RecipeSerializer<CookingPotRecipe>> COOKING_POT_RECIPE_SERIALIZER = create("pot_cooking", CookingPotRecipe.Serializer::new);
-    public static final RegistrySupplier<RecipeType<BakingStationRecipe>> BAKING_STATION_RECIPE_TYPE = create("baking_station");
     public static final RegistrySupplier<RecipeSerializer<BakingStationRecipe>> BAKING_STATION_RECIPE_SERIALIZER = create("baking_station", BakingStationRecipe.Serializer::new);
-
+    private static final DeferredRegister<RecipeType<?>> RECIPE_TYPES = DeferredRegister.create(Bakery.MOD_ID, Registries.RECIPE_TYPE);
+    public static final RegistrySupplier<RecipeType<CookingPotRecipe>> COOKING_POT_RECIPE_TYPE = create("pot_cooking");
+    public static final RegistrySupplier<RecipeType<BakingStationRecipe>> BAKING_STATION_RECIPE_TYPE = create("baking_station");
 
     private static <T extends Recipe<?>> RegistrySupplier<RecipeSerializer<T>> create(String name, Supplier<RecipeSerializer<T>> serializer) {
         return RECIPE_SERIALIZERS.register(name, serializer);

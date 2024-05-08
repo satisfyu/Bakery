@@ -24,7 +24,9 @@
       "conditions": {
         "items": [
           {
-            "items": ["farm_and_charm:yeast"]
+            "items": [
+              "farm_and_charm:yeast"
+            ]
           }
         ]
       }

@@ -1,16 +1,28 @@
 {
   "variants": {
     "facing=east": [
-      { "model": "bakery:block/cake_stand",  "y": 90}
+      {
+        "model": "bakery:block/cake_stand",
+        "y": 90
+      }
     ],
     "facing=north": [
-      { "model": "bakery:block/cake_stand", "weight":1 }
+      {
+        "model": "bakery:block/cake_stand",
+        "weight": 1
+      }
     ],
     "facing=south": [
-      { "model": "bakery:block/cake_stand",  "y": 180}
+      {
+        "model": "bakery:block/cake_stand",
+        "y": 180
+      }
     ],
     "facing=west": [
-      { "model": "bakery:block/cake_stand",  "y": 270}
+      {
+        "model": "bakery:block/cake_stand",
+        "y": 270
+      }
     ]
   }
 }

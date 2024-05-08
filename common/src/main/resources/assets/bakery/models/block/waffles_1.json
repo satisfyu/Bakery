@@ -1,22 +1,86 @@
 {
-	"credit": "Made by Satisfy",
-	"textures": {
-		"0": "bakery:block/waffles",
-		"particle": "bakery:block/waffles"
-	},
-	"elements": [
-		{
-			"from": [3, 0, 3],
-			"to": [13, 2, 13],
-			"rotation": {"angle": 0, "axis": "y", "origin": [3, 0, 3]},
-			"faces": {
-				"north": {"uv": [3, 12, 13, 14], "texture": "#0"},
-				"east": {"uv": [3, 12, 13, 14], "texture": "#0"},
-				"south": {"uv": [3, 12, 13, 14], "texture": "#0"},
-				"west": {"uv": [3, 12, 13, 14], "texture": "#0"},
-				"up": {"uv": [3, 2, 13, 12], "texture": "#0"},
-				"down": {"uv": [3, 2, 13, 12], "texture": "#0"}
-			}
-		}
-	]
+  "credit": "Made by Satisfy",
+  "textures": {
+    "0": "bakery:block/waffles",
+    "particle": "bakery:block/waffles"
+  },
+  "elements": [
+    {
+      "from": [
+        3,
+        0,
+        3
+      ],
+      "to": [
+        13,
+        2,
+        13
+      ],
+      "rotation": {
+        "angle": 0,
+        "axis": "y",
+        "origin": [
+          3,
+          0,
+          3
+        ]
+      },
+      "faces": {
+        "north": {
+          "uv": [
+            3,
+            12,
+            13,
+            14
+          ],
+          "texture": "#0"
+        },
+        "east": {
+          "uv": [
+            3,
+            12,
+            13,
+            14
+          ],
+          "texture": "#0"
+        },
+        "south": {
+          "uv": [
+            3,
+            12,
+            13,
+            14
+          ],
+          "texture": "#0"
+        },
+        "west": {
+          "uv": [
+            3,
+            12,
+            13,
+            14
+          ],
+          "texture": "#0"
+        },
+        "up": {
+          "uv": [
+            3,
+            2,
+            13,
+            12
+          ],
+          "texture": "#0"
+        },
+        "down": {
+          "uv": [
+            3,
+            2,
+            13,
+            12
+          ],
+          "texture": "#0"
+        }
+      }
+    }
+  ]
 }

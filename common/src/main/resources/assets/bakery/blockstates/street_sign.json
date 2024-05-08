@@ -1,16 +1,28 @@
 {
   "variants": {
     "facing=east": [
-      { "model": "bakery:block/street_sign",  "y": 90}
+      {
+        "model": "bakery:block/street_sign",
+        "y": 90
+      }
     ],
     "facing=north": [
-      { "model": "bakery:block/street_sign", "weight":1 }
+      {
+        "model": "bakery:block/street_sign",
+        "weight": 1
+      }
     ],
     "facing=south": [
-      { "model": "bakery:block/street_sign",  "y": 180}
+      {
+        "model": "bakery:block/street_sign",
+        "y": 180
+      }
     ],
     "facing=west": [
-      { "model": "bakery:block/street_sign",  "y": 270}
+      {
+        "model": "bakery:block/street_sign",
+        "y": 270
+      }
     ]
   }
 }

@@ -35,6 +35,10 @@ public class CakeStandBlock extends StorageBlock {
 
     public static VoxelShape SHAPE = makeShape();
 
+    public CakeStandBlock(Properties settings) {
+        super(settings);
+    }
+
     public static VoxelShape makeShape() {
         VoxelShape shape = Shapes.empty();
         shape = Shapes.or(shape, Shapes.box(0.125, 0.5000625, 0.125, 0.125, 1.0000625, 0.875));
@@ -59,11 +63,6 @@ public class CakeStandBlock extends StorageBlock {
     public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         return SHAPE;
     }
-
-    public CakeStandBlock(Properties settings) {
-        super(settings);
-    }
-
 
     public int findFirstEmpty(NonNullList<ItemStack> inv) {
         for (int i = 0; i < size(); i++) {

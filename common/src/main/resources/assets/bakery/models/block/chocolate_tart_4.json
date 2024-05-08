@@ -1,59 +1,283 @@
 {
-	"credit": "Made by Satisfy",
-	"textures": {
-		"side": "bakery:block/chocolate_tart_side",
-		"top": "bakery:block/chocolate_tart_top",
-		"bottom": "bakery:block/chocolate_tart_bottom",
-		"particle": "bakery:block/chocolate_tart_eaten"
-	},
-	"elements": [
-		{
-			"from": [3, 0, 3],
-			"to": [8, 4, 8],
-			"faces": {
-				"north": {"uv": [8, 12, 13, 16], "texture": "#side"},
-				"east": {"uv": [0, 0, 6, 4], "texture": "#particle"},
-				"south": {"uv": [0, 0, 6, 4], "texture": "#particle"},
-				"west": {"uv": [3, 12, 8, 16], "texture": "#side"},
-				"up": {"uv": [3, 3, 8, 8], "texture": "#top"},
-				"down": {"uv": [3, 8, 8, 13], "texture": "#bottom"}
-			}
-		},
-		{
-			"from": [8, 0, 3],
-			"to": [13, 4, 8],
-			"faces": {
-				"north": {"uv": [3, 12, 8, 16], "texture": "#side"},
-				"east": {"uv": [8, 12, 13, 16], "texture": "#side"},
-				"south": {"uv": [0, 0, 6, 4], "texture": "#particle"},
-				"west": {"uv": [0, 0, 6, 4], "texture": "#particle"},
-				"up": {"uv": [8, 3, 13, 8], "texture": "#top"},
-				"down": {"uv": [8, 8, 13, 13], "texture": "#bottom"}
-			}
-		},
-		{
-			"from": [3, 0, 8],
-			"to": [8, 4, 13],
-			"faces": {
-				"north": {"uv": [0, 0, 6, 4], "texture": "#particle"},
-				"east": {"uv": [0, 0, 6, 4], "texture": "#particle"},
-				"south": {"uv": [3, 12, 8, 16], "texture": "#side"},
-				"west": {"uv": [8, 12, 13, 16], "texture": "#side"},
-				"up": {"uv": [3, 8, 8, 13], "texture": "#top"},
-				"down": {"uv": [3, 3, 8, 8], "texture": "#bottom"}
-			}
-		},
-		{
-			"from": [8, 0, 8],
-			"to": [13, 4, 13],
-			"faces": {
-				"north": {"uv": [0, 0, 6, 4], "texture": "#particle"},
-				"east": {"uv": [3, 12, 8, 16], "texture": "#side"},
-				"south": {"uv": [8, 12, 13, 16], "texture": "#side"},
-				"west": {"uv": [0, 0, 6, 4], "texture": "#particle"},
-				"up": {"uv": [8, 8, 13, 13], "texture": "#top"},
-				"down": {"uv": [8, 3, 13, 8], "texture": "#bottom"}
-			}
-		}
-	]
+  "credit": "Made by Satisfy",
+  "textures": {
+    "side": "bakery:block/chocolate_tart_side",
+    "top": "bakery:block/chocolate_tart_top",
+    "bottom": "bakery:block/chocolate_tart_bottom",
+    "particle": "bakery:block/chocolate_tart_eaten"
+  },
+  "elements": [
+    {
+      "from": [
+        3,
+        0,
+        3
+      ],
+      "to": [
+        8,
+        4,
+        8
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            8,
+            12,
+            13,
+            16
+          ],
+          "texture": "#side"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            6,
+            4
+          ],
+          "texture": "#particle"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            6,
+            4
+          ],
+          "texture": "#particle"
+        },
+        "west": {
+          "uv": [
+            3,
+            12,
+            8,
+            16
+          ],
+          "texture": "#side"
+        },
+        "up": {
+          "uv": [
+            3,
+            3,
+            8,
+            8
+          ],
+          "texture": "#top"
+        },
+        "down": {
+          "uv": [
+            3,
+            8,
+            8,
+            13
+          ],
+          "texture": "#bottom"
+        }
+      }
+    },
+    {
+      "from": [
+        8,
+        0,
+        3
+      ],
+      "to": [
+        13,
+        4,
+        8
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            3,
+            12,
+            8,
+            16
+          ],
+          "texture": "#side"
+        },
+        "east": {
+          "uv": [
+            8,
+            12,
+            13,
+            16
+          ],
+          "texture": "#side"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            6,
+            4
+          ],
+          "texture": "#particle"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            6,
+            4
+          ],
+          "texture": "#particle"
+        },
+        "up": {
+          "uv": [
+            8,
+            3,
+            13,
+            8
+          ],
+          "texture": "#top"
+        },
+        "down": {
+          "uv": [
+            8,
+            8,
+            13,
+            13
+          ],
+          "texture": "#bottom"
+        }
+      }
+    },
+    {
+      "from": [
+        3,
+        0,
+        8
+      ],
+      "to": [
+        8,
+        4,
+        13
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            6,
+            4
+          ],
+          "texture": "#particle"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            6,
+            4
+          ],
+          "texture": "#particle"
+        },
+        "south": {
+          "uv": [
+            3,
+            12,
+            8,
+            16
+          ],
+          "texture": "#side"
+        },
+        "west": {
+          "uv": [
+            8,
+            12,
+            13,
+            16
+          ],
+          "texture": "#side"
+        },
+        "up": {
+          "uv": [
+            3,
+            8,
+            8,
+            13
+          ],
+          "texture": "#top"
+        },
+        "down": {
+          "uv": [
+            3,
+            3,
+            8,
+            8
+          ],
+          "texture": "#bottom"
+        }
+      }
+    },
+    {
+      "from": [
+        8,
+        0,
+        8
+      ],
+      "to": [
+        13,
+        4,
+        13
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            6,
+            4
+          ],
+          "texture": "#particle"
+        },
+        "east": {
+          "uv": [
+            3,
+            12,
+            8,
+            16
+          ],
+          "texture": "#side"
+        },
+        "south": {
+          "uv": [
+            8,
+            12,
+            13,
+            16
+          ],
+          "texture": "#side"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            6,
+            4
+          ],
+          "texture": "#particle"
+        },
+        "up": {
+          "uv": [
+            8,
+            8,
+            13,
+            13
+          ],
+          "texture": "#top"
+        },
+        "down": {
+          "uv": [
+            8,
+            3,
+            13,
+            8
+          ],
+          "texture": "#bottom"
+        }
+      }
+    }
+  ]
 }

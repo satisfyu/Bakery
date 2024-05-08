@@ -24,6 +24,7 @@ import satisfy.bakery.block.SmallCookingPotBlock;
 import satisfy.bakery.util.BakeryTiers;
 
 public class SmallCookingPotItem extends BlockItem {
+    public static final BakeryTiers COOKING_POT_TIER = BakeryTiers.IRON;
     private final Multimap<Attribute, AttributeModifier> toolAttributes;
 
     public SmallCookingPotItem(Block block, Item.Properties properties) {
@@ -40,8 +41,6 @@ public class SmallCookingPotItem extends BlockItem {
         stack.hurtAndBreak(1, attacker, (user) -> user.broadcastBreakEvent(EquipmentSlot.MAINHAND));
         return true;
     }
-
-    public static final BakeryTiers COOKING_POT_TIER = BakeryTiers.IRON;
 
     @Override
     public boolean isValidRepairItem(ItemStack toRepair, ItemStack repair) {
@@ -74,7 +73,8 @@ public class SmallCookingPotItem extends BlockItem {
     @Override
     protected BlockState getPlacementState(BlockPlaceContext blockPlaceContext) {
         BlockState state = super.getPlacementState(blockPlaceContext);
-        if(state != null) state = state.setValue(SmallCookingPotBlock.DAMAGE, blockPlaceContext.getItemInHand().getDamageValue());
+        if (state != null)
+            state = state.setValue(SmallCookingPotBlock.DAMAGE, blockPlaceContext.getItemInHand().getDamageValue());
         return state;
     }
 

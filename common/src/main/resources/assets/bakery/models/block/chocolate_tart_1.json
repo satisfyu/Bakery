@@ -1,23 +1,79 @@
 {
-	"credit": "Made by Satisfy",
-	"textures": {
-		"side": "bakery:block/chocolate_tart_side",
-		"top": "bakery:block/chocolate_tart_top",
-		"bottom": "bakery:block/chocolate_tart_bottom",
-		"particle": "bakery:block/chocolate_tart_eaten"
-	},
-	"elements": [
-		{
-			"from": [3, 0, 8],
-			"to": [8, 4, 13],
-			"faces": {
-				"north": {"uv": [8, 12, 13, 16], "texture": "#particle"},
-				"east": {"uv": [3, 12, 8, 16], "texture": "#particle"},
-				"south": {"uv": [3, 12, 8, 16], "texture": "#side"},
-				"west": {"uv": [8, 12, 13, 16], "texture": "#side"},
-				"up": {"uv": [3, 8, 8, 13], "texture": "#top"},
-				"down": {"uv": [3, 3, 8, 8], "texture": "#bottom"}
-			}
-		}
-	]
+  "credit": "Made by Satisfy",
+  "textures": {
+    "side": "bakery:block/chocolate_tart_side",
+    "top": "bakery:block/chocolate_tart_top",
+    "bottom": "bakery:block/chocolate_tart_bottom",
+    "particle": "bakery:block/chocolate_tart_eaten"
+  },
+  "elements": [
+    {
+      "from": [
+        3,
+        0,
+        8
+      ],
+      "to": [
+        8,
+        4,
+        13
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            8,
+            12,
+            13,
+            16
+          ],
+          "texture": "#particle"
+        },
+        "east": {
+          "uv": [
+            3,
+            12,
+            8,
+            16
+          ],
+          "texture": "#particle"
+        },
+        "south": {
+          "uv": [
+            3,
+            12,
+            8,
+            16
+          ],
+          "texture": "#side"
+        },
+        "west": {
+          "uv": [
+            8,
+            12,
+            13,
+            16
+          ],
+          "texture": "#side"
+        },
+        "up": {
+          "uv": [
+            3,
+            8,
+            8,
+            13
+          ],
+          "texture": "#top"
+        },
+        "down": {
+          "uv": [
+            3,
+            3,
+            8,
+            8
+          ],
+          "texture": "#bottom"
+        }
+      }
+    }
+  ]
 }

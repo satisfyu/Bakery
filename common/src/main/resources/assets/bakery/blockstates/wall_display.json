@@ -1,6 +1,5 @@
 {
   "variants": {
-
     "facing=north,type=none": {
       "model": "bakery:block/wall_display_main"
     },
@@ -16,7 +15,6 @@
       "model": "bakery:block/wall_display_main",
       "y": 270
     },
-
     "facing=north,type=middle": {
       "model": "bakery:block/wall_display_middle"
     },
@@ -32,7 +30,6 @@
       "model": "bakery:block/wall_display_middle",
       "y": 270
     },
-
     "facing=north,type=left": {
       "model": "bakery:block/wall_display_extended"
     },
@@ -48,15 +45,12 @@
       "model": "bakery:block/wall_display_extended",
       "y": 270
     },
-
     "facing=north,type=right": {
       "model": "bakery:block/wall_display_extended_right",
-
       "y": 180
     },
     "facing=east,type=right": {
       "model": "bakery:block/wall_display_extended_right",
-
       "y": 270
     },
     "facing=south,type=right": {
@@ -64,7 +58,6 @@
     },
     "facing=west,type=right": {
       "model": "bakery:block/wall_display_extended_right",
-
       "y": 90
     }
   }

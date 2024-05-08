@@ -53,7 +53,7 @@ public class WallDisplayRenderer implements StorageTypeRenderer {
 
             poseStack.translate(xOffset, yBaseOffset, zBaseOffset);
 
-            ClientUtil.renderBlockFromItem((BlockItem)stack.getItem(), poseStack, buffer, entity);
+            ClientUtil.renderBlockFromItem((BlockItem) stack.getItem(), poseStack, buffer, entity);
 
             poseStack.popPose();
         }

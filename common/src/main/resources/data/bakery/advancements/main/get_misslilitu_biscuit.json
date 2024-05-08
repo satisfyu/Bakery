@@ -24,7 +24,9 @@
       "conditions": {
         "items": [
           {
-            "items": ["bakery:misslilitu_biscuit"]
+            "items": [
+              "bakery:misslilitu_biscuit"
+            ]
           }
         ]
       }

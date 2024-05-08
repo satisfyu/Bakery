@@ -6,7 +6,7 @@ import satisfy.bakery.Bakery;
 
 public class DataFixerRegistry {
 
-    public static void init(){
+    public static void init() {
         StringPairs p = DataFixers.getOrCreate(Bakery.MOD_ID);
         p.add("bakery:wild_strawberries", "farm_and_charm:wild_strawberries");
         p.add("bakery:strawberry_crop", "farm_and_charm:strawberry_crop");

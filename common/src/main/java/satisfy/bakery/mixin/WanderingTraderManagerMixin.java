@@ -27,17 +27,18 @@ import java.util.Optional;
 @Mixin(WanderingTraderSpawner.class)
 public abstract class WanderingTraderManagerMixin implements CustomSpawner {
     @Shadow
+    @Final
+    private ServerLevelData serverLevelData;
+
+    @Shadow
     @Nullable
     protected abstract BlockPos findSpawnPositionNear(LevelReader world, BlockPos pos, int range);
 
     @Shadow
     protected abstract boolean hasEnoughSpace(BlockGetter world, BlockPos pos);
 
-    @Shadow
-    @Final
-    private ServerLevelData serverLevelData;
-
-    @Inject(method = "spawn", at = @At(value = "INVOKE", shift = At.Shift.BEFORE, target = "Lnet/minecraft/world/entity/EntityType;spawn(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/MobSpawnType;)Lnet/minecraft/world/entity/Entity;"), cancellable = true)    private void trySpawn(ServerLevel world, CallbackInfoReturnable<Boolean> cir) {
+    @Inject(method = "spawn", at = @At(value = "INVOKE", shift = At.Shift.BEFORE, target = "Lnet/minecraft/world/entity/EntityType;spawn(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/MobSpawnType;)Lnet/minecraft/world/entity/Entity;"), cancellable = true)
+    private void trySpawn(ServerLevel world, CallbackInfoReturnable<Boolean> cir) {
         if (world.random.nextBoolean()) {
             ServerPlayer playerEntity = world.getRandomPlayer();
             assert playerEntity != null;
@@ -52,7 +53,7 @@ public abstract class WanderingTraderManagerMixin implements CustomSpawner {
                     return;
                 }
 
-                WanderingTrader wanderingTraderEntity = EntityTypeRegistry.WANDERING_BAKER.get().spawn(world,  blockPos3, MobSpawnType.EVENT);
+                WanderingTrader wanderingTraderEntity = EntityTypeRegistry.WANDERING_BAKER.get().spawn(world, blockPos3, MobSpawnType.EVENT);
                 if (wanderingTraderEntity != null) {
                     for (int j = 0; j < 2; ++j) {
                         BlockPos blockPos4 = this.findSpawnPositionNear(world, wanderingTraderEntity.blockPosition(), 4);

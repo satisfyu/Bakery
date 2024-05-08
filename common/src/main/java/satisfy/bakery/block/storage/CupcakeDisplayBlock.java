@@ -25,12 +25,36 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 public class CupcakeDisplayBlock extends StorageBlock {
+    private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
+        VoxelShape shape = Shapes.empty();
+        shape = Shapes.or(shape, Shapes.box(0.9375, 0, 0.4375, 1, 0.875, 0.5625));
+        shape = Shapes.or(shape, Shapes.box(0, 0, 0.4375, 0.0625, 0.875, 0.5625));
+        shape = Shapes.or(shape, Shapes.box(0.0625, 0.0625, 0.3125, 0.9375, 0.375, 0.6875));
+        shape = Shapes.or(shape, Shapes.box(0.0625, 0.4375, 0.3125, 0.9375, 0.75, 0.6875));
+        shape = Shapes.or(shape, Shapes.box(0.0625, 0.8125, 0.4375, 0.9375, 0.875, 0.5625));
+
+        return shape;
+    };
+    public static final Map<Direction, VoxelShape> SHAPE = Util.make(new HashMap<>(), map -> {
+        for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
+            map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
+        }
+    });
+
     public CupcakeDisplayBlock(Properties settings) {
         super(settings);
     }
 
+    private static int getXSection(float f) {
+        if (f < 0.375F) {
+            return 2;
+        } else {
+            return f < 0.6875F ? 1 : 0;
+        }
+    }
+
     @Override
-    public int size(){
+    public int size() {
         return 6;
     }
 
@@ -55,31 +79,6 @@ public class CupcakeDisplayBlock extends StorageBlock {
         int j = getXSection(x);
         return j + i * 3;
     }
-
-    private static int getXSection(float f) {
-        if (f < 0.375F) {
-            return 2;
-        } else {
-            return f < 0.6875F ? 1 : 0;
-        }
-    }
-
-    private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
-        VoxelShape shape = Shapes.empty();
-        shape = Shapes.or(shape, Shapes.box(0.9375, 0, 0.4375, 1, 0.875, 0.5625));
-        shape = Shapes.or(shape, Shapes.box(0, 0, 0.4375, 0.0625, 0.875, 0.5625));
-        shape = Shapes.or(shape, Shapes.box(0.0625, 0.0625, 0.3125, 0.9375, 0.375, 0.6875));
-        shape = Shapes.or(shape, Shapes.box(0.0625, 0.4375, 0.3125, 0.9375, 0.75, 0.6875));
-        shape = Shapes.or(shape, Shapes.box(0.0625, 0.8125, 0.4375, 0.9375, 0.875, 0.5625));
-
-        return shape;
-    };
-
-    public static final Map<Direction, VoxelShape> SHAPE = Util.make(new HashMap<>(), map -> {
-        for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
-            map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
-        }
-    });
 
     @Override
     @SuppressWarnings({"deprecation"})
