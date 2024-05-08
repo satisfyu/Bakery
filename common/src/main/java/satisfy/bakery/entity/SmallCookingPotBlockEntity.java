@@ -20,16 +20,16 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.state.BlockState;
+import net.satisfy.farm_and_charm.client.gui.handler.CookingPotGuiHandler;
+import net.satisfy.farm_and_charm.item.food.EffectFood;
+import net.satisfy.farm_and_charm.item.food.EffectFoodHelper;
+import net.satisfy.farm_and_charm.recipe.CookingPotRecipe;
+import net.satisfy.farm_and_charm.registry.RecipeTypeRegistry;
+import net.satisfy.farm_and_charm.registry.TagRegistry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import satisfy.bakery.block.SmallCookingPotBlock;
 import satisfy.bakery.registry.EntityTypeRegistry;
-import satisfy.farm_and_charm.client.gui.handler.CookingPotGuiHandler;
-import satisfy.farm_and_charm.item.food.EffectFood;
-import satisfy.farm_and_charm.item.food.EffectFoodHelper;
-import satisfy.farm_and_charm.recipe.CookingPotRecipe;
-import satisfy.farm_and_charm.registry.RecipeTypeRegistry;
-import satisfy.farm_and_charm.registry.TagRegistry;
 
 import java.util.Objects;
 

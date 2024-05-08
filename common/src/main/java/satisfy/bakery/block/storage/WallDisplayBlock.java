@@ -1,7 +1,6 @@
 package satisfy.bakery.block.storage;
 
 import de.cristelknight.doapi.common.block.StorageBlock;
-import de.cristelknight.doapi.common.block.entity.StorageBlockEntity;
 import de.cristelknight.doapi.common.util.GeneralUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
@@ -18,7 +17,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -32,11 +30,13 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import satisfy.bakery.registry.StorageTypeRegistry;
 import satisfy.bakery.registry.TagsRegistry;
-import static de.cristelknight.doapi.common.util.GeneralUtil.*;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
+
+import static de.cristelknight.doapi.common.util.GeneralUtil.LineConnectingType;
 
 
 public class WallDisplayBlock extends StorageBlock {

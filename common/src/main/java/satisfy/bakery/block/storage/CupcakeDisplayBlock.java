@@ -1,7 +1,6 @@
 package satisfy.bakery.block.storage;
 
 import de.cristelknight.doapi.common.block.StorageBlock;
-import de.cristelknight.doapi.common.block.entity.StorageBlockEntity;
 import de.cristelknight.doapi.common.util.GeneralUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
@@ -13,7 +12,6 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;

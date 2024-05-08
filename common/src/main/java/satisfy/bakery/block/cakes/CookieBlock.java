@@ -22,7 +22,6 @@ import satisfy.bakery.registry.ObjectRegistry;
 
 @SuppressWarnings({"deprecation"})
 public class CookieBlock extends Block {
-
     private static final VoxelShape SHAPE = Shapes.or(
             Shapes.box(0.125, 0, 0.125, 0.4375, 0.0625, 0.4375),
             Shapes.box(0.125, 0, 0.5625, 0.4375, 0.0625, 0.875),

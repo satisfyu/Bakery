@@ -7,11 +7,11 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.satisfy.farm_and_charm.FarmAndCharm;
 import satisfy.bakery.Bakery;
 import satisfy.bakery.entity.SmallCookingPotBlockEntity;
 import satisfy.bakery.entity.WanderingBakerEntity;
 import satisfy.bakery.util.BakeryIdentifier;
-import satisfy.farm_and_charm.FarmAndCharm;
 
 import java.util.function.Supplier;
 
