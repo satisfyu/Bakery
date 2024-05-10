@@ -32,8 +32,8 @@ repositories {
 
 
 dependencies {
-    modApi("net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}") { exclude group: 'net.fabricmc', module: 'fabric-loader' }
-    modApi("dev.architectury:architectury-fabric:${rootProject.architectury_version}") { exclude group: 'net.fabricmc', module: 'fabric-loader' }
+    modApi( "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}") { exclude group: 'net.fabricmc', module: 'fabric-loader' }
+    modApi( "dev.architectury:architectury-fabric:${rootProject.architectury_version}") { exclude group: 'net.fabricmc', module: 'fabric-loader' }
     modImplementation("me.shedaniel:RoughlyEnoughItems-fabric:$rei_version") { exclude group: 'net.fabricmc', module: 'fabric-loader' }
     modImplementation "maven.modrinth:lets-do-farm-charm:${project.farm_and_charm_version}-fabric"
     modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"

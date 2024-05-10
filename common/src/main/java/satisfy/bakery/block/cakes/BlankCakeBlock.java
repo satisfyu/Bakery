@@ -29,6 +29,12 @@ public class BlankCakeBlock extends Block {
     public static final BooleanProperty CAKE = BooleanProperty.create("cake");
     public static final BooleanProperty CUPCAKE = BooleanProperty.create("cupcake");
     public static final BooleanProperty COOKIE = BooleanProperty.create("cookie");
+
+    public BlankCakeBlock(Properties settings) {
+        super(settings);
+        this.registerDefaultState(this.stateDefinition.any().setValue(CAKE, true).setValue(CUPCAKE, false).setValue(COOKIE, false));
+    }
+
     private static final VoxelShape CAKE_SHAPE = Shapes.box(0.0625, 0, 0.0625, 0.9375, 0.5, 0.9375);
     private static final VoxelShape BASE_SHAPE = Shapes.empty();
     private static final VoxelShape CUPCAKE_SHAPE = Shapes.or(
@@ -38,6 +44,7 @@ public class BlankCakeBlock extends Block {
             Shapes.box(0.5625, 0, 0.125, 0.875, 0.375, 0.4375),
             Shapes.box(0.5625, 0, 0.5625, 0.875, 0.375, 0.875)
     );
+
     private static final VoxelShape COOKIE_SHAPE = Shapes.or(
             BASE_SHAPE,
             Shapes.box(0.125, 0, 0.125, 0.4375, 0.0625, 0.4375),
@@ -45,11 +52,6 @@ public class BlankCakeBlock extends Block {
             Shapes.box(0.5625, 0, 0.125, 0.875, 0.0625, 0.4375),
             Shapes.box(0.5625, 0, 0.5625, 0.875, 0.0625, 0.875)
     );
-
-    public BlankCakeBlock(Properties settings) {
-        super(settings);
-        this.registerDefaultState(this.stateDefinition.any().setValue(CAKE, true).setValue(CUPCAKE, false).setValue(COOKIE, false));
-    }
 
     @Override
     public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
@@ -118,8 +120,7 @@ public class BlankCakeBlock extends Block {
                         matched = true;
                         if (!player.getInventory().add(ObjectRegistry.JAR.get().asItem().getDefaultInstance())) {
                             world.addFreshEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), ObjectRegistry.JAR.get().asItem().getDefaultInstance()));
-                        }
-                    }
+                        }                    }
                 } else if (isCupcake) {
                     if (block == ObjectRegistry.STRAWBERRY_JAM.get()) {
                         world.setBlock(pos, ObjectRegistry.STRAWBERRY_CUPCAKE_BLOCK.get().defaultBlockState(), 3);

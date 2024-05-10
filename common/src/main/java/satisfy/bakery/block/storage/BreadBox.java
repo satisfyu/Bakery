@@ -17,6 +17,10 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 public class BreadBox extends CakeStandBlock {
+    public BreadBox(Properties settings) {
+        super(settings);
+    }
+
     private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
         VoxelShape shape = Shapes.empty();
         shape = Shapes.joinUnoptimized(shape, Shapes.box(0.0625, 0, 0.1875, 0.9375, 0.0625, 0.8125), BooleanOp.OR);
@@ -28,15 +32,12 @@ public class BreadBox extends CakeStandBlock {
         shape = Shapes.joinUnoptimized(shape, Shapes.box(0.875, 0.0625, 0.1875, 0.9375, 0.375, 0.25), BooleanOp.OR);
         return shape;
     };
+
     public static final Map<Direction, VoxelShape> SHAPE = Util.make(new HashMap<>(), map -> {
         for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
             map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
         }
     });
-
-    public BreadBox(Properties settings) {
-        super(settings);
-    }
 
     @Override
     public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {

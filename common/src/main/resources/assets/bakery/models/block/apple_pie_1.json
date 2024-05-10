@@ -1,180 +1,44 @@
 {
-  "credit": "Made by Satisfy",
-  "textures": {
-    "0": "bakery:block/apple_pie",
-    "particle": "bakery:block/apple_pie"
-  },
-  "elements": [
-    {
-      "from": [
-        1,
-        4,
-        8
-      ],
-      "to": [
-        8,
-        6,
-        15
-      ],
-      "rotation": {
-        "angle": 0,
-        "axis": "y",
-        "origin": [
-          16,
-          0,
-          0
-        ]
-      },
-      "faces": {
-        "north": {
-          "uv": [
-            7,
-            7,
-            14,
-            9
-          ],
-          "texture": "#0"
-        },
-        "east": {
-          "uv": [
-            14,
-            7,
-            7,
-            9
-          ],
-          "texture": "#0"
-        },
-        "south": {
-          "uv": [
-            7,
-            7,
-            0,
-            9
-          ],
-          "texture": "#0"
-        },
-        "west": {
-          "uv": [
-            7,
-            7,
-            0,
-            9
-          ],
-          "texture": "#0"
-        },
-        "up": {
-          "uv": [
-            7,
-            7,
-            0,
-            0
-          ],
-          "texture": "#0"
-        },
-        "down": {
-          "uv": [
-            7,
-            0,
-            0,
-            7
-          ],
-          "texture": "#0"
-        }
-      }
-    },
-    {
-      "from": [
-        2,
-        0,
-        8
-      ],
-      "to": [
-        8,
-        4,
-        14
-      ],
-      "rotation": {
-        "angle": 0,
-        "axis": "y",
-        "origin": [
-          16,
-          0,
-          0
-        ]
-      },
-      "faces": {
-        "north": {
-          "uv": [
-            6,
-            9,
-            12,
-            13
-          ],
-          "texture": "#0"
-        },
-        "east": {
-          "uv": [
-            12,
-            9,
-            6,
-            13
-          ],
-          "texture": "#0"
-        },
-        "south": {
-          "uv": [
-            6,
-            7,
-            0,
-            11
-          ],
-          "texture": "#0"
-        },
-        "west": {
-          "uv": [
-            6,
-            7,
-            0,
-            11
-          ],
-          "texture": "#0"
-        },
-        "up": {
-          "uv": [
-            6,
-            0,
-            0,
-            6
-          ],
-          "texture": "#0"
-        },
-        "down": {
-          "uv": [
-            7,
-            0,
-            13,
-            6
-          ],
-          "rotation": 180,
-          "texture": "#0"
-        }
-      }
-    }
-  ],
-  "groups": [
-    {
-      "name": "group",
-      "origin": [
-        0,
-        0,
-        0
-      ],
-      "color": 0,
-      "nbt": "{}",
-      "children": [
-        0,
-        1
-      ]
-    }
-  ]
+	"credit": "Made by Satisfy",
+	"textures": {
+		"0": "bakery:block/apple_pie",
+		"particle": "bakery:block/apple_pie"
+	},
+	"elements": [
+		{
+			"from": [1, 4, 8],
+			"to": [8, 6, 15],
+			"rotation": {"angle": 0, "axis": "y", "origin": [16, 0, 0]},
+			"faces": {
+				"north": {"uv": [7, 7, 14, 9], "texture": "#0"},
+				"east": {"uv": [14, 7, 7, 9], "texture": "#0"},
+				"south": {"uv": [7, 7, 0, 9], "texture": "#0"},
+				"west": {"uv": [7, 7, 0, 9], "texture": "#0"},
+				"up": {"uv": [7, 7, 0, 0], "texture": "#0"},
+				"down": {"uv": [7, 0, 0, 7], "texture": "#0"}
+			}
+		},
+		{
+			"from": [2, 0, 8],
+			"to": [8, 4, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [16, 0, 0]},
+			"faces": {
+				"north": {"uv": [6, 9, 12, 13], "texture": "#0"},
+				"east": {"uv": [12, 9, 6, 13], "texture": "#0"},
+				"south": {"uv": [6, 7, 0, 11], "texture": "#0"},
+				"west": {"uv": [6, 7, 0, 11], "texture": "#0"},
+				"up": {"uv": [6, 0, 0, 6], "texture": "#0"},
+				"down": {"uv": [7, 0, 13, 6], "rotation": 180, "texture": "#0"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "group",
+			"origin": [0, 0, 0],
+			"color": 0,
+			"nbt": "{}",
+			"children": [0, 1]
+		}
+	]
 }

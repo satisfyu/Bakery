@@ -1,5 +1,6 @@
 {
   "variants": {
+
     "facing=north,type=none": {
       "model": "bakery:block/brick_counter"
     },
@@ -15,6 +16,7 @@
       "model": "bakery:block/brick_counter",
       "y": 270
     },
+
     "facing=north,type=middle": {
       "model": "bakery:block/brick_counter_middle"
     },
@@ -30,6 +32,7 @@
       "model": "bakery:block/brick_counter_middle",
       "y": 270
     },
+
     "facing=north,type=left": {
       "model": "bakery:block/brick_counter_connected_left"
     },
@@ -45,6 +48,7 @@
       "model": "bakery:block/brick_counter_connected_left",
       "y": 270
     },
+
     "facing=north,type=right": {
       "model": "bakery:block/brick_counter_connected_right",
       "y": 180

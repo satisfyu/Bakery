@@ -36,12 +36,13 @@ import java.util.Objects;
 import static net.minecraft.world.item.ItemStack.isSameItemSameTags;
 
 public class SmallCookingPotBlockEntity extends BlockEntity implements BlockEntityTicker<SmallCookingPotBlockEntity>, ImplementedInventory, MenuProvider {
+    private final NonNullList<ItemStack> inventory = NonNullList.withSize(MAX_CAPACITY, ItemStack.EMPTY);
     private static final int MAX_CAPACITY = 8, CONTAINER_SLOT = 6, OUTPUT_SLOT = 7, INGREDIENTS_AREA = 2 * 3;
     private static final int[] SLOTS_FOR_UP = new int[]{0, 1, 2, 3, 4, 5, 6};
-    private static final int MAX_COOKING_TIME = 300;
-    private final NonNullList<ItemStack> inventory = NonNullList.withSize(MAX_CAPACITY, ItemStack.EMPTY);
     private int cookingTime;
     private boolean isBeingBurned;
+    private static final int MAX_COOKING_TIME = 300;
+
     private final ContainerData delegate = new ContainerData() {
         public int get(int index) {
             return switch (index) {

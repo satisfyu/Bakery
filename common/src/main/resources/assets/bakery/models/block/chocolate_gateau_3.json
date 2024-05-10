@@ -1,268 +1,78 @@
 {
-  "credit": "Made by Satisfy",
-  "textures": {
-    "0": "bakery:block/chocolate_gateau_top",
-    "1": "bakery:block/chocolate_gateau_side",
-    "2": "bakery:block/chocolate_gateau_bottom",
-    "3": "bakery:block/chocolate_gateau_inner",
-    "particle": "bakery:block/chocolate_gateau_top"
-  },
-  "elements": [
-    {
-      "from": [
-        1,
-        0,
-        1
-      ],
-      "to": [
-        8,
-        8,
-        8
-      ],
-      "faces": {
-        "north": {
-          "uv": [
-            8,
-            8,
-            15,
-            16
-          ],
-          "texture": "#1"
-        },
-        "east": {
-          "uv": [
-            8,
-            8,
-            15,
-            16
-          ],
-          "texture": "#3"
-        },
-        "south": {
-          "uv": [
-            1,
-            8,
-            8,
-            16
-          ],
-          "texture": "#3"
-        },
-        "west": {
-          "uv": [
-            1,
-            8,
-            8,
-            16
-          ],
-          "texture": "#1"
-        },
-        "up": {
-          "uv": [
-            1,
-            1,
-            8,
-            8
-          ],
-          "texture": "#0"
-        },
-        "down": {
-          "uv": [
-            1,
-            8,
-            8,
-            15
-          ],
-          "texture": "#2"
-        }
-      }
-    },
-    {
-      "from": [
-        8,
-        0,
-        8
-      ],
-      "to": [
-        15,
-        8,
-        15
-      ],
-      "faces": {
-        "north": {
-          "uv": [
-            1,
-            8,
-            8,
-            16
-          ],
-          "texture": "#3"
-        },
-        "east": {
-          "uv": [
-            1,
-            8,
-            8,
-            16
-          ],
-          "texture": "#1"
-        },
-        "south": {
-          "uv": [
-            8,
-            8,
-            15,
-            16
-          ],
-          "texture": "#1"
-        },
-        "west": {
-          "uv": [
-            8,
-            8,
-            15,
-            16
-          ],
-          "texture": "#3"
-        },
-        "up": {
-          "uv": [
-            8,
-            8,
-            15,
-            15
-          ],
-          "texture": "#0"
-        },
-        "down": {
-          "uv": [
-            1,
-            8,
-            8,
-            15
-          ],
-          "texture": "#2"
-        }
-      }
-    },
-    {
-      "from": [
-        1,
-        0,
-        8
-      ],
-      "to": [
-        8,
-        8,
-        15
-      ],
-      "faces": {
-        "north": {
-          "uv": [
-            8,
-            8,
-            15,
-            16
-          ],
-          "texture": "#3"
-        },
-        "east": {
-          "uv": [
-            1,
-            8,
-            8,
-            16
-          ],
-          "texture": "#3"
-        },
-        "south": {
-          "uv": [
-            1,
-            8,
-            8,
-            16
-          ],
-          "texture": "#1"
-        },
-        "west": {
-          "uv": [
-            8,
-            8,
-            15,
-            16
-          ],
-          "texture": "#1"
-        },
-        "up": {
-          "uv": [
-            1,
-            8,
-            8,
-            15
-          ],
-          "texture": "#0"
-        },
-        "down": {
-          "uv": [
-            1,
-            1,
-            8,
-            8
-          ],
-          "texture": "#2"
-        }
-      }
-    }
-  ],
-  "groups": [
-    {
-      "name": "slice1",
-      "origin": [
-        0,
-        0,
-        0
-      ],
-      "color": 0,
-      "nbt": "{}",
-      "children": [
-        0
-      ]
-    },
-    {
-      "name": "slice2",
-      "origin": [
-        0,
-        0,
-        0
-      ],
-      "color": 0,
-      "nbt": "{}",
-      "children": []
-    },
-    {
-      "name": "slice3",
-      "origin": [
-        0,
-        0,
-        0
-      ],
-      "color": 0,
-      "nbt": "{}",
-      "children": [
-        1
-      ]
-    },
-    {
-      "name": "slice4",
-      "origin": [
-        0,
-        0,
-        0
-      ],
-      "color": 0,
-      "nbt": "{}",
-      "children": [
-        2
-      ]
-    }
-  ]
+	"credit": "Made by Satisfy",
+	"textures": {
+		"0": "bakery:block/chocolate_gateau_top",
+		"1": "bakery:block/chocolate_gateau_side",
+		"2": "bakery:block/chocolate_gateau_bottom",
+		"3": "bakery:block/chocolate_gateau_inner",
+		"particle": "bakery:block/chocolate_gateau_top"
+	},
+	"elements": [
+		{
+			"from": [1, 0, 1],
+			"to": [8, 8, 8],
+			"faces": {
+				"north": {"uv": [8, 8, 15, 16], "texture": "#1"},
+				"east": {"uv": [8, 8, 15, 16], "texture": "#3"},
+				"south": {"uv": [1, 8, 8, 16], "texture": "#3"},
+				"west": {"uv": [1, 8, 8, 16], "texture": "#1"},
+				"up": {"uv": [1, 1, 8, 8], "texture": "#0"},
+				"down": {"uv": [1, 8, 8, 15], "texture": "#2"}
+			}
+		},
+		{
+			"from": [8, 0, 8],
+			"to": [15, 8, 15],
+			"faces": {
+				"north": {"uv": [1, 8, 8, 16], "texture": "#3"},
+				"east": {"uv": [1, 8, 8, 16], "texture": "#1"},
+				"south": {"uv": [8, 8, 15, 16], "texture": "#1"},
+				"west": {"uv": [8, 8, 15, 16], "texture": "#3"},
+				"up": {"uv": [8, 8, 15, 15], "texture": "#0"},
+				"down": {"uv": [1, 8, 8, 15], "texture": "#2"}
+			}
+		},
+		{
+			"from": [1, 0, 8],
+			"to": [8, 8, 15],
+			"faces": {
+				"north": {"uv": [8, 8, 15, 16], "texture": "#3"},
+				"east": {"uv": [1, 8, 8, 16], "texture": "#3"},
+				"south": {"uv": [1, 8, 8, 16], "texture": "#1"},
+				"west": {"uv": [8, 8, 15, 16], "texture": "#1"},
+				"up": {"uv": [1, 8, 8, 15], "texture": "#0"},
+				"down": {"uv": [1, 1, 8, 8], "texture": "#2"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "slice1",
+			"origin": [0, 0, 0],
+			"color": 0,
+			"nbt": "{}",
+			"children": [0]
+		},
+		{
+			"name": "slice2",
+			"origin": [0, 0, 0],
+			"color": 0,
+			"nbt": "{}",
+			"children": []
+		},
+		{
+			"name": "slice3",
+			"origin": [0, 0, 0],
+			"color": 0,
+			"nbt": "{}",
+			"children": [1]
+		},
+		{
+			"name": "slice4",
+			"origin": [0, 0, 0],
+			"color": 0,
+			"nbt": "{}",
+			"children": [2]
+		}
+	]
 }

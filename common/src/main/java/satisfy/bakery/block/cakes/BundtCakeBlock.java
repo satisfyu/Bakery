@@ -18,12 +18,17 @@ import java.util.function.Supplier;
 
 
 public class BundtCakeBlock extends PieBlock {
+    public BundtCakeBlock(Properties settings, Supplier<Item> slice) {
+        super(settings, slice);
+    }
+
     private static final Supplier<VoxelShape> fullShapeSupplier = () -> Shapes.box(0.25, 0, 0.25, 0.75, 0.5, 0.75);
     public static final Map<Direction, VoxelShape> FULL_SHAPE = Util.make(new HashMap<>(), map -> {
         for (Direction direction : Direction.Plane.HORIZONTAL) {
             map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, fullShapeSupplier.get()));
         }
     });
+
     private static final Supplier<VoxelShape> threeShapeSupplier = () -> {
         VoxelShape shape = Shapes.empty();
         shape = Shapes.or(shape, Shapes.box(0.25, 0, 0.25, 0.5, 0.5, 0.5));
@@ -36,6 +41,7 @@ public class BundtCakeBlock extends PieBlock {
             map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, threeShapeSupplier.get()));
         }
     });
+
     private static final Supplier<VoxelShape> halfShapeSupplier = () -> {
         VoxelShape shape = Shapes.empty();
         shape = Shapes.or(shape, Shapes.box(0.25, 0, 0.5, 0.5, 0.5, 0.75));
@@ -47,15 +53,13 @@ public class BundtCakeBlock extends PieBlock {
             map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, halfShapeSupplier.get()));
         }
     });
+
     private static final Supplier<VoxelShape> quarterShapeSupplier = () -> Shapes.box(0.25, 0, 0.5, 0.5, 0.5, 0.75);
     public static final Map<Direction, VoxelShape> QUARTER_SHAPE = Util.make(new HashMap<>(), map -> {
         for (Direction direction : Direction.Plane.HORIZONTAL) {
             map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, quarterShapeSupplier.get()));
         }
     });
-    public BundtCakeBlock(Properties settings, Supplier<Item> slice) {
-        super(settings, slice);
-    }
 
     @Override
     public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {

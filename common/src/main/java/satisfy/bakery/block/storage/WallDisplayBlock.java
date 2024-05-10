@@ -43,37 +43,14 @@ public class WallDisplayBlock extends StorageBlock {
 
     public static final DirectionProperty FACING;
     public static final EnumProperty<LineConnectingType> TYPE;
-    private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
-        VoxelShape shape = Shapes.empty();
-        shape = Shapes.joinUnoptimized(shape, Shapes.box(0, 0, 0.5, 1, 1, 1), BooleanOp.OR);
-        return shape;
-    };
-    public static final Map<Direction, VoxelShape> SHAPE = Util.make(new HashMap<>(), map -> {
-        for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
-            map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
-        }
-    });
-
-    static {
-        FACING = BlockStateProperties.HORIZONTAL_FACING;
-        TYPE = GeneralUtil.LINE_CONNECTING_TYPE;
-    }
 
     public WallDisplayBlock(Properties settings) {
         super(settings);
         this.registerDefaultState(((this.stateDefinition.any().setValue(FACING, Direction.NORTH)).setValue(TYPE, LineConnectingType.NONE)));
     }
 
-    private static int getXSection(float f) {
-        if (f < 0.5F) {
-            return 1;
-        } else {
-            return f < 0.75F ? 0 : 1;
-        }
-    }
-
     @Override
-    public int size() {
+    public int size(){
         return 6;
     }
 
@@ -98,6 +75,15 @@ public class WallDisplayBlock extends StorageBlock {
         int j = getXSection(x);
         return j + i * 2;
     }
+
+    private static int getXSection(float f) {
+        if (f < 0.5F) {
+            return 1;
+        } else {
+            return f < 0.75F ? 0 : 1;
+        }
+    }
+
 
     @Nullable
     @Override
@@ -129,10 +115,14 @@ public class WallDisplayBlock extends StorageBlock {
 
         LineConnectingType type;
         switch (facing) {
-            case EAST -> type = getType(state, world.getBlockState(pos.south()), world.getBlockState(pos.north()));
-            case SOUTH -> type = getType(state, world.getBlockState(pos.west()), world.getBlockState(pos.east()));
-            case WEST -> type = getType(state, world.getBlockState(pos.north()), world.getBlockState(pos.south()));
-            default -> type = getType(state, world.getBlockState(pos.east()), world.getBlockState(pos.west()));
+            case EAST ->
+                    type = getType(state, world.getBlockState(pos.south()), world.getBlockState(pos.north()));
+            case SOUTH ->
+                    type =  getType(state, world.getBlockState(pos.west()), world.getBlockState(pos.east()));
+            case WEST ->
+                    type =  getType(state, world.getBlockState(pos.north()), world.getBlockState(pos.south()));
+            default ->
+                    type =  getType(state, world.getBlockState(pos.east()), world.getBlockState(pos.west()));
         }
         if (state.getValue(TYPE) != type) {
             state = state.setValue(TYPE, type);
@@ -160,6 +150,18 @@ public class WallDisplayBlock extends StorageBlock {
         builder.add(TYPE);
     }
 
+    private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
+        VoxelShape shape = Shapes.empty();
+        shape = Shapes.joinUnoptimized(shape, Shapes.box(0, 0, 0.5, 1, 1, 1), BooleanOp.OR);
+        return shape;
+    };
+
+    public static final Map<Direction, VoxelShape> SHAPE = Util.make(new HashMap<>(), map -> {
+        for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
+            map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
+        }
+    });
+
     @Override
     @SuppressWarnings("deprecation")
     public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
@@ -179,6 +181,11 @@ public class WallDisplayBlock extends StorageBlock {
     @Override
     public @NotNull BlockState mirror(BlockState state, Mirror mirror) {
         return state.rotate(mirror.getRotation(state.getValue(FACING)));
+    }
+
+    static {
+        FACING = BlockStateProperties.HORIZONTAL_FACING;
+        TYPE = GeneralUtil.LINE_CONNECTING_TYPE;
     }
 
     @Override

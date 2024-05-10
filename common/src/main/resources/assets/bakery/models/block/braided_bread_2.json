@@ -1,167 +1,35 @@
 {
-  "credit": "Made by Satisfy",
-  "textures": {
-    "0": "bakery:block/braided_bread",
-    "particle": "bakery:block/braided_bread"
-  },
-  "elements": [
-    {
-      "from": [
-        2,
-        0,
-        3
-      ],
-      "to": [
-        7,
-        4,
-        13
-      ],
-      "rotation": {
-        "angle": 0,
-        "axis": "y",
-        "origin": [
-          5.5,
-          0,
-          3
-        ]
-      },
-      "faces": {
-        "north": {
-          "uv": [
-            3,
-            10,
-            8,
-            14
-          ],
-          "texture": "#0"
-        },
-        "east": {
-          "uv": [
-            4,
-            0,
-            0,
-            10
-          ],
-          "rotation": 90,
-          "texture": "#0"
-        },
-        "south": {
-          "uv": [
-            3,
-            10,
-            8,
-            14
-          ],
-          "texture": "#0"
-        },
-        "west": {
-          "uv": [
-            4,
-            10,
-            0,
-            0
-          ],
-          "rotation": 90,
-          "texture": "#0"
-        },
-        "up": {
-          "uv": [
-            3,
-            0,
-            8,
-            10
-          ],
-          "texture": "#0"
-        },
-        "down": {
-          "uv": [
-            8,
-            0,
-            13,
-            10
-          ],
-          "texture": "#0"
-        }
-      }
-    },
-    {
-      "from": [
-        9,
-        0,
-        3
-      ],
-      "to": [
-        14,
-        4,
-        13
-      ],
-      "rotation": {
-        "angle": 0,
-        "axis": "y",
-        "origin": [
-          5.5,
-          0,
-          3
-        ]
-      },
-      "faces": {
-        "north": {
-          "uv": [
-            3,
-            10,
-            8,
-            14
-          ],
-          "texture": "#0"
-        },
-        "east": {
-          "uv": [
-            4,
-            0,
-            0,
-            10
-          ],
-          "rotation": 90,
-          "texture": "#0"
-        },
-        "south": {
-          "uv": [
-            3,
-            10,
-            8,
-            14
-          ],
-          "texture": "#0"
-        },
-        "west": {
-          "uv": [
-            4,
-            10,
-            0,
-            0
-          ],
-          "rotation": 90,
-          "texture": "#0"
-        },
-        "up": {
-          "uv": [
-            3,
-            0,
-            8,
-            10
-          ],
-          "texture": "#0"
-        },
-        "down": {
-          "uv": [
-            8,
-            0,
-            13,
-            10
-          ],
-          "texture": "#0"
-        }
-      }
-    }
-  ]
+	"credit": "Made by Satisfy",
+	"textures": {
+		"0": "bakery:block/braided_bread",
+		"particle": "bakery:block/braided_bread"
+	},
+	"elements": [
+		{
+			"from": [2, 0, 3],
+			"to": [7, 4, 13],
+			"rotation": {"angle": 0, "axis": "y", "origin": [5.5, 0, 3]},
+			"faces": {
+				"north": {"uv": [3, 10, 8, 14], "texture": "#0"},
+				"east": {"uv": [4, 0, 0, 10], "rotation": 90, "texture": "#0"},
+				"south": {"uv": [3, 10, 8, 14], "texture": "#0"},
+				"west": {"uv": [4, 10, 0, 0], "rotation": 90, "texture": "#0"},
+				"up": {"uv": [3, 0, 8, 10], "texture": "#0"},
+				"down": {"uv": [8, 0, 13, 10], "texture": "#0"}
+			}
+		},
+		{
+			"from": [9, 0, 3],
+			"to": [14, 4, 13],
+			"rotation": {"angle": 0, "axis": "y", "origin": [5.5, 0, 3]},
+			"faces": {
+				"north": {"uv": [3, 10, 8, 14], "texture": "#0"},
+				"east": {"uv": [4, 0, 0, 10], "rotation": 90, "texture": "#0"},
+				"south": {"uv": [3, 10, 8, 14], "texture": "#0"},
+				"west": {"uv": [4, 10, 0, 0], "rotation": 90, "texture": "#0"},
+				"up": {"uv": [3, 0, 8, 10], "texture": "#0"},
+				"down": {"uv": [8, 0, 13, 10], "texture": "#0"}
+			}
+		}
+	]
 }

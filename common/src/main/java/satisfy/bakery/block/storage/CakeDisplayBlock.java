@@ -39,38 +39,14 @@ public class CakeDisplayBlock extends StorageBlock {
 
     public static final DirectionProperty FACING;
     public static final EnumProperty<GeneralUtil.LineConnectingType> TYPE;
-    private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
-        VoxelShape shape = Shapes.empty();
-        shape = Shapes.or(shape, Shapes.box(0, 0, 0.1875, 1, 0.0625, 0.9375));
-        shape = Shapes.or(shape, Shapes.box(0, 0.0625, 0.375, 1, 0.875, 0.9375));
-        return shape;
-    };
-    public static final Map<Direction, VoxelShape> SHAPE = Util.make(new HashMap<>(), map -> {
-        for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
-            map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
-        }
-    });
-
-    static {
-        FACING = BlockStateProperties.HORIZONTAL_FACING;
-        TYPE = GeneralUtil.LINE_CONNECTING_TYPE;
-    }
 
     public CakeDisplayBlock(Properties settings) {
         super(settings);
         this.registerDefaultState(((this.stateDefinition.any().setValue(FACING, Direction.NORTH)).setValue(TYPE, GeneralUtil.LineConnectingType.NONE)));
     }
 
-    private static int getXSection(float f) {
-        if (f < 0.375F) {
-            return 2;
-        } else {
-            return f < 0.6875F ? 1 : 0;
-        }
-    }
-
     @Override
-    public int size() {
+    public int size(){
         return 6;
     }
 
@@ -95,6 +71,15 @@ public class CakeDisplayBlock extends StorageBlock {
         int j = getXSection(x);
         return j + i * 3;
     }
+
+    private static int getXSection(float f) {
+        if (f < 0.375F) {
+            return 2;
+        } else {
+            return f < 0.6875F ? 1 : 0;
+        }
+    }
+
 
     @Nullable
     @Override
@@ -125,10 +110,14 @@ public class CakeDisplayBlock extends StorageBlock {
 
         GeneralUtil.LineConnectingType type;
         switch (facing) {
-            case EAST -> type = getType(state, world.getBlockState(pos.south()), world.getBlockState(pos.north()));
-            case SOUTH -> type = getType(state, world.getBlockState(pos.west()), world.getBlockState(pos.east()));
-            case WEST -> type = getType(state, world.getBlockState(pos.north()), world.getBlockState(pos.south()));
-            default -> type = getType(state, world.getBlockState(pos.east()), world.getBlockState(pos.west()));
+            case EAST ->
+                    type = getType(state, world.getBlockState(pos.south()), world.getBlockState(pos.north()));
+            case SOUTH ->
+                    type =  getType(state, world.getBlockState(pos.west()), world.getBlockState(pos.east()));
+            case WEST ->
+                    type =  getType(state, world.getBlockState(pos.north()), world.getBlockState(pos.south()));
+            default ->
+                    type =  getType(state, world.getBlockState(pos.east()), world.getBlockState(pos.west()));
         }
         if (state.getValue(TYPE) != type) {
             state = state.setValue(TYPE, type);
@@ -156,11 +145,23 @@ public class CakeDisplayBlock extends StorageBlock {
         builder.add(TYPE);
     }
 
+    private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
+        VoxelShape shape = Shapes.empty();
+        shape = Shapes.or(shape, Shapes.box(0, 0, 0.1875, 1, 0.0625, 0.9375));
+        shape = Shapes.or(shape, Shapes.box(0, 0.0625, 0.375, 1, 0.875, 0.9375));
+        return shape;
+    };
+
+    public static final Map<Direction, VoxelShape> SHAPE = Util.make(new HashMap<>(), map -> {
+        for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
+            map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
+        }
+    });
+
     @Override
     public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         return SHAPE.get(state.getValue(FACING));
     }
-
     @Override
     public @NotNull BlockState rotate(BlockState state, Rotation rotation) {
         return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
@@ -169,6 +170,11 @@ public class CakeDisplayBlock extends StorageBlock {
     @Override
     public @NotNull BlockState mirror(BlockState state, Mirror mirror) {
         return state.rotate(mirror.getRotation(state.getValue(FACING)));
+    }
+
+    static {
+        FACING = BlockStateProperties.HORIZONTAL_FACING;
+        TYPE = GeneralUtil.LINE_CONNECTING_TYPE;
     }
 
     @Override
