@@ -1,63 +1,63 @@
 {
   "variants": {
     "stack=1,facing=north": {
-      "model": "bakery:block/toast_1"
+      "model": "bakery:block/sweetberry_jam_stack1"
     },
     "stack=1,facing=east": {
-      "model": "bakery:block/toast_1",
+      "model": "bakery:block/sweetberry_jam_stack1",
       "y": 90
     },
     "stack=1,facing=south": {
-      "model": "bakery:block/toast_1",
+      "model": "bakery:block/sweetberry_jam_stack1",
       "y": 180
     },
     "stack=1,facing=west": {
-      "model": "bakery:block/toast_1",
+      "model": "bakery:block/sweetberry_jam_stack1",
       "y": 270
     },
     "stack=2,facing=north": {
-      "model": "bakery:block/toast_2"
+      "model": "bakery:block/sweetberry_jam_stack2"
     },
     "stack=2,facing=east": {
-      "model": "bakery:block/toast_2",
+      "model": "bakery:block/sweetberry_jam_stack2",
       "y": 90
     },
     "stack=2,facing=south": {
-      "model": "bakery:block/toast_2",
+      "model": "bakery:block/sweetberry_jam_stack2",
       "y": 180
     },
     "stack=2,facing=west": {
-      "model": "bakery:block/toast_2",
+      "model": "bakery:block/sweetberry_jam_stack2",
       "y": 270
     },
     "stack=3,facing=north": {
-      "model": "bakery:block/toast_3"
+      "model": "bakery:block/sweetberry_jam_stack3"
     },
     "stack=3,facing=east": {
-      "model": "bakery:block/toast_3",
+      "model": "bakery:block/sweetberry_jam_stack3",
       "y": 90
     },
     "stack=3,facing=south": {
-      "model": "bakery:block/toast_3",
+      "model": "bakery:block/sweetberry_jam_stack3",
       "y": 180
     },
     "stack=3,facing=west": {
-      "model": "bakery:block/toast_3",
+      "model": "bakery:block/sweetberry_jam_stack3",
       "y": 270
     },
     "stack=4,facing=north": {
-      "model": "bakery:block/toast_3"
+      "model": "bakery:block/sweetberry_jam_stack3"
     },
     "stack=4,facing=east": {
-      "model": "bakery:block/toast_3",
+      "model": "bakery:block/sweetberry_jam_stack3",
       "y": 90
     },
     "stack=4,facing=south": {
-      "model": "bakery:block/toast_3",
+      "model": "bakery:block/sweetberry_jam_stack3",
       "y": 180
     },
     "stack=4,facing=west": {
-      "model": "bakery:block/toast_3",
+      "model": "bakery:block/sweetberry_jam_stack3",
       "y": 270
     },
     "stack=5,facing=north": {
