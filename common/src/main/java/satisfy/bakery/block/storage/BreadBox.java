@@ -1,9 +1,13 @@
 package satisfy.bakery.block.storage;
 
+import de.cristelknight.doapi.common.block.StorageBlock;
 import de.cristelknight.doapi.common.util.GeneralUtil;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.BooleanOp;
@@ -11,12 +15,13 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
+import satisfy.bakery.registry.StorageTypeRegistry;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class BreadBox extends CakeStandBlock {
+public class BreadBox extends StorageBlock {
     public BreadBox(Properties settings) {
         super(settings);
     }
@@ -40,22 +45,33 @@ public class BreadBox extends CakeStandBlock {
     });
 
     @Override
+    @SuppressWarnings("deprecation")
     public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         return SHAPE.get(state.getValue(FACING));
     }
 
     @Override
-    public int getSection(Float f, Float y) {
-        int nSection;
-        float oneS = 1.0f / 9;
-
-        nSection = (int) (f / oneS);
-
-        return 8 - nSection;
+    public int size() {
+        return 1;
     }
 
     @Override
-    public int size() {
-        return 4;
+    public ResourceLocation type() {
+        return StorageTypeRegistry.BREADBOX;
+    }
+
+    @Override
+    public Direction[] unAllowedDirections() {
+        return new Direction[0];
+    }
+
+    @Override
+    public boolean canInsertStack(ItemStack stack) {
+        return stack.isEdible() || stack.getItem() instanceof BlockItem;
+    }
+
+    @Override
+    public int getSection(Float aFloat, Float aFloat1) {
+        return 0;
     }
 }

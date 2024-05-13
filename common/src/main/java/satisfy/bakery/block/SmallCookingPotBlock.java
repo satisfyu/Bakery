@@ -44,7 +44,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import satisfy.bakery.entity.SmallCookingPotBlockEntity;
+import satisfy.bakery.block.entity.SmallCookingPotBlockEntity;
 
 import java.util.HashMap;
 import java.util.List;
