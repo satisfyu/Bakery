@@ -2,6 +2,7 @@ package satisfy.bakery.block;
 
 import de.cristelknight.doapi.common.block.FacingBlock;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -42,6 +43,9 @@ public class BakerStationBlock extends FacingBlock {
                     }
                     return InteractionResult.SUCCESS;
                 }
+            } else {
+                player.displayClientMessage(Component.translatable("tooltip.bakery.cakedoughonstation"), true);
+                return InteractionResult.PASS;
             }
         }
         return InteractionResult.PASS;
