@@ -1,63 +1,63 @@
 {
   "variants": {
-    "facing=east,filled=false,has_faucet=false": {
-      "model": "bakery:block/kitchen_sink",
-      "y": 90
+    "half=lower,filled=false,facing=north": {
+      "model": "bakery:block/kitchen_sink_bottom"
     },
-    "facing=north,filled=false,has_faucet=false": {
-      "model": "bakery:block/kitchen_sink"
-    },
-    "facing=south,filled=false,has_faucet=false": {
-      "model": "bakery:block/kitchen_sink",
-      "y": 180
-    },
-    "facing=west,filled=false,has_faucet=false": {
-      "model": "bakery:block/kitchen_sink",
-      "y": 270
-    },
-    "facing=east,filled=false,has_faucet=true": {
-      "model": "bakery:block/kitchen_sink_faucet",
-      "y": 90
-    },
-    "facing=north,filled=false,has_faucet=true": {
+    "half=upper,filled=false,facing=north": {
       "model": "bakery:block/kitchen_sink_faucet"
     },
-    "facing=south,filled=false,has_faucet=true": {
+    "half=lower,filled=true,facing=north": {
+      "model": "bakery:block/kitchen_sink_bottom_water"
+    },
+    "half=upper,filled=true,facing=north": {
+      "model": "bakery:block/kitchen_sink_faucet"
+    },
+    "half=lower,filled=false,facing=east": {
+      "model": "bakery:block/kitchen_sink_bottom",
+      "y": 90
+    },
+    "half=lower,filled=true,facing=east": {
+      "model": "bakery:block/kitchen_sink_bottom_water",
+      "y": 90
+    },
+    "half=upper,filled=false,facing=east": {
+      "model": "bakery:block/kitchen_sink_faucet",
+      "y": 90
+    },
+    "half=upper,filled=true,facing=east": {
+      "model": "bakery:block/kitchen_sink_faucet",
+      "y": 90
+    },
+    "half=lower,filled=false,facing=south": {
+      "model": "bakery:block/kitchen_sink_bottom",
+      "y": 180
+    },
+    "half=lower,filled=true,facing=south": {
+      "model": "bakery:block/kitchen_sink_bottom_water",
+      "y": 180
+    },
+    "half=upper,filled=false,facing=south": {
       "model": "bakery:block/kitchen_sink_faucet",
       "y": 180
     },
-    "facing=west,filled=false,has_faucet=true": {
+    "half=upper,filled=true,facing=south": {
+      "model": "bakery:block/kitchen_sink_faucet",
+      "y": 180
+    },
+    "half=lower,filled=false,facing=west": {
+      "model": "bakery:block/kitchen_sink_bottom",
+      "y": 270
+    },
+    "half=lower,filled=true,facing=west": {
+      "model": "bakery:block/kitchen_sink_bottom_water",
+      "y": 270
+    },
+    "half=upper,filled=false,facing=west": {
       "model": "bakery:block/kitchen_sink_faucet",
       "y": 270
     },
-    "facing=east,filled=true,has_faucet=true": {
-      "model": "bakery:block/kitchen_sink_faucet_water",
-      "y": 90
-    },
-    "facing=north,filled=true,has_faucet=true": {
-      "model": "bakery:block/kitchen_sink_faucet_water"
-    },
-    "facing=south,filled=true,has_faucet=true": {
-      "model": "bakery:block/kitchen_sink_faucet_water",
-      "y": 180
-    },
-    "facing=west,filled=true,has_faucet=true": {
-      "model": "bakery:block/kitchen_sink_faucet_water",
-      "y": 270
-    },
-    "facing=east,filled=true,has_faucet=false": {
-      "model": "bakery:block/kitchen_sink_water",
-      "y": 90
-    },
-    "facing=north,filled=true,has_faucet=false": {
-      "model": "bakery:block/kitchen_sink_water"
-    },
-    "facing=south,filled=true,has_faucet=false": {
-      "model": "bakery:block/kitchen_sink_water",
-      "y": 180
-    },
-    "facing=west,filled=true,has_faucet=false": {
-      "model": "bakery:block/kitchen_sink_water",
+    "half=upper,filled=true,facing=west": {
+      "model": "bakery:block/kitchen_sink_faucet",
       "y": 270
     }
   }

@@ -1,5 +1,6 @@
 package satisfy.bakery.block;
 
+import de.cristelknight.doapi.common.registry.DoApiSoundEventRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -102,28 +103,27 @@ public class StoveBlock extends Block implements EntityBlock {
 
     @Override
     public void animateTick(BlockState state, Level world, BlockPos pos, RandomSource random) {
-        if (!state.getValue(LIT))
-            return;
+        if (!state.getValue(LIT)) return;
 
-        double d = (double) pos.getX() + 0.5;
+        double d = pos.getX() + 0.5;
         double e = pos.getY() + 0.24;
-        double f = (double) pos.getZ() + 0.5;
+        double f = pos.getZ() + 0.5;
+
         if (random.nextDouble() < 0.4)
-            world.playLocalSound(d, e, f, SoundEvents.CAMPFIRE_CRACKLE, SoundSource.BLOCKS, 1.0f, 1.0f, false);
-        world.playLocalSound(d, e, f, SoundEvents.SMOKER_SMOKE, SoundSource.BLOCKS, 1.0f, 1.0f, false);
-        world.playLocalSound(d, e, f, SoundEvents.FURNACE_FIRE_CRACKLE, SoundSource.BLOCKS, 1.0f, 1.0f, false);
+            world.playLocalSound(d, e, f, DoApiSoundEventRegistry.STOVE_CRACKLING.get(), SoundSource.BLOCKS, 0.25f, 1.0f, false);
 
         Direction direction = state.getValue(FACING);
         Direction.Axis axis = direction.getAxis();
         double h = random.nextDouble() * 0.6 - 0.3;
-        double i = axis == Direction.Axis.X ? (double) direction.getStepX() * 0.52 : h;
-        double j = random.nextDouble() * 6.0 / 16.0;
-        double k = axis == Direction.Axis.Z ? (double) direction.getStepZ() * 0.52 : h;
+        double i = axis == Direction.Axis.X ? direction.getStepX() * 0.52 : h;
+        double j = random.nextDouble() * 0.375;
+        double k = axis == Direction.Axis.Z ? direction.getStepZ() * 0.52 : h;
+
         world.addParticle(ParticleTypes.SMOKE, d + i, e + j, f + k, 0.0, 0.0, 0.0);
         world.addParticle(ParticleTypes.FLAME, d + i, e + j, f + k, 0.0, 0.0, 0.0);
-        double particleHeight = pos.getY() + 0.5 + 1.0;
-        world.addParticle(ParticleTypes.SMOKE, d, particleHeight, f, 0.0, 0.0, 0.0);
+        world.addParticle(ParticleTypes.SMOKE, d, pos.getY() + 1.5, f, 0.0, 0.0, 0.0);
     }
+
 
     @Override
     public void stepOn(Level world, BlockPos pos, BlockState state, Entity entity) {

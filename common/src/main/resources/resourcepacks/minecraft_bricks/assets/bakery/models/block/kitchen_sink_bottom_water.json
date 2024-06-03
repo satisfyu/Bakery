@@ -3,7 +3,7 @@
 	"textures": {
 		"1": "bakery:block/old_sink_side",
 		"2": "bakery:block/old_sink_bottom",
-		"4": "block/water_still",
+		"4": "bakery:block/water_still",
 		"5": "bakery:block/old_sink_top",
 		"particle": "bakery:block/old_sink_side"
 	},

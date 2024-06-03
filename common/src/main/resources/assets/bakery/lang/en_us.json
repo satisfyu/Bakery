@@ -173,5 +173,6 @@
   "tooltip.bakery.thankyou_1": "A reward for crafting all baked Goods",
   "tooltip.bakery.thankyou_2": "When placed:",
   "tooltip.bakery.thankyou_3": "Thank you for playing Bakery!",
-  "tooltip.bakery.thankyou_4": "Grants Resistance in a radius of 8 blocks"
+  "tooltip.bakery.thankyou_4": "Grants Resistance in a radius of 8 blocks",
+  "tooltip.bakery.cakedoughonstation": "Place Cake Dough on top of the Caking Station to start caking"
 }
