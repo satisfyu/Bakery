@@ -19,15 +19,11 @@ public class BakeryClient {
         RenderTypeRegistry.register(RenderType.cutout(),
                 CAKE_STAND.get(), IRON_TABLE.get(), IRON_CHAIR.get(), JAR.get(), SWEETBERRY_JAM.get(), CHOCOLATE_JAM.get(),
                 STRAWBERRY_JAM.get(), GLOWBERRY_JAM.get(), APPLE_JAM.get(), CAKE_DISPLAY.get(), SMALL_COOKING_POT.get(),
-                IRON_BENCH.get(), BAKER_STATION.get()
+                IRON_BENCH.get(), BAKER_STATION.get(), TRAY.get()
         );
 
         ClientStorageTypes.init();
-        RenderTypeRegistry.register(RenderType.translucent(), TRAY.get());
         RenderTypeRegistry.register(RenderType.translucent(), CAKE_STAND.get());
-        RenderTypeRegistry.register(RenderType.translucent(), CAKE_DISPLAY.get());
-        RenderTypeRegistry.register(RenderType.translucent(), CUPCAKE_DISPLAY.get());
-        RenderTypeRegistry.register(RenderType.translucent(), WALL_DISPLAY.get());
     }
 
     public static void preInitClient() {

@@ -117,7 +117,7 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Item> CORNET = registerItem("cornet", () -> new EffectItem(getFoodItemSettings(3, 0.5f, MobEffectRegistry.SWEETS.get(), 900), 800));
     public static final RegistrySupplier<Item> JAM_ROLL = registerItem("jam_roll", () -> new EffectItem(getFoodItemSettings(3, 0.5f, MobEffectRegistry.SWEETS.get(), 900), 800));
     public static final RegistrySupplier<Block> WAFFLE_BLOCK = registerWithoutItem("waffle_block", () -> new StackableEatableBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), 4));
-    public static final RegistrySupplier<Item> WAFFLE = registerItem("waffle", () -> new EffectBlockItem(WAFFLE_BLOCK.get(), getFoodItemSettings(5, 1.2f, MobEffectRegistry.SUSTENANCE.get(), 800)));
+    public static final RegistrySupplier<Item> WAFFLE = registerItem("waffle", () -> new EffectBlockItem(WAFFLE_BLOCK.get(), getFoodItemSettings(5, 0.5f, MobEffectRegistry.SUSTENANCE.get(), 800)));
     public static final RegistrySupplier<Item> CHOCOLATE_TRUFFLE = registerItem("chocolate_truffle", () -> new EffectItem(getFoodItemSettings(2, 0.4f, MobEffectRegistry.SWEETS.get(), 900), 200));
     public static final RegistrySupplier<Item> MISSLILITU_BISCUIT = registerItem("misslilitu_biscuit", () -> new EffectItem(getFoodItemSettings(6, 0.6f, MobEffectRegistry.SUSTENANCE.get(), 900), 4200));
     public static final RegistrySupplier<Item> WANDERING_BAKER_SPAWN_EGG = registerItem("wandering_baker_spawn_egg", () -> new ArchitecturySpawnEggItem(EntityTypeRegistry.WANDERING_BAKER, -1, -1, getSettingsWithoutTab()));
