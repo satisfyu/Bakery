@@ -30,22 +30,15 @@ public class BakeryClient {
                 STRAWBERRY_JAM.get(), GLOWBERRY_JAM.get(), APPLE_JAM.get(), OAT_CROP.get(), STRAWBERRY_CROP.get(), WILD_STRAWBERRIES.get(),
                 CAKE_DISPLAY.get(), BRICK_STOVE.get(), DEEPSLATE_STOVE.get(), MUD_STOVE.get(), GRANITE_STOVE.get(),
                 QUARTZ_STOVE.get(), RED_NETHER_BRICKS_STOVE.get(), END_STOVE.get(), SANDSTONE_STOVE.get(), COBBLESTONE_STOVE.get(),
-                STONE_BRICKS_STOVE.get(), BAKER_STATION.get()
+                STONE_BRICKS_STOVE.get(), BAKER_STATION.get(), TRAY.get()
         );
 
-
         ClientStorageTypes.init();
-        RenderTypeRegistry.register(RenderType.translucent(), TRAY.get());
         RenderTypeRegistry.register(RenderType.translucent(), CAKE_STAND.get());
-        RenderTypeRegistry.register(RenderType.translucent(), CAKE_DISPLAY.get());
-        RenderTypeRegistry.register(RenderType.translucent(), CUPCAKE_DISPLAY.get());
-        RenderTypeRegistry.register(RenderType.translucent(), WALL_DISPLAY.get());
-        RenderTypeRegistry.register(RenderType.translucent(), CRAFTING_BOWL.get());
         BlockEntityRendererRegistry.register(BlockEntityTypeRegistry.STOVE_BLOCK_ENTITY.get(), StoveBlockRenderer::new);
         BlockEntityRendererRegistry.register(BlockEntityTypeRegistry.CRAFTING_BOWL_BLOCK_ENTITY.get(), CraftingBowlRenderer::new);
         MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.STOVE_SCREEN_HANDLER.get(), StoveGui::new);
         MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.COOKING_POT_SCREEN_HANDLER.get(), CookingPotGui::new);
-
     }
 
 
