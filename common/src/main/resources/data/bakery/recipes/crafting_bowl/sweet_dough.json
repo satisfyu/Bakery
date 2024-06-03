@@ -15,6 +15,7 @@
     }
   ],
   "result": {
-    "item": "bakery:sweet_dough"
+    "item": "bakery:sweet_dough",
+    "count": 12
   }
 }

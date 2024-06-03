@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "BWB",
-    "BBB",
-    "B B"
+    "WBW",
+    "WWW",
+    "W W"
   ],
   "key": {
     "B": {
@@ -14,6 +14,7 @@
     }
   },
   "result": {
-    "item": "bakery:iron_chair"
+    "item": "bakery:iron_chair",
+    "count": 2
   }
 }

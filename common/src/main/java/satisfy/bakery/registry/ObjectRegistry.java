@@ -128,7 +128,7 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Item> CORNET = registerItem("cornet", () -> new EffectItem(getFoodItemSettings(3, 0.5f, EffectRegistry.SWEETS.get(), 60 * 15), 800));
     public static final RegistrySupplier<Item> JAM_ROLL = registerItem("jam_roll", () -> new EffectItem(getFoodItemSettings(3, 0.5f, EffectRegistry.SWEETS.get(), 60 * 15), 800));
     public static final RegistrySupplier<Block> WAFFLE_BLOCK = registerWithoutItem("waffle_block", () -> new StackableBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), 4));
-    public static final RegistrySupplier<Item> WAFFLE = registerItem("waffle", () -> new FoodBlockItem(WAFFLE_BLOCK.get(), getFoodItemSettings(5, 1.2f, EffectRegistry.STUFFED.get(), 800)));
+    public static final RegistrySupplier<Item> WAFFLE = registerItem("waffle", () -> new FoodBlockItem(WAFFLE_BLOCK.get(), getFoodItemSettings(5, 0.5f, EffectRegistry.STUFFED.get(), 800)));
     public static final RegistrySupplier<Item> CHOCOLATE_TRUFFLE = registerItem("chocolate_truffle", () -> new EffectItem(getFoodItemSettings(2, 0.4f, EffectRegistry.SWEETS.get(), 60 * 15), 200));
     public static final RegistrySupplier<Item> MISSLILITU_BISCUIT = registerItem("misslilitu_biscuit", () -> new EffectItem(getFoodItemSettings(6, 0.6f, EffectRegistry.STUFFED.get(), 60 * 15), 4200));
     public static final RegistrySupplier<Block> COBBLESTONE_STOVE = registerWithItem("cobblestone_stove", () -> new StoveBlock(BlockBehaviour.Properties.copy(Blocks.BRICKS).lightLevel(state -> state.getValue(StoveBlock.LIT) ? 13 : 0)));
