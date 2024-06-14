@@ -6,7 +6,7 @@
   "client": [
   ],
   "mixins": [
-    "WanderingTraderManagerMixin"
+    "net.satisfy.bakery.mixin.WanderingTraderManagerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

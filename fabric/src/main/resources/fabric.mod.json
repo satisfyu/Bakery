@@ -16,19 +16,19 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "satisfy.bakery.fabric.BakeryFabric"
+      "net.satisfy.bakery.fabric.BakeryFabric"
     ],
     "doapi": [
-      "satisfy.bakery.util.DoApiImpl"
+      "net.satisfy.bakery.util.DoApiImpl"
     ],
     "client": [
-      "satisfy.bakery.fabric.client.BakeryClientFabric"
+      "net.satisfy.bakery.fabric.client.BakeryClientFabric"
     ],
     "rei_client": [
-      "satisfy.bakery.fabric.rei.BakeryReiClientPluginFabric"
+      "net.satisfy.bakery.fabric.rei.BakeryReiClientPluginFabric"
     ],
     "jei_mod_plugin": [
-      "satisfy.bakery.compat.jei.BakeryJEIPlugin"
+      "net.satisfy.bakery.compat.jei.BakeryJEIPlugin"
     ]
   },
   "mixins": [
