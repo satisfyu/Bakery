@@ -10,8 +10,8 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.satisfy.bakery.block.entity.SmallCookingPotBlockEntity;
 import net.satisfy.bakery.entity.WanderingBakerEntity;
 import net.satisfy.bakery.util.BakeryIdentifier;
-import net.satisfy.farm_and_charm.FarmAndCharm;
 import net.satisfy.bakery.Bakery;
+import net.satisfy.farm_and_charm.FarmAndCharm;
 
 import java.util.function.Supplier;
 

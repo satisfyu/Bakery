@@ -10,7 +10,7 @@
   },
   "pattern": [
     "WWW",
-    "# #"
+    "B B"
   ],
   "result": {
     "count": 4,

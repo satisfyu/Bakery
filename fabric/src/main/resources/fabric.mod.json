@@ -32,7 +32,7 @@
     ]
   },
   "mixins": [
-    "bakery.mixins.json"
+    "bakery-common.mixins.json"
   ],
   "depends": {
     "fabric": "*",

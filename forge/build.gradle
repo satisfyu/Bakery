@@ -19,7 +19,6 @@ loom {
         extraAccessWideners.add loom.accessWidenerPath.get().asFile.name
 
         mixinConfig "bakery-common.mixins.json"
-        mixinConfig "bakery.mixins.json"
     }
 }
 
@@ -33,12 +32,13 @@ configurations {
 
 dependencies {
     forge "net.minecraftforge:forge:${rootProject.forge_version}"
+    modImplementation "maven.modrinth:do-api:${project.doapi_version}-forge"
+    modImplementation "maven.modrinth:lets-do-farm-charm:${project.farm_and_charm_version}-forge"
     modApi "dev.architectury:architectury-forge:${rootProject.architectury_version}"
     modImplementation "me.shedaniel:RoughlyEnoughItems-forge:$rei_version"
     modCompileOnlyApi("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
     modCompileOnlyApi("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
     modRuntimeOnly("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
-
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
