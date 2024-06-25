@@ -6,7 +6,7 @@ license = "Custom"
 modId = "bakery"
 version = "${version}"
 displayName = "[Let's Do] Bakery"
-authors = "Satisfy, Cristelknight666"
+authors = "Satisfy"
 description = '''
 Build your own bakery, bake the finest pastries, delicious bread, and sweet cakes!'''
 logoFile = "pack.png"

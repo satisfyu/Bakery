@@ -31,9 +31,7 @@
       "net.satisfy.bakery.compat.jei.BakeryJEIPlugin"
     ]
   },
-  "mixins": [
-    "bakery-common.mixins.json"
-  ],
+  "mixins": [],
   "depends": {
     "fabric": "*",
     "minecraft": ">=1.20",
