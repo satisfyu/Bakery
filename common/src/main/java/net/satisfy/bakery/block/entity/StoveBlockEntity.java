@@ -164,7 +164,7 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
                 }
             }
         }
-        if (isBurning() && canCraft(recipe, access)) {
+        if ((isBurning() || initialBurningState) && canCraft(recipe, access)) {
             ++this.cookTime;
             if (this.cookTime == cookTimeTotal) {
                 this.cookTime = 0;
@@ -183,14 +183,16 @@ public class StoveBlockEntity extends BlockEntity implements BlockEntityTicker<S
         if (dirty) {
             setChanged();
         }
-
     }
 
     protected boolean canCraft(StoveRecipe recipe, RegistryAccess access) {
         if (recipe == null || recipe.getResultItem(access).isEmpty()) {
             return false;
-        } else if (this.getItem(FUEL_SLOT).isEmpty()) {
-            return false;
+        }
+        for (int slot : INGREDIENT_SLOTS) {
+            if (this.getItem(slot).isEmpty()) {
+                return false;
+            }
         }
         final ItemStack recipeOutput = recipe.getResultItem(access);
         final ItemStack outputSlotStack = this.getItem(OUTPUT_SLOT);
