@@ -8,11 +8,13 @@ import me.shedaniel.rei.api.client.gui.widgets.Widget;
 import me.shedaniel.rei.api.client.gui.widgets.Widgets;
 import me.shedaniel.rei.api.client.registry.display.DisplayCategory;
 import me.shedaniel.rei.api.common.category.CategoryIdentifier;
+import me.shedaniel.rei.api.common.entry.EntryStack;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import net.minecraft.network.chat.Component;
 import net.satisfy.bakery.Bakery;
 import net.satisfy.bakery.registry.ObjectRegistry;
 
+import java.util.Collections;
 import java.util.List;
 
 public class BakerStationCategory implements DisplayCategory<BakerStationDisplay> {
@@ -40,16 +42,18 @@ public class BakerStationCategory implements DisplayCategory<BakerStationDisplay
 
     @Override
     public List<Widget> setupDisplay(BakerStationDisplay display, Rectangle bounds) {
-        Point startPoint = new Point(bounds.getCenterX() - (4 * 18) / 2, bounds.getCenterY() - (18) / 2);
+        Point startPoint = new Point(bounds.getCenterX() - (4 * 18) / 2, bounds.getCenterY() - 18 / 2);
         List<Widget> widgets = Lists.newArrayList();
         widgets.add(Widgets.createRecipeBase(bounds));
 
-        int baseX = startPoint.x - 30; // Input 35 pixels to the left
+        int baseX = startPoint.x - 30;
         int baseY = startPoint.y;
         int size = 18;
-        int arrowXOffset = 3 * size; // Arrow 35 pixels to the left, adjusted for initial move
+        int arrowXOffset = 3 * size;
         int arrowYOffset = 0;
-        int outputXOffset = arrowXOffset + 58; // Output 3 pixels to the left, adjusted after arrow
+        int outputXOffset = arrowXOffset + 58;
+        int knifeXOffset = arrowXOffset - size + 25; // Adjust for knife display
+        int knifeYOffset = -19; // Display above the arrow
 
         widgets.add(Widgets.createArrow(new Point(baseX + arrowXOffset, baseY + arrowYOffset)).animationDurationTicks(50));
         widgets.add(Widgets.createResultSlotBackground(new Point(baseX + outputXOffset, baseY)));
@@ -69,6 +73,18 @@ public class BakerStationCategory implements DisplayCategory<BakerStationDisplay
                         .markInput());
             }
         }
+
+        EntryStack<?> output = display.getOutputEntries().get(0).get(0);
+        if (output.equals(EntryStacks.of(ObjectRegistry.APPLE_CUPCAKE.get())) ||
+                output.equals(EntryStacks.of(ObjectRegistry.STRAWBERRY_CUPCAKE.get())) ||
+                output.equals(EntryStacks.of(ObjectRegistry.SWEETBERRY_CUPCAKE.get()))) {
+            widgets.add(Widgets.createSlot(new Point(baseX + knifeXOffset, baseY + knifeYOffset))
+                    .entries(Collections.singletonList(EntryStacks.of(ObjectRegistry.BREAD_KNIFE.get())))
+                    .disableBackground()
+                    .markInput());
+        }
+
         return widgets;
     }
 }
+

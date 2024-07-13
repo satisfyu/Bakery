@@ -36,7 +36,7 @@ public class SweetsEffect extends MobEffect {
             if (modifier != null) {
                 attributeInstance.removeModifier(modifier);
             }
-            double increase = attribute.getDefaultValue() * percentIncrease;
+            double increase = attributeInstance.getValue() * percentIncrease;
             attributeInstance.addTransientModifier(new AttributeModifier(uuid, name, increase, AttributeModifier.Operation.ADDITION));
         }
     }
