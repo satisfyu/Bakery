@@ -5,13 +5,15 @@ import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.Attribute;
 
 import java.util.UUID;
 
 public class SweetsEffect extends MobEffect {
     public static final UUID SPEED_MODIFIER_ID = UUID.fromString("2deaf4fc-1673-4c5b-ac4f-25e37e08760f");
-    private static final UUID ATTACK_SPEED_MODIFIER_ID = UUID.fromString("FA233E1C-4180-4865-B01B-BCCE9785ACA3");
-    public static final UUID ATTACK_DAMAGE_MODIFIER_ID = UUID.fromString("CB3F55D3-645C-4F38-A497-9C13A33DB5CF");
+    private static final UUID ATTACK_SPEED_MODIFIER_ID = UUID.fromString("80c07bfd-79bb-4056-9817-534a54376ab4");
+    public static final UUID ATTACK_DAMAGE_MODIFIER_ID = UUID.fromString("b99c1012-b2d4-423f-a1af-c855433731f0");
 
     public SweetsEffect() {
         super(MobEffectCategory.BENEFICIAL, 0);
@@ -20,24 +22,22 @@ public class SweetsEffect extends MobEffect {
     @Override
     public void applyEffectTick(LivingEntity livingEntity, int amplifier) {
         if (!livingEntity.level().isClientSide) {
-            double percentIncrease = 0.02 * (amplifier + 1);
-            percentIncrease = Math.min(percentIncrease, 0.3);
+            double increase = amplifier + 1;
 
-            applyModifier(livingEntity, Attributes.MOVEMENT_SPEED, SPEED_MODIFIER_ID, percentIncrease, "Bakery speed boost");
-            applyModifier(livingEntity, Attributes.ATTACK_SPEED, ATTACK_SPEED_MODIFIER_ID, percentIncrease, "Bakery attack speed boost");
-            applyModifier(livingEntity, Attributes.ATTACK_DAMAGE, ATTACK_DAMAGE_MODIFIER_ID, percentIncrease, "Bakery attack damage boost");
+            applyModifier(livingEntity, Attributes.MOVEMENT_SPEED, SPEED_MODIFIER_ID, increase / 20);
+            applyModifier(livingEntity, Attributes.ATTACK_SPEED, ATTACK_SPEED_MODIFIER_ID, increase / 2);
+            applyModifier(livingEntity, Attributes.ATTACK_DAMAGE, ATTACK_DAMAGE_MODIFIER_ID, increase);
         }
     }
 
-    private void applyModifier(LivingEntity entity, net.minecraft.world.entity.ai.attributes.Attribute attribute, UUID uuid, double percentIncrease, String name) {
-        net.minecraft.world.entity.ai.attributes.AttributeInstance attributeInstance = entity.getAttribute(attribute);
+    private void applyModifier(LivingEntity entity, Attribute attribute, UUID uuid, double increase) {
+        AttributeInstance attributeInstance = entity.getAttribute(attribute);
         if (attributeInstance != null) {
-            AttributeModifier modifier = attributeInstance.getModifier(uuid);
-            if (modifier != null) {
-                attributeInstance.removeModifier(modifier);
+            AttributeModifier modifier = new AttributeModifier(uuid, "SweetsEffect modifier", increase, AttributeModifier.Operation.ADDITION);
+            if (attributeInstance.getModifier(uuid) != null) {
+                attributeInstance.removeModifier(uuid);
             }
-            double increase = attributeInstance.getValue() * percentIncrease;
-            attributeInstance.addTransientModifier(new AttributeModifier(uuid, name, increase, AttributeModifier.Operation.ADDITION));
+            attributeInstance.addPermanentModifier(modifier);
         }
     }
 

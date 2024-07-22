@@ -250,18 +250,6 @@
         ]
       }
     },
-    "minecraft:cake": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "minecraft:cake"
-            ]
-          }
-        ]
-      }
-    },
     "bakery:chocolate_cake": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
@@ -466,9 +454,6 @@
       "bakery:sweetberry_jam"
     ],
     [
-      "minecraft:cake"
-    ],
-    [
       "bakery:chocolate_cake"
     ],
     [
@@ -476,9 +461,6 @@
     ],
     [
       "bakery:strawberry_cake"
-    ],
-    [
-      "bakery:chocolate_cake"
     ],
     [
       "bakery:strawberry_glazed_cookie"
