@@ -3,10 +3,7 @@ package net.satisfy.bakery.effect;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.attributes.AttributeInstance;
-import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.*;
 
 import java.util.UUID;
 
@@ -44,5 +41,20 @@ public class SweetsEffect extends MobEffect {
     @Override
     public boolean isDurationEffectTick(int duration, int amplifier) {
         return true;
+    }
+
+    @Override
+    public void removeAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
+        removeModifier(entity, Attributes.MOVEMENT_SPEED, SPEED_MODIFIER_ID);
+        removeModifier(entity, Attributes.ATTACK_SPEED, ATTACK_SPEED_MODIFIER_ID);
+        removeModifier(entity, Attributes.ATTACK_DAMAGE, ATTACK_DAMAGE_MODIFIER_ID);
+        super.removeAttributeModifiers(entity, attributeMap, amplifier);
+    }
+
+    private void removeModifier(LivingEntity entity, Attribute attribute, UUID uuid) {
+        AttributeInstance attributeInstance = entity.getAttribute(attribute);
+        if (attributeInstance != null) {
+            attributeInstance.removeModifier(uuid);
+        }
     }
 }
