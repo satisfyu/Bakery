@@ -2,6 +2,9 @@ package net.satisfy.bakery.entity;
 
 import de.cristelknight.doapi.common.util.VillagerUtil;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.npc.WanderingTrader;
 import net.minecraft.world.item.trading.MerchantOffers;
@@ -54,5 +57,11 @@ public class WanderingBakerEntity extends WanderingTrader {
             this.offers = new MerchantOffers();
         }
         this.addOffersFromItemListings(this.offers, TRADES.get(1), 8);
+    }
+
+    public static AttributeSupplier.Builder createAttributes() {
+        return Mob.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 25.0)
+                .add(Attributes.MOVEMENT_SPEED, 1.0);
     }
 }

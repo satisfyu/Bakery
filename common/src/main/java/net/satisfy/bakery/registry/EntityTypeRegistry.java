@@ -1,5 +1,6 @@
 package net.satisfy.bakery.registry;
 
+import dev.architectury.registry.level.entity.EntityAttributeRegistry;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.Registrar;
 import dev.architectury.registry.registries.RegistrySupplier;
@@ -14,6 +15,7 @@ import net.satisfy.bakery.Bakery;
 import net.satisfy.farm_and_charm.FarmAndCharm;
 
 import java.util.function.Supplier;
+
 
 public enum EntityTypeRegistry {
     ;
@@ -31,6 +33,7 @@ public enum EntityTypeRegistry {
 
 
 
+
     private static <T extends BlockEntityType<?>> RegistrySupplier<T> registerBlockEntity(final Supplier<T> type) {
         return BLOCK_ENTITY_TYPES.register(new BakeryIdentifier("small_cooking_pot"), type);
     }
@@ -41,6 +44,7 @@ public enum EntityTypeRegistry {
 
     public static void init() {
         ENTITY_TYPES.register();
+        EntityAttributeRegistry.register(WANDERING_BAKER, WanderingBakerEntity::createMobAttributes);
         Bakery.LOGGER.debug("Registering Mod Entities and Block Entities for " + Bakery.MOD_ID);
     }
 }
