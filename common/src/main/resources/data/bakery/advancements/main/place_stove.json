@@ -14,7 +14,7 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
+    "announce_to_chat": false,
     "description": {
       "translate": "advancement.bakery.place_stove.desc"
     },
@@ -23,7 +23,7 @@
     "icon": {
       "item": "farm_and_charm:stove"
     },
-    "show_toast": true,
+    "show_toast": false,
     "title": {
       "translate": "advancement.bakery.place_stove"
     }

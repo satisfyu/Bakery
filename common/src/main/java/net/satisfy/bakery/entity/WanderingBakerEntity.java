@@ -10,6 +10,7 @@ import net.minecraft.world.entity.npc.WanderingTrader;
 import net.minecraft.world.item.trading.MerchantOffers;
 import net.minecraft.world.level.Level;
 import net.satisfy.bakery.registry.ObjectRegistry;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 
@@ -46,9 +47,6 @@ public class WanderingBakerEntity extends WanderingTrader {
 
     public WanderingBakerEntity(EntityType<? extends WanderingBakerEntity> entityType, Level world) {
         super(entityType, world);
-        if (this.offers == null) {
-            this.offers = new MerchantOffers();
-        }
     }
 
     @Override
@@ -59,7 +57,7 @@ public class WanderingBakerEntity extends WanderingTrader {
         this.addOffersFromItemListings(this.offers, TRADES.get(1), 8);
     }
 
-    public static AttributeSupplier.Builder createAttributes() {
+    public static AttributeSupplier.@NotNull Builder createMobAttributes() {
         return Mob.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 25.0)
                 .add(Attributes.MOVEMENT_SPEED, 1.0);

@@ -143,5 +143,6 @@
   "tooltip.bakery.thankyou_1": "Eine Belohnung für das Herstellen aller gebackener Waren",
   "tooltip.bakery.thankyou_2": "Wenn platziert:",
   "tooltip.bakery.thankyou_3": "Danke für das Spielen von Bakery!",
-  "tooltip.bakery.thankyou_4": "Gewährt Resistenz I in einem Radius von 8 Blöcken"
+  "tooltip.bakery.thankyou_4": "Gewährt Resistenz I in einem Radius von 8 Blöcken",
+  "tooltip.bakery.cakedoughonstation": "Platziere einen Kuchenteig um mit dem Glasieren zu beginnen!"
 }
