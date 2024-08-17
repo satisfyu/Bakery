@@ -2,7 +2,7 @@
   "type": "farm_and_charm:pot_cooking",
   "ingredients": [
     {
-      "item": "minecraft:egg"
+      "tag": "bakery:eggs"
     },
     {
       "tag": "bakery:jam"

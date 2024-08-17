@@ -8,7 +8,7 @@
       "item": "minecraft:sugar"
     },
     {
-      "item": "minecraft:egg"
+      "tag": "bakery:eggs"
     },
     {
       "item": "minecraft:water_bucket"

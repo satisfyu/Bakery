@@ -8,10 +8,10 @@
       "item": "minecraft:sugar"
     },
     {
-      "item": "minecraft:egg"
+      "tag": "bakery:eggs"
     },
     {
-      "item": "minecraft:milk_bucket"
+      "tag": "bakery:milk"
     }
   ],
   "result": {
