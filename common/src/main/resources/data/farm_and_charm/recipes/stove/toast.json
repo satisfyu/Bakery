@@ -8,7 +8,7 @@
       "tag": "bakery:dough"
     },
     {
-      "item": "minecraft:milk_bucket"
+      "tag": "bakery:milk"
     }
   ],
   "item": "bakery:toast",
