@@ -11,7 +11,7 @@
       "tag": "bakery:eggs"
     },
     {
-      "item": "minecraft:water_bucket"
+      "tag": "bakery:water_bottles"
     }
   ],
   "result": {
