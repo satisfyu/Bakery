@@ -8,7 +8,7 @@
       "item": "farm_and_charm:yeast"
     },
     {
-      "item": "minecraft:water_bucket"
+      "tag": "bakery:water_bottles"
     }
   ],
   "item": "bakery:crusty_bread",

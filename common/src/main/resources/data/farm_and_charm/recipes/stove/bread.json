@@ -8,7 +8,7 @@
       "item": "minecraft:sugar"
     },
     {
-      "item": "minecraft:water_bucket"
+      "tag": "bakery:water_bottles"
     }
   ],
   "item": "bakery:bread",
