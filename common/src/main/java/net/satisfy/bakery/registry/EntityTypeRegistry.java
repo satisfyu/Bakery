@@ -29,17 +29,17 @@ public enum EntityTypeRegistry {
             () -> EntityType.Builder.of(WanderingBakerEntity::new, MobCategory.CREATURE)
                     .sized(0.6f, 1.95f)
                     .clientTrackingRange(10)
-                    .build(new BakeryIdentifier("wandering_baker").toString()));
+                    .build(BakeryIdentifier.of("wandering_baker").toString()));
 
 
 
 
     private static <T extends BlockEntityType<?>> RegistrySupplier<T> registerBlockEntity(final Supplier<T> type) {
-        return BLOCK_ENTITY_TYPES.register(new BakeryIdentifier("small_cooking_pot"), type);
+        return BLOCK_ENTITY_TYPES.register(BakeryIdentifier.of("small_cooking_pot"), type);
     }
 
     private static <T extends EntityType<?>> RegistrySupplier<T> registerEntityType(final Supplier<T> type) {
-        return ENTITY_TYPES.register(new BakeryIdentifier("wandering_baker"), type);
+        return ENTITY_TYPES.register(BakeryIdentifier.of("wandering_baker"), type);
     }
 
     public static void init() {

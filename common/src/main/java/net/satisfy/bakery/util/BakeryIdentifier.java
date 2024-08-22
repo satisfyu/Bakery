@@ -3,14 +3,13 @@ package net.satisfy.bakery.util;
 import net.minecraft.resources.ResourceLocation;
 import net.satisfy.bakery.Bakery;
 
-public class BakeryIdentifier extends ResourceLocation {
+public class BakeryIdentifier {
 
-    public BakeryIdentifier(String path) {
-        super(Bakery.MOD_ID, path);
+    public static ResourceLocation of(String path) {
+        return ResourceLocation.fromNamespaceAndPath(Bakery.MOD_ID, path);
     }
 
-    @SuppressWarnings("unused")
-    public static String asString(String path) {
-        return (Bakery.MOD_ID + ":" + path);
+    public static ResourceLocation of(String namespace, String path) {
+        return ResourceLocation.fromNamespaceAndPath(namespace, path);
     }
 }

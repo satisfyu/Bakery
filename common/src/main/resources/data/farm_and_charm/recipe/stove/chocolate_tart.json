@@ -1,0 +1,19 @@
+{
+  "type": "farm_and_charm:stove",
+  "ingredients": [
+    {
+      "tag": "bakery:chocolate"
+    },
+    {
+      "item": "bakery:sweet_dough"
+    },
+    {
+      "item": "farm_and_charm:yeast"
+    }
+  ],
+  "result": {
+    "id": "bakery:chocolate_tart",
+    "count": 1
+  },
+  "experience": 0.35
+}

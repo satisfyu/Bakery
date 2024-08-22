@@ -7,6 +7,7 @@ import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.satisfy.bakery.compat.jei.category.BakerStationCategory;
 import net.satisfy.bakery.registry.ObjectRegistry;
@@ -15,6 +16,7 @@ import org.jetbrains.annotations.NotNull;
 import net.satisfy.bakery.recipe.BakingStationRecipe;
 import net.satisfy.bakery.util.BakeryIdentifier;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -31,14 +33,20 @@ public class BakeryJEIPlugin implements IModPlugin {
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
         RecipeManager rm = Objects.requireNonNull(Minecraft.getInstance().level).getRecipeManager();
-        List<BakingStationRecipe> cakingRecipes = rm.getAllRecipesFor(RecipeTypeRegistry.BAKING_STATION_RECIPE_TYPE.get());
+
+        List<RecipeHolder<BakingStationRecipe>> cakingHolderRecipes = rm.getAllRecipesFor(RecipeTypeRegistry.BAKING_STATION_RECIPE_TYPE.get());
+        List<BakingStationRecipe> cakingRecipes = new ArrayList<>();
+        cakingHolderRecipes.iterator().forEachRemaining(recipeHolder -> {
+            cakingRecipes.add(recipeHolder.value());
+        });
+
         registration.addRecipes(BakerStationCategory.CAKING, cakingRecipes);
 
     }
 
     @Override
     public @NotNull ResourceLocation getPluginUid() {
-        return new BakeryIdentifier("jei_plugin");
+        return BakeryIdentifier.of("jei_plugin");
     }
 
     @Override

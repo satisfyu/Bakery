@@ -1,0 +1,15 @@
+{
+  "type": "bakery:baking_station",
+  "ingredients": [
+    {
+      "item": "bakery:cake_dough"
+    },
+    {
+      "item": "bakery:chocolate_truffle"
+    }
+  ],
+  "result": {
+    "id": "bakery:chocolate_gateau",
+    "count": 1
+  }
+}

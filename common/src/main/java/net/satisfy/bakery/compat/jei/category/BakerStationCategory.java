@@ -19,7 +19,7 @@ import net.satisfy.bakery.recipe.BakingStationRecipe;
 public class BakerStationCategory implements IRecipeCategory<BakingStationRecipe> {
     public static final RecipeType<BakingStationRecipe> CAKING = RecipeType.create(Bakery.MOD_ID, "caking", BakingStationRecipe.class);
     public final static ResourceLocation TEXTURE =
-            new ResourceLocation(Bakery.MOD_ID, "textures/gui/baking_station.png");
+            ResourceLocation.fromNamespaceAndPath(Bakery.MOD_ID, "textures/gui/baking_station.png");
 
     private final IDrawable background;
     private final IDrawable icon;

@@ -7,6 +7,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
@@ -82,7 +83,8 @@ public class CakeStandBlock extends StorageBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    public InteractionResult useWithoutItem(BlockState state, Level world, BlockPos pos, Player player, BlockHitResult hit) {
+        InteractionHand hand = player.getUsedItemHand();
         BlockEntity blockEntity = world.getBlockEntity(pos);
         if (blockEntity instanceof StorageBlockEntity shelfBlockEntity) {
             List<Item> items = new LinkedList<>();
@@ -147,7 +149,7 @@ public class CakeStandBlock extends StorageBlock {
 
     @Override
     public boolean canInsertStack(ItemStack stack) {
-        return stack.isEdible() || stack.getItem() instanceof BlockItem;
+        return stack.has(DataComponents.FOOD) || stack.getItem() instanceof BlockItem;
     }
 
     @Override
@@ -156,7 +158,7 @@ public class CakeStandBlock extends StorageBlock {
     }
 
     @Override
-    public void appendHoverText(ItemStack itemStack, BlockGetter world, List<Component> tooltip, TooltipFlag tooltipContext) {
-        tooltip.add(Component.translatable("tooltip.bakery.canbeplaced").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
+    public void appendHoverText(ItemStack itemStack, Item.TooltipContext tooltipContext, List<Component> list, TooltipFlag tooltipFlag) {
+        list.add(Component.translatable("tooltip.bakery.canbeplaced").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
     }
 }

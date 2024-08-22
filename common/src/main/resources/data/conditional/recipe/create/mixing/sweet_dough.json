@@ -1,0 +1,32 @@
+{
+  "type": "doapi:conditional",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "recipe": {
+    "type": "create:mixing",
+    "ingredients": [
+      {
+        "tag": "bakery:wheat"
+      },
+      {
+        "tag": "bakery:eggs"
+      },
+      {
+        "item": "minecraft:sugar"
+      },
+      {
+        "tag": "bakery:milk"
+      }
+    ],
+    "results": [
+      {
+        "id": "bakery:cake_dough",
+        "count": 1
+      }
+    ]
+  }
+}

@@ -9,12 +9,12 @@ import java.util.Set;
 public class StorageTypeRegistry {
 
 
-    public static final ResourceLocation CAKE_STAND = new BakeryIdentifier("cake_stand");
-    public static final ResourceLocation TRAY = new BakeryIdentifier("tray");
-    public static final ResourceLocation BREADBOX = new BakeryIdentifier("breadbox");
-    public static final ResourceLocation CAKE_DISPLAY = new BakeryIdentifier("cake_display");
-    public static final ResourceLocation CUPCAKE_DISPLAY = new BakeryIdentifier("cupcake_display");
-    public static final ResourceLocation WALL_DISPLAY = new BakeryIdentifier("wall_display");
+    public static final ResourceLocation CAKE_STAND = BakeryIdentifier.of("cake_stand");
+    public static final ResourceLocation TRAY = BakeryIdentifier.of("tray");
+    public static final ResourceLocation BREADBOX = BakeryIdentifier.of("breadbox");
+    public static final ResourceLocation CAKE_DISPLAY = BakeryIdentifier.of("cake_display");
+    public static final ResourceLocation CUPCAKE_DISPLAY = BakeryIdentifier.of("cupcake_display");
+    public static final ResourceLocation WALL_DISPLAY = BakeryIdentifier.of("wall_display");
 
 
     public static void registerBlocks(Set<Block> blocks) {

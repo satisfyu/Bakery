@@ -3,7 +3,6 @@ package net.satisfy.bakery.block.cakes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -54,7 +53,7 @@ public class CookieBlock extends Block {
     }
 
     @Override
-    public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    public @NotNull InteractionResult useWithoutItem(BlockState state, Level world, BlockPos pos, Player player, BlockHitResult hit) {
         if (!world.isClientSide) {
             if (state.is(ObjectRegistry.SWEETBERRY_COOKIE_BLOCK.get())) {
                 popItem(world, pos, new ItemStack(ObjectRegistry.SWEETBERRY_GLAZED_COOKIE.get(), 4));
@@ -68,7 +67,7 @@ public class CookieBlock extends Block {
             world.removeBlock(pos, false);
             return InteractionResult.sidedSuccess(false);
         }
-        return super.use(state, world, pos, player, hand, hit);
+        return super.useWithoutItem(state, world, pos, player, hit);
     }
 
     private void popItem(Level world, BlockPos pos, ItemStack stack) {

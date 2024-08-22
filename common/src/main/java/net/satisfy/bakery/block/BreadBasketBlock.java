@@ -57,7 +57,8 @@ public class BreadBasketBlock extends EatableBoxBlock {
     }
 
     @Override
-    public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    public @NotNull InteractionResult useWithoutItem(BlockState state, Level world, BlockPos pos, Player player, BlockHitResult hit) {
+        InteractionHand hand = player.getUsedItemHand();
         ItemStack itemStack = player.getItemInHand(hand);
         if (world.isClientSide) {
             if (tryEat(world, pos, state, player).consumesAction()) {

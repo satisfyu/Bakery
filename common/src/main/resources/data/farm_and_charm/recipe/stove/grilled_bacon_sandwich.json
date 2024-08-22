@@ -1,0 +1,19 @@
+{
+  "type": "farm_and_charm:stove",
+  "ingredients": [
+    {
+      "tag": "bakery:bread"
+    },
+    {
+      "tag": "farm_and_charm:raw_bacon"
+    },
+    {
+      "tag": "farm_and_charm:raw_bacon"
+    }
+  ],
+  "result": {
+      "id": "bakery:grilled_bacon_sandwich",
+      "count": 2
+  },
+  "experience": 0.15
+}

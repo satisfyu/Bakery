@@ -1,0 +1,46 @@
+{
+  "parent": "bakery:main/spyglass_at_baker",
+  "criteria": {
+    "ride_a_boat_with_a_baker": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "vehicle": {
+                "type": "minecraft:boat",
+                "passenger": {
+                  "type": "bakery:wandering_baker"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:started_riding"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.bakery.ride_a_boat_with_a_baker.desc"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "bakery:wandering_baker_spawn_egg",
+      "count": 1
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.bakery.ride_a_boat_with_a_baker"
+    }
+  },
+  "requirements": [
+    [
+      "ride_a_boat_with_a_baker"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

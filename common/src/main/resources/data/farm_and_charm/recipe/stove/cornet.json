@@ -1,0 +1,19 @@
+{
+  "type": "farm_and_charm:stove",
+  "ingredients": [
+    {
+      "item": "bakery:apple_jam"
+    },
+    {
+      "item": "bakery:sweet_dough"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "result": {
+    "id": "bakery:cornet",
+    "count": 4
+  },
+  "experience": 0.35
+}

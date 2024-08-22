@@ -1,0 +1,19 @@
+{
+  "type": "farm_and_charm:stove",
+  "ingredients": [
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "tag": "bakery:dough"
+    },
+    {
+      "item": "minecraft:milk_bucket"
+    }
+  ],
+  "result": {
+    "id": "bakery:toast",
+    "count": 3
+  },
+  "experience": 0.35
+}

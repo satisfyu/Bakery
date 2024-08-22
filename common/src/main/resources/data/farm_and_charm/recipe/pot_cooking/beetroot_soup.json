@@ -1,0 +1,16 @@
+{
+  "type": "farm_and_charm:pot_cooking",
+  "ingredients": [
+    {
+      "item": "minecraft:beetroot"
+    }
+  ],
+  "container": {
+    "id": "minecraft:bowl",
+    "count": 1
+  },
+  "result": {
+    "id": "minecraft:beetroot_soup",
+    "count": 1
+  }
+}

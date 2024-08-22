@@ -5,6 +5,7 @@ import de.cristelknight.doapi.common.util.GeneralUtil;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
@@ -67,7 +68,7 @@ public class BreadBox extends StorageBlock {
 
     @Override
     public boolean canInsertStack(ItemStack stack) {
-        return stack.isEdible() || stack.getItem() instanceof BlockItem;
+        return stack.has(DataComponents.FOOD) || stack.getItem() instanceof BlockItem;
     }
 
     @Override

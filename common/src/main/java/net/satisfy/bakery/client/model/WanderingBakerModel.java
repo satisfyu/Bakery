@@ -14,7 +14,7 @@ import net.satisfy.bakery.util.BakeryIdentifier;
 @Environment(EnvType.CLIENT)
 public class WanderingBakerModel<T extends WanderingTrader> extends VillagerModel<T> {
 
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new BakeryIdentifier("wandering_baker"), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(BakeryIdentifier.of("wandering_baker"), "main");
 
     public WanderingBakerModel(ModelPart root) {
         super(root);
