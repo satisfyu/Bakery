@@ -5,13 +5,13 @@
       "item": "bakery:cake_dough"
     },
     {
-      "item": "bakery:strawberry_jam"
-    },
-    {
       "tag": "bakery:knives"
     },
     {
       "item": "bakery:rolling_pin"
+    },
+    {
+      "item": "bakery:strawberry_jam"
     }
   ],
   "result": {
