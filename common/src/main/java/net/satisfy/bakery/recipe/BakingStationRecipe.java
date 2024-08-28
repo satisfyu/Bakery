@@ -29,7 +29,7 @@ public class BakingStationRecipe implements Recipe<Container> {
 
     @Override
     public boolean matches(Container inventory, Level world) {
-        return GeneralUtil.matchesRecipe(inventory, inputs, 1, 3);
+        return GeneralUtil.matchesRecipe(inventory, inputs, 1, 4);
     }
 
     @Override
@@ -78,7 +78,7 @@ public class BakingStationRecipe implements Recipe<Container> {
             final var ingredients = GeneralUtil.deserializeIngredients(GsonHelper.getAsJsonArray(json, "ingredients"));
             if (ingredients.isEmpty()) {
                 throw new JsonParseException("No ingredients for Baking Station Recipe");
-            } else if (ingredients.size() > 3) {
+            } else if (ingredients.size() > 4) {
                 throw new JsonParseException("Too many ingredients for Baking Station Recipe");
             } else {
                 return new BakingStationRecipe(id, ingredients, ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "result")));

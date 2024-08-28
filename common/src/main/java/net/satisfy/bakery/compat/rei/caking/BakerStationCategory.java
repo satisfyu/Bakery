@@ -62,7 +62,7 @@ public class BakerStationCategory implements DisplayCategory<BakerStationDisplay
                 .entries(display.getInputEntries().get(0))
                 .markInput());
 
-        for (int i = 1; i <= 2; i++) {
+        for (int i = 1; i <= 4; i++) {
             if (display.getInputEntries().size() > i) {
                 widgets.add(Widgets.createSlot(new Point(baseX + i * size, baseY))
                         .entries(display.getInputEntries().get(i))

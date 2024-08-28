@@ -6,6 +6,12 @@
     },
     {
       "item": "bakery:sweetberry_jam"
+    },
+    {
+      "tag": "bakery:knives"
+    },
+    {
+      "item": "bakery:rolling_pin"
     }
   ],
   "result": {
