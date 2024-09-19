@@ -87,8 +87,9 @@ public class BlankCakeBlock extends Block {
     }
 
     @Override
-    public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    public @NotNull InteractionResult useWithoutItem(BlockState state, Level world, BlockPos pos, Player player, BlockHitResult hit) {
         if (!world.isClientSide) {
+            InteractionHand hand = player.getUsedItemHand();
             var itemStack = player.getItemInHand(hand);
             var item = itemStack.getItem();
             boolean isCake = state.getValue(CAKE);

@@ -1,6 +1,5 @@
 package net.satisfy.bakery.block.cakes;
 
-import com.mojang.datafixers.util.Pair;
 import de.cristelknight.doapi.common.block.FacingBlock;
 import de.cristelknight.doapi.common.registry.DoApiSoundEventRegistry;
 import de.cristelknight.doapi.common.util.GeneralUtil;
@@ -8,6 +7,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -82,7 +82,8 @@ public class PieBlock extends FacingBlock {
     }
 
     @Override
-    public @NotNull InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    public @NotNull InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
+        InteractionHand hand = player.getUsedItemHand();
         ItemStack heldStack = player.getItemInHand(hand);
         if (!level.isClientSide && !player.isShiftKeyDown() && state.getValue(CUTS) == 0 && heldStack.isEmpty()) {
             Direction direction = player.getDirection().getOpposite();
@@ -109,14 +110,12 @@ public class PieBlock extends FacingBlock {
             return InteractionResult.PASS;
         } else {
             ItemStack sliceStack = this.getPieSliceItem();
-            FoodProperties sliceFood = sliceStack.getItem().getFoodProperties();
+            FoodProperties sliceFood = sliceStack.getOrDefault(DataComponents.FOOD, null);
+            playerIn.getFoodData().eat(sliceFood);
 
-            playerIn.getFoodData().eat(sliceStack.getItem(), sliceStack);
-            if (this.getPieSliceItem().getItem().isEdible() && sliceFood != null) {
-                for (Pair<MobEffectInstance, Float> pair : sliceFood.getEffects()) {
-                    if (!level.isClientSide && pair.getFirst() != null && level.random.nextFloat() < pair.getSecond()) {
-                        playerIn.addEffect(new MobEffectInstance(pair.getFirst()));
-                    }
+            for (FoodProperties.PossibleEffect effect : sliceFood.effects()) {
+                if (!level.isClientSide && level.random.nextFloat() < effect.probability()) {
+                    playerIn.addEffect(new MobEffectInstance(effect.effect()));
                 }
             }
 
@@ -163,16 +162,13 @@ public class PieBlock extends FacingBlock {
         return SHAPE.get(state.getValue(FACING));
     }
 
-
     @Override
-    public void appendHoverText(ItemStack itemStack, BlockGetter world, List<Component> tooltip, TooltipFlag tooltipContext) {
+    public void appendHoverText(ItemStack itemStack, Item.TooltipContext tooltipContext, List<Component> tooltip, TooltipFlag tooltipFlag) {
         tooltip.add(Component.translatable("tooltip.bakery.canbeplaced").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
         tooltip.add(Component.empty());
         tooltip.add(Component.translatable("tooltip.bakery.cake_1").withStyle(ChatFormatting.WHITE));
         tooltip.add(Component.translatable("tooltip.bakery.cake_2").withStyle(ChatFormatting.WHITE));
         tooltip.add(Component.translatable("tooltip.bakery.cake_3").withStyle(ChatFormatting.WHITE));
-
-
     }
 }
 

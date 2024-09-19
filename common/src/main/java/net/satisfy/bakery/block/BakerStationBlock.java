@@ -29,7 +29,8 @@ public class BakerStationBlock extends FacingBlock {
     }
 
     @Override
-    public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    public @NotNull InteractionResult useWithoutItem(BlockState state, Level world, BlockPos pos, Player player, BlockHitResult hit) {
+        InteractionHand hand = player.getUsedItemHand();
         if (!world.isClientSide && hand == InteractionHand.MAIN_HAND) {
             ItemStack itemStack = player.getItemInHand(hand);
             if (itemStack.is(ObjectRegistry.CAKE_DOUGH.get())) {

@@ -1,0 +1,19 @@
+{
+  "type": "farm_and_charm:stove",
+  "ingredients": [
+    {
+      "tag": "bakery:dough"
+    },
+    {
+      "item": "farm_and_charm:yeast"
+    },
+    {
+      "tag": "bakery:water_bottles"
+    }
+  ],
+  "result": {
+      "id": "bakery:crusty_bread",
+      "count": 4
+  },
+  "experience": 0.35
+}

@@ -1,0 +1,19 @@
+{
+  "type": "farm_and_charm:stove",
+  "ingredients": [
+    {
+      "item": "bakery:sweet_dough"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "tag": "bakery:eggs"
+    }
+  ],
+  "result": {
+    "id": "bakery:waffle",
+    "count": 6
+  },
+  "experience": 0.3
+}

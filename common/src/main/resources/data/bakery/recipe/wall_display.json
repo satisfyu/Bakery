@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BLB",
+    "BLB",
+    "BLB"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:stick"
+    },
+    "L": {
+      "tag": "minecraft:wooden_slabs"
+    }
+  },
+  "result": {
+    "id": "bakery:wall_display"
+  }
+}
