@@ -5,7 +5,7 @@
   "name": "[Let's Do] Bakery",
   "description": "Build your own bakery, bake the finest pastries, delicious bread, and sweet cakes!",
   "authors": [
-    "satisfy"
+    "satisfy, binaris"
   ],
   "contact": {
     "sources": "https://github.com/satisfyu/Bakery",
@@ -36,7 +36,7 @@
   ],
   "depends": {
     "fabric": "*",
-    "minecraft": ">=1.20",
+    "minecraft": ">=1.21",
     "architectury": ">=9.0.8",
     "doapi": ">=1.2.9",
     "farm_and_charm": ">=0.0.1"

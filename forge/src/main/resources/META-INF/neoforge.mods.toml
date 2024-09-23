@@ -9,7 +9,7 @@ config = "bakery-common.mixins.json"
 modId = "bakery"
 version = "2.1.0"
 displayName = "[Let's Do] Bakery"
-authors = "Satisfy"
+authors = "Satisfy, Binaris"
 description = '''
 Build your own bakery, bake the finest pastries, delicious bread, and sweet cakes!'''
 logoFile = "pack.png"
@@ -31,7 +31,7 @@ side = "BOTH"
 [[dependencies.bakery]]
 modId = "doapi"
 type = "required"
-versionRange = "[1.3.0,)"
+versionRange = "[1.2.9,)"
 ordering = "NONE"
 side = "BOTH"
 

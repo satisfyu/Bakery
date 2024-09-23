@@ -9,14 +9,14 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Supplier;
 
-public class CabinetImp extends CabinetBlock {
-    public static final MapCodec<CabinetImp> CODEC = simpleCodec(CabinetImp::new);
+public class CabinetBlockImp extends CabinetBlock {
+    public static final MapCodec<CabinetBlockImp> CODEC = simpleCodec(CabinetBlockImp::new);
 
-    public CabinetImp(Properties settings, Supplier<SoundEvent> openSound, Supplier<SoundEvent> closeSound) {
+    public CabinetBlockImp(Properties settings, Supplier<SoundEvent> openSound, Supplier<SoundEvent> closeSound) {
         super(settings, openSound, closeSound);
     }
 
-    public CabinetImp(Properties settings) {
+    public CabinetBlockImp(Properties settings) {
         super(settings, DoApiSoundEventRegistry.CABINET_OPEN, DoApiSoundEventRegistry.CABINET_CLOSE);
     }
 
