@@ -2,7 +2,7 @@
   "type": "farm_and_charm:stove",
   "ingredients": [
     {
-      "item": "bakery:apple_jam"
+      "item": "minecraft:milk_bucket"
     },
     {
       "item": "bakery:sweet_dough"
